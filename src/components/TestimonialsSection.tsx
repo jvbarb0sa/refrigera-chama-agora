@@ -19,25 +19,25 @@ const testimonials = [
   {
     name: "Dona Maria",
     context: "Residencial — Geladeira",
-    text: "O Vagner explicou direitinho o que era antes de mexer. Orçamento justo e geladeira funcionando até hoje.",
+    text: "Explicou direitinho o que era antes de mexer. Orçamento justo e geladeira funcionando até hoje.",
     initials: "DM",
   },
   {
     name: "Roberto S.",
     context: "Sorveteria — Expositor",
-    text: "Expositor parou no sábado. Vieram no mesmo dia e resolveram sem enrolação. Recomendo demais.",
+    text: "Expositor parou no sábado. Vieram no mesmo dia e resolveram sem enrolação.",
     initials: "RS",
   },
   {
     name: "Ana Paula",
     context: "Residencial — Lavadora",
-    text: "Lavadora travava na centrifugação. Diagnóstico rápido e conserto no mesmo dia. Muito profissional.",
+    text: "Lavadora travava na centrifugação. Diagnóstico rápido e conserto no mesmo dia.",
     initials: "AP",
   },
   {
     name: "João Pedro",
     context: "Padaria — Balcão refrigerado",
-    text: "Manutenção preventiva todo mês. Nunca mais tive problema com o balcão. Serviço sério.",
+    text: "Manutenção preventiva todo mês. Nunca mais tive problema com o balcão.",
     initials: "JP",
   },
 ];
@@ -45,13 +45,13 @@ const testimonials = [
 export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
+    setCanPrev(emblaApi.canScrollPrev());
+    setCanNext(emblaApi.canScrollNext());
   }, [emblaApi]);
 
   useEffect(() => {
@@ -63,56 +63,56 @@ export default function TestimonialsSection() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="provas" className="py-16 md:py-24 bg-muted">
+    <section id="provas" className="py-14 md:py-20 bg-muted">
       <div ref={sectionRef} className="container">
-        <div className="flex items-end justify-between">
+        <div className="flex items-end justify-between gap-4">
           <div>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+            <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-primary">
               Quem já chamou
             </span>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+            <h2 className="mt-2 text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-tight text-foreground">
               Trabalho limpo, orçamento claro, garantia.
             </h2>
           </div>
-          <div className="hidden sm:flex gap-2">
+          <div className="hidden sm:flex gap-1.5">
             <button
               onClick={() => emblaApi?.scrollPrev()}
-              disabled={!canScrollPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
+              disabled={!canPrev}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
               aria-label="Anterior"
             >
-              <ChevronLeft size={18} />
+              <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => emblaApi?.scrollNext()}
-              disabled={!canScrollNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
+              disabled={!canNext}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
               aria-label="Próximo"
             >
-              <ChevronRight size={18} />
+              <ChevronRight size={16} />
             </button>
           </div>
         </div>
 
-        <div className="mt-10 overflow-hidden">
+        <div className="mt-8 overflow-hidden">
           <div ref={emblaRef}>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {testimonials.map((t) => (
                 <div
                   key={t.name}
-                  className="min-w-[280px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] rounded-xl border border-border bg-card p-6"
+                  className="min-w-[260px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_31%] rounded-xl border border-border bg-card p-5"
                 >
-                  <p className="text-2xl leading-none text-primary/20 select-none">"</p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground">
+                  <p className="text-xl leading-none text-primary/15 select-none">"</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-foreground">
                     {t.text}
                   </p>
-                  <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                  <div className="mt-4 flex items-center gap-3 border-t border-border pt-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-[11px] font-bold text-primary-foreground">
                       {t.initials}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.context}</p>
+                      <p className="text-sm font-semibold text-foreground leading-none">{t.name}</p>
+                      <p className="text-[12px] text-muted-foreground mt-0.5">{t.context}</p>
                     </div>
                   </div>
                 </div>
