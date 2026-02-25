@@ -11,7 +11,7 @@ export default function ServicesSection() {
   const gridRef = useGsapFade<HTMLDivElement>({ children: ".bento-card", stagger: 0.08 });
 
   return (
-    <section id="servicos" className="py-16 md:py-24">
+    <section id="servicos" className="py-14 md:py-20">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Especialidades
@@ -22,20 +22,20 @@ export default function ServicesSection() {
 
         <div
           ref={gridRef}
-          className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-12 md:grid-rows-[auto_auto_auto]"
+          className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-12 md:auto-rows-auto"
         >
           {/* DOMINANT — Refrigeração Comercial */}
           <MotionDiv
             whileHover={{ y: -2 }}
-            className="bento-card md:col-span-7 md:row-span-2 rounded-xl border border-border bg-foreground p-8 md:p-10 flex flex-col justify-between min-h-[280px]"
+            className="bento-card md:col-span-7 md:row-span-2 rounded-xl border border-border bg-foreground p-8 md:p-10 flex flex-col justify-between min-h-[260px]"
           >
             <div>
               <Badge className="bg-primary/20 text-primary border-0 mb-4">Comercial</Badge>
-              <Snowflake size={28} className="text-primary-foreground/60 mb-4" />
+              <Snowflake size={24} className="text-primary-foreground/60 mb-3" />
               <h3 className="text-2xl font-bold text-primary-foreground md:text-3xl">
                 Refrigeração Comercial
               </h3>
-              <p className="mt-3 text-primary-foreground/60 leading-relaxed max-w-sm">
+              <p className="mt-3 text-primary-foreground/60 leading-relaxed max-w-sm text-[15px]">
                 Balcão parou no sábado? Câmara desligou de noite? A gente resolve no mesmo dia.
                 Cervejeiras, expositores, máquinas de gelo — todas as marcas.
               </p>
@@ -55,17 +55,17 @@ export default function ServicesSection() {
           >
             <div>
               <Badge className="mb-3">Comercial</Badge>
-              <Thermometer size={22} className="text-primary mb-3" />
+              <Thermometer size={20} className="text-primary mb-2" />
               <h3 className="text-lg font-semibold text-foreground">Câmaras Frias</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                Instalação, manutenção e reparo. Frigoríficas e câmaras de resfriamento.
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+                Instalação, manutenção e reparo de câmaras frigoríficas e de resfriamento.
               </p>
             </div>
             <a
               href={whatsappLink("Preciso de diagnóstico na câmara fria.")}
               target="_blank"
               rel="noopener"
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
             >
               <MessageCircle size={14} />
               Pedir diagnóstico →
@@ -79,9 +79,9 @@ export default function ServicesSection() {
           >
             <div>
               <Badge variant="secondary" className="mb-3">Residencial</Badge>
-              <Snowflake size={22} className="text-primary mb-3" />
+              <Snowflake size={20} className="text-primary mb-2" />
               <h3 className="text-lg font-semibold text-foreground">Geladeiras e Freezers</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
                 Compressor, termostato, gás, vedação. Todas as marcas.
               </p>
             </div>
@@ -89,7 +89,7 @@ export default function ServicesSection() {
               href={whatsappLink("Minha geladeira/freezer está com problema. Pode atender?")}
               target="_blank"
               rel="noopener"
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
             >
               <MessageCircle size={14} />
               Agendar reparo →
@@ -99,16 +99,16 @@ export default function ServicesSection() {
           {/* HORIZONTAL STRIP — Contrato / Urgência */}
           <MotionDiv
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-12 rounded-xl border border-primary/20 bg-primary/5 px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
+            className="bento-card md:col-span-12 rounded-xl border border-primary/20 bg-primary/5 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
           >
             <div className="flex items-center gap-3">
-              <ShieldCheck size={22} className="text-primary shrink-0" />
+              <ShieldCheck size={20} className="text-primary shrink-0" />
               <div>
-                <h3 className="text-base font-semibold text-foreground">
+                <h3 className="text-sm font-semibold text-foreground">
                   Manutenção preventiva para empresas
                 </h3>
-                <p className="text-sm text-muted-foreground">
-                  Contrato mensal com visitas programadas. Seu equipamento nunca mais para de surpresa.
+                <p className="text-xs text-muted-foreground">
+                  Contrato mensal com visitas programadas. Sem paradas de surpresa.
                 </p>
               </div>
             </div>
@@ -118,69 +118,78 @@ export default function ServicesSection() {
               rel="noopener"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors whitespace-nowrap shrink-0"
             >
-              <MessageCircle size={14} />
               Falar sobre contrato →
             </a>
           </MotionDiv>
 
-          {/* COMPACT — Lavadoras */}
+          {/* COMPACT ROW — 2 cards asymmetric */}
           <MotionDiv
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-4 rounded-xl border border-border bg-card p-5"
+            className="bento-card md:col-span-5 rounded-xl border border-border bg-card p-5"
           >
-            <WashingMachine size={20} className="text-primary mb-2" />
-            <h3 className="text-base font-semibold text-foreground">Lavadoras</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Placa, motor, bomba. Diagnóstico técnico real.
-            </p>
-            <a
-              href={whatsappLink("Minha lavadora está com defeito. Pode verificar?")}
-              target="_blank"
-              rel="noopener"
-              className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-            >
-              Chamar técnico →
-            </a>
+            <div className="flex items-start gap-4">
+              <WashingMachine size={20} className="text-primary shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-base font-semibold text-foreground">Lavadoras</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Placa, motor, bomba e centrifugação. Diagnóstico técnico sem achismo.
+                </p>
+                <a
+                  href={whatsappLink("Minha lavadora está com defeito. Pode verificar?")}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
+                >
+                  Chamar técnico →
+                </a>
+              </div>
+            </div>
           </MotionDiv>
 
-          {/* COMPACT — Ar Condicionado */}
           <MotionDiv
             whileHover={{ y: -1 }}
             className="bento-card md:col-span-4 rounded-xl border border-border bg-card p-5"
           >
-            <Wind size={20} className="text-primary mb-2" />
-            <h3 className="text-base font-semibold text-foreground">Ar Condicionado</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Limpeza, recarga de gás e manutenção de split.
-            </p>
-            <a
-              href={whatsappLink("Preciso de manutenção no ar condicionado.")}
-              target="_blank"
-              rel="noopener"
-              className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-            >
-              Pedir orçamento →
-            </a>
+            <div className="flex items-start gap-4">
+              <Wind size={20} className="text-primary shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-base font-semibold text-foreground">Ar Condicionado</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Limpeza, recarga de gás e manutenção de split.
+                </p>
+                <a
+                  href={whatsappLink("Preciso de manutenção no ar condicionado.")}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
+                >
+                  Pedir orçamento →
+                </a>
+              </div>
+            </div>
           </MotionDiv>
 
-          {/* COMPACT — Microondas */}
           <MotionDiv
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-4 rounded-xl border border-border bg-card p-5"
+            className="bento-card md:col-span-3 rounded-xl border border-border bg-card p-5"
           >
-            <Zap size={20} className="text-primary mb-2" />
-            <h3 className="text-base font-semibold text-foreground">Microondas</h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Magnetron, componentes elétricos, reparo geral.
-            </p>
-            <a
-              href={whatsappLink("Meu microondas não está funcionando. Pode ajudar?")}
-              target="_blank"
-              rel="noopener"
-              className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-            >
-              Ver atendimento →
-            </a>
+            <div className="flex items-start gap-4 md:flex-col md:gap-2">
+              <Zap size={20} className="text-primary shrink-0" />
+              <div>
+                <h3 className="text-base font-semibold text-foreground">Microondas</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Magnetron e reparo geral.
+                </p>
+                <a
+                  href={whatsappLink("Meu microondas não está funcionando. Pode ajudar?")}
+                  target="_blank"
+                  rel="noopener"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
+                >
+                  Ver atendimento →
+                </a>
+              </div>
+            </div>
           </MotionDiv>
         </div>
       </div>
