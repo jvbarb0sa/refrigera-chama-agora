@@ -1,110 +1,104 @@
 
 
-# Redesign Completo — Refrigeração Taboado
+# Polimento de UI/UX — Plano de Implementação
 
-## Problema atual
-O site tem visual escuro com laranja/azul que parece template genérico de IA. Falta: fundo branco/claro, tipografia institucional, espaçamento correto, hierarquia visual profissional.
+## Diagnóstico do estado atual
 
-## Direção visual (baseada na referência RB Refrigeração)
-- **Fundo predominante branco/off-white** — não dark mode
-- **Hero escuro** (navy/charcoal) com foto de fundo, único bloco escuro
-- **Seções claras** alternando branco puro e cinza muito leve (#F8F9FA)
-- **Tipografia Inter** — geométrica, séria, sem decoração
-- **Paleta 70/20/10**: 70% neutros claros, 20% French Blue (#1B3D89), 10% Spicy Paprika (#D36D3E) só em CTAs
-- **Zero** glow, blur, glassmorphism, gradientes exagerados
+O site já está funcional e bem estruturado (hero escuro, bento nos serviços, triagem, processo, provas, comercial, FAQ, CTA final). Os problemas são de **refinamento**, não de estrutura:
 
-## Mudanças técnicas
+1. **Navbar/Header** — Já funciona bem. Menu mobile já tem full-screen com contatos e WhatsApp. Sem mudanças grandes necessárias.
+2. **Botões** — CTAs já variam por contexto ("Solicitar orçamento comercial", "Pedir diagnóstico", "Chamar técnico", etc.). Bom. Precisa apenas de ajuste de estados hover/active mais visíveis.
+3. **Cards** — Bento já existe (7 col comercial + 5 col residencial). Mas os 4 cards residenciais são visualmente idênticos. Precisa de variação: 2 médios + 2 compactos.
+4. **Ritmo entre seções** — Alternância de fundos existe (branco → muted → branco → muted → primary → etc.) mas sem variação de densidade. Todas as seções têm a mesma estrutura (label + h2 + grid).
+5. **Motion** — `animate-fade-up` existe mas não está sendo usada em nenhuma seção. Precisa de IntersectionObserver para ativar fade-in ao scroll.
+6. **Testimonials** — 3 cards iguais (cara de template). Precisa de variação visual.
+7. **Galeria antes/depois** — Placeholders genéricos sem identidade.
 
-### 1. `src/index.css` — Paleta completa light-first
-- Remover dark theme. Background `#FFFFFF`, foreground `#151617`
-- Card background `#F8F9FA`, borders `#E2E4E9`
-- Primary = French Blue `#1B3D89`, accent/CTA = Spicy Paprika `#D36D3E`
-- Muted foreground = `#6B7280`
-- Trocar fonte de Archivo/DM Sans para **Inter** (weight 400, 500, 600, 700)
+---
 
-### 2. `tailwind.config.ts`
-- Font family: `Inter` para heading e body
-- Container max-width `1200px`, padding adequado
-- Radius padrão `12px` para cards
+## Mudanças planejadas
 
-### 3. `src/components/Navbar.tsx` — Institucional
-- Fundo branco, border-bottom sutil `#E2E4E9`
-- Logo text: "Refrigeração Taboado" em navy semibold
-- Links em cinza escuro, hover navy
-- CTA "Fale conosco" em botão Spicy Paprika (sólido)
-- Menu mobile: overlay full-screen branco, links centralizados
+### 1. Cards de serviço residencial — variação de formato
+**Arquivo:** `src/components/ServicesSection.tsx`
 
-### 4. `src/components/HeroSection.tsx` — Hero escuro com foto
-- Background navy escuro `#0F1B2D` com overlay sobre imagem placeholder
-- Badge/chip: "TRÊS LAGOAS · MS" em uppercase tracking-wide
-- H1 branco, semibold, 52px desktop / 36px mobile
-- Headline: "Refrigeração e climatização com quem você pode confiar."
-- Sub: texto cinza claro
-- 2 botões: Primary laranja "Solicitar orçamento" + Secondary outline branco "Nossos serviços"
-- Sem micro-provas no hero (mover para seção própria)
+Atualmente 4 cards idênticos em `lg:grid-cols-1`. Mudar para:
+- **2 cards médios** (Geladeiras + Lavadoras) — lado a lado em `sm:grid-cols-2`, com padding maior e CTA botão
+- **2 cards compactos** (Microondas + Ar Condicionado) — formato de lista horizontal, sem card border, apenas border-bottom e link inline
 
-### 5. `src/components/ServicesSection.tsx` — Grid limpo
-- Fundo branco
-- Label uppercase "ESPECIALIDADES" em azul, tracking-wide
-- H2: "Soluções técnicas para cada necessidade."
-- Grid 3 colunas desktop, 1 mobile
-- Cards: border `#E2E4E9`, padding 32px, radius 12px, hover border azul
-- Ícone linha (lucide) em azul, título semibold, 1 linha descrição, link azul
-- Sem card "grande" — grid uniforme e limpo
-- Serviços: Refrigeração Comercial, Câmara Fria, Cervejeiras e Balcões, Geladeiras e Freezers, Lavadoras, Ar Condicionado
+Isso quebra a repetição mecânica e cria hierarquia dentro do bloco secundário.
 
-### 6. `src/components/TriageSection.tsx` — Ferramenta útil
-- Fundo cinza leve `#F8F9FA`
-- Label "DIAGNÓSTICO" uppercase
-- H2: "Qual o problema do seu equipamento?"
-- 3 botões/chips: "Não gela", "Não liga", "Faz barulho"
-- Painel expandido: border left azul, texto causa + CTA WhatsApp
-- Design limpo de ferramenta, não widget decorativo
+### 2. Ritmo e densidade entre seções
+**Arquivos:** Múltiplos componentes
 
-### 7. `src/components/ProcessSection.tsx` — Stepper horizontal
-- Fundo branco
-- Label "COMO FUNCIONA"
-- 4 steps em linha horizontal desktop, vertical mobile
-- Número grande em azul claro, título em navy semibold, descrição curta
-- Linha conectora sutil entre steps
-- Steps: Contato → Diagnóstico → Orçamento → Reparo + Garantia
+Alternar a "densidade visual" entre seções:
+- **Serviços** → visual (bento, cards, chips) ✓ já está
+- **Triagem** → interativa (chips + painel expandido) ✓ já está
+- **Processo** → stepper minimalista, mais compacto (reduzir padding vertical)
+- **Provas** → visual + texto (mesclar testimonials com galeria, não separar)
+- **Comercial** → faixa de impacto (full-width dark) ✓ já está
+- **Área atendida** → faixa compacta ✓ já está
+- **FAQ** → textual, centrado ✓ já está
+- **CTA final** → impacto ✓ já está
 
-### 8. `src/components/TestimonialsSection.tsx` — Cards limpos
-- Fundo cinza leve
-- Label "DEPOIMENTOS"
-- 3 cards brancos, border, aspas tipográficas, nome + contexto
-- Sem estrelas exageradas — simples e sóbrio
+Ajuste concreto: reduzir padding do ProcessSection e ServiceAreaSection (que estão com muito espaço). Aumentar padding do CommerceSection para dar peso.
 
-### 9. `src/components/CommerceSection.tsx` — Seção destaque
-- Fundo navy `#1B3D89`, texto branco
-- H2: "Comércio não pode parar."
-- Texto sobre urgência comercial
-- CTA laranja "Solicitar prioridade comercial"
-- Tags: Mercados, Conveniências, Sorveterias, Indústrias
+### 3. Testimonials — quebrar uniformidade
+**Arquivo:** `src/components/TestimonialsSection.tsx`
 
-### 10. `src/components/ServiceAreaSection.tsx`
-- Fundo branco, simples
-- Cidade + região + link Google Maps
+Em vez de 3 cards iguais em grid uniforme:
+- Card 1 (comercial, Marcos): maior, com destaque visual (border-left azul, padding maior)
+- Card 2 e 3 (residenciais): menores, layout mais compacto, lado a lado
+- Remover galeria "Antes e depois" com placeholders vazios (não agrega sem fotos reais)
 
-### 11. `src/components/FAQSection.tsx`
-- Fundo cinza leve
-- Accordion limpo, sem bordas exageradas
-- Trigger em navy semibold, content em cinza
+### 4. Motion com IntersectionObserver
+**Arquivo:** Criar `src/hooks/use-fade-in.ts` + aplicar nas seções
 
-### 12. `src/components/FinalCTASection.tsx` — CTA + Footer
-- CTA: fundo navy escuro, H2 branco, 2 botões (laranja + outline)
-- Footer: fundo `#0F1B2D`, texto cinza, links, contatos, copyright
+Hook simples que adiciona `.animate-fade-up` quando o elemento entra no viewport. Aplicar apenas em:
+- Títulos de seção (h2)
+- Blocos de cards (como grupo, não individualmente)
+- CTA final
 
-### 13. `src/components/WhatsAppSticky.tsx`
-- Ícone WhatsApp verde real `#25D366` (não laranja)
-- Sombra sutil, sem glow
+Não aplicar em: navbar, hero (já visível), footer. Sem bounce, sem delay escalonado excessivo.
 
-### 14. `src/components/ui/button.tsx`
-- Variant default = Spicy Paprika sólido
-- Variant secondary = French Blue outline
-- Variant ghost = link azul
-- Radius `10px`, height mínimo 48px no mobile
+### 5. Ajustes de tipografia e contraste
+**Arquivos:** Componentes diversos
 
-## Resultado esperado
-Site institucional limpo, branco, com hero escuro dramático e seções bem espaçadas. Parece empresa real de serviços — como a referência RB Refrigeração mas adaptado para Refrigeração Taboado. Zero estética de IA.
+- Hero H1: verificar que está com `font-bold` e tamanho correto (52px desktop, 36px mobile) ✓ já está
+- Labels de seção ("ESPECIALIDADES", "COMO FUNCIONA"): garantir que estão com `tracking-[0.2em]` e cor `text-primary` ✓ já estão
+- Muted foreground: verificar contraste mínimo — o `215 8% 46%` atual (~#6B7280) está ok para WCAG AA
+
+### 6. Botões — estados mais visíveis
+**Arquivo:** `src/components/ui/button.tsx`
+
+- Adicionar `active:scale-[0.98]` no base do cva para feedback tátil
+- Variant `strong`: hover com `brightness` mais escuro em vez de `bg-foreground` (que faz o botão virar preto, perdendo identidade)
+- Variant `outline` no hero: hover mais visível (não apenas `bg-primary-foreground/5`)
+
+### 7. Navbar — ativo state
+**Arquivo:** `src/components/Navbar.tsx`
+
+Não há indicação visual de qual seção está ativa no scroll. Adicionar um hook simples de IntersectionObserver para destacar o link ativo na navbar (underline ou cor mais forte).
+
+---
+
+## Resumo de arquivos a editar
+
+| Arquivo | O que muda |
+|---|---|
+| `src/hooks/use-fade-in.ts` | **Novo** — hook de fade-in com IntersectionObserver |
+| `src/components/ui/button.tsx` | Active state, hover do strong |
+| `src/components/ServicesSection.tsx` | Cards residenciais com 2 formatos (médio + compacto) |
+| `src/components/ProcessSection.tsx` | Padding reduzido, layout mais compacto |
+| `src/components/TestimonialsSection.tsx` | Layout assimétrico, remover galeria vazia |
+| `src/components/CommerceSection.tsx` | Padding maior para peso visual |
+| `src/pages/Index.tsx` | Wrapper de fade-in nas seções |
+
+## O que NÃO muda
+- Navbar (já funciona bem, menu mobile já está completo)
+- Hero (já está correto)
+- Triagem (já está interativa e diferenciada)
+- FAQ (já está limpo e centrado)
+- CTA Final + Footer (já está funcional)
+- WhatsApp sticky (já está correto)
+- Paleta de cores e tipografia (já foram definidas)
 
