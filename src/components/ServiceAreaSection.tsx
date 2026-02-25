@@ -2,26 +2,27 @@ import { MapPin } from "lucide-react";
 
 export default function ServiceAreaSection() {
   return (
-    <section className="py-20 md:py-28 bg-card/50">
+    <section className="py-20 md:py-28">
       <div className="container">
-        <h2 className="font-heading text-3xl font-800 tracking-tight text-primary-foreground md:text-4xl">
-          Área de <span className="text-primary">atendimento</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+          Área de atendimento
+        </span>
+        <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-tight text-foreground">
+          Três Lagoas e região.
         </h2>
         <p className="mt-3 text-muted-foreground max-w-lg">
-          Atendemos Três Lagoas, Ilha Solteira, Selvíria, Brasilândia e região. Se tiver dúvida, é só perguntar.
+          Atendemos Três Lagoas, Ilha Solteira, Selvíria, Brasilândia e cidades próximas.
         </p>
 
-        <div className="mt-8 flex items-center gap-3">
-          <MapPin size={20} className="text-primary shrink-0" />
-          <a
-            href="https://www.google.com/maps/search/Refrigera%C3%A7%C3%A3o+Taboado+Tr%C3%AAs+Lagoas+MS"
-            target="_blank"
-            rel="noopener"
-            className="text-sm font-semibold text-primary hover:underline"
-          >
-            Abrir no Google Maps →
-          </a>
-        </div>
+        <a
+          href="https://www.google.com/maps/search/Refrigera%C3%A7%C3%A3o+Taboado+Tr%C3%AAs+Lagoas+MS"
+          target="_blank"
+          rel="noopener"
+          className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+        >
+          <MapPin size={16} />
+          Abrir no Google Maps →
+        </a>
       </div>
     </section>
   );

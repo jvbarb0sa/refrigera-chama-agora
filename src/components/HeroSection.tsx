@@ -1,42 +1,38 @@
 import { MessageCircle, Phone, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink } from "@/lib/constants";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const proofs = [
   "Diagnóstico antes de trocar",
+  "Orçamento claro",
   "Garantia emitida",
-  "Atendimento rápido",
 ];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-16 overflow-hidden">
-      {/* BG image */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="h-full w-full object-cover" loading="eager" />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/60" />
-      </div>
+    <section className="relative pt-16" style={{ backgroundColor: "hsl(216, 50%, 8%)" }}>
+      <div className="container py-20 md:py-32">
+        <div className="max-w-2xl">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.2em] text-white/50 mb-6">
+            Três Lagoas · MS
+          </span>
 
-      <div className="container relative z-10 py-16 md:py-24">
-        <div className="max-w-xl">
-          <h1 className="font-heading text-4xl font-900 leading-[1.1] tracking-tight text-primary-foreground md:text-6xl lg:text-7xl">
-            Parou?{" "}
-            <span className="text-primary">A gente resolve.</span>
+          <h1 className="text-4xl font-semibold leading-tight tracking-tight text-white md:text-[52px] md:leading-[1.1]">
+            Refrigeração e climatização com quem você pode confiar.
           </h1>
 
-          <p className="mt-5 text-lg text-muted-foreground md:text-xl max-w-md">
-            Atendimento técnico em refrigeração e linha branca. Orçamento claro e garantia.
+          <p className="mt-6 text-lg leading-relaxed text-white/60 max-w-lg">
+            Diagnóstico, orçamento e reparo com garantia. Atendimento residencial e comercial em Três Lagoas e região.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-            <Button asChild size="lg" className="text-base gap-2 px-8 py-6 text-lg font-semibold">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <Button asChild size="lg" className="text-base px-8 h-14">
               <a href={whatsappLink("Olá, vim pelo site. Preciso de atendimento técnico.")} target="_blank" rel="noopener">
                 <MessageCircle size={20} />
-                Chamar no WhatsApp
+                Solicitar orçamento
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="text-base gap-2 px-8 py-6 text-lg font-semibold border-secondary text-secondary-foreground hover:bg-secondary hover:text-secondary-foreground">
+            <Button asChild variant="outline" size="lg" className="text-base px-8 h-14 border-white/20 text-white hover:bg-white/10 hover:text-white">
               <a href={phoneLink()}>
                 <Phone size={20} />
                 Ligar agora
@@ -44,10 +40,10 @@ export default function HeroSection() {
             </Button>
           </div>
 
-          <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:gap-6">
+          <ul className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-8">
             {proofs.map((p) => (
-              <li key={p} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <CheckCircle2 size={16} className="text-primary shrink-0" />
+              <li key={p} className="flex items-center gap-2 text-sm text-white/50">
+                <CheckCircle2 size={16} className="text-accent shrink-0" />
                 {p}
               </li>
             ))}
