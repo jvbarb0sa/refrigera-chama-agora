@@ -11,7 +11,7 @@ export default function FinalCTASection() {
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
             Chama agora. A gente resolve.
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="mt-4 text-primary-foreground/60">
             WhatsApp ou ligação. Resposta rápida.
           </p>
 
@@ -22,7 +22,7 @@ export default function FinalCTASection() {
                 Chamar no WhatsApp
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-muted-foreground text-primary-foreground hover:bg-muted/10 hover:text-primary-foreground">
+            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/5 hover:text-primary-foreground">
               <a href={phoneLink()}>
                 <Phone size={20} />
                 Ligar agora
@@ -33,21 +33,21 @@ export default function FinalCTASection() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-foreground border-t border-muted-foreground/20">
+      <footer className="py-12 bg-foreground border-t border-primary-foreground/10">
         <div className="container">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm text-muted-foreground">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm text-primary-foreground/50">
             <div>
               <p className="font-semibold text-primary-foreground mb-2">Refrigeração Taboado</p>
-              <p>Técnicos autorizados. Refrigeração comercial e linha branca.</p>
+              <p>Técnicos autorizados.<br />Refrigeração comercial e linha branca.</p>
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <MessageCircle size={14} className="shrink-0" />
-                <span>WhatsApp: {WHATSAPP_DISPLAY}</span>
+                <span>{WHATSAPP_DISPLAY}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="shrink-0" />
-                <span>Telefone: {PHONE_DISPLAY}</span>
+                <span>{PHONE_DISPLAY}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="shrink-0" />
@@ -66,7 +66,7 @@ export default function FinalCTASection() {
               <p>Três Lagoas — MS e região</p>
             </div>
           </div>
-          <p className="mt-10 text-center text-xs text-muted-foreground/60">
+          <p className="mt-10 text-center text-xs text-primary-foreground/30">
             © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
           </p>
         </div>

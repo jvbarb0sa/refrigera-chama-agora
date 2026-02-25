@@ -11,45 +11,45 @@
     --french-blue: 221 67% 32%;
     --spicy-paprika: 18 63% 54%;
     --pale-slate: 222 11% 81%;
-    --alabaster-grey: 240 3% 85%;
+    --alabaster-grey: 240 3% 94%;
 
     /* Semantic: Text */
     --foreground: var(--onyx);
     --primary: var(--french-blue);
-    --primary-foreground: var(--alabaster-grey);
-    --muted-foreground: var(--pale-slate);
+    --primary-foreground: 0 0% 100%;
+    --muted-foreground: 215 8% 46%;
 
     /* Semantic: Surfaces */
-    --background: var(--alabaster-grey);
-    --card: var(--alabaster-grey);
+    --background: 0 0% 100%;
+    --card: 0 0% 100%;
     --card-foreground: var(--onyx);
-    --muted: var(--pale-slate);
-    --popover: var(--alabaster-grey);
+    --muted: var(--alabaster-grey);
+    --popover: 0 0% 100%;
     --popover-foreground: var(--onyx);
 
     /* Semantic: Actions */
     --accent: var(--spicy-paprika);
-    --accent-foreground: var(--alabaster-grey);
+    --accent-foreground: 0 0% 100%;
     --secondary: var(--alabaster-grey);
     --secondary-foreground: var(--onyx);
-    --destructive: 0 0% 8%;
-    --destructive-foreground: var(--alabaster-grey);
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Semantic: Borders */
-    --border: var(--pale-slate);
-    --input: var(--pale-slate);
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: var(--spicy-paprika);
 
     --radius: 0.75rem;
 
     /* Sidebar (unused but required) */
-    --sidebar-background: var(--alabaster-grey);
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: var(--onyx);
     --sidebar-primary: var(--french-blue);
-    --sidebar-primary-foreground: var(--alabaster-grey);
-    --sidebar-accent: var(--pale-slate);
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: var(--alabaster-grey);
     --sidebar-accent-foreground: var(--onyx);
-    --sidebar-border: var(--pale-slate);
+    --sidebar-border: 220 13% 91%;
     --sidebar-ring: var(--spicy-paprika);
   }
 }
@@ -76,9 +76,25 @@ html {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: hsl(var(--alabaster-grey));
+  background: hsl(0 0% 97%);
 }
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--pale-slate));
   border-radius: 3px;
+}
+
+/* Fade-in animation for sections */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
 }

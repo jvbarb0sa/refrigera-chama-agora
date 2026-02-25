@@ -9,17 +9,19 @@ export default function CommerceSection() {
     <section id="comercial" className="py-16 md:py-24 bg-primary">
       <div className="container">
         <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/60">
+            Atendimento comercial
+          </span>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
             Comércio não pode parar.
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-            Intervenção rápida em balcões, cervejeiras, expositores e freezers.
-            Priorizamos urgência comercial para manter sua operação rodando.
+          <p className="mt-4 text-base text-primary-foreground/70 leading-relaxed max-w-md">
+            Equipamento parou? A gente prioriza. Balcões, cervejeiras, expositores e freezers — atendimento com urgência pra manter sua operação rodando.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <span key={tag} className="rounded-full border border-muted-foreground px-4 py-1.5 text-xs font-medium text-primary-foreground">
+              <span key={tag} className="rounded-full border border-primary-foreground/20 px-4 py-1.5 text-xs font-medium text-primary-foreground/80">
                 {tag}
               </span>
             ))}
