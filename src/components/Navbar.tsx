@@ -3,6 +3,7 @@ import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/use-active-section";
+import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { label: "Serviços", href: "#servicos", id: "servicos" },
@@ -38,15 +39,21 @@ export default function Navbar() {
             </a>
           ))}
           <Button asChild variant="strong" size="sm">
-            <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              href={whatsappLink("Olá, vim pelo site.")}
+              target="_blank"
+              rel="noopener"
+            >
               <MessageCircle size={16} />
               WhatsApp
-            </a>
+            </motion.a>
           </Button>
         </div>
 
         <button
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-2 -mr-2"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
@@ -54,39 +61,61 @@ export default function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden">
-          <div className="flex flex-1 flex-col items-center justify-center gap-6">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-xl font-semibold text-foreground"
-              >
-                {l.label}
-              </a>
-            ))}
-          </div>
+      {/* Mobile full-screen menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="flex flex-1 flex-col items-center justify-center gap-6"
+            >
+              {links.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
+                  className="text-xl font-semibold text-foreground"
+                >
+                  {l.label}
+                </motion.a>
+              ))}
+            </motion.div>
 
-          <div className="border-t border-border p-6 space-y-3">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Phone size={14} className="shrink-0" />
-              <a href={phoneLink()} className="hover:text-foreground">{PHONE_DISPLAY}</a>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MessageCircle size={14} className="shrink-0" />
-              <span>{WHATSAPP_DISPLAY}</span>
-            </div>
-            <Button asChild variant="strong" size="lg" className="w-full mt-2">
-              <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
-                <MessageCircle size={20} />
-                Chamar no WhatsApp
-              </a>
-            </Button>
-          </div>
-        </div>
-      )}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.3 }}
+              className="border-t border-border p-6 space-y-3"
+            >
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Phone size={14} className="shrink-0" />
+                <a href={phoneLink()} className="hover:text-foreground">{PHONE_DISPLAY}</a>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MessageCircle size={14} className="shrink-0" />
+                <span>{WHATSAPP_DISPLAY}</span>
+              </div>
+              <Button asChild variant="strong" size="lg" className="w-full mt-2">
+                <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
+                  <MessageCircle size={20} />
+                  Chamar no WhatsApp
+                </a>
+              </Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

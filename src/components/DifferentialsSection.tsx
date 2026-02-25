@@ -1,4 +1,4 @@
-import { useFadeIn } from "@/hooks/use-fade-in";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const diffs = [
   {
@@ -20,13 +20,12 @@ const diffs = [
 ];
 
 export default function DifferentialsSection() {
-  const fadeRef = useFadeIn<HTMLDivElement>();
+  const ref = useGsapFade<HTMLDivElement>({ children: ".diff-item", stagger: 0.1 });
 
   return (
     <section className="py-16 md:py-24 bg-muted">
       <div className="container">
-        <div ref={fadeRef} className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
-          {/* Left — list */}
+        <div ref={ref} className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
               Por que escolher a gente
@@ -37,7 +36,7 @@ export default function DifferentialsSection() {
 
             <div className="mt-10 space-y-8">
               {diffs.map((d, i) => (
-                <div key={d.title} className="flex gap-4">
+                <div key={d.title} className="diff-item flex gap-4">
                   <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                     {i + 1}
                   </span>
@@ -54,7 +53,6 @@ export default function DifferentialsSection() {
             </div>
           </div>
 
-          {/* Right — placeholder image */}
           <div className="hidden lg:block">
             <div className="aspect-[4/3] rounded-xl bg-foreground/5 border border-border flex items-center justify-center">
               <span className="text-sm text-muted-foreground">

@@ -1,7 +1,8 @@
 import { MessageCircle, Phone, Mail, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY, EMAIL } from "@/lib/constants";
-import { useFadeIn } from "@/hooks/use-fade-in";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
+import { motion } from "framer-motion";
 
 const miniStats = [
   { value: "500+", label: "atendimentos" },
@@ -10,13 +11,12 @@ const miniStats = [
 ];
 
 export default function FinalCTASection() {
-  const fadeRef = useFadeIn<HTMLDivElement>();
+  const ref = useGsapFade<HTMLDivElement>({ y: 20 });
 
   return (
     <>
-      {/* CTA */}
       <section id="contato" className="py-16 md:py-24 bg-foreground">
-        <div ref={fadeRef} className="container text-center max-w-2xl mx-auto">
+        <div ref={ref} className="container text-center max-w-2xl mx-auto">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
             Equipamento parado custa dinheiro. Nós resolvemos.
           </h2>
@@ -27,20 +27,29 @@ export default function FinalCTASection() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
             <Button asChild variant="strong" size="lg" className="h-14 px-8 text-base">
-              <a href={whatsappLink("Olá, vim pelo site. Quero resolver um problema.")} target="_blank" rel="noopener">
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={whatsappLink("Olá, vim pelo site. Quero resolver um problema.")}
+                target="_blank"
+                rel="noopener"
+              >
                 <MessageCircle size={20} />
                 Chamar no WhatsApp
-              </a>
+              </motion.a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/5 hover:text-primary-foreground">
-              <a href={phoneLink()}>
+            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={phoneLink()}
+              >
                 <Phone size={20} />
                 Ligar agora
-              </a>
+              </motion.a>
             </Button>
           </div>
 
-          {/* Mini stats */}
           <div className="mt-10 flex justify-center gap-8">
             {miniStats.map((s) => (
               <div key={s.label} className="text-center">
@@ -52,7 +61,6 @@ export default function FinalCTASection() {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="py-12 bg-foreground border-t border-primary-foreground/10">
         <div className="container">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm text-primary-foreground/50">

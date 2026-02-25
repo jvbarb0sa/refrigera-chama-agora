@@ -2,6 +2,8 @@ import { useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
+import { motion, AnimatePresence } from "framer-motion";
 
 const items = [
   {
@@ -26,10 +28,11 @@ const items = [
 
 export default function TriageSection() {
   const [active, setActive] = useState<number | null>(null);
+  const sectionRef = useGsapFade<HTMLDivElement>();
 
   return (
     <section className="py-16 md:py-24 bg-muted">
-      <div className="container">
+      <div ref={sectionRef} className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Triagem rápida
         </span>
@@ -42,32 +45,49 @@ export default function TriageSection() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
           {items.map((item, i) => (
-            <button
+            <motion.button
               key={item.label}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setActive(active === i ? null : i)}
-              className={`rounded-lg border px-6 py-4 text-left text-base font-semibold transition-all ${
+              className={`rounded-lg border px-6 py-4 text-left text-base font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 active === i
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-foreground hover:border-primary/40"
               }`}
             >
               {item.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 
-        {active !== null && (
-          <div className="mt-6 rounded-lg border border-border bg-card p-6 border-l-4 border-l-primary animate-fade-up">
-            <p className="font-semibold text-foreground text-sm">{items[active].cause}</p>
-            <p className="mt-2 text-sm text-muted-foreground">{items[active].tip}</p>
-            <Button asChild variant="strong" size="sm" className="mt-5 gap-2">
-              <a href={whatsappLink(items[active].whatsappMsg)} target="_blank" rel="noopener">
-                <MessageCircle size={16} />
-                Chamar no WhatsApp
-              </a>
-            </Button>
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {active !== null && (
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="mt-6 rounded-lg border border-border bg-card p-6 border-l-4 border-l-primary"
+            >
+              <p className="font-semibold text-foreground text-sm">{items[active].cause}</p>
+              <p className="mt-2 text-sm text-muted-foreground">{items[active].tip}</p>
+              <Button asChild variant="strong" size="sm" className="mt-5 gap-2">
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  href={whatsappLink(items[active].whatsappMsg)}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <MessageCircle size={16} />
+                  Chamar no WhatsApp
+                </motion.a>
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

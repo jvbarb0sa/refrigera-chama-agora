@@ -1,4 +1,4 @@
-import { useFadeIn } from "@/hooks/use-fade-in";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const stats = [
   { value: "500+", label: "Atendimentos realizados" },
@@ -8,17 +8,17 @@ const stats = [
 ];
 
 export default function StatsSection() {
-  const fadeRef = useFadeIn<HTMLDivElement>();
+  const ref = useGsapFade<HTMLDivElement>({ children: ".stat-item", stagger: 0.12 });
 
   return (
     <section className="py-12 md:py-16 border-t border-b border-border">
       <div className="container">
         <div
-          ref={fadeRef}
+          ref={ref}
           className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-border"
         >
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center md:px-6">
+            <div key={stat.label} className="stat-item text-center md:px-6">
               <p className="text-3xl font-bold text-primary md:text-4xl">
                 {stat.value}
               </p>
