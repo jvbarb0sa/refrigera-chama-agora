@@ -6,23 +6,23 @@ export default function FinalCTASection() {
   return (
     <>
       {/* CTA */}
-      <section id="contato" className="py-20 md:py-28" style={{ backgroundColor: "hsl(216, 50%, 8%)" }}>
+      <section id="contato" className="py-16 md:py-24 bg-foreground">
         <div className="container text-center max-w-2xl mx-auto">
-          <h2 className="text-[32px] font-semibold leading-tight tracking-tight text-white md:text-[40px]">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
             Chama agora. A gente resolve.
           </h2>
-          <p className="mt-4 text-white/60">
+          <p className="mt-4 text-muted-foreground">
             WhatsApp ou ligação. Resposta rápida.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            <Button asChild size="lg" className="h-14 px-8 text-base">
+            <Button asChild variant="strong" size="lg" className="h-14 px-8 text-base">
               <a href={whatsappLink("Olá, vim pelo site. Quero resolver um problema.")} target="_blank" rel="noopener">
                 <MessageCircle size={20} />
                 Chamar no WhatsApp
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-white/20 text-white hover:bg-white/10 hover:text-white">
+            <Button asChild variant="outline" size="lg" className="h-14 px-8 text-base border-muted-foreground text-primary-foreground hover:bg-muted/10 hover:text-primary-foreground">
               <a href={phoneLink()}>
                 <Phone size={20} />
                 Ligar agora
@@ -33,11 +33,11 @@ export default function FinalCTASection() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12" style={{ backgroundColor: "hsl(216, 50%, 6%)" }}>
+      <footer className="py-12 bg-foreground border-t border-muted-foreground/20">
         <div className="container">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm text-white/50">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm text-muted-foreground">
             <div>
-              <p className="font-semibold text-white mb-2">Refrigeração Taboado</p>
+              <p className="font-semibold text-primary-foreground mb-2">Refrigeração Taboado</p>
               <p>Técnicos autorizados. Refrigeração comercial e linha branca.</p>
             </div>
             <div className="space-y-2">
@@ -66,7 +66,7 @@ export default function FinalCTASection() {
               <p>Três Lagoas — MS e região</p>
             </div>
           </div>
-          <p className="mt-10 text-center text-xs text-white/30">
+          <p className="mt-10 text-center text-xs text-muted-foreground/60">
             © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
           </p>
         </div>

@@ -15,12 +15,12 @@ const faqs = [
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-20 md:py-28 bg-muted">
+    <section id="faq" className="py-16 md:py-24 bg-muted">
       <div className="container max-w-2xl">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           Dúvidas
         </span>
-        <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-tight text-foreground">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Perguntas frequentes
         </h2>
 
@@ -30,7 +30,7 @@ export default function FAQSection() {
               <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:no-underline hover:text-primary py-5">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+              <AccordionContent className="text-sm text-primary leading-relaxed pb-5">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
