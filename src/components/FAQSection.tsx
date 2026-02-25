@@ -7,6 +7,8 @@ import {
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
+import { motion } from "framer-motion";
 
 const faqs = [
   { q: "Tem garantia?", a: "Sim. Todo serviço sai com garantia emitida por escrito. Se der problema dentro do prazo, voltamos sem custo adicional." },
@@ -24,9 +26,11 @@ const sideStats = [
 ];
 
 export default function FAQSection() {
+  const ref = useGsapFade<HTMLDivElement>();
+
   return (
     <section id="faq" className="py-16 md:py-24">
-      <div className="container">
+      <div ref={ref} className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Dúvidas
         </span>
@@ -35,7 +39,6 @@ export default function FAQSection() {
         </h2>
 
         <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-10">
-          {/* Accordion — 70% */}
           <div className="lg:col-span-7">
             <Accordion type="single" collapsible>
               {faqs.map((faq, i) => (
@@ -51,7 +54,6 @@ export default function FAQSection() {
             </Accordion>
           </div>
 
-          {/* Sidebar stats — 30% */}
           <div className="lg:col-span-3">
             <div className="rounded-xl border border-border bg-muted p-6 space-y-5">
               {sideStats.map((s) => (
@@ -61,14 +63,16 @@ export default function FAQSection() {
                 </div>
               ))}
               <Button asChild variant="strong" size="default" className="w-full mt-4">
-                <a
+                <motion.a
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
                   rel="noopener"
                 >
                   <MessageCircle size={16} />
                   Falar com especialista
-                </a>
+                </motion.a>
               </Button>
             </div>
           </div>

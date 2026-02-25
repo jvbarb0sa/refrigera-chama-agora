@@ -1,7 +1,7 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useFadeIn } from "@/hooks/use-fade-in";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const testimonials = [
   {
@@ -43,7 +43,7 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  const fadeRef = useFadeIn<HTMLDivElement>();
+  const sectionRef = useGsapFade<HTMLDivElement>();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(true);
@@ -58,14 +58,13 @@ export default function TestimonialsSection() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
-    // Auto-scroll
     const interval = setInterval(() => emblaApi.scrollNext(), 5000);
     return () => clearInterval(interval);
   }, [emblaApi, onSelect]);
 
   return (
     <section id="provas" className="py-16 md:py-24 bg-muted">
-      <div className="container">
+      <div ref={sectionRef} className="container">
         <div className="flex items-end justify-between">
           <div>
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
@@ -79,21 +78,23 @@ export default function TestimonialsSection() {
             <button
               onClick={() => emblaApi?.scrollPrev()}
               disabled={!canScrollPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary disabled:opacity-30"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
+              aria-label="Anterior"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={() => emblaApi?.scrollNext()}
               disabled={!canScrollNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary disabled:opacity-30"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
+              aria-label="Próximo"
             >
               <ChevronRight size={18} />
             </button>
           </div>
         </div>
 
-        <div ref={fadeRef} className="mt-10 overflow-hidden" >
+        <div className="mt-10 overflow-hidden">
           <div ref={emblaRef}>
             <div className="flex gap-4">
               {testimonials.map((t) => (
@@ -101,9 +102,7 @@ export default function TestimonialsSection() {
                   key={t.name}
                   className="min-w-[280px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] rounded-xl border border-border bg-card p-6"
                 >
-                  <p className="text-2xl leading-none text-primary/20 select-none">
-                    "
-                  </p>
+                  <p className="text-2xl leading-none text-primary/20 select-none">"</p>
                   <p className="mt-2 text-sm leading-relaxed text-foreground">
                     {t.text}
                   </p>
@@ -112,12 +111,8 @@ export default function TestimonialsSection() {
                       {t.initials}
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">
-                        {t.name}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {t.context}
-                      </p>
+                      <p className="text-sm font-semibold text-foreground">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">{t.context}</p>
                     </div>
                   </div>
                 </div>

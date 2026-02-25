@@ -1,4 +1,4 @@
-import { useFadeIn } from "@/hooks/use-fade-in";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const steps = [
   {
@@ -28,10 +28,10 @@ const steps = [
 ];
 
 export default function ProcessSection() {
-  const fadeRef = useFadeIn<HTMLDivElement>();
+  const ref = useGsapFade<HTMLDivElement>({ children: ".step-item", stagger: 0.15, y: 20 });
 
   return (
-    <section id="processo" className="py-16 md:py-24">
+    <section id="processo" className="py-14 md:py-20">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Como funciona
@@ -40,19 +40,15 @@ export default function ProcessSection() {
           Do contato à garantia — 4 passos.
         </h2>
 
-        <div ref={fadeRef} className="mt-12 relative">
-          {/* Vertical line */}
+        <div ref={ref} className="mt-12 relative">
           <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border hidden md:block" />
 
           <div className="space-y-10 md:space-y-12">
             {steps.map((step) => (
-              <div key={step.num} className="flex gap-6 md:gap-8">
-                {/* Number */}
+              <div key={step.num} className="step-item flex gap-6 md:gap-8">
                 <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
                   {step.num}
                 </div>
-
-                {/* Content */}
                 <div className="pb-2">
                   <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
                     {step.label}
