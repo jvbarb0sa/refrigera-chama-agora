@@ -6,7 +6,7 @@ const tags = ["Mercados", "Conveniências", "Sorveterias", "Indústrias aliment�
 
 export default function CommerceSection() {
   return (
-    <section id="comercial" className="py-16 md:py-24 bg-primary">
+    <section id="comercial" className="py-20 md:py-32 bg-primary">
       <div className="container">
         <div className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/60">
