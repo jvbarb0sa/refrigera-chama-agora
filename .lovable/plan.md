@@ -1,91 +1,110 @@
 
 
-# Refrigeração Taboado — Site One-Page de Alta Conversão
+# Redesign Completo — Refrigeração Taboado
 
-## Visão Geral
-Site one-page focado em conversão (WhatsApp, ligação, orçamento) para empresa de refrigeração e climatização em Taboado/MS. Tom acessível, direto, sem frases genéricas. Mobile-first.
+## Problema atual
+O site tem visual escuro com laranja/azul que parece template genérico de IA. Falta: fundo branco/claro, tipografia institucional, espaçamento correto, hierarquia visual profissional.
 
-## Paleta de Cores
-- **Onyx (#151617)** — fundos e texto
-- **French Blue (#1B3D89)** — organização, headings, navbar
-- **Spicy Paprika (#D36D3E)** — CTAs e destaques (laranja)
-- **Pale Slate (#C7CCD7)** e **Alabaster Grey (#D6D6DA)** — neutros e backgrounds
+## Direção visual (baseada na referência RB Refrigeração)
+- **Fundo predominante branco/off-white** — não dark mode
+- **Hero escuro** (navy/charcoal) com foto de fundo, único bloco escuro
+- **Seções claras** alternando branco puro e cinza muito leve (#F8F9FA)
+- **Tipografia Inter** — geométrica, séria, sem decoração
+- **Paleta 70/20/10**: 70% neutros claros, 20% French Blue (#1B3D89), 10% Spicy Paprika (#D36D3E) só em CTAs
+- **Zero** glow, blur, glassmorphism, gradientes exagerados
 
-## Dados do Cliente
-- **Responsável:** Vagner
-- **WhatsApp Técnico:** (67) 98109-7179
-- **Telefone Loja:** (67) 99259-771
-- **Email:** refrigeracaotaboadoms@gmail.com
-- **Serviços:** Refrigeração comercial, geladeiras, freezers, lavadoras, microondas, ar condicionado, câmara fria, máquina de gelo
-- **Público:** Comercial, industrial, residencial (mercados, conveniências, sorveterias, indústria alimentícia)
+## Mudanças técnicas
 
----
+### 1. `src/index.css` — Paleta completa light-first
+- Remover dark theme. Background `#FFFFFF`, foreground `#151617`
+- Card background `#F8F9FA`, borders `#E2E4E9`
+- Primary = French Blue `#1B3D89`, accent/CTA = Spicy Paprika `#D36D3E`
+- Muted foreground = `#6B7280`
+- Trocar fonte de Archivo/DM Sans para **Inter** (weight 400, 500, 600, 700)
 
-## Estrutura — 9 Blocos
+### 2. `tailwind.config.ts`
+- Font family: `Inter` para heading e body
+- Container max-width `1200px`, padding adequado
+- Radius padrão `12px` para cards
 
-### Bloco 01 — HERO
-- Headline: **"Parou? A gente resolve."**
-- Sub: "Atendimento técnico em refrigeração e linha branca. Orçamento claro e garantia."
-- 2 botões grandes: **WhatsApp** (laranja) + **Ligar agora** (outline azul)
-- 3 micro-provas em bullets: "Diagnóstico antes de trocar" · "Garantia emitida" · "Atendimento rápido"
-- Background escuro (onyx) com elementos visuais sutis
+### 3. `src/components/Navbar.tsx` — Institucional
+- Fundo branco, border-bottom sutil `#E2E4E9`
+- Logo text: "Refrigeração Taboado" em navy semibold
+- Links em cinza escuro, hover navy
+- CTA "Fale conosco" em botão Spicy Paprika (sólido)
+- Menu mobile: overlay full-screen branco, links centralizados
 
-### Bloco 02 — Serviços (Bento Layout assimétrico)
-- Cards de tamanhos variados (bento real, não grid 3x3)
-- **Card grande:** Refrigeração Comercial (câmara fria, máquina de gelo)
-- Cards menores: Cervejeiras/Balcões, Freezers, Geladeiras, Lavadoras, Microondas, Ar Condicionado
-- Cada card com: sintoma comum + solução + CTA contextual variado ("Falar com técnico", "Pedir diagnóstico", "Solicitar orçamento")
+### 4. `src/components/HeroSection.tsx` — Hero escuro com foto
+- Background navy escuro `#0F1B2D` com overlay sobre imagem placeholder
+- Badge/chip: "TRÊS LAGOAS · MS" em uppercase tracking-wide
+- H1 branco, semibold, 52px desktop / 36px mobile
+- Headline: "Refrigeração e climatização com quem você pode confiar."
+- Sub: texto cinza claro
+- 2 botões: Primary laranja "Solicitar orçamento" + Secondary outline branco "Nossos serviços"
+- Sem micro-provas no hero (mover para seção própria)
 
-### Bloco 03 — Triagem Rápida
-- 3 botões clicáveis: "Não gela" · "Faz barulho" · "Desarma / não liga"
-- Ao clicar: expande mini-texto com possível causa
-- CTA: abre WhatsApp com mensagem pré-preenchida (ex: "Meu freezer não gela. Pode me orientar?")
+### 5. `src/components/ServicesSection.tsx` — Grid limpo
+- Fundo branco
+- Label uppercase "ESPECIALIDADES" em azul, tracking-wide
+- H2: "Soluções técnicas para cada necessidade."
+- Grid 3 colunas desktop, 1 mobile
+- Cards: border `#E2E4E9`, padding 32px, radius 12px, hover border azul
+- Ícone linha (lucide) em azul, título semibold, 1 linha descrição, link azul
+- Sem card "grande" — grid uniforme e limpo
+- Serviços: Refrigeração Comercial, Câmara Fria, Cervejeiras e Balcões, Geladeiras e Freezers, Lavadoras, Ar Condicionado
 
-### Bloco 04 — Como Trabalhamos
-- 4 passos horizontais/verticais com ícones simples (não cartoon):
-  1. Diagnóstico e teste
-  2. Orçamento claro
-  3. Reparo técnico
-  4. Garantia
+### 6. `src/components/TriageSection.tsx` — Ferramenta útil
+- Fundo cinza leve `#F8F9FA`
+- Label "DIAGNÓSTICO" uppercase
+- H2: "Qual o problema do seu equipamento?"
+- 3 botões/chips: "Não gela", "Não liga", "Faz barulho"
+- Painel expandido: border left azul, texto causa + CTA WhatsApp
+- Design limpo de ferramenta, não widget decorativo
 
-### Bloco 05 — Provas / Confiança
-- 3-5 depoimentos curtos (placeholder editável)
-- Provas operacionais: "Atendemos comércio e residência", "Serviço com garantia", "Diagnóstico antes de troca"
-- Espaço para fotos antes/depois (placeholder)
+### 7. `src/components/ProcessSection.tsx` — Stepper horizontal
+- Fundo branco
+- Label "COMO FUNCIONA"
+- 4 steps em linha horizontal desktop, vertical mobile
+- Número grande em azul claro, título em navy semibold, descrição curta
+- Linha conectora sutil entre steps
+- Steps: Contato → Diagnóstico → Orçamento → Reparo + Garantia
 
-### Bloco 06 — Para Comércio
-- Headline: **"Comércio não pode parar."**
-- Texto: "Intervenção rápida em balcões, cervejeiras, expositores e freezers."
-- CTA: "Prioridade para urgência comercial" → WhatsApp
+### 8. `src/components/TestimonialsSection.tsx` — Cards limpos
+- Fundo cinza leve
+- Label "DEPOIMENTOS"
+- 3 cards brancos, border, aspas tipográficas, nome + contexto
+- Sem estrelas exageradas — simples e sóbrio
 
-### Bloco 07 — Área Atendida
-- Cidade/região de Taboado e entorno
-- Link "Abrir no Google Maps"
+### 9. `src/components/CommerceSection.tsx` — Seção destaque
+- Fundo navy `#1B3D89`, texto branco
+- H2: "Comércio não pode parar."
+- Texto sobre urgência comercial
+- CTA laranja "Solicitar prioridade comercial"
+- Tags: Mercados, Conveniências, Sorveterias, Indústrias
 
-### Bloco 08 — FAQ (Accordion)
-- "Tem garantia?"
-- "Cobra visita?"
-- "Trabalha com peça original?"
-- "Atende no mesmo dia?"
-- "Faz orçamento pelo WhatsApp?"
+### 10. `src/components/ServiceAreaSection.tsx`
+- Fundo branco, simples
+- Cidade + região + link Google Maps
 
-### Bloco 09 — CTA Final + Rodapé
-- Headline: **"Chama agora. A gente te orienta e resolve."**
-- Botões WhatsApp + Ligar
-- Rodapé: telefones, email, horário, endereço
+### 11. `src/components/FAQSection.tsx`
+- Fundo cinza leve
+- Accordion limpo, sem bordas exageradas
+- Trigger em navy semibold, content em cinza
 
----
+### 12. `src/components/FinalCTASection.tsx` — CTA + Footer
+- CTA: fundo navy escuro, H2 branco, 2 botões (laranja + outline)
+- Footer: fundo `#0F1B2D`, texto cinza, links, contatos, copyright
 
-## Elementos Globais
-- **Botão WhatsApp sticky** (fixo no canto inferior direito, mobile e desktop)
-- **Navbar simples** com âncoras para cada seção + botão "Fale conosco"
-- **Menu mobile** hamburger com âncoras
-- **Formulário "Orçamento rápido"** simples (nome, telefone, tipo de equipamento, problema) — acessível via CTA em alguns blocos
+### 13. `src/components/WhatsAppSticky.tsx`
+- Ícone WhatsApp verde real `#25D366` (não laranja)
+- Sombra sutil, sem glow
 
-## Diretrizes de UX
-- Mobile-first, respiro entre seções
-- Sem frases genéricas ("excelência", "soluções completas")
-- CTAs variados — nunca repetir o mesmo texto seguido
-- Bento layout real e assimétrico nos serviços
-- Inspiração visual na referência RB Refrigeração DF (hero com foto técnica, cores escuras, CTAs destacados)
+### 14. `src/components/ui/button.tsx`
+- Variant default = Spicy Paprika sólido
+- Variant secondary = French Blue outline
+- Variant ghost = link azul
+- Radius `10px`, height mínimo 48px no mobile
+
+## Resultado esperado
+Site institucional limpo, branco, com hero escuro dramático e seções bem espaçadas. Parece empresa real de serviços — como a referência RB Refrigeração mas adaptado para Refrigeração Taboado. Zero estética de IA.
 
