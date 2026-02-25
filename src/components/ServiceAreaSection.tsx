@@ -2,7 +2,7 @@ import { MapPin } from "lucide-react";
 
 export default function ServiceAreaSection() {
   return (
-    <section className="py-12 md:py-16 border-t border-border">
+    <section className="py-8 md:py-10 border-t border-border">
       <div className="container flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold text-foreground">Três Lagoas e região</h2>

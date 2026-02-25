@@ -2,17 +2,19 @@ import { useState } from "react";
 import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY } from "@/lib/constants";
+import { useActiveSection } from "@/hooks/use-active-section";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Comercial", href: "#comercial" },
-  { label: "Como funciona", href: "#processo" },
-  { label: "Dúvidas", href: "#faq" },
-  { label: "Contato", href: "#contato" },
+  { label: "Serviços", href: "#servicos", id: "servicos" },
+  { label: "Comercial", href: "#comercial", id: "comercial" },
+  { label: "Como funciona", href: "#processo", id: "processo" },
+  { label: "Provas", href: "#provas", id: "provas" },
+  { label: "Contato", href: "#contato", id: "contato" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const active = useActiveSection();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -26,7 +28,11 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className={`text-sm font-medium transition-colors ${
+                active === l.id
+                  ? "text-foreground border-b-2 border-primary pb-0.5"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               {l.label}
             </a>

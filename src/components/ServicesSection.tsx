@@ -1,6 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
+import { useFadeIn } from "@/hooks/use-fade-in";
 
 const comercial = {
   title: "Refrigeração Comercial",
@@ -10,7 +11,7 @@ const comercial = {
   items: ["Câmara fria", "Máquina de gelo", "Balcão refrigerado", "Cervejeira"],
 };
 
-const residencial = [
+const medium = [
   {
     title: "Geladeiras e Freezers",
     desc: "Compressor, termostato, gás e vedação.",
@@ -23,6 +24,9 @@ const residencial = [
     cta: "Chamar técnico",
     ctaMsg: "Minha lavadora está com defeito. Pode verificar?",
   },
+];
+
+const compact = [
   {
     title: "Microondas",
     desc: "Magnetron e componentes elétricos.",
@@ -38,6 +42,8 @@ const residencial = [
 ];
 
 export default function ServicesSection() {
+  const fadeRef = useFadeIn<HTMLDivElement>();
+
   return (
     <section id="servicos" className="py-16 md:py-24">
       <div className="container">
@@ -48,7 +54,7 @@ export default function ServicesSection() {
           O que a gente faz — e faz bem.
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div ref={fadeRef} className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* Bloco dominante: Comercial */}
           <div className="lg:col-span-7 rounded-xl border border-border bg-muted p-8 md:p-10 flex flex-col justify-between">
             <div>
@@ -75,22 +81,42 @@ export default function ServicesSection() {
             </Button>
           </div>
 
-          {/* Cards secundários: Residencial */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-            {residencial.map((s) => (
-              <div key={s.title} className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
-                <h3 className="text-base font-semibold text-foreground">{s.title}</h3>
-                <p className="mt-1.5 text-sm text-muted-foreground">{s.desc}</p>
-                <a
-                  href={whatsappLink(s.ctaMsg)}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-4 inline-block text-sm font-semibold text-primary hover:text-foreground transition-colors"
-                >
-                  {s.cta} →
-                </a>
-              </div>
-            ))}
+          {/* Bloco secundário: Residencial */}
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            {/* 2 cards médios */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {medium.map((s) => (
+                <div key={s.title} className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
+                  <h3 className="text-base font-semibold text-foreground">{s.title}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{s.desc}</p>
+                  <Button asChild variant="ghost" size="sm" className="mt-4 -ml-2 text-primary">
+                    <a href={whatsappLink(s.ctaMsg)} target="_blank" rel="noopener">
+                      {s.cta} →
+                    </a>
+                  </Button>
+                </div>
+              ))}
+            </div>
+
+            {/* 2 itens compactos */}
+            <div className="space-y-0">
+              {compact.map((s) => (
+                <div key={s.title} className="flex items-center justify-between py-4 border-b border-border last:border-b-0">
+                  <div>
+                    <h3 className="text-sm font-semibold text-foreground">{s.title}</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">{s.desc}</p>
+                  </div>
+                  <a
+                    href={whatsappLink(s.ctaMsg)}
+                    target="_blank"
+                    rel="noopener"
+                    className="shrink-0 ml-4 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+                  >
+                    {s.cta} →
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
