@@ -31,26 +31,26 @@ export default function TriageSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
 
   return (
-    <section className="py-14 md:py-20 bg-muted">
+    <section className="py-16 md:py-24 bg-muted">
       <div ref={sectionRef} className="container">
-        <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-primary">
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Triagem rápida
         </span>
-        <h2 className="mt-2 text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-tight text-foreground">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
           Qual o problema do seu equipamento?
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground max-w-md">
-          Selecione o sintoma. A gente orienta e, se precisar, já chama pelo WhatsApp.
+        <p className="mt-3 text-sm text-muted-foreground max-w-lg">
+          Selecione o sintoma. A gente orienta e, se precisar, já chama pelo WhatsApp com a mensagem pronta.
         </p>
 
-        <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:gap-3">
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
           {items.map((item, i) => (
             <motion.button
               key={item.label}
               whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => setActive(active === i ? null : i)}
-              className={`rounded-lg border px-5 py-3 text-left text-[15px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
+              className={`rounded-lg border px-6 py-4 text-left text-base font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${
                 active === i
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-foreground hover:border-primary/40"
@@ -65,23 +65,23 @@ export default function TriageSection() {
           {active !== null && (
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 6 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.2 }}
-              className="mt-4 rounded-lg border border-border bg-card p-5 border-l-4 border-l-primary"
+              transition={{ duration: 0.25 }}
+              className="mt-6 rounded-lg border border-border bg-card p-6 border-l-4 border-l-primary"
             >
               <p className="font-semibold text-foreground text-sm">{items[active].cause}</p>
-              <p className="mt-1 text-[13px] text-muted-foreground">{items[active].tip}</p>
-              <Button asChild variant="strong" size="sm" className="mt-4 gap-2">
+              <p className="mt-2 text-sm text-muted-foreground">{items[active].tip}</p>
+              <Button asChild variant="strong" size="sm" className="mt-5 gap-2">
                 <motion.a
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileTap={{ scale: 0.98 }}
                   href={whatsappLink(items[active].whatsappMsg)}
                   target="_blank"
                   rel="noopener"
                 >
-                  <MessageCircle size={14} />
+                  <MessageCircle size={16} />
                   Chamar no WhatsApp
                 </motion.a>
               </Button>

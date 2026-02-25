@@ -11,35 +11,42 @@ import { useGsapFade } from "@/hooks/use-gsap-fade";
 import { motion } from "framer-motion";
 
 const faqs = [
-  { q: "Tem garantia?", a: "Sim. Todo serviço sai com garantia por escrito. Se der problema dentro do prazo, voltamos sem custo." },
-  { q: "Cobra visita?", a: "A visita técnica tem um valor que é abatido do serviço se você aprovar o orçamento." },
+  { q: "Tem garantia?", a: "Sim. Todo serviço sai com garantia emitida por escrito. Se der problema dentro do prazo, voltamos sem custo adicional." },
+  { q: "Cobra visita?", a: "A visita técnica tem um valor simbólico que é abatido do serviço se você aprovar o orçamento." },
   { q: "Trabalha com peça original?", a: "Sempre que disponível, usamos peças originais ou equivalentes de qualidade comprovada." },
   { q: "Atende no mesmo dia?", a: "Dependendo do horário e da agenda, sim. Urgências comerciais têm prioridade." },
-  { q: "Faz orçamento pelo WhatsApp?", a: "Podemos dar uma orientação inicial pelo WhatsApp. Para orçamento preciso, avaliamos presencialmente." },
+  { q: "Faz orçamento pelo WhatsApp?", a: "Podemos dar uma orientação inicial pelo WhatsApp. Para orçamento preciso, avaliamos o equipamento presencialmente." },
+];
+
+const sideStats = [
+  { value: "500+", label: "Atendimentos" },
+  { value: "98%", label: "Recomendação" },
+  { value: "<2h", label: "Tempo resposta" },
+  { value: "8+", label: "Anos atuando" },
 ];
 
 export default function FAQSection() {
   const ref = useGsapFade<HTMLDivElement>();
 
   return (
-    <section id="faq" className="py-14 md:py-20">
+    <section id="faq" className="py-16 md:py-24">
       <div ref={ref} className="container">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-10">
-          <div className="lg:col-span-7">
-            <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-primary">
-              Dúvidas
-            </span>
-            <h2 className="mt-2 text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-tight text-foreground">
-              Perguntas frequentes
-            </h2>
+        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+          Dúvidas
+        </span>
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+          Perguntas frequentes
+        </h2>
 
-            <Accordion type="single" collapsible className="mt-6">
+        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-10">
+          <div className="lg:col-span-7">
+            <Accordion type="single" collapsible>
               {faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                  <AccordionTrigger className="text-left text-[15px] font-semibold text-foreground hover:no-underline hover:text-primary py-4">
+                  <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:no-underline hover:text-primary py-5">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-4">
+                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -48,30 +55,23 @@ export default function FAQSection() {
           </div>
 
           <div className="lg:col-span-3">
-            <div className="rounded-xl border border-border bg-muted p-5 space-y-4 sticky top-20">
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { value: "500+", label: "Atendimentos" },
-                  { value: "98%", label: "Recomendação" },
-                  { value: "<2h", label: "Tempo resposta" },
-                  { value: "8+", label: "Anos atuando" },
-                ].map((s) => (
-                  <div key={s.label} className="text-center py-2">
-                    <p className="text-xl font-bold text-primary">{s.value}</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">{s.label}</p>
-                  </div>
-                ))}
-              </div>
-              <Button asChild variant="strong" size="default" className="w-full">
+            <div className="rounded-xl border border-border bg-muted p-6 space-y-5">
+              {sideStats.map((s) => (
+                <div key={s.label} className="text-center">
+                  <p className="text-2xl font-bold text-primary">{s.value}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
+                </div>
+              ))}
+              <Button asChild variant="strong" size="default" className="w-full mt-4">
                 <motion.a
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileTap={{ scale: 0.98 }}
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
                   rel="noopener"
                 >
                   <MessageCircle size={16} />
-                  Tirar dúvida
+                  Falar com especialista
                 </motion.a>
               </Button>
             </div>

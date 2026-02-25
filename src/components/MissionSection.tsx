@@ -32,7 +32,7 @@ export default function MissionSection() {
   const pillarsRef = useGsapFade<HTMLDivElement>({ children: ".pillar", stagger: 0.12 });
 
   return (
-    <section className="py-14 md:py-20">
+    <section className="py-16 md:py-24">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Nossa missão
@@ -45,11 +45,11 @@ export default function MissionSection() {
           honestidade, velocidade e garantia técnica real.
         </p>
 
-        <div ref={pillarsRef} className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div ref={pillarsRef} className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {pillars.map((p) => (
-            <div key={p.title} className="pillar border-t-2 border-primary pt-4">
+            <div key={p.title} className="pillar border-t-2 border-primary pt-5">
               <h3 className="text-base font-semibold text-foreground">{p.title}</h3>
-              <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {p.desc}
               </p>
             </div>
@@ -58,7 +58,7 @@ export default function MissionSection() {
       </div>
 
       {/* Marquee */}
-      <div className="mt-12 overflow-hidden border-t border-b border-border py-3">
+      <div className="mt-14 overflow-hidden border-t border-b border-border py-4">
         <div className="flex animate-marquee whitespace-nowrap">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span
