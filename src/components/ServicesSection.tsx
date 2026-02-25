@@ -1,196 +1,169 @@
-import { MessageCircle, Thermometer, Snowflake, WashingMachine, Wind, Zap, ShieldCheck } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { whatsappLink } from "@/lib/constants";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 import { motion } from "framer-motion";
 
-const MotionDiv = motion.div;
-
 export default function ServicesSection() {
-  const gridRef = useGsapFade<HTMLDivElement>({ children: ".bento-card", stagger: 0.08 });
+  const ref = useGsapFade<HTMLDivElement>({ children: ".svc-card", stagger: 0.07 });
 
   return (
     <section id="servicos" className="py-14 md:py-20">
       <div className="container">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-          Especialidades
+        <span className="text-[13px] font-medium uppercase tracking-[0.15em] text-primary">
+          O que fazemos
         </span>
-        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-          O que a gente faz — e faz bem.
+        <h2 className="mt-2 text-[clamp(1.5rem,3vw,2rem)] font-semibold leading-tight tracking-tight text-foreground">
+          Cada equipamento tem um jeito de quebrar. A gente conhece todos.
         </h2>
 
-        <div
-          ref={gridRef}
-          className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-12 md:auto-rows-auto"
-        >
+        <div ref={ref} className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-12">
           {/* DOMINANT — Refrigeração Comercial */}
-          <MotionDiv
+          <motion.div
             whileHover={{ y: -2 }}
-            className="bento-card md:col-span-7 md:row-span-2 rounded-xl border border-border bg-foreground p-8 md:p-10 flex flex-col justify-between min-h-[260px]"
+            className="svc-card md:col-span-8 md:row-span-2 rounded-xl bg-foreground p-8 md:p-10 flex flex-col justify-between min-h-[280px]"
           >
             <div>
-              <Badge className="bg-primary/20 text-primary border-0 mb-4">Comercial</Badge>
-              <Snowflake size={24} className="text-primary-foreground/60 mb-3" />
-              <h3 className="text-2xl font-bold text-primary-foreground md:text-3xl">
-                Refrigeração Comercial
+              <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-primary/70">
+                Prioridade comercial
+              </span>
+              <h3 className="mt-3 text-2xl font-semibold text-primary-foreground md:text-[28px] leading-tight">
+                Refrigeração comercial
               </h3>
-              <p className="mt-3 text-primary-foreground/60 leading-relaxed max-w-sm text-[15px]">
-                Balcão parou no sábado? Câmara desligou de noite? A gente resolve no mesmo dia.
-                Cervejeiras, expositores, máquinas de gelo — todas as marcas.
+              <p className="mt-3 text-[15px] text-primary-foreground/55 leading-relaxed max-w-sm">
+                Balcão parou no sábado? Câmara desligou de noite?
+                Cervejeiras, expositores, máquinas de gelo — a gente resolve no mesmo dia.
               </p>
             </div>
-            <Button asChild variant="strong" size="lg" className="mt-6 w-fit gap-2">
-              <a href={whatsappLink("Urgência comercial — equipamento parou. Preciso de visita técnica.")} target="_blank" rel="noopener">
-                <MessageCircle size={18} />
+            <Button asChild variant="strong" size="default" className="mt-6 w-fit gap-2">
+              <a href={whatsappLink("Urgência comercial — equipamento parou.")} target="_blank" rel="noopener">
+                <MessageCircle size={16} />
                 Solicitar visita técnica
               </a>
             </Button>
-          </MotionDiv>
+          </motion.div>
 
-          {/* MEDIUM — Câmaras Frias */}
-          <MotionDiv
+          {/* SECONDARY — Câmaras Frias */}
+          <motion.div
             whileHover={{ y: -2 }}
-            className="bento-card md:col-span-5 rounded-xl border border-border bg-card p-6 flex flex-col justify-between"
+            className="svc-card md:col-span-4 rounded-xl border border-border p-6 flex flex-col justify-between"
           >
             <div>
-              <Badge className="mb-3">Comercial</Badge>
-              <Thermometer size={20} className="text-primary mb-2" />
-              <h3 className="text-lg font-semibold text-foreground">Câmaras Frias</h3>
+              <h3 className="text-base font-semibold text-foreground">Câmaras frias</h3>
               <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
-                Instalação, manutenção e reparo de câmaras frigoríficas e de resfriamento.
+                Instalação, manutenção e reparo. Frigoríficas e de resfriamento.
               </p>
             </div>
             <a
               href={whatsappLink("Preciso de diagnóstico na câmara fria.")}
               target="_blank"
               rel="noopener"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+              className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:text-foreground transition-colors"
             >
-              <MessageCircle size={14} />
               Pedir diagnóstico →
             </a>
-          </MotionDiv>
+          </motion.div>
 
-          {/* MEDIUM — Geladeiras & Freezers */}
-          <MotionDiv
+          {/* SECONDARY — Geladeiras & Freezers */}
+          <motion.div
             whileHover={{ y: -2 }}
-            className="bento-card md:col-span-5 rounded-xl border border-border bg-card p-6 flex flex-col justify-between"
+            className="svc-card md:col-span-4 rounded-xl border border-border p-6 flex flex-col justify-between"
           >
             <div>
-              <Badge variant="secondary" className="mb-3">Residencial</Badge>
-              <Snowflake size={20} className="text-primary mb-2" />
-              <h3 className="text-lg font-semibold text-foreground">Geladeiras e Freezers</h3>
+              <h3 className="text-base font-semibold text-foreground">Geladeiras e freezers</h3>
               <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">
                 Compressor, termostato, gás, vedação. Todas as marcas.
               </p>
             </div>
             <a
-              href={whatsappLink("Minha geladeira/freezer está com problema. Pode atender?")}
+              href={whatsappLink("Minha geladeira está com problema.")}
               target="_blank"
               rel="noopener"
-              className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+              className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:text-foreground transition-colors"
             >
-              <MessageCircle size={14} />
               Agendar reparo →
             </a>
-          </MotionDiv>
+          </motion.div>
 
-          {/* HORIZONTAL STRIP — Contrato / Urgência */}
-          <MotionDiv
+          {/* HORIZONTAL STRIP — Preventiva */}
+          <motion.div
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-12 rounded-xl border border-primary/20 bg-primary/5 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+            className="svc-card md:col-span-12 rounded-xl border border-primary/15 bg-primary/4 px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
           >
-            <div className="flex items-center gap-3">
-              <ShieldCheck size={20} className="text-primary shrink-0" />
-              <div>
-                <h3 className="text-sm font-semibold text-foreground">
-                  Manutenção preventiva para empresas
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Contrato mensal com visitas programadas. Sem paradas de surpresa.
-                </p>
-              </div>
+            <div>
+              <h3 className="text-sm font-semibold text-foreground">
+                Manutenção preventiva para empresas
+              </h3>
+              <p className="text-[13px] text-muted-foreground">
+                Contrato mensal com visitas programadas. Sem paradas de surpresa.
+              </p>
             </div>
             <a
               href={whatsappLink("Quero saber sobre contrato de manutenção preventiva.")}
               target="_blank"
               rel="noopener"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-primary hover:text-foreground transition-colors whitespace-nowrap shrink-0"
             >
               Falar sobre contrato →
             </a>
-          </MotionDiv>
+          </motion.div>
 
-          {/* COMPACT ROW — 2 cards asymmetric */}
-          <MotionDiv
+          {/* COMPACT — Lavadoras */}
+          <motion.div
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-5 rounded-xl border border-border bg-card p-5"
+            className="svc-card md:col-span-4 rounded-xl border border-border p-5"
           >
-            <div className="flex items-start gap-4">
-              <WashingMachine size={20} className="text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="text-base font-semibold text-foreground">Lavadoras</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Placa, motor, bomba e centrifugação. Diagnóstico técnico sem achismo.
-                </p>
-                <a
-                  href={whatsappLink("Minha lavadora está com defeito. Pode verificar?")}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-                >
-                  Chamar técnico →
-                </a>
-              </div>
-            </div>
-          </MotionDiv>
+            <h3 className="text-sm font-semibold text-foreground">Lavadoras</h3>
+            <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+              Placa, motor, bomba e centrifugação. Diagnóstico sem achismo.
+            </p>
+            <a
+              href={whatsappLink("Minha lavadora está com defeito.")}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-primary hover:text-foreground transition-colors"
+            >
+              Chamar técnico →
+            </a>
+          </motion.div>
 
-          <MotionDiv
+          {/* COMPACT — Ar Condicionado */}
+          <motion.div
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-4 rounded-xl border border-border bg-card p-5"
+            className="svc-card md:col-span-4 rounded-xl border border-border p-5"
           >
-            <div className="flex items-start gap-4">
-              <Wind size={20} className="text-primary shrink-0 mt-0.5" />
-              <div>
-                <h3 className="text-base font-semibold text-foreground">Ar Condicionado</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Limpeza, recarga de gás e manutenção de split.
-                </p>
-                <a
-                  href={whatsappLink("Preciso de manutenção no ar condicionado.")}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-                >
-                  Pedir orçamento →
-                </a>
-              </div>
-            </div>
-          </MotionDiv>
+            <h3 className="text-sm font-semibold text-foreground">Ar condicionado</h3>
+            <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+              Limpeza, recarga de gás, instalação e manutenção de split.
+            </p>
+            <a
+              href={whatsappLink("Preciso de manutenção no ar condicionado.")}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-primary hover:text-foreground transition-colors"
+            >
+              Pedir orçamento →
+            </a>
+          </motion.div>
 
-          <MotionDiv
+          {/* COMPACT — Microondas */}
+          <motion.div
             whileHover={{ y: -1 }}
-            className="bento-card md:col-span-3 rounded-xl border border-border bg-card p-5"
+            className="svc-card md:col-span-4 rounded-xl border border-border p-5"
           >
-            <div className="flex items-start gap-4 md:flex-col md:gap-2">
-              <Zap size={20} className="text-primary shrink-0" />
-              <div>
-                <h3 className="text-base font-semibold text-foreground">Microondas</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Magnetron e reparo geral.
-                </p>
-                <a
-                  href={whatsappLink("Meu microondas não está funcionando. Pode ajudar?")}
-                  target="_blank"
-                  rel="noopener"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-foreground transition-colors"
-                >
-                  Ver atendimento →
-                </a>
-              </div>
-            </div>
-          </MotionDiv>
+            <h3 className="text-sm font-semibold text-foreground">Microondas</h3>
+            <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">
+              Magnetron, placa e reparo geral.
+            </p>
+            <a
+              href={whatsappLink("Meu microondas não funciona.")}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 inline-flex items-center gap-1 text-[13px] font-semibold text-primary hover:text-foreground transition-colors"
+            >
+              Ver atendimento →
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>
