@@ -7,12 +7,12 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section id="processo" className="py-20 md:py-28">
+    <section id="processo" className="py-16 md:py-24">
       <div className="container">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           Como funciona
         </span>
-        <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-tight text-foreground">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Do contato à garantia.
         </h2>
 
@@ -21,7 +21,7 @@ export default function ProcessSection() {
             <div key={step.num} className="relative">
               <span className="text-5xl font-bold text-border">{step.num}</span>
               <h3 className="mt-3 text-lg font-semibold text-foreground">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{step.desc}</p>
+              <p className="mt-2 text-sm text-primary">{step.desc}</p>
               {i < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-6 right-0 w-8 border-t border-border translate-x-4" />
               )}

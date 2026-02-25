@@ -28,15 +28,15 @@ export default function TriageSection() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section className="py-20 md:py-28 bg-muted">
+    <section className="py-16 md:py-24 bg-muted">
       <div className="container">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           Diagnóstico
         </span>
-        <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-tight text-foreground">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Qual o problema do seu equipamento?
         </h2>
-        <p className="mt-3 text-muted-foreground max-w-lg">
+        <p className="mt-3 text-primary max-w-lg">
           Selecione o sintoma e descubra a possível causa.
         </p>
 
@@ -48,7 +48,7 @@ export default function TriageSection() {
               className={`rounded-xl border p-6 text-left transition-all text-lg font-semibold ${
                 active === i
                   ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-background text-foreground hover:border-primary/40"
+                  : "border-border bg-card text-foreground hover:border-primary"
               }`}
             >
               {item.label}
@@ -57,10 +57,10 @@ export default function TriageSection() {
         </div>
 
         {active !== null && (
-          <div className="mt-6 rounded-xl border border-border bg-background p-6 border-l-4 border-l-primary">
+          <div className="mt-6 rounded-xl border border-border bg-card p-6 border-l-4 border-l-primary">
             <p className="font-semibold text-foreground">{items[active].cause}</p>
-            <p className="mt-2 text-sm text-muted-foreground">{items[active].tip}</p>
-            <Button asChild size="sm" className="mt-5 gap-2">
+            <p className="mt-2 text-sm text-primary">{items[active].tip}</p>
+            <Button asChild variant="strong" size="sm" className="mt-5 gap-2">
               <a href={whatsappLink(items[active].whatsappMsg)} target="_blank" rel="noopener">
                 <MessageCircle size={16} />
                 Chamar no WhatsApp

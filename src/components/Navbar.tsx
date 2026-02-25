@@ -23,11 +23,11 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+            <a key={l.href} href={l.href} className="text-sm text-primary transition-colors hover:text-foreground">
               {l.label}
             </a>
           ))}
-          <Button asChild size="sm">
+          <Button asChild variant="strong" size="sm">
             <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
               <MessageCircle size={16} />
               WhatsApp
@@ -52,7 +52,7 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <Button asChild size="lg" className="mt-4 w-64">
+          <Button asChild variant="strong" size="lg" className="mt-4 w-64">
             <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
               <MessageCircle size={20} />
               Chamar no WhatsApp

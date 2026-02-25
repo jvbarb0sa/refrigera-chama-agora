@@ -48,31 +48,31 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="servicos" className="py-20 md:py-28">
+    <section id="servicos" className="py-16 md:py-24">
       <div className="container">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
           Especialidades
         </span>
-        <h2 className="mt-3 text-[32px] font-semibold leading-tight tracking-tight text-foreground">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Soluções técnicas para cada necessidade.
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <div
               key={s.title}
-              className="group rounded-xl border border-border bg-background p-8 transition-colors hover:border-primary/40"
+              className="group rounded-xl border border-border bg-card p-8 transition-shadow hover:shadow-md"
             >
               <div className="inline-flex rounded-lg bg-muted p-3 text-primary">
                 {s.icon}
               </div>
               <h3 className="mt-5 text-lg font-semibold text-foreground">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+              <p className="mt-2 text-sm leading-relaxed text-primary">{s.desc}</p>
               <a
                 href={whatsappLink(s.ctaMsg)}
                 target="_blank"
                 rel="noopener"
-                className="mt-5 inline-block text-sm font-semibold text-primary hover:underline"
+                className="mt-5 inline-block text-sm font-semibold text-primary hover:text-foreground transition-colors"
               >
                 {s.cta} →
               </a>
