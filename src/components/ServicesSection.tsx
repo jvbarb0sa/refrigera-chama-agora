@@ -1,43 +1,50 @@
 import { MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
+import { Badge } from "@/components/ui/badge";
 import { useFadeIn } from "@/hooks/use-fade-in";
 
-const comercial = {
-  title: "Refrigeração Comercial",
-  desc: "Câmara fria, balcões refrigerados, cervejeiras, máquina de gelo e expositores. Atendimento prioritário para comércios que não podem parar.",
-  cta: "Solicitar orçamento comercial",
-  ctaMsg: "Preciso de orçamento para refrigeração comercial.",
-  items: ["Câmara fria", "Máquina de gelo", "Balcão refrigerado", "Cervejeira"],
-};
-
-const medium = [
+const services = [
   {
-    title: "Geladeiras e Freezers",
-    desc: "Compressor, termostato, gás e vedação.",
+    badge: "Comercial",
+    title: "Refrigeração Comercial",
+    desc: "Balcões refrigerados, cervejeiras, expositores e máquinas de gelo.",
+    cta: "Solicitar visita técnica",
+    ctaMsg: "Preciso de visita técnica para refrigeração comercial.",
+  },
+  {
+    badge: "Comercial",
+    title: "Câmaras Frias",
+    desc: "Instalação, manutenção e reparo de câmaras frias e frigoríficas.",
     cta: "Pedir diagnóstico",
+    ctaMsg: "Preciso de diagnóstico na câmara fria.",
+  },
+  {
+    badge: "Residencial",
+    title: "Geladeiras e Freezers",
+    desc: "Compressor, termostato, gás e vedação. Todas as marcas.",
+    cta: "Agendar reparo",
     ctaMsg: "Minha geladeira/freezer está com problema. Pode atender?",
   },
   {
+    badge: "Residencial",
     title: "Lavadoras",
-    desc: "Placa, motor, bomba e centrifugação.",
+    desc: "Placa, motor, bomba e centrifugação. Diagnóstico técnico.",
     cta: "Chamar técnico",
     ctaMsg: "Minha lavadora está com defeito. Pode verificar?",
   },
-];
-
-const compact = [
   {
-    title: "Microondas",
-    desc: "Magnetron e componentes elétricos.",
-    cta: "Ver atendimento",
-    ctaMsg: "Meu microondas não está funcionando. Pode ajudar?",
-  },
-  {
+    badge: "Preventiva",
     title: "Ar Condicionado",
-    desc: "Limpeza, gás e manutenção de split.",
+    desc: "Limpeza, recarga de gás e manutenção preventiva de split.",
     cta: "Pedir orçamento",
     ctaMsg: "Preciso de manutenção no ar condicionado.",
+  },
+  {
+    badge: "Residencial",
+    title: "Microondas",
+    desc: "Magnetron, componentes elétricos e reparo geral.",
+    cta: "Ver atendimento",
+    ctaMsg: "Meu microondas não está funcionando. Pode ajudar?",
   },
 ];
 
@@ -54,70 +61,38 @@ export default function ServicesSection() {
           O que a gente faz — e faz bem.
         </h2>
 
-        <div ref={fadeRef} className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-12">
-          {/* Bloco dominante: Comercial */}
-          <div className="lg:col-span-7 rounded-xl border border-border bg-muted p-8 md:p-10 flex flex-col justify-between">
-            <div>
-              <span className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                Comercial
-              </span>
-              <h3 className="mt-4 text-2xl font-semibold text-foreground">{comercial.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-md">
-                {comercial.desc}
+        <div
+          ref={fadeRef}
+          className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="group rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
+            >
+              <Badge
+                variant={s.badge === "Comercial" ? "default" : "secondary"}
+                className="mb-4"
+              >
+                {s.badge}
+              </Badge>
+              <h3 className="text-lg font-semibold text-foreground">
+                {s.title}
+              </h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                {s.desc}
               </p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {comercial.items.map((item) => (
-                  <span key={item} className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <Button asChild variant="strong" size="default" className="mt-8 self-start">
-              <a href={whatsappLink(comercial.ctaMsg)} target="_blank" rel="noopener">
-                <MessageCircle size={16} />
-                {comercial.cta}
+              <a
+                href={whatsappLink(s.ctaMsg)}
+                target="_blank"
+                rel="noopener"
+                className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-foreground transition-colors"
+              >
+                <MessageCircle size={14} />
+                {s.cta} →
               </a>
-            </Button>
-          </div>
-
-          {/* Bloco secundário: Residencial */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            {/* 2 cards médios */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {medium.map((s) => (
-                <div key={s.title} className="rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40">
-                  <h3 className="text-base font-semibold text-foreground">{s.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground">{s.desc}</p>
-                  <Button asChild variant="ghost" size="sm" className="mt-4 -ml-2 text-primary">
-                    <a href={whatsappLink(s.ctaMsg)} target="_blank" rel="noopener">
-                      {s.cta} →
-                    </a>
-                  </Button>
-                </div>
-              ))}
             </div>
-
-            {/* 2 itens compactos */}
-            <div className="space-y-0">
-              {compact.map((s) => (
-                <div key={s.title} className="flex items-center justify-between py-4 border-b border-border last:border-b-0">
-                  <div>
-                    <h3 className="text-sm font-semibold text-foreground">{s.title}</h3>
-                    <p className="text-xs text-muted-foreground mt-0.5">{s.desc}</p>
-                  </div>
-                  <a
-                    href={whatsappLink(s.ctaMsg)}
-                    target="_blank"
-                    rel="noopener"
-                    className="shrink-0 ml-4 text-sm font-semibold text-primary hover:text-foreground transition-colors"
-                  >
-                    {s.cta} →
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

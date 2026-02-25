@@ -1,36 +1,72 @@
 import { useFadeIn } from "@/hooks/use-fade-in";
 
 const steps = [
-  { num: "01", title: "Contato", desc: "WhatsApp ou telefone. Sem burocracia." },
-  { num: "02", title: "Diagnóstico", desc: "Avaliação técnica no local." },
-  { num: "03", title: "Orçamento", desc: "Valor claro antes de qualquer serviço." },
-  { num: "04", title: "Reparo + Garantia", desc: "Execução com garantia por escrito." },
+  {
+    num: "01",
+    label: "Primeiro passo",
+    title: "Contato e triagem",
+    desc: "Você entra em contato pelo WhatsApp ou telefone. Fazemos uma triagem rápida para entender a urgência e agendar a visita técnica.",
+  },
+  {
+    num: "02",
+    label: "Avaliação",
+    title: "Diagnóstico no local",
+    desc: "O técnico vai até o equipamento, identifica o problema real e explica o que precisa ser feito — sem trocar peça sem necessidade.",
+  },
+  {
+    num: "03",
+    label: "Aprovação",
+    title: "Orçamento claro",
+    desc: "Você recebe o orçamento detalhado antes de qualquer serviço. Sem surpresas, sem custo escondido. Aprovou? A gente executa.",
+  },
+  {
+    num: "04",
+    label: "Finalização",
+    title: "Execução e garantia",
+    desc: "Serviço executado com peças de qualidade e garantia emitida por escrito. Se der problema dentro do prazo, voltamos sem custo.",
+  },
 ];
 
 export default function ProcessSection() {
   const fadeRef = useFadeIn<HTMLDivElement>();
 
   return (
-    <section id="processo" className="py-10 md:py-14">
+    <section id="processo" className="py-16 md:py-24">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Como funciona
         </span>
-        <h2 className="mt-3 text-2xl font-semibold leading-tight tracking-tight text-foreground md:text-[28px]">
+        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
           Do contato à garantia — 4 passos.
         </h2>
 
-        <div ref={fadeRef} className="mt-8 grid grid-cols-2 gap-px lg:grid-cols-4">
-          {steps.map((step, i) => (
-            <div key={step.num} className="relative p-5 lg:p-6">
-              {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 right-0 w-full border-t border-dashed border-border -z-0" />
-              )}
-              <span className="relative text-3xl font-bold text-primary/20">{step.num}</span>
-              <h3 className="mt-2 text-base font-semibold text-foreground">{step.title}</h3>
-              <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
-            </div>
-          ))}
+        <div ref={fadeRef} className="mt-12 relative">
+          {/* Vertical line */}
+          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border hidden md:block" />
+
+          <div className="space-y-10 md:space-y-12">
+            {steps.map((step) => (
+              <div key={step.num} className="flex gap-6 md:gap-8">
+                {/* Number */}
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                  {step.num}
+                </div>
+
+                {/* Content */}
+                <div className="pb-2">
+                  <span className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    {step.label}
+                  </span>
+                  <h3 className="mt-1 text-lg font-semibold text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed max-w-md">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
