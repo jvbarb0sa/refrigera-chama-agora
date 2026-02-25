@@ -1,3 +1,6 @@
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useFadeIn } from "@/hooks/use-fade-in";
 
 const testimonials = [
@@ -5,58 +8,121 @@ const testimonials = [
     name: "Marcos",
     context: "Mercado Central — Câmara fria",
     text: "Câmara fria desligou numa sexta à noite. Atenderam rápido e salvaram nossa mercadoria.",
-    featured: true,
+    initials: "MC",
   },
   {
     name: "Carlos M.",
     context: "Residencial — Freezer",
     text: "Chamei de manhã, à tarde já estava resolvido. Freezer voltou a funcionar sem trocar peça.",
+    initials: "CM",
   },
   {
     name: "Dona Maria",
     context: "Residencial — Geladeira",
     text: "O Vagner explicou direitinho o que era antes de mexer. Orçamento justo e geladeira funcionando até hoje.",
+    initials: "DM",
+  },
+  {
+    name: "Roberto S.",
+    context: "Sorveteria — Expositor",
+    text: "Expositor parou no sábado. Vieram no mesmo dia e resolveram sem enrolação. Recomendo demais.",
+    initials: "RS",
+  },
+  {
+    name: "Ana Paula",
+    context: "Residencial — Lavadora",
+    text: "Lavadora travava na centrifugação. Diagnóstico rápido e conserto no mesmo dia. Muito profissional.",
+    initials: "AP",
+  },
+  {
+    name: "João Pedro",
+    context: "Padaria — Balcão refrigerado",
+    text: "Manutenção preventiva todo mês. Nunca mais tive problema com o balcão. Serviço sério.",
+    initials: "JP",
   },
 ];
 
 export default function TestimonialsSection() {
   const fadeRef = useFadeIn<HTMLDivElement>();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
 
-  const featured = testimonials.find((t) => t.featured)!;
-  const others = testimonials.filter((t) => !t.featured);
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    // Auto-scroll
+    const interval = setInterval(() => emblaApi.scrollNext(), 5000);
+    return () => clearInterval(interval);
+  }, [emblaApi, onSelect]);
 
   return (
     <section id="provas" className="py-16 md:py-24 bg-muted">
       <div className="container">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-          Quem já chamou
-        </span>
-        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-          Trabalho limpo, orçamento claro, garantia.
-        </h2>
-
-        <div ref={fadeRef} className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-5">
-          {/* Featured card — comercial */}
-          <div className="lg:col-span-3 rounded-xl border-l-4 border-l-primary border border-border bg-card p-8 md:p-10">
-            <p className="text-4xl leading-none text-primary/20 select-none">"</p>
-            <p className="mt-3 text-base leading-relaxed text-foreground">{featured.text}</p>
-            <div className="mt-6 pt-4 border-t border-border">
-              <p className="text-sm font-semibold text-foreground">{featured.name}</p>
-              <p className="text-xs text-muted-foreground mt-0.5">{featured.context}</p>
-            </div>
+        <div className="flex items-end justify-between">
+          <div>
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+              Quem já chamou
+            </span>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+              Trabalho limpo, orçamento claro, garantia.
+            </h2>
           </div>
+          <div className="hidden sm:flex gap-2">
+            <button
+              onClick={() => emblaApi?.scrollPrev()}
+              disabled={!canScrollPrev}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary disabled:opacity-30"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={() => emblaApi?.scrollNext()}
+              disabled={!canScrollNext}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary disabled:opacity-30"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
 
-          {/* Smaller cards — residenciais */}
-          <div className="lg:col-span-2 grid grid-cols-1 gap-4">
-            {others.map((t) => (
-              <div key={t.name} className="rounded-xl border border-border bg-card p-6">
-                <p className="text-sm leading-relaxed text-foreground">{t.text}</p>
-                <div className="mt-4 pt-3 border-t border-border">
-                  <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">{t.context}</p>
+        <div ref={fadeRef} className="mt-10 overflow-hidden" >
+          <div ref={emblaRef}>
+            <div className="flex gap-4">
+              {testimonials.map((t) => (
+                <div
+                  key={t.name}
+                  className="min-w-[280px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] rounded-xl border border-border bg-card p-6"
+                >
+                  <p className="text-2xl leading-none text-primary/20 select-none">
+                    "
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground">
+                    {t.text}
+                  </p>
+                  <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                      {t.initials}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">
+                        {t.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t.context}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

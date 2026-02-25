@@ -1,18 +1,28 @@
 import { MessageCircle, Phone, Mail, Clock, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY, EMAIL } from "@/lib/constants";
+import { useFadeIn } from "@/hooks/use-fade-in";
+
+const miniStats = [
+  { value: "500+", label: "atendimentos" },
+  { value: "98%", label: "recomendação" },
+  { value: "8+", label: "anos" },
+];
 
 export default function FinalCTASection() {
+  const fadeRef = useFadeIn<HTMLDivElement>();
+
   return (
     <>
       {/* CTA */}
       <section id="contato" className="py-16 md:py-24 bg-foreground">
-        <div className="container text-center max-w-2xl mx-auto">
+        <div ref={fadeRef} className="container text-center max-w-2xl mx-auto">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
-            Chama agora. A gente resolve.
+            Equipamento parado custa dinheiro. Nós resolvemos.
           </h2>
-          <p className="mt-4 text-primary-foreground/60">
-            WhatsApp ou ligação. Resposta rápida.
+          <p className="mt-4 text-primary-foreground/60 max-w-md mx-auto">
+            Técnicos especializados, orçamento transparente e garantia real.
+            Fale agora e resolva hoje.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
@@ -28,6 +38,16 @@ export default function FinalCTASection() {
                 Ligar agora
               </a>
             </Button>
+          </div>
+
+          {/* Mini stats */}
+          <div className="mt-10 flex justify-center gap-8">
+            {miniStats.map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-xl font-bold text-primary-foreground">{s.value}</p>
+                <p className="text-xs text-primary-foreground/40">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
