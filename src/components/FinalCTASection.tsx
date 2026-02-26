@@ -65,12 +65,12 @@ export default function FinalCTASection() {
                 Refrigeração <span className="text-accent">TABOADO</span>
               </p>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/40">
-                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas — MS. Técnicos certificados, garantia documentada.
+                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas, MS. Técnicos certificados, garantia documentada.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-primary-foreground/50">
                 <li className="flex items-center gap-2">
                   <MapPin size={15} className="shrink-0 text-accent" />
-                  Três Lagoas — MS e região
+                   Três Lagoas, MS e região
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={15} className="shrink-0 text-accent" />
@@ -127,7 +127,7 @@ export default function FinalCTASection() {
               © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
             </p>
             <p className="text-xs text-primary-foreground/30">
-              Três Lagoas — MS e região
+              Três Lagoas, MS e região
             </p>
           </div>
           <p className="mt-4 text-center text-xs text-primary-foreground/25">

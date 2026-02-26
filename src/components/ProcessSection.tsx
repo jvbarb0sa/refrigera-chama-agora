@@ -11,7 +11,7 @@ const steps = [
     num: "02",
     label: "Avaliação",
     title: "Diagnóstico no local",
-    desc: "O técnico vai até o equipamento, identifica o problema real e explica o que precisa ser feito — sem trocar peça sem necessidade.",
+    desc: "O técnico vai até o equipamento, identifica o problema real e explica o que precisa ser feito, sem trocar peça sem necessidade.",
   },
   {
     num: "03",
@@ -37,7 +37,7 @@ export default function ProcessSection() {
           Como funciona
         </span>
         <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-          Do contato à garantia — 4 passos.
+          Do contato à garantia: 4 passos.
         </h2>
 
         <div ref={ref} className="mt-12 relative">
