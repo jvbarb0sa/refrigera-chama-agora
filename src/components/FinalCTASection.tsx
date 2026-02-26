@@ -19,7 +19,7 @@ export default function FinalCTASection() {
               <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-amber-400">
                 Atendimento emergencial
               </span>
-              <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl">
+              <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
                 Equipamento parado?{" "}
                 <span className="block text-[#118CD9]">Não espere até amanhã.</span>
               </h2>
@@ -61,7 +61,7 @@ export default function FinalCTASection() {
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {/* Coluna 1 — Identidade */}
             <div className="sm:col-span-2 lg:col-span-2">
-              <p className="text-xl font-extrabold tracking-tight text-primary-foreground">
+              <p className="text-xl font-semibold tracking-tight text-primary-foreground">
                 Refrigeração <span className="text-accent">TABOADO</span>
               </p>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/40">

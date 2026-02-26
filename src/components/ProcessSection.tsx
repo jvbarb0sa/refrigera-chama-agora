@@ -46,7 +46,7 @@ export default function ProcessSection() {
           <div className="space-y-10 md:space-y-12">
             {steps.map((step) => (
               <div key={step.num} className="step-item flex gap-6 md:gap-8">
-                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
                   {step.num}
                 </div>
                 <div className="pb-2">

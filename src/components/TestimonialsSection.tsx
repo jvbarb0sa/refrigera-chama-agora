@@ -104,13 +104,13 @@ export default function TestimonialsSection() {
           <div className="flex items-center gap-3">
             <Star size={28} className="fill-amber-400 text-amber-400" />
             <div>
-              <span className="text-3xl font-bold text-foreground">4.9</span>
+              <span className="text-3xl font-semibold text-foreground">4.9</span>
               <p className="text-xs uppercase tracking-wider text-muted-foreground">no Google</p>
             </div>
           </div>
           <div className="hidden h-8 w-px bg-border sm:block" />
           <div className="text-center">
-            <span className="text-3xl font-bold text-foreground">50+</span>
+            <span className="text-3xl font-semibold text-foreground">50+</span>
             <p className="text-xs uppercase tracking-wider text-muted-foreground">avaliações reais</p>
           </div>
           <div className="hidden h-8 w-px bg-border sm:block" />

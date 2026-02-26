@@ -23,7 +23,7 @@ export default function ProblemsSection() {
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
               <span className="text-xs font-semibold text-primary tracking-wide uppercase">Problemas que resolvemos</span>
             </div>
-            <h2 className="mt-3 text-3xl font-bold text-[#163573] tracking-tight">
+            <h2 className="mt-3 text-3xl font-semibold text-[#163573] tracking-tight">
               Seu equipamento parou?
             </h2>
             <p className="mt-3 text-[15px] text-[#4B5563] leading-[1.7] max-w-md">

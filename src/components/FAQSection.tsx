@@ -34,7 +34,7 @@ export default function FAQSection() {
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Dúvidas</span>
               </div>
-              <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
                 Perguntas frequentes
               </h2>
               <p className="text-muted-foreground leading-relaxed">
@@ -60,7 +60,7 @@ export default function FAQSection() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                <AccordionTrigger className="text-left text-lg font-bold text-foreground transition-colors hover:text-primary hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground transition-colors hover:text-primary hover:no-underline py-5">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
