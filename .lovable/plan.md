@@ -1,72 +1,67 @@
 
 
-# Especialidades — Grid técnico limpo e institucional
+# Diferenciais — 4 colunas técnicas, sem inflação
 
 ## Diagnóstico
 
-A seção atual ainda tem problemas:
-- Bento assimétrico com card dominante grande + cards médios + faixa — visual "criativo" demais para empresa técnica
-- Badges "Comercial"/"Residencial" decorativas
-- Hover com `y: -2` — efeito SaaS
-- Faixa de contrato com ícone ShieldCheck e fundo colorido — destaque visual desnecessário
-- 6 cards com categorias fragmentadas (Câmaras Frias separado de Comercial, Ar Condicionado como item solo)
+Layout atual: 2 colunas — lista numerada à esquerda + placeholder de foto à direita. Problemas:
+- Layout assimétrico com placeholder vazio ("Foto da equipe ou atendimento") — peso morto
+- Títulos genéricos ("Diagnóstico Transparente", "Garantia Técnica Real") não refletem os 4 pilares do briefing
+- Números em círculos coloridos — decorativo demais
+- Copy aceitável mas não alinhada ao briefing (Honestidade, Competência, Transparência, Segurança)
+- Label "Por que escolher a gente" — informal
+- H2 "O que nos diferencia." — vago
 
 ## Mudança
 
-Substituir todo o conteúdo por um grid simples e uniforme de 4 cards, sem hierarquia visual forçada. Institucional, limpo, sério.
+Substituir o layout 2-col + placeholder por um grid horizontal de 4 colunas iguais, cada uma representando um pilar real do briefing.
 
 ### Header
-- Label: `ESPECIALIDADES TÉCNICAS`
-- H2: `Especialidades técnicas`
-- Subtítulo: `Atendimento completo em refrigeração e elétrica para comércios e residências.`
+- Label: `DIFERENCIAIS`
+- H2: `Por que escolher a Refrigeração Taboado`
+- Sem subtítulo (o título já é direto)
 
-### Grid: 2×2, todos iguais
-4 cards com `md:grid-cols-2`, mesmo tamanho, mesmo estilo. Sem card dominante, sem faixa especial.
+### Grid: 4 colunas uniformes (`md:grid-cols-2 lg:grid-cols-4`)
 
-Cada card:
-- Fundo `bg-card`, borda `border-border`, `rounded-xl`, padding uniforme
-- Número sequencial discreto (`01`, `02`, `03`, `04`) em `text-muted-foreground/40`
+Cada coluna:
+- Número discreto (`01`–`04`) em `text-muted-foreground/40`
 - Título em `font-semibold`
-- Descrição em `text-muted-foreground`
-- Sem badge, sem ícone decorativo, sem hover exagerado
-- Sem CTA individual (o CTA geral da página já cobre)
+- Descrição curta em `text-muted-foreground`, 1–2 frases diretas
+- Sem borda, sem card, sem fundo — apenas texto sobre `bg-muted`
+- Classe `.diff-item` para GSAP stagger
 
-**Cards:**
+**Colunas:**
 
-1. **Refrigeração Comercial** — Câmaras frias, balcões expositores, sistemas para mercados e conveniências.
-2. **Refrigeração Residencial** — Geladeiras, freezers e equipamentos inverter.
-3. **Máquinas e Eletrodomésticos** — Lavadoras, micro-ondas e máquinas de gelo.
-4. **Sistemas Especiais** — Sistemas em amônia, freon, painéis elétricos e automação.
+1. **Atendimento transparente** — "Você sabe o que tem antes de aprovar. Diagnóstico detalhado, sem peça trocada sem necessidade."
+2. **Diagnóstico técnico preciso** — "Identificamos a causa real do problema. Sem tentativa e erro, sem cobranças desnecessárias."
+3. **Segurança na execução** — "Garantia por escrito em todo serviço. Se der problema no prazo, voltamos sem custo."
+4. **Compromisso com prazo** — "Atendimento no mesmo dia para urgências comerciais. Priorizamos quem não pode parar."
 
 ### Removidos
-- Todos os `whileHover` do Framer Motion
-- Badges (Comercial/Residencial)
-- Faixa de contrato de manutenção preventiva
-- Cards de Câmaras Frias, Ar Condicionado (consolidados)
-- Ícones MessageCircle e ShieldCheck
-- Import de Badge, Button, MessageCircle, ShieldCheck, motion
-- Botões e links CTA individuais por card
+- Placeholder de foto ("Foto da equipe ou atendimento")
+- Layout 2 colunas (`lg:grid-cols-2`)
+- Números em círculos coloridos (`bg-primary rounded-full`)
+- H2 "O que nos diferencia."
+- Label "Por que escolher a gente"
 
 ### Mantido
-- GSAP fade com stagger (`.bento-card` class nos cards)
-- `id="servicos"` na section
+- GSAP fade com stagger (`.diff-item`)
+- `bg-muted` na section
 - Posição no Index.tsx
 
 ```text
-┌──────────────────┬──────────────────┐
-│  01               │  02               │
-│  Refrigeração    │  Refrigeração    │
-│  Comercial       │  Residencial     │
-├──────────────────┼──────────────────┤
-│  03               │  04               │
-│  Máquinas e      │  Sistemas        │
-│  Eletrodomésticos│  Especiais       │
-└──────────────────┴──────────────────┘
+┌───────────────┬───────────────┬───────────────┬───────────────┐
+│ 01            │ 02            │ 03            │ 04            │
+│ Atendimento   │ Diagnóstico   │ Segurança     │ Compromisso   │
+│ transparente  │ técnico       │ na execução   │ com prazo     │
+│               │ preciso       │               │               │
+│ desc...       │ desc...       │ desc...       │ desc...       │
+└───────────────┴───────────────┴───────────────┴───────────────┘
 ```
 
 ## Arquivo editado
 
 | Arquivo | O que muda |
 |---|---|
-| `src/components/ServicesSection.tsx` | Reescrita completa: grid 2×2 uniforme, 4 cards, sem hierarquia visual, sem hover, sem CTAs individuais |
+| `src/components/DifferentialsSection.tsx` | Reescrita: grid 4-col, copy alinhada ao briefing, sem placeholder, sem decoração |
 
