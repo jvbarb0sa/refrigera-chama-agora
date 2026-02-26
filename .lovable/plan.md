@@ -1,77 +1,48 @@
 
 
-# Bloco 5 — CTAs com roteamento Técnico/Loja
+# Bloco 6 — Quick Form de captura no Hero
 
 ## Contexto
 
-O briefing tem dois números de WhatsApp distintos: Técnico (`WHATSAPP_NUMBER` — 98109-7179) e Loja (`PHONE_NUMBER` — 99259-7710). Hoje ambos os CTAs do Hero apontam para o mesmo número. Precisamos:
-
-1. Trocar os textos e ícones dos CTAs
-2. O CTA primário ("Falar com técnico agora") abre um modal perguntando "Técnico ou Loja?" antes de redirecionar ao WhatsApp correto
-3. O CTA secundário ("Solicitar visita técnica") rola para a seção de contato (ou abre modal de formulário se existir)
-4. Adicionar microcopy abaixo do CTA primário
+Adicionar um mini-formulário de captura de lead para quem prefere não usar WhatsApp no primeiro contato, especialmente B2B. O form ficará na coluna direita do Hero (desktop) substituindo o placeholder de imagem, e abaixo dos CTAs no mobile.
 
 ## Arquivos e mudanças
 
-### 1. `src/lib/constants.ts`
-- Adicionar segundo número de WhatsApp para a Loja e uma função `whatsappLinkLoja`
-- Ou renomear para deixar claro qual é qual:
-  - `WHATSAPP_TECNICO` = `5567981097179`
-  - `WHATSAPP_LOJA` = `5567992597710`
-  - `whatsappLink(number, message?)` aceita o número como parâmetro
+### 1. Novo: `src/components/HeroQuickForm.tsx`
 
-### 2. Novo: `src/components/WhatsAppRouterModal.tsx`
-Modal simples usando o componente `Dialog` existente:
-- Título: "Com quem você quer falar?"
-- Duas opções (radio ou botões lado a lado):
-  - **Técnico** — ícone de ferramenta + "Suporte e manutenção" → abre `wa.me/WHATSAPP_TECNICO`
-  - **Loja** — ícone de loja + "Orçamentos e peças" → abre `wa.me/WHATSAPP_LOJA`
-- Cada opção é um `<a>` que abre o WhatsApp correto em nova aba
-- Estilo consistente com o DS (Dialog + Button)
+Componente de formulário compacto dentro de um `Card` com:
 
-### 3. `src/components/HeroSection.tsx`
+**Campos:**
+- **Equipamento** (`Select`): Geladeira / Freezer / Câmara fria / Ar-condicionado / Máquina de gelo / Outro
+- **Bairro/empresa** (`Input`): texto livre, max 100 chars
+- **Toggle "Sou empresa"** (`Switch` + `Label`): alterna flag B2B
 
-**CTA Primário** (era "Solicitar atendimento técnico"):
-- Texto: **"Falar com técnico agora"**
-- Ícone: `WhatsAppIcon` (SVG oficial, conforme memory/style/icons)
-- Variante: `strong` (laranja/accent — já mapeado)
-- Altura: `h-14` (56px, já aplicado)
-- Hover: `translateY(-1px)` + shadow via framer-motion `whileHover`
-- onClick: abre o `WhatsAppRouterModal` em vez de navegar direto
-- Microcopy abaixo: `<span>` com "Resposta mais rápida por WhatsApp." em `text-xs text-muted-foreground`
+**Botão:** "Enviar e pedir retorno" com variante `strong`
 
-**CTA Secundário** (era "Falar no WhatsApp"):
-- Texto: **"Solicitar visita técnica"**
-- Ícone: `MessageCircle` ou `CalendarCheck` (Lucide)
-- Variante: `outline`
-- `href="#contato"` (rola para seção de contato/formulário)
-- Sem modal
+**Comportamento ao submeter:**
+- Validação client-side com Zod (equipamento obrigatório, bairro obrigatório)
+- Monta mensagem formatada e abre WhatsApp (técnico) com os dados preenchidos via `whatsappLink()`
+- Toast de confirmação via `sonner`
+- Reset do form após envio
 
-**Imports**: adicionar `WhatsAppIcon`, `useState`; remover `MessageCircle` do CTA primário
+**Estilo:**
+- `Card` com fundo `bg-card`, borda, sombra leve
+- Título curto: "Solicite um retorno" em `text-lg font-semibold`
+- Subtítulo: "Sem compromisso. Respondemos em até 2h." em `text-sm text-muted-foreground`
+- Usa componentes do DS: `Card`, `Select`, `Input`, `Switch`, `Label`, `Button`
 
-### 4. `src/components/Navbar.tsx`
-- O botão "Solicitar visita técnica" da navbar também pode usar o mesmo modal para consistência (opcional — pode ser feito depois)
+### 2. `src/components/HeroSection.tsx`
 
-## Estrutura do modal
+- Substituir o placeholder de imagem (div `hero-image`, linhas 110-116) pelo `HeroQuickForm`
+- Remover `hidden lg:block` — o form aparece tanto no desktop (coluna 2) quanto no mobile (abaixo dos CTAs)
+- No mobile, o form aparece após a proof row com `mt-10`
+- Manter a classe `hero-image` para preservar a animação GSAP existente (`opacity:0, x:30`)
+- Import do novo componente
 
-```text
-┌──────────────────────────────────┐
-│  Com quem você quer falar?       │
-│                                  │
-│  ┌─────────────┐ ┌────────────┐ │
-│  │ 🔧 Técnico  │ │ 🏪 Loja    │ │
-│  │ Suporte e   │ │ Orçamentos │ │
-│  │ manutenção  │ │ e peças    │ │
-│  └─────────────┘ └────────────┘ │
-└──────────────────────────────────┘
-```
+### Nenhuma dependência nova — tudo já existe no projeto
 
-Cada card é um `<a target="_blank">` estilizado como botão, que fecha o modal ao clicar.
-
-## Detalhes técnicos
-
-- O `variant="strong"` já mapeia para `bg-accent` (spicy-paprika / laranja) com `text-accent-foreground` (branco) — contraste adequado
-- Hover com `whileHover={{ y: -1, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}` via framer-motion
-- O modal usa `Dialog` + `DialogContent` do Radix já instalado
-- Nenhuma dependência nova necessária
+| Arquivo | Mudança |
+|---|---|
+| `src/components/HeroQuickForm.tsx` | Novo componente de formulário rápido |
+| `src/components/HeroSection.tsx` | Substituir placeholder de imagem pelo form |
 
