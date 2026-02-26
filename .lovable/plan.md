@@ -1,29 +1,20 @@
 
 
-# MissionSection — Inspired Redesign
+# MissionSection — Clean Institutional Redesign
 
 ## What changes
 
-Redesign `src/components/MissionSection.tsx` adopting the provided "Aura" inspiration while respecting existing design system constraints.
+Simplify `src/components/MissionSection.tsx` from the current glassmorphic/aura style to a cleaner, institutional shadcn-inspired design matching the provided reference.
 
-### Key elements to adopt
-1. **Layout**: Keep 2-column grid but increase gap (`gap-16 lg:gap-24`) and add `items-center` alignment
-2. **Eyebrow badge**: Replace plain text label with glassmorphic pill badge (Wrench icon + "Sobre a Empresa" text, `bg-white/40 border border-[hsl(var(--pale-slate))]`)
-3. **Heading**: Upgrade to `text-4xl sm:text-5xl font-extrabold` with gradient text on "responsabilidade técnica" (`from-[hsl(var(--french-blue))] to-foreground`)
-4. **Feature list**: Replace simple border-l items with interactive hover cards — each card has icon (Target, Users, Clock), animated left-border indicator on hover (terracotta), icon color transition, and glassmorphic background (`bg-white/40 backdrop-blur-md`)
-5. **Right column image**: Add rounded container with gradient overlay (`from-onyx/60 via-transparent to-transparent`), thick white border (`border-[8px] border-white/40`), and hover zoom effect
-6. **Floating trust card**: Glassmorphic dark card positioned bottom-left of image with ShieldCheck icon in terracotta circle, "Autoridade Técnica" + "Serviço Garantido" text
-7. **Decorative accent**: Small rotated glassmorphic square top-right of image
-8. **Animation**: Replace GSAP hook with framer-motion `whileInView` stagger for left column items and blur-reveal for image
-9. **Subtle background glows**: French-blue and terracotta blurred circles behind the grid
-
-### Constraints maintained
-- `rounded-[6px]` for buttons/interactive cards; image container uses sharp edges per industrial style (adapted from `rounded-3xl` in inspiration to `rounded-[6px]`)
-- No `dangerouslySetInnerHTML` or noise textures
-- Use existing HSL CSS variables (`--onyx`, `--french-blue`, `--spicy-paprika`, `--pale-slate`)
-- Keep `id="sobre"` for nav anchor
-- Mobile-first: single column, trust card repositioned on small screens
+### Changes
+1. **Remove decorative elements**: Background glows, floating trust card, decorative accent square, animated left-border indicators, glassmorphic card backgrounds
+2. **Badge**: Replace glassmorphic pill with a clean shadcn-style badge — `rounded-[6px] border border-primary/20 bg-primary/10 text-primary`, no icon, just "SOBRE A EMPRESA" text
+3. **Heading**: Keep gradient text but simplify — `text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight`, no `font-extrabold`
+4. **Features list**: Replace interactive hover cards with simple left-border items — `pl-6` with a `before:` pseudo-element 3px french-blue left bar, no icons, no hover effects
+5. **Image**: Replace thick-bordered absolute-positioned image with a clean `aspect-square md:aspect-[4/3]` container, simple `border border-[hsl(var(--pale-slate))]`, `rounded-[6px]`, subtle hover scale `hover:scale-[1.02]`
+6. **Animation**: Keep framer-motion but simplify — just fade-in on left column, no stagger on individual items, simple opacity transition on image
+7. **Layout**: `gap-12 lg:gap-16` instead of `gap-16 lg:gap-24`
 
 ### File
-- `src/components/MissionSection.tsx` — full rewrite
+- `src/components/MissionSection.tsx` — rewrite
 
