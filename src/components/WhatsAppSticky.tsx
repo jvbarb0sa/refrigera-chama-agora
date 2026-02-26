@@ -4,7 +4,11 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function WhatsAppSticky() {
+interface WhatsAppStickyProps {
+  hidden?: boolean;
+}
+
+export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -21,6 +25,8 @@ export default function WhatsAppSticky() {
     const timer = setTimeout(() => setShowTooltip(false), 8000);
     return () => clearTimeout(timer);
   }, [showTooltip]);
+
+  if (hidden) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">

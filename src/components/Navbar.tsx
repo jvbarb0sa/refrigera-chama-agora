@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
-import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY } from "@/lib/constants";
+import { whatsappLink, phoneLink, PHONE_DISPLAY } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,9 +14,17 @@ const links = [
   { label: "Contato", href: "#contato", id: "contato" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  onMenuToggle?: (open: boolean) => void;
+}
+
+export default function Navbar({ onMenuToggle }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
+
+  useEffect(() => {
+    onMenuToggle?.(open);
+  }, [open, onMenuToggle]);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -115,22 +123,19 @@ export default function Navbar() {
               className="border-t border-border px-6 py-6 space-y-4 safe-bottom"
               style={{ paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
             >
-              <div className="flex items-center justify-between">
-                <a href={phoneLink()} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  <Phone size={16} className="shrink-0" />
-                  {PHONE_DISPLAY}
-                </a>
-                <span className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <WhatsAppIcon size={16} className="shrink-0" />
-                  {WHATSAPP_DISPLAY}
-                </span>
-              </div>
-              <Button asChild variant="strong" size="lg" className="w-full h-14 text-base">
-                <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
-                  <WhatsAppIcon size={20} />
-                  Chamar no WhatsApp
-                </a>
-              </Button>
+              <a href={phoneLink()} className="flex items-center justify-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Phone size={16} className="shrink-0" />
+                {PHONE_DISPLAY}
+              </a>
+              <a
+                href={whatsappLink("Olá, vim pelo site.")}
+                target="_blank"
+                rel="noopener"
+                className="flex items-center justify-center gap-2 w-full h-14 text-base bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-[10px] font-semibold transition-colors"
+              >
+                <WhatsAppIcon size={20} />
+                Chamar no WhatsApp
+              </a>
             </motion.div>
           </motion.div>
         )}
