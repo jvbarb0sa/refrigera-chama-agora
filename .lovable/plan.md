@@ -1,54 +1,27 @@
 
 
-# Redesign "Problemas que Resolvemos" — Diagnostic Grid
+# Remove all em dashes ("—") from visible text
 
-## Overview
+## Files to edit
 
-Rewrite `ProblemsSection.tsx` to a two-column layout with a structured 2×3 diagnostic grid on the right. Kill all wrench icons, replace the vertical list with a clean grid of bordered items.
+### 1. `src/components/ProblemsSection.tsx` (line 51)
+- Remove the `<span className="text-[#BF5D39] mr-2">—</span>` bullet prefix from each problem item
+- Replace with a simple `·` or remove entirely
 
-## File changed
+### 2. `src/components/ServiceAreaSection.tsx` (line 29)
+- Remove `<span className="text-[#BF5D39] mr-2">—</span>` bullet prefix from each tag
 
-### `src/components/ProblemsSection.tsx` — full rewrite
+### 3. `src/components/HeroSection.tsx` (line 52)
+- Change `garantia — em Três Lagoas e região.` → `garantia em Três Lagoas e região.`
 
-**Section wrapper**: White background (`bg-white`), `py-20`. Thin `border-t border-[#D7D7D9]` at top as separator. Remove `Wrench` import from lucide.
+### 4. `src/components/TestimonialsSection.tsx` (9 context strings)
+- Replace `—` with `·` in all testimonial context fields (e.g. `"Mercado Central — Câmara fria"` → `"Mercado Central · Câmara fria"`)
 
-**Layout**: `grid grid-cols-1 lg:grid-cols-5 gap-12 items-start`.
+### 5. `src/components/FinalCTASection.tsx` (3 occurrences)
+- Line 68: `Três Lagoas — MS` → `Três Lagoas, MS`
+- Line 73: `Três Lagoas — MS e região` → `Três Lagoas, MS e região`
+- Line 130: `Três Lagoas — MS e região` → `Três Lagoas, MS e região`
 
-**Left column** (`lg:col-span-2`):
-
-- Label: `PROBLEMAS QUE RESOLVEMOS` — `text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]`, no icon
-- Title: `Seu equipamento parou?` — `text-3xl font-bold text-[#163573] tracking-tight`
-- Description: same text — `text-[15px] text-[#4B5563] leading-[1.7] max-w-md mt-3`
-- Button: `mt-8`, rendered as `<a>` with `bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2` — sharp corners (no border-radius). WhatsApp icon left. Links to existing whatsapp message.
-
-**Right column** (`lg:col-span-3`):
-
-- Grid: `grid grid-cols-2 gap-x-8 gap-y-0`
-- Each of the 6 items:
-  - `border-t-2 border-[#D7D7D9] pt-5 pb-5` top border
-  - `hover:border-[#118CD9] transition-colors` on hover
-  - Content: `<span className="text-[#BF5D39] mr-2">—</span>` followed by problem text in `text-[15px] font-medium text-[#1a1a1a]`
-  - On hover: text color shifts to `hover:text-[#163573]`
-  - No icons whatsoever
-
-**Animation**: Keep `useGsapFade` with `.problem-item` selector and stagger `0.08`.
-
-### Visual structure (desktop)
-
-```text
-┌──────────────────────────────────────────────────────────┐
-│ ─────────────────── separator ───────────────────────── │
-│                                                          │
-│  PROBLEMAS QUE RESOLVEMOS   ─────────── │ ───────────── │
-│                             — Geladeira  │ — Freezer     │
-│  Seu equipamento parou?     ─────────── │ ───────────── │
-│                             — Câmara fr. │ — Ar inverter │
-│  Atendimento técnico...     ─────────── │ ───────────── │
-│                             — Máq. lavar │ — Probl. elét │
-│  [🟫 Agendar avaliação]                                  │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-```
-
-## No other files changed
+### 6. End-to-end verification
+- After edits, run a browser test scrolling through the full page to confirm no remaining "—" in visible text.
 
