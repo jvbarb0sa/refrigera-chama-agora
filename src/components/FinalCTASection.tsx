@@ -95,7 +95,19 @@ export default function FinalCTASection() {
             </div>
           </div>
           <p className="mt-10 text-center text-xs text-primary-foreground/30">
-            © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
+          © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
+          </p>
+          <p className="mt-2 text-center text-xs text-primary-foreground/30">
+            Desenvolvido por{" "}
+            <a
+              href="https://wa.me/message/FTL5XC4CK32JM1"
+              target="_blank"
+              rel="noopener"
+              className="underline hover:text-primary-foreground/50 transition-colors"
+            >
+              FCS-STUDIO
+            </a>
+            {" & Co."}
           </p>
         </div>
       </footer>
