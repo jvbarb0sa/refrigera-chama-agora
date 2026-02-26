@@ -1,58 +1,102 @@
 
 
-# WhatsApp icon oficial + Biblioteca de ícones
+# 5 correções: Navbar, Copy, Problemas, Prova Social, Footer
 
-## Diagnóstico
+## 1. Navbar — Remover telefone do desktop
 
-### Ícone WhatsApp
-Todos os botões e links de WhatsApp usam `MessageCircle` do lucide-react — um ícone genérico de balão de chat. O correto é usar o logo oficial do WhatsApp (SVG).
+**Arquivo: `src/components/Navbar.tsx`**
 
-Arquivos afetados:
-- `WhatsAppSticky.tsx` — botão flutuante verde
-- `Navbar.tsx` — CTA desktop + menu mobile (3 usos)
-- `HeroSection.tsx` — 2 botões CTA
-- `ProblemsSection.tsx` — botão CTA
-- `FinalCTASection.tsx` — 2 botões CTA + footer (1 info)
-- `CommerceSection.tsx` — botão CTA (não está no Index mas arquivo existe)
-- `FAQSection.tsx` — botão CTA (não está no Index mas arquivo existe)
+Remover linhas 42-45 (link de telefone com ícone Phone no menu desktop). O botão CTA já leva para o WhatsApp — o número é redundante ali.
 
-Total: ~12 ocorrências de `MessageCircle` representando WhatsApp.
-
-### SF Symbols
-SF Symbols é a biblioteca de ícones da Apple. Ela **não existe como pacote web/npm**. É proprietária do ecossistema Apple (iOS/macOS). Não há equivalente direto para React.
-
-**Porém**: o lucide-react já segue a mesma linguagem visual do SF Symbols — traços finos (stroke 2px), cantos arredondados, formas minimalistas. É a biblioteca web mais próxima do estilo SF Symbols. Trocar por outra (Heroicons, Phosphor, etc.) não traria benefício e exigiria refatorar todos os componentes UI (shadcn/ui depende de lucide-react internamente).
-
-**Recomendação**: Manter lucide-react (já é SF Symbol-like) e criar apenas o ícone customizado do WhatsApp.
+Manter o telefone no menu mobile (footer do menu) pois lá faz sentido como informação de contato.
 
 ---
 
-## Plano de execução
+## 2. Copy do Hero — Mais direta
 
-### 1. Criar componente `src/components/icons/WhatsAppIcon.tsx`
-SVG inline do logo oficial do WhatsApp. Props: `size`, `className`. Reutilizável em todo o projeto.
+**Arquivo: `src/components/HeroSection.tsx`**
 
-### 2. Substituir `MessageCircle` por `WhatsAppIcon` em todos os contextos de WhatsApp
+Copy atual do H1:
+> "Assistência técnica especializada em refrigeração comercial e residencial."
 
-| Arquivo | Onde | Mudança |
-|---|---|---|
-| `WhatsAppSticky.tsx` | Botão flutuante | `MessageCircle` → `WhatsAppIcon` |
-| `Navbar.tsx` | CTA desktop (linha 53) | `MessageCircle` → `WhatsAppIcon` |
-| `Navbar.tsx` | Info mobile (linha 110) | `MessageCircle` → `WhatsAppIcon` |
-| `Navbar.tsx` | Botão mobile (linha 115) | `MessageCircle` → `WhatsAppIcon` |
-| `HeroSection.tsx` | Botão 1 (linha 72) | `MessageCircle` → `WhatsAppIcon` |
-| `HeroSection.tsx` | Botão 2 (linha 89) | `MessageCircle` → `WhatsAppIcon` |
-| `ProblemsSection.tsx` | Botão CTA (linha 43) | `MessageCircle` → `WhatsAppIcon` |
-| `FinalCTASection.tsx` | Botão 1 (linha 30) | `MessageCircle` → `WhatsAppIcon` |
-| `FinalCTASection.tsx` | Botão 2 (linha 42) | `MessageCircle` → `WhatsAppIcon` |
-| `FinalCTASection.tsx` | Footer info (linha 59) | `MessageCircle` → `WhatsAppIcon` |
+Trocar para algo mais direto e humano:
+> "Seu equipamento parou? A gente resolve."
 
-### 3. Manter lucide-react
-- `Phone`, `Mail`, `Clock`, `MapPin`, `Check`, `Star`, `ChevronLeft`, `ChevronRight`, `Menu`, `X` — todos continuam do lucide-react
-- shadcn/ui components internamente usam lucide-react — não alterar
+Com o subtexto em destaque:
+> "Refrigeração comercial e residencial em Três Lagoas."
 
-### O que NÃO muda
-- Nenhuma outra biblioteca de ícones será instalada
-- Nenhum componente shadcn/ui será alterado
-- Lucide-react continua para todos os ícones que não são WhatsApp
+Subtítulo atual:
+> "Instalação e manutenção de geladeiras, freezers, câmaras frias e sistemas inverter com atendimento profissional e diagnóstico preciso."
+
+Trocar para:
+> "Geladeiras, freezers, câmaras frias e ar inverter. Diagnóstico técnico, orçamento claro e garantia de serviço."
+
+---
+
+## 3. ProblemsSection — Evolução da UI
+
+**Arquivo: `src/components/ProblemsSection.tsx`**
+
+Problemas atuais da UI:
+- Layout flat demais — lista simples com checks pequenos
+- Sem hierarquia visual entre os itens
+- Sem destaque visual, parece uma lista genérica
+- CTA solto no final
+
+Evolução proposta:
+- Fundo `bg-muted` em vez de `bg-background` para criar contraste com seções adjacentes
+- Cada problema vira um card compacto com borda e padding, em grid 2x3 (desktop) / 1 coluna (mobile)
+- Check em círculo preenchido (`bg-primary/10 text-primary rounded-full p-1`) para dar peso visual
+- Texto do problema em `font-medium` para legibilidade
+- Seção full-width (remover `max-w-2xl`) com header centralizado
+- CTA centralizado abaixo do grid
+
+---
+
+## 4. TestimonialsSection — Melhorar prova social
+
+**Arquivo: `src/components/TestimonialsSection.tsx`**
+
+Problemas atuais:
+- Barra de credibilidade (4.9, 50+, Atendimento local) está visualmente fraca — parece texto solto
+- Cards sem destaque visual suficiente
+- Aspas decorativas (`"`) ficam genéricas
+- Falta estrelas nos cards individuais
+
+Evolução proposta:
+
+**Barra de credibilidade:**
+- Envolver em card com borda e background (`bg-card border rounded-xl p-6`)
+- Separadores verticais entre os 3 blocos no desktop
+- Ícone de estrela preenchido (`fill-amber-400 text-amber-400`) para cor mais viva
+- Layout horizontal com `justify-between` no desktop
+
+**Cards de depoimento:**
+- Adicionar 5 estrelas preenchidas no topo de cada card (amarelo) para reforçar avaliação
+- Remover aspas decorativas (genéricas)
+- Aumentar padding e dar mais respiro
+- Avatar com borda sutil para destaque
+
+---
+
+## 5. Footer — FCS-STUDIO em branco, sem "& Co."
+
+**Arquivo: `src/components/FinalCTASection.tsx`**
+
+Linha 87-98: Trocar:
+- `text-primary-foreground/30` → `text-primary-foreground` no link FCS-STUDIO (branco puro)
+- Remover `{" & Co."}` da linha 97
+- Manter o restante do texto "Desenvolvido por" em `text-primary-foreground/30`
+
+---
+
+## Resumo de arquivos
+
+| Arquivo | Mudança |
+|---|---|
+| `Navbar.tsx` | Remover telefone do menu desktop |
+| `HeroSection.tsx` | Trocar copy do H1 e subtítulo |
+| `ProblemsSection.tsx` | Redesign: cards em grid, checks em círculo, layout full-width |
+| `TestimonialsSection.tsx` | Barra de credibilidade em card, estrelas nos depoimentos |
+| `FinalCTASection.tsx` | FCS-STUDIO branco, remover "& Co." |
 
