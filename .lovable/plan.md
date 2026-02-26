@@ -1,34 +1,26 @@
 
 
-# H1 "Dor do cliente" + SEO local
+# Bloco 3 — Subheadline com escopo técnico
 
 ## Mudança
 
 **Arquivo: `src/components/HeroSection.tsx`**
 
-### H1
-Substituir o H1 atual por:
+### Parágrafo de apoio (`.hero-sub`)
 
-**"Seu equipamento parou? A gente diagnostica e resolve com transparência."**
+Substituir o texto atual:
 
-A palavra "Três Lagoas" precisa aparecer para SEO local. Como o H1 escolhido não a contém, ela será inserida na primeira linha do parágrafo de apoio (que já contém o badge "Três Lagoas · MS" acima do H1, mas o parágrafo reforça para crawlers).
+> "Refrigeração comercial, industrial e residencial em Três Lagoas e região. Diagnóstico técnico, orçamento claro e garantia de serviço."
 
-### Parágrafo de apoio (sub)
-Trocar para:
+Por:
 
-**"Refrigeração comercial, industrial e residencial em Três Lagoas e região. Diagnóstico técnico, orçamento claro e garantia de serviço."**
+> "Atendemos camaras frias, freezers, geladeiras, ar-condicionado inverter e sistemas especiais (amonia/freon) com execucao segura e garantia — em Tres Lagoas e regiao."
 
-Isso garante "Três Lagoas" no primeiro `<p>` logo abaixo do `<h1>`, cobrindo a regra de SEO local.
-
-### Destaque visual
-Aplicar `text-primary` em "diagnostica e resolve" para manter o padrão de destaque que já existe no H1 atual.
-
-### Correção de bug
-O H1 atual tem um ponto duplicado (`.</span>.`) que será corrigido.
+O trecho "em Tres Lagoas e regiao" foi movido para o final da frase para manter o SEO local sem repetir o badge. Uma unica frase, sem lista, sem poluicao visual.
 
 ## Arquivos
 
-| Arquivo | Mudança |
+| Arquivo | Mudanca |
 |---|---|
-| `src/components/HeroSection.tsx` | Novo H1, novo parágrafo de apoio, correção do ponto duplicado |
+| `src/components/HeroSection.tsx` | Novo texto do paragrafo `.hero-sub` |
 
