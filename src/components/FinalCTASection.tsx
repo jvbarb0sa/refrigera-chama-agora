@@ -34,7 +34,7 @@ export default function FinalCTASection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 href={phoneLink()}
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors rounded-[12px]"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors rounded-[6px]"
               >
                 <Phone size={16} />
                 Ligar agora
@@ -45,7 +45,7 @@ export default function FinalCTASection() {
                 href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-[#BF5D39] text-white hover:bg-[#a84f30] transition-colors rounded-[12px]"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-[#BF5D39] text-white hover:bg-[#a84f30] transition-colors rounded-[6px]"
               >
                 <WhatsAppIcon size={16} />
                 Chamar no WhatsApp
