@@ -1,67 +1,38 @@
 
 
-# Redesign do Footer — Estilo referência
+# Melhorar UI do Footer (CTA + Footer)
 
-Baseado na imagem de referência, o footer será reestruturado em 3 blocos:
+## Problemas identificados
 
-## Layout
-
-```text
-┌─────────────────────────────────────────────────────────────────────┐
-│  CTA BANNER (bg escuro, destaque)                                   │
-│  "Equipamento parado? Não espere até amanhã."                       │
-│  Sub: "Cada hora sem refrigeração é perda..."                       │
-│                                    [Ligar agora] [Chamar no WhatsApp]│
-├─────────────────────────────────────────────────────────────────────┤
-│  FOOTER PRINCIPAL (bg escuro, mais claro que CTA)                   │
-│                                                                     │
-│  Logo + Nome            │ SERVIÇOS           │ EMPRESA              │
-│  "Refrigeração"         │ Refrig. Comercial  │ Diferenciais         │
-│  "TABOADO"              │ Câmaras Frias      │ Depoimentos          │
-│  Descrição curta        │ Climatização       │ Perguntas Frequentes │
-│                         │ Manut. Preventiva  │ Orçamento Grátis     │
-│  📍 Endereço            │ Urgência 24h       │                      │
-│  📞 Telefone            │                    │                      │
-│  ✉ Email                │                    │                      │
-│  🕐 Horários            │                    │                      │
-├─────────────────────────────────────────────────────────────────────┤
-│  © 2026 Refrigeração Taboado. Todos os direitos reservados.         │
-│                                    Três Lagoas — MS e região        │
-│  Desenvolvido por FCS-STUDIO                                        │
-└─────────────────────────────────────────────────────────────────────┘
-```
+1. **CTA Banner**: Padding excessivo, botões sem refinamento visual, layout genérico
+2. **Footer dark**: Grid sem respiro, ícones pequenos demais, hierarquia visual fraca entre colunas
+3. **Sub-footer**: Muito comprimido, crédito developer sem destaque
 
 ## Mudanças em `src/components/FinalCTASection.tsx`
 
-### CTA Banner (seção `#contato`)
-- H2: **"Equipamento parado? Não espere até amanhã."**
-- Sub: **"Cada hora sem refrigeração é perda de produto e cliente. Fale agora."**
-- CTA1 (outline): "Ligar agora" com ícone `Phone` → `phoneLink()`
-- CTA2 (strong/laranja): "Chamar no WhatsApp" com `WhatsAppIcon` → abre modal ou whatsappLink
-- Layout: texto à esquerda, botões à direita (desktop); empilhado (mobile)
-- Background: `bg-foreground` (escuro)
+### CTA Banner
+- Reduzir padding vertical para `py-16 md:py-20` (mais contido)
+- H2: aumentar para `text-4xl md:text-5xl` com `font-extrabold` para impacto
+- Linha "Não espere até amanhã." quebrada naturalmente com `block` no span accent
+- Sub texto com `text-base` e `max-w-md`
+- Botões: aumentar para `h-12` com `rounded-xl`, ícones `size={16}`; o botão outline ganha `border-border/60 bg-white shadow-sm` para parecer elevado; o strong mantém `variant="strong"` com `shadow-md`
+- Gap entre texto e botões: `gap-12` no desktop para dar respiro
 
 ### Footer principal
-- Grid de 3 colunas (desktop), 1 coluna (mobile)
-- **Coluna 1 — Identidade:**
-  - Nome "Refrigeração TABOADO" (TABOADO em accent/laranja)
-  - Descrição: "Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas — MS. Técnicos certificados, garantia documentada."
-  - Contatos com ícones: MapPin, Phone, Mail, Clock
-- **Coluna 2 — SERVIÇOS** (título em accent/laranja):
-  - Links âncora: Refrigeração Comercial, Câmaras Frias, Climatização, Manutenção Preventiva, Urgência 24h → `#servicos`
-- **Coluna 3 — EMPRESA** (título em accent/laranja):
-  - Links âncora: Diferenciais → `#diferenciais`, Depoimentos → `#depoimentos`, Perguntas Frequentes → `#faq`, Orçamento Grátis → `#contato`
+- Aumentar padding: `pt-20 pb-12`
+- Nome da marca: `text-xl font-extrabold` para mais presença
+- Descrição: `text-primary-foreground/40` (mais sutil) com `max-w-xs`
+- Ícones de contato: `size={15}` com `text-accent` (sem opacidade, mais visível)
+- Títulos de coluna (SERVIÇOS, EMPRESA): adicionar `after:` underline decorativa em accent com 24px de largura
+- Links: `text-primary-foreground/60` base (mais legível), `hover:text-accent` em vez de hover branco
+- Espaçamento entre items: `space-y-3` para mais respiro
 
-### Rodapé inferior
-- Separador sutil (`border-t border-primary-foreground/10`)
-- Esquerda: © 2026 + direitos reservados
-- Direita: "Três Lagoas — MS e região"
-- Centro abaixo: "Desenvolvido por FCS-STUDIO" (mantido)
+### Sub-footer
+- `mt-16 pt-8` para mais separação
+- Crédito FCS-STUDIO: `text-primary-foreground/30` com hover para `/50`
 
-### Detalhes técnicos
-- Arquivo único: `src/components/FinalCTASection.tsx`
-- Textos em `text-primary-foreground/50` (muted) e `text-primary-foreground` (destaque)
-- Títulos das colunas (SERVIÇOS, EMPRESA) em cor accent
-- Links com `hover:text-primary-foreground transition-colors`
-- Nenhuma dependência nova
+### Detalhe técnico
+- Arquivo único alterado: `src/components/FinalCTASection.tsx`
+- Todos os tokens do DS mantidos (semantic colors, font-family, radius)
+- Sem dependências novas
 
