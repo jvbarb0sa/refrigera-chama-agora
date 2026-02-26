@@ -13,9 +13,9 @@ export default function ServicesSection() {
   return (
     <section id="servicos" className="py-16 md:py-20">
       <div className="container">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-          Especialidades técnicas
-        </span>
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
+          <span className="text-xs font-semibold text-primary tracking-wide uppercase">Especialidades técnicas</span>
+        </div>
         <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
           Especialidades técnicas
         </h2>
