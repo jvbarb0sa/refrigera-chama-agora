@@ -1,18 +1,31 @@
 
 
-# Reduzir espaço entre Especialidades e Problemas
+# Diferenciais — Redesign premium com mais impacto visual
 
-O espaço excessivo vem do padding combinado das duas seções: `py-16 md:py-24` no ServicesSection + `py-20 md:py-28` no ProblemsSection. Juntos, criam ~52px (mobile) / ~104px (desktop) de espaço vazio entre elas.
+## Problema atual
+Cards planos e genéricos: ícone pequeno em caixa quadrada, título, texto. Sem hierarquia forte, sem elemento visual que chame atenção. Parece um template básico.
 
-## Mudanças
+## Novo design
 
-### `src/components/ServicesSection.tsx` (linha 14)
-- De: `py-16 md:py-24`
-- Para: `py-16 md:py-20` — reduzir padding inferior
+### Conceito: cards com borda lateral colorida + numeração grande decorativa
+Cada card ganha uma **borda esquerda de 4px em cor accent** (laranja) e um **número grande decorativo** (`text-5xl font-bold text-primary/5`) posicionado no canto superior direito como elemento gráfico de fundo. Isso cria camadas visuais e diferencia dos cards genéricos.
 
-### `src/components/ProblemsSection.tsx` (linha 20)
-- De: `py-20 md:py-28`
-- Para: `py-12 md:py-16` — reduzir padding superior significativamente
+### Estrutura de cada card
+- `relative overflow-hidden rounded-2xl bg-card border-l-4 border-accent p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300`
+- Número decorativo: `absolute top-4 right-6 text-6xl font-black text-primary/[0.04] select-none` ("01", "02", "03", "04")
+- Ícone: container `h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5` com ícone `size={28} text-primary`
+- Título: `text-xl font-bold mt-6` (maior e mais bold)
+- Descrição: `text-[15px] text-muted-foreground mt-3 leading-relaxed`
 
-Resultado: espaço entre seções cai de ~104px para ~72px no desktop e de ~72px para ~56px no mobile — ritmo mais compacto sem comprimir o conteúdo.
+### Header da seção — adicionar subtítulo
+- Manter tag + H2
+- Adicionar parágrafo: "Atendimento técnico com responsabilidade, transparência e foco no resultado."
+- `text-muted-foreground max-w-lg mx-auto mt-4`
+
+### Layout
+- Grid `grid-cols-1 md:grid-cols-2 gap-6` (gap maior)
+- Manter `bg-muted` e `py-20 md:py-28`
+
+## Arquivo alterado
+- `src/components/DifferentialsSection.tsx` — reescrita do layout dos cards e header
 
