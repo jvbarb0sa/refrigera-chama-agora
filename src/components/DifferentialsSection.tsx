@@ -10,43 +10,47 @@ const diffs: { icon: LucideIcon; title: string; desc: string }[] = [
 ];
 
 export default function DifferentialsSection() {
-  const ref = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.1 });
+  const ref = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.12 });
 
   return (
-    <section id="diferenciais" className="py-20 md:py-28 bg-muted">
+    <section id="diferenciais" className="py-20 md:py-28 bg-[#0b1622]">
       <div className="container">
-        <div className="text-center">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+        <div className="flex items-start gap-6 md:gap-10">
+          {/* Vertical rotated label */}
+          <span
+            className="hidden md:block text-xs font-medium uppercase tracking-[0.25em] text-white/60 shrink-0"
+            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          >
             Diferenciais
           </span>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-            Por que escolher a Refrigeração Taboado
-          </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto mt-4">
-            Atendimento técnico com responsabilidade, transparência e foco no resultado.
-          </p>
-        </div>
 
-        <div ref={ref} className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {diffs.map((d, i) => {
-            const Icon = d.icon;
-            const num = String(i + 1).padStart(2, "0");
-            return (
-              <div
-                key={d.title}
-                className="diff-card relative overflow-hidden rounded-2xl bg-card border-l-4 border-accent p-8 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <span className="absolute top-4 right-6 text-6xl font-black text-primary/[0.04] select-none">
-                  {num}
-                </span>
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-primary/5">
-                  <Icon size={28} className="text-primary" />
-                </div>
-                <h3 className="mt-6 text-xl font-bold text-foreground">{d.title}</h3>
-                <p className="mt-3 text-[15px] text-muted-foreground leading-relaxed">{d.desc}</p>
-              </div>
-            );
-          })}
+          <div className="flex-1">
+            {/* Title block — left-aligned */}
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-white md:text-3xl leading-tight tracking-tight">
+                Por que escolher a Refrigeração Taboado
+              </h2>
+              <p className="mt-3 text-sm text-[#9ca3af] max-w-md">
+                Atendimento técnico com responsabilidade, transparência e foco no resultado.
+              </p>
+            </div>
+
+            {/* Industrial grid */}
+            <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+              {diffs.map((d, i) => {
+                const Icon = d.icon;
+                const num = String(i + 1).padStart(2, "0");
+                return (
+                  <div key={d.title} className="diff-card border-t-2 border-[#4A9EE0] pt-6 py-8 px-2">
+                    <span className="text-sm font-light text-white/40">{num}</span>
+                    <Icon size={24} className="text-white mt-4" />
+                    <h3 className="mt-4 text-lg font-bold text-white">{d.title}</h3>
+                    <p className="mt-2 text-sm text-[#9ca3af] leading-relaxed line-clamp-2">{d.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
