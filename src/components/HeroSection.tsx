@@ -5,7 +5,6 @@ import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import heroBg from "@/assets/hero-bg-tech.png";
 
 const MotionDiv = motion.div;
 
@@ -33,26 +32,24 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative pt-16 md:pt-[104px] overflow-hidden">
-      {/* Full-cover background image */}
-      <div className="absolute inset-0 z-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-foreground/70" />
-      </div>
-      <div ref={heroRef} className="container relative z-10 py-20 md:py-32">
-        <div className="max-w-[720px]">
-            <span className="hero-badge inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/60 mb-6">
+    <section className="relative pt-16 md:pt-[104px] bg-background overflow-hidden">
+      <div ref={heroRef} className="container py-20 md:py-32">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:items-center">
+          <div className="lg:col-span-3 max-w-[720px]">
+            <span className="hero-badge inline-block text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground mb-6">
               Três Lagoas · MS
             </span>
 
-            <h1 className="hero-h1 text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]">
+            <h1 className="hero-h1 text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-[52px] md:leading-[1.1]">
               Seu equipamento parou? A gente{" "}
-              <span className="text-accent">diagnostica e resolve</span> com
+              <span className="text-primary">diagnostica e resolve</span> com
               transparência.
             </h1>
 
-            <p className="hero-sub mt-6 text-lg leading-relaxed text-white/70 max-w-md">
-              Atendimento especializado em refrigeração, climatização e elétrica com segurança e garantia.
+            <p className="hero-sub mt-6 text-lg leading-relaxed text-muted-foreground max-w-md">Seu equipamento parou? 
+A gente diagnostica e resolve com transparência.
+
+
             </p>
 
             <div className="hero-ctas mt-10 flex flex-col gap-1 sm:gap-2">
@@ -77,7 +74,7 @@ export default function HeroSection() {
                   asChild
                   variant="outline"
                   size="lg"
-                  className="text-base px-8 h-14 border-white/20 text-white hover:bg-white/10">
+                  className="text-base px-8 h-14">
 
                   <motion.a
                     whileHover={{ scale: 1.02 }}
@@ -89,25 +86,34 @@ export default function HeroSection() {
                   </motion.a>
                 </Button>
               </div>
-              <span className="text-xs text-white/50 pl-1">
+              <span className="text-xs text-muted-foreground pl-1">
                 Resposta mais rápida por WhatsApp.
               </span>
             </div>
 
-            <ul className="hero-proof mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-white/10 pt-6">
-              <li className="flex items-center gap-2 text-sm text-white/70">
+            <ul className="hero-proof mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-border pt-6">
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Star size={14} className="fill-amber-400 text-amber-400 shrink-0" />
                 4,9 no Google
               </li>
-              <li className="flex items-center gap-2 text-sm text-white/70">
-                <Users size={14} className="text-accent shrink-0" />
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Users size={14} className="text-primary shrink-0" />
                 50+ avaliações reais
               </li>
-              <li className="flex items-center gap-2 text-sm text-white/70">
-                <MapPin size={14} className="text-accent shrink-0" />
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin size={14} className="text-primary shrink-0" />
                 Atendimento local rápido
               </li>
             </ul>
+          </div>
+
+          <div className="hero-image lg:col-span-2 mt-10 lg:mt-0">
+            <img
+              src="/placeholder.svg"
+              alt="Refrigeração profissional em Três Lagoas"
+              className="w-full rounded-2xl shadow-md" />
+
+          </div>
         </div>
       </div>
 
