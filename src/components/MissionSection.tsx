@@ -49,7 +49,7 @@ export default function MissionSection() {
             </div>
           </div>
 
-          <div className="overflow-hidden border border-[#e5e7eb]">
+          <div className="overflow-hidden border border-[#e5e7eb] h-64 sm:h-80 lg:h-auto">
             <img
               src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop"
               alt="Técnico de refrigeração em ambiente de trabalho"

@@ -41,14 +41,14 @@ export default function ProblemsSection() {
           </div>
 
           {/* Right column — diagnostic grid */}
-          <div className="lg:col-span-3 grid grid-cols-2 gap-x-8 gap-y-0">
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-0">
             {problems.map((p) =>
             <div
               key={p}
               className="problem-item border-t-2 border-[#D7D7D9] pt-5 pb-5 hover:border-[#118CD9] transition-colors group">
 
                 <p className="text-[15px] font-medium text-[#1a1a1a] group-hover:text-[#163573] transition-colors">
-                  <span className="text-[#BF5D39] mr-2">—</span>
+                  <span className="text-[#BF5D39] mr-2">·</span>
                   {p}
                 </p>
               </div>

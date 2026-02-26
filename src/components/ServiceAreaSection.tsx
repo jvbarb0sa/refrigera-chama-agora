@@ -11,7 +11,7 @@ export default function ServiceAreaSection() {
       <div ref={ref} className="container">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
           {/* Left column */}
-          <div className="lg:col-span-2 flex flex-col justify-center pr-8 pb-8 lg:pb-0">
+          <div className="lg:col-span-2 flex flex-col justify-center pr-0 lg:pr-8 pb-8 lg:pb-0">
             <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]">
               Área de atendimento
             </span>
@@ -36,7 +36,7 @@ export default function ServiceAreaSection() {
               href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 text-[#118CD9] font-medium text-sm hover:underline w-fit"
+              className="mt-8 text-[#118CD9] font-medium text-sm hover:underline w-fit h-10 inline-flex items-center"
             >
               Fale com a gente →
             </a>
@@ -49,7 +49,8 @@ export default function ServiceAreaSection() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118889.7!2d-51.73!3d-20.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e4f4c4c4c4c1%3A0x1!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: 400 }}
+              style={{ border: 0, minHeight: 300 }}
+              className="lg:!min-h-[400px]"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

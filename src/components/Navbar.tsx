@@ -135,7 +135,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
                 href={whatsappLink("Olá, vim pelo site.")}
                 target="_blank"
                 rel="noopener"
-                className="flex items-center justify-center gap-2 w-full h-14 text-base bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-[10px] font-semibold transition-colors"
+                className="flex items-center justify-center gap-2 w-full h-14 text-base bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-[6px] font-semibold transition-colors"
               >
                 <WhatsAppIcon size={20} />
                 Chamar no WhatsApp
