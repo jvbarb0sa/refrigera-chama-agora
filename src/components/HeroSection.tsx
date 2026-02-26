@@ -1,4 +1,4 @@
-import { MessageCircle, Check } from "lucide-react";
+import { MessageCircle, Star, Users, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 import { motion } from "framer-motion";
@@ -7,10 +7,6 @@ import gsap from "gsap";
 
 const MotionDiv = motion.div;
 
-const proofs = [
-"Atendimento local",
-"Técnicos experientes",
-"Compromisso com qualidade"];
 
 
 export default function HeroSection() {
@@ -92,13 +88,19 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <ul className="hero-proof mt-12 flex flex-col gap-2 sm:flex-row sm:gap-6 border-t border-border pt-6">
-              {proofs.map((text) =>
-              <li key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Check size={14} className="text-primary shrink-0" />
-                  {text}
-                </li>
-              )}
+            <ul className="hero-proof mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-border pt-6">
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Star size={14} className="fill-amber-400 text-amber-400 shrink-0" />
+                4,9 no Google
+              </li>
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Users size={14} className="text-primary shrink-0" />
+                50+ avaliações reais
+              </li>
+              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+                <MapPin size={14} className="text-primary shrink-0" />
+                Atendimento local rápido
+              </li>
             </ul>
           </div>
 
