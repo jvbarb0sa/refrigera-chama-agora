@@ -1,5 +1,4 @@
 import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
-import HeroQuickForm from "@/components/HeroQuickForm";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -109,7 +108,11 @@ export default function HeroSection() {
           </div>
 
           <div className="hero-image lg:col-span-2 mt-10 lg:mt-0">
-            <HeroQuickForm />
+            <img
+              src="/placeholder.svg"
+              alt="Refrigeração profissional em Três Lagoas"
+              className="w-full rounded-2xl shadow-md"
+            />
           </div>
         </div>
       </div>
