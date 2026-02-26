@@ -1,28 +1,36 @@
 
 
-# FAQSection — Refined Redesign
+# Standardize All Section Badges to Hero Pattern
 
-## What changes
+## Reference (Hero badge)
+`inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50` with inner text `text-xs font-semibold text-primary tracking-wide uppercase`. No icon needed for other sections (icon is Hero-specific).
 
-Update `src/components/FAQSection.tsx` to adopt the improved copy and styling from the inspiration while keeping existing Radix Accordion and design system tokens.
+## Changes per file
 
-### Changes
-1. **FAQ answers**: Update all 5 answer texts to the longer, more detailed versions from the inspiration
-2. **Badge**: Switch from `Badge variant="outline"` to inline badge matching other sections — `rounded-[6px] border border-border bg-muted/50 px-3 py-1 text-sm font-semibold text-foreground`
-3. **Heading**: Bump to `text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight`
-4. **Left column layout**: Change from `gap-4` to `space-y-8` with `space-y-4` inner header group for better spacing
-5. **Grid**: Change from `lg:grid-cols-2` to `lg:grid-cols-[1fr_1.2fr]` with `gap-12 lg:gap-16`
-6. **Accordion trigger**: Change from `text-base font-semibold` to `text-lg font-bold` with `hover:text-primary hover:no-underline` transition
-7. **CTA button**: Keep existing WhatsAppIcon + Button component but swap to `variant="default"` with `size="lg"` for more presence
-8. **Animation**: Replace GSAP fade hook with framer-motion `whileInView` fade-in on the container
+### 1. `src/components/ServicesSection.tsx`
+Replace plain `<span>` eyebrow with badge div: `rounded-[6px] border border-border bg-muted/50 px-3 py-1.5`, text as `text-xs font-semibold text-primary tracking-wide uppercase`
 
-### Constraints
-- Keep Radix `Accordion` component (no custom state management)
-- Keep `whatsappLink` utility and `WhatsAppIcon`
-- Keep `id="faq"` anchor
-- `rounded-[6px]` on badge and buttons
-- No `dangerouslySetInnerHTML`
+### 2. `src/components/ProblemsSection.tsx`
+Replace plain `<span>` eyebrow with same badge pattern, remove hardcoded `text-[#118CD9]`
 
-### File
-- `src/components/FAQSection.tsx` — rewrite
+### 3. `src/components/DifferentialsSection.tsx`
+Dark variant — keep dark styling but standardize tracking: change `tracking-widest` to `tracking-wide`
+
+### 4. `src/components/MissionSection.tsx`
+Change `border-primary/20 bg-primary/10` to `border-border bg-muted/50`, add `tracking-wide uppercase`, change `py-0.5` to `py-1.5`
+
+### 5. `src/components/TestimonialsSection.tsx`
+Replace plain `<span>` eyebrow with badge div pattern
+
+### 6. `src/components/ServiceAreaSection.tsx`
+Change `border-primary/20 bg-primary/5` to `border-border bg-muted/50`, change `py-0.5` to `py-1.5`
+
+### 7. `src/components/FAQSection.tsx`
+Change `text-sm text-foreground` to `text-xs text-primary tracking-wide uppercase`, change `py-1` to `py-1.5`
+
+### 8. `src/components/CommerceSection.tsx`
+Replace plain `<span>` eyebrow with badge div pattern (using primary-foreground colors since it's on dark bg)
+
+## Files touched (8)
+All section components listed above — single-line badge replacement each.
 
