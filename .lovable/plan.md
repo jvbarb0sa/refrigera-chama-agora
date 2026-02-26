@@ -1,60 +1,32 @@
 
 
-# Replace all `font-bold` / `font-extrabold` / `font-black` with `font-semibold`
+# Add StatsSection below Hero
 
-Save to design system memory: "Bold (font-bold, font-extrabold, font-black) is never used. All weighted text uses font-semibold (600) maximum."
+## What
+Redesign `StatsSection` to match the reference screenshots and insert it right after the Hero in `Index.tsx`.
 
-## Files to change (13 total)
+## Data (adapted for this project)
+- `+500` / **Atendimentos realizados** / em Três Lagoas e região
+- `+8` / **Anos de experiência** / em refrigeração comercial
+- `100%` / **Cobertura local** / em Três Lagoas e região
+- `98%` / **Taxa de recomendação** / pelos nossos clientes
 
-### 1. `src/components/HeroSection.tsx`
-- Line 49: `font-bold` → `font-semibold` (h1)
-- Line 124: `font-bold` → `font-semibold` (Plantão badge)
-- Line 130: `font-bold` → `font-semibold` (h3 Urgência Técnica)
-- Line 145: `font-bold` → `font-semibold` (phone number)
+## Layout
+- **Desktop**: 4 columns with vertical dividers (`divide-x`), light gray background (`bg-muted/30`), values in large primary-colored text (~`text-5xl`), label in `font-semibold text-foreground`, sublabel in `text-sm text-muted-foreground`
+- **Mobile**: 2-column grid with horizontal divider between rows (matching the second screenshot), same typography hierarchy scaled down
 
-### 2. `src/components/Navbar.tsx`
-- Line 44: `font-bold` → `font-semibold` (logo)
+## Changes
 
-### 3. `src/components/FAQSection.tsx`
-- Line 37: `font-bold` → `font-semibold` (h2)
-- Line 63: `font-bold` → `font-semibold` (accordion triggers)
+### 1. `src/components/StatsSection.tsx` — rewrite
+- Add sublabel field to stats data
+- Value: `text-4xl md:text-5xl font-semibold text-primary`
+- Label: `text-sm font-semibold text-foreground mt-2`
+- Sublabel: `text-xs text-muted-foreground mt-1`
+- Section: `bg-muted/30 py-14 md:py-16 border-t border-b border-border`
+- Desktop: `md:grid-cols-4 md:divide-x md:divide-border`
+- Mobile: `grid-cols-2 gap-y-8` with a pseudo-divider between rows (border on items 3-4 via CSS or a separator element)
 
-### 4. `src/components/MissionSection.tsx`
-- Line 39: `font-bold` → `font-semibold` (h2)
-- Line 62: `font-bold` → `font-semibold` (feature h3s)
-
-### 5. `src/components/DifferentialsSection.tsx`
-- Line 40: `font-bold` → `font-semibold` (h2)
-- Line 71: `font-black` → `font-semibold` (watermark numbers)
-- Line 80: `font-bold` → `font-semibold` (card number)
-- h3 card titles (line ~83): `font-semibold` already — no change
-
-### 6. `src/components/ServiceAreaSection.tsx`
-- Line 29: `font-bold` → `font-semibold` (h2)
-
-### 7. `src/components/ProblemsSection.tsx`
-- Line 26: `font-bold` → `font-semibold` (h2)
-
-### 8. `src/components/TestimonialsSection.tsx`
-- Line 107: `font-bold` → `font-semibold` (4.9 stat)
-- Line 113: `font-bold` → `font-semibold` (50+ stat)
-
-### 9. `src/components/StatsSection.tsx`
-- Line 22: `font-bold` → `font-semibold` (stat values)
-
-### 10. `src/components/ProcessSection.tsx`
-- Line 49: `font-bold` → `font-semibold` (step numbers)
-
-### 11. `src/components/FinalCTASection.tsx`
-- Line 22: `font-bold` → `font-semibold` (h2)
-- Line 64: `font-extrabold` → `font-semibold` (footer logo)
-
-### 12. `src/components/ui/testimonials-columns-1.tsx`
-- Line 52: `font-bold` → `font-semibold` (avatar initials)
-
-### 13. `src/pages/NotFound.tsx`
-- Line 14: `font-bold` → `font-semibold` (404 heading)
-
-### Design system memory update
-Save: "Bold weights (font-bold, font-extrabold, font-black) are strictly prohibited. Maximum font weight is font-semibold (600) across all text elements."
+### 2. `src/pages/Index.tsx`
+- Import `StatsSection`
+- Place `<StatsSection />` immediately after `<HeroSection />`
 
