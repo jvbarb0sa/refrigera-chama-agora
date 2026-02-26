@@ -1,4 +1,5 @@
 import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
+import HeroQuickForm from "@/components/HeroQuickForm";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -107,12 +108,8 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <div className="hero-image hidden lg:col-span-2 lg:block">
-            <div className="aspect-[3/4] rounded-2xl bg-muted flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">
-                Foto do técnico em atendimento
-              </span>
-            </div>
+          <div className="hero-image lg:col-span-2 mt-10 lg:mt-0">
+            <HeroQuickForm />
           </div>
         </div>
       </div>
