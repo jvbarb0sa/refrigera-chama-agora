@@ -1,15 +1,11 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import StatsSection from "@/components/StatsSection";
-import MissionSection from "@/components/MissionSection";
-import DifferentialsSection from "@/components/DifferentialsSection";
-
-import ProcessSection from "@/components/ProcessSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProblemsSection from "@/components/ProblemsSection";
-import CommerceSection from "@/components/CommerceSection";
+import DifferentialsSection from "@/components/DifferentialsSection";
+import MissionSection from "@/components/MissionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
+import ServiceAreaSection from "@/components/ServiceAreaSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import WhatsAppSticky from "@/components/WhatsAppSticky";
 
@@ -19,16 +15,12 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <StatsSection />
-        <MissionSection />
-        <DifferentialsSection />
-        
-        <ProcessSection />
         <ServicesSection />
         <ProblemsSection />
-        <CommerceSection />
+        <DifferentialsSection />
+        <MissionSection />
         <TestimonialsSection />
-        <FAQSection />
+        <ServiceAreaSection />
         <FinalCTASection />
       </main>
       <WhatsAppSticky />

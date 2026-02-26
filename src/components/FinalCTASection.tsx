@@ -9,13 +9,13 @@ export default function FinalCTASection() {
 
   return (
     <>
-      <section id="contato" className="py-16 md:py-24 bg-background">
+      <section id="contato" className="py-16 md:py-24 bg-muted">
         <div ref={ref} className="container text-center max-w-2xl mx-auto">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[40px]">
             Precisa de assistência técnica especializada?
           </h2>
           <p className="mt-4 text-muted-foreground max-w-md mx-auto">
-            Atendimento profissional em refrigeração e elétrica.
+            Entre em contato e solicite atendimento.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">

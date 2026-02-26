@@ -1,17 +1,17 @@
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const diffs = [
-  { num: "01", title: "Atendimento transparente", desc: "Você sabe o que tem antes de aprovar. Diagnóstico detalhado, sem peça trocada sem necessidade." },
-  { num: "02", title: "Diagnóstico técnico preciso", desc: "Identificamos a causa real do problema. Sem tentativa e erro, sem cobranças desnecessárias." },
-  { num: "03", title: "Segurança na execução", desc: "Garantia por escrito em todo serviço. Se der problema no prazo, voltamos sem custo." },
-  { num: "04", title: "Compromisso com prazo", desc: "Atendimento no mesmo dia para urgências comerciais. Priorizamos quem não pode parar." },
+  { num: "01", title: "Transparência no atendimento", desc: "Diagnóstico claro e explicação técnica do serviço." },
+  { num: "02", title: "Segurança na execução", desc: "Procedimentos adequados e responsabilidade técnica." },
+  { num: "03", title: "Qualidade no serviço", desc: "Peças adequadas e manutenção eficiente." },
+  { num: "04", title: "Compromisso com o cliente", desc: "Pontualidade e respeito ao prazo." },
 ];
 
 export default function DifferentialsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".diff-item", stagger: 0.1 });
 
   return (
-    <section className="py-16 md:py-24 bg-muted">
+    <section id="diferenciais" className="py-16 md:py-24 bg-muted">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Diferenciais
