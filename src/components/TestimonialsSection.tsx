@@ -88,9 +88,9 @@ export default function TestimonialsSection() {
     <section id="provas" className="py-20 md:py-28 border-accent-foreground bg-primary-foreground" aria-label="Depoimentos de clientes">
       <div ref={sectionRef} className="container">
         <div className="text-center">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Prova social
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50 mx-auto">
+            <span className="text-xs font-semibold text-primary tracking-wide uppercase">Prova social</span>
+          </div>
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
             Quem já confiou no nosso trabalho
           </h2>

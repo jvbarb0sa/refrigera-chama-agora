@@ -9,9 +9,9 @@ export default function CommerceSection() {
     <section id="comercial" className="py-20 md:py-32 bg-primary">
       <div className="container">
         <div className="max-w-2xl">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary-foreground/60">
-            Atendimento comercial
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-primary-foreground/20 bg-primary-foreground/10">
+            <span className="text-xs font-semibold text-primary-foreground tracking-wide uppercase">Atendimento comercial</span>
+          </div>
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-primary-foreground md:text-[40px]">
             Comércio não pode parar.
           </h2>

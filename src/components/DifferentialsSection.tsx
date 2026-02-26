@@ -32,7 +32,7 @@ export default function DifferentialsSection() {
           <div className="lg:col-span-4 flex flex-col items-start">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[6px] border border-white/10 bg-white/5 backdrop-blur-md mb-6">
               <span className="w-2 h-2 rounded-full bg-[hsl(var(--spicy-paprika))] animate-pulse" />
-              <span className="text-xs font-semibold text-[hsl(var(--pale-slate))] tracking-widest uppercase">
+              <span className="text-xs font-semibold text-[hsl(var(--pale-slate))] tracking-wide uppercase">
                 Diferenciais
               </span>
             </div>

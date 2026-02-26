@@ -31,8 +31,8 @@ export default function FAQSection() {
           {/* Left column */}
           <div className="flex flex-col space-y-8 lg:sticky lg:top-24 lg:self-start">
             <div className="space-y-4">
-              <div className="inline-flex items-center rounded-[6px] border border-border bg-muted/50 px-3 py-1 text-sm font-semibold text-foreground">
-                Dúvidas
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
+                <span className="text-xs font-semibold text-primary tracking-wide uppercase">Dúvidas</span>
               </div>
               <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
                 Perguntas frequentes

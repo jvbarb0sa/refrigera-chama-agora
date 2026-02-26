@@ -20,9 +20,9 @@ export default function ProblemsSection() {
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
           {/* Left column */}
           <div className="lg:col-span-2 problem-item">
-            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]">
-              Problemas que resolvemos
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
+              <span className="text-xs font-semibold text-primary tracking-wide uppercase">Problemas que resolvemos</span>
+            </div>
             <h2 className="mt-3 text-3xl font-bold text-[#163573] tracking-tight">
               Seu equipamento parou?
             </h2>

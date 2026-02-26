@@ -32,8 +32,8 @@ export default function MissionSection() {
             className="flex flex-col justify-center space-y-8"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center rounded-[6px] border border-primary/20 bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary">
-                SOBRE A EMPRESA
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
+                <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
               </div>
 
               <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
