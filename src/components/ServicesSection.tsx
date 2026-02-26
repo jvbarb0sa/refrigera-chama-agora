@@ -11,7 +11,7 @@ export default function ServicesSection() {
   const gridRef = useGsapFade<HTMLDivElement>({ children: ".bento-card", stagger: 0.08 });
 
   return (
-    <section id="servicos" className="py-16 md:py-24">
+    <section id="servicos" className="py-16 md:py-20">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Especialidades técnicas

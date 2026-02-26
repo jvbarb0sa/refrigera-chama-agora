@@ -17,7 +17,7 @@ export default function ProblemsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
 
   return (
-    <section className="py-20 md:py-28 bg-background">
+    <section className="py-12 md:py-16 bg-background">
       <div className="container">
         <div ref={ref} className="grid lg:grid-cols-2 items-center gap-12">
           {/* Left column */}
