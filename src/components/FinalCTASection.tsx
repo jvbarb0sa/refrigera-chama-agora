@@ -127,20 +127,19 @@ export default function FinalCTASection() {
               © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
             </p>
             <p className="text-xs text-primary-foreground/30">
+              Desenvolvido por{" "}
+              <a
+                href="https://wa.me/message/FTL5XC4CK32JM1"
+                target="_blank"
+                rel="noopener"
+                className="text-primary-foreground underline hover:text-primary-foreground/80 transition-colors">
+                FCS-STUDIO
+              </a>
+            </p>
+            <p className="text-xs text-primary-foreground/30">
               Três Lagoas, MS e região
             </p>
           </div>
-          <p className="mt-4 text-center text-xs text-primary-foreground/25">
-            Desenvolvido por{" "}
-            <a
-              href="https://wa.me/message/FTL5XC4CK32JM1"
-              target="_blank"
-              rel="noopener"
-              className="text-primary-foreground/30 underline hover:text-primary-foreground/50 transition-colors">
-
-              FCS-STUDIO
-            </a>
-          </p>
         </div>
       </footer>
     </>);
