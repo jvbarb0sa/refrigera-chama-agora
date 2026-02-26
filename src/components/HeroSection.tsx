@@ -8,9 +8,9 @@ import gsap from "gsap";
 const MotionDiv = motion.div;
 
 const proofs = [
-  "Atendimento em Três Lagoas e região",
-  "Técnicos com experiência comprovada",
-  "Peças e componentes de qualidade",
+  "Atendimento local",
+  "Técnicos experientes",
+  "Compromisso com qualidade",
 ];
 
 export default function HeroSection() {
@@ -52,7 +52,7 @@ export default function HeroSection() {
 
             <p className="hero-sub mt-6 text-lg leading-relaxed text-muted-foreground max-w-md">
               Instalação e manutenção de geladeiras, freezers, câmaras frias e
-              sistemas inverter com atendimento rápido e técnico certificado.
+              sistemas inverter com atendimento profissional e diagnóstico preciso.
             </p>
 
             <div className="hero-ctas mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">

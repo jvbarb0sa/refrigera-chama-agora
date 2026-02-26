@@ -9,6 +9,7 @@ const problems = [
   "Câmara fria com oscilação",
   "Ar inverter com erro na placa",
   "Máquina de lavar com defeito",
+  "Problemas elétricos em sistemas",
 ];
 
 export default function ProblemsSection() {
@@ -17,15 +18,18 @@ export default function ProblemsSection() {
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container">
-        <div ref={listRef} className="max-w-xl">
+        <div ref={listRef} className="max-w-2xl">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
             Problemas que resolvemos
           </span>
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
             Seu equipamento parou?
           </h2>
+          <p className="mt-2 text-muted-foreground">
+            Atendimento técnico para falhas comuns em refrigeração e elétrica.
+          </p>
 
-          <ul className="mt-10 space-y-4">
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
             {problems.map((p) => (
               <li key={p} className="problem-item flex items-center gap-3">
                 <Check size={14} className="shrink-0 text-primary" />

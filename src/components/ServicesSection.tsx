@@ -1,7 +1,7 @@
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const services = [
-  { num: "01", title: "Refrigeração Comercial", desc: "Câmaras frias, balcões expositores, sistemas para mercados e conveniências." },
+  { num: "01", title: "Refrigeração Comercial", desc: "Câmaras frias, balcões expositores, sistemas para mercados, conveniências e indústrias alimentícias." },
   { num: "02", title: "Refrigeração Residencial", desc: "Geladeiras, freezers e equipamentos inverter." },
   { num: "03", title: "Máquinas e Eletrodomésticos", desc: "Lavadoras, micro-ondas e máquinas de gelo." },
   { num: "04", title: "Sistemas Especiais", desc: "Sistemas em amônia, freon, painéis elétricos e automação." },

@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
               Prova social
             </span>
             <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-              Quem confia, recomenda.
+              Quem já confiou no nosso trabalho
             </h2>
           </div>
           <div className="hidden sm:flex gap-2">

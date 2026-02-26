@@ -1,24 +1,38 @@
 import { MapPin } from "lucide-react";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 export default function ServiceAreaSection() {
+  const ref = useGsapFade<HTMLDivElement>();
+
   return (
-    <section className="py-8 md:py-10 border-t border-border">
-      <div className="container flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="text-lg font-semibold text-foreground">Três Lagoas e região</h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Atendemos Três Lagoas, Ilha Solteira, Selvíria, Brasilândia e cidades próximas.
-          </p>
+    <section className="py-16 md:py-24">
+      <div ref={ref} className="container">
+        <div className="flex items-center gap-2 mb-3">
+          <MapPin size={18} className="text-primary" />
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+            Área de atendimento
+          </span>
         </div>
-        <a
-          href="https://www.google.com/maps/search/Refrigera%C3%A7%C3%A3o+Taboado+Tr%C3%AAs+Lagoas+MS"
-          target="_blank"
-          rel="noopener"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-foreground transition-colors shrink-0"
-        >
-          <MapPin size={16} />
-          Ver no mapa →
-        </a>
+        <h2 className="text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+          Atendimento local
+        </h2>
+        <p className="mt-2 text-muted-foreground max-w-lg">
+          Atuamos em Três Lagoas e região, com atendimento para comércios,
+          indústrias alimentícias e residências.
+        </p>
+
+        <div className="mt-10 rounded-xl overflow-hidden border border-border">
+          <iframe
+            title="Localização Três Lagoas"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118889.7!2d-51.73!3d-20.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e4f4c4c4c4c1%3A0x1!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1"
+            width="100%"
+            height="360"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </div>
     </section>
   );

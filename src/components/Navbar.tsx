@@ -6,9 +6,9 @@ import { useActiveSection } from "@/hooks/use-active-section";
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { label: "Serviços", href: "#servicos", id: "servicos" },
-  { label: "Comercial", href: "#comercial", id: "comercial" },
-  { label: "Como funciona", href: "#processo", id: "processo" },
+  { label: "Especialidades", href: "#servicos", id: "servicos" },
+  { label: "Diferenciais", href: "#diferenciais", id: "diferenciais" },
+  { label: "Sobre", href: "#sobre", id: "sobre" },
   { label: "Provas", href: "#provas", id: "provas" },
   { label: "Contato", href: "#contato", id: "contato" },
 ];
@@ -47,7 +47,7 @@ export default function Navbar() {
               rel="noopener"
             >
               <MessageCircle size={16} />
-              WhatsApp
+              Solicitar atendimento
             </motion.a>
           </Button>
         </div>
