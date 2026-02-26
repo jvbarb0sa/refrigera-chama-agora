@@ -1,55 +1,55 @@
 
 
-# MissionSection — Sobre a empresa, institucional e direto
+# TestimonialsSection — Prova social completa
 
 ## Diagnóstico
 
-A seção atual tem:
-- Label "Nossa missão" e H2 "Equipamentos param. Negócios não podem." — tom de campanha, não institucional
-- 3 pilares (Diagnóstico preciso, Atendimento rápido, Garantia formal) — conteúdo que agora já está coberto pela nova DifferentialsSection
-- Marquee de serviços — conteúdo já coberto pela ServicesSection
-- Resultado: seção redundante e sem identidade própria
+A seção atual tem depoimentos no carousel, mas falta peso de prova social. Problemas:
+- Sem indicador de avaliação (estrelas, nota do Google)
+- Sem selo de confiança ("Atendimento local", região)
+- Sem resumo numérico visível (quantidade de avaliações, nota média)
+- Label "Quem já chamou" e H2 "Trabalho limpo, orçamento claro, garantia." — genéricos
+- Cards funcionais mas sem diferenciação visual de credibilidade
 
 ## Mudança
 
-Transformar em bloco "Sobre a empresa" — institucional, sóbrio, sem pilares nem marquee.
+Adicionar bloco de credibilidade acima do carousel e selo de atendimento local. Manter o carousel existente intacto.
 
-### Header
-- Label: `SOBRE A EMPRESA`
-- H2: `Profissionalismo e responsabilidade técnica`
+### Header atualizado
+- Label: `PROVA SOCIAL`
+- H2: `Quem confia, recomenda.`
 
-### Texto
-Parágrafo único, direto:
+### Bloco de credibilidade (acima do carousel, abaixo do header)
 
-> A Refrigeração Taboado atua com foco em qualidade, transparência e segurança nos serviços prestados. Trabalhamos com diagnóstico preciso, peças adequadas e compromisso com o cliente.
+Faixa horizontal com 3 indicadores lado a lado (`flex gap-8`):
 
-`text-muted-foreground`, `max-w-lg`, `leading-relaxed`.
+1. **Nota Google** — `★ 4.9` em `text-2xl font-bold` + "no Google" em `text-muted-foreground text-sm`
+2. **Avaliações** — `50+` em `text-2xl font-bold` + "avaliações reais" em `text-muted-foreground text-sm`
+3. **Selo** — ícone `MapPin` + "Atendimento local — Três Lagoas e região" em `text-sm font-medium`
 
-### Removidos
-- 3 pilares (redundante com DifferentialsSection)
-- Marquee de serviços (redundante com ServicesSection)
-- H2 "Equipamentos param. Negócios não podem."
-- Subtítulo antigo
+Sem card, sem borda — apenas texto alinhado horizontalmente. Em mobile, empilha vertical (`flex-col`).
 
-### Mantido
-- GSAP fade (no container, sem stagger — não há mais children)
-- Posição no Index.tsx
-- Padding `py-16 md:py-24`
+### Carousel
+Mantido como está — mesmos depoimentos, mesma lógica Embla, mesmo autoplay.
+
+### Resultado visual
 
 ```text
-SOBRE A EMPRESA
+PROVA SOCIAL
 
-Profissionalismo e responsabilidade técnica
+Quem confia, recomenda.
 
-A Refrigeração Taboado atua com foco em qualidade,
-transparência e segurança nos serviços prestados.
-Trabalhamos com diagnóstico preciso, peças adequadas
-e compromisso com o cliente.
+★ 4.9          50+                  📍 Atendimento local
+no Google      avaliações reais     Três Lagoas e região
+
+┌─────────┐ ┌─────────┐ ┌─────────┐
+│ Card 1  │ │ Card 2  │ │ Card 3  │  ← carousel existente
+└─────────┘ └─────────┘ └─────────┘
 ```
 
 ## Arquivo editado
 
 | Arquivo | O que muda |
 |---|---|
-| `src/components/MissionSection.tsx` | Reescrita: remove pilares e marquee, substitui por texto institucional único |
+| `src/components/TestimonialsSection.tsx` | Header atualizado + bloco de credibilidade com nota Google, contagem de avaliações e selo de atendimento local |
 
