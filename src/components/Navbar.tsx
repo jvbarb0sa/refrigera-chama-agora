@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,18 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const active = useActiveSection();
+
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -71,22 +83,25 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden"
+            style={{ height: "calc(100dvh - 4rem)" }}
           >
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-              className="flex flex-1 flex-col items-center justify-center gap-6"
+              transition={{ delay: 0.08, duration: 0.3 }}
+              className="flex flex-1 flex-col items-center justify-center gap-8 px-6"
             >
               {links.map((l, i) => (
                 <motion.a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
-                  className="text-xl font-semibold text-foreground"
+                  transition={{ delay: 0.08 + i * 0.06, duration: 0.3 }}
+                  className={`text-2xl font-semibold transition-colors ${
+                    active === l.id ? "text-primary" : "text-foreground"
+                  }`}
                 >
                   {l.label}
                 </motion.a>
@@ -97,17 +112,20 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.3 }}
-              className="border-t border-border p-6 space-y-3"
+              className="border-t border-border px-6 py-6 space-y-4 safe-bottom"
+              style={{ paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))" }}
             >
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Phone size={14} className="shrink-0" />
-                <a href={phoneLink()} className="hover:text-foreground">{PHONE_DISPLAY}</a>
+              <div className="flex items-center justify-between">
+                <a href={phoneLink()} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Phone size={16} className="shrink-0" />
+                  {PHONE_DISPLAY}
+                </a>
+                <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <WhatsAppIcon size={16} className="shrink-0" />
+                  {WHATSAPP_DISPLAY}
+                </span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <WhatsAppIcon size={14} className="shrink-0" />
-                <span>{WHATSAPP_DISPLAY}</span>
-              </div>
-              <Button asChild variant="strong" size="lg" className="w-full mt-2">
+              <Button asChild variant="strong" size="lg" className="w-full h-14 text-base">
                 <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
                   <WhatsAppIcon size={20} />
                   Chamar no WhatsApp
