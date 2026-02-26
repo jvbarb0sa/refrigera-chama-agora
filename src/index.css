@@ -6,9 +6,11 @@
   :root {
     /* Core palette (HSL) */
     --onyx: 210 5% 8%;
-    --french-blue: 221 67% 32%;
-    --spicy-paprika: 18 63% 54%;
-    --pale-slate: 222 11% 81%;
+    --french-blue: 220 66% 32%;
+    --french-blue-dark: 219 67% 26%;
+    --cerulean: 203 85% 45%;
+    --spicy-paprika: 16 54% 48%;
+    --pale-slate: 240 2% 84%;
     --alabaster-grey: 240 3% 94%;
 
     /* Semantic: Text */
@@ -26,7 +28,7 @@
     --popover-foreground: var(--onyx);
 
     /* Semantic: Actions */
-    --accent: var(--spicy-paprika);
+    --accent: var(--cerulean);
     --accent-foreground: 0 0% 100%;
     --secondary: var(--alabaster-grey);
     --secondary-foreground: var(--onyx);
@@ -36,7 +38,7 @@
     /* Semantic: Borders */
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: var(--spicy-paprika);
+    --ring: var(--cerulean);
 
     --radius: 0.75rem;
 
