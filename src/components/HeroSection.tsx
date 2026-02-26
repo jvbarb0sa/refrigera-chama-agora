@@ -1,3 +1,4 @@
+import heroBg from "@/assets/hero-bg.jpg";
 import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -107,12 +108,15 @@ export default function HeroSection() {
             </ul>
           </div>
 
-          <div className="hero-image lg:col-span-2 mt-10 lg:mt-0">
-            <img
-              src="/placeholder.svg"
-              alt="Refrigeração profissional em Três Lagoas"
-              className="w-full rounded-2xl shadow-md"
-            />
+          <div className="hero-image lg:col-span-2 mt-10 lg:mt-0 relative">
+            <div className="relative overflow-hidden rounded-2xl shadow-lg">
+              <img
+                src={heroBg}
+                alt="Técnico de refrigeração profissional em Três Lagoas"
+                className="w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-primary/5 mix-blend-multiply" />
+            </div>
           </div>
         </div>
       </div>
