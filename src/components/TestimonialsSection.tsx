@@ -1,7 +1,8 @@
-import { MapPin, Star, Quote } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
-const row1 = [
+const testimonials = [
   {
     name: "Marcos",
     context: "Mercado Central — Câmara fria",
@@ -38,9 +39,6 @@ const row1 = [
     text: "Manutenção preventiva todo mês. Nunca mais tive problema com o balcão. Serviço sério.",
     initials: "JP",
   },
-];
-
-const row2 = [
   {
     name: "Fernanda L.",
     context: "Restaurante — Ar-condicionado",
@@ -79,59 +77,9 @@ const row2 = [
   },
 ];
 
-const FiveStars = () => (
-  <div className="flex gap-0.5">
-    {Array.from({ length: 5 }).map((_, i) => (
-      <Star key={i} size={13} className="fill-amber-400 text-amber-400" />
-    ))}
-  </div>
-);
-
-interface TestimonialCardProps {
-  name: string;
-  context: string;
-  text: string;
-  initials: string;
-}
-
-function TestimonialCard({ name, context, text, initials }: TestimonialCardProps) {
-  return (
-    <div className="min-w-[340px] flex-shrink-0 rounded-2xl bg-card p-7 shadow-md transition-shadow duration-300 hover:shadow-lg">
-      <div className="flex items-center justify-between">
-        <FiveStars />
-        <Quote size={20} className="text-primary/15" />
-      </div>
-      <p className="mt-4 text-[15px] leading-relaxed text-foreground">{text}</p>
-      <div className="mt-6 flex items-center gap-3 border-t border-border/30 pt-5">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-xs font-bold text-primary-foreground">
-          {initials}
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-foreground">{name}</p>
-          <p className="text-xs text-muted-foreground">{context}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function MarqueeRow({ items, reverse = false }: { items: typeof row1; reverse?: boolean }) {
-  return (
-    <div className="relative overflow-hidden">
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-muted to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-muted to-transparent" />
-
-      <div
-        className={`marquee-track flex gap-5 ${reverse ? "animate-marquee-slow-reverse" : "animate-marquee-slow"}`}
-        style={{ width: "max-content" }}
-      >
-        {[...items, ...items].map((t, i) => (
-          <TestimonialCard key={`${t.initials}-${i}`} {...t} />
-        ))}
-      </div>
-    </div>
-  );
-}
+const firstColumn = testimonials.slice(0, 4);
+const secondColumn = testimonials.slice(4, 8);
+const thirdColumn = testimonials.slice(8, 12);
 
 export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
@@ -151,7 +99,7 @@ export default function TestimonialsSection() {
           </p>
         </div>
 
-        {/* Credibilidade — inline */}
+        {/* Credibilidade */}
         <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center justify-center gap-8 sm:flex-row">
           <div className="flex items-center gap-3">
             <Star size={28} className="fill-amber-400 text-amber-400" />
@@ -176,10 +124,15 @@ export default function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Marquee rows — full width */}
-      <div className="mt-12 space-y-5">
-        <MarqueeRow items={row1} />
-        <MarqueeRow items={row2} reverse />
+      {/* Colunas verticais animadas */}
+      <div className="relative mt-12 flex justify-center gap-6 overflow-hidden px-4" style={{ maxHeight: 600 }}>
+        {/* Máscara gradiente top/bottom */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-muted to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-muted to-transparent" />
+
+        <TestimonialsColumn testimonials={firstColumn} duration={15} className="max-w-[340px] flex-1" />
+        <TestimonialsColumn testimonials={secondColumn} duration={20} className="max-w-[340px] flex-1" />
+        <TestimonialsColumn testimonials={thirdColumn} duration={17} className="hidden max-w-[340px] flex-1 md:block" />
       </div>
     </section>
   );
