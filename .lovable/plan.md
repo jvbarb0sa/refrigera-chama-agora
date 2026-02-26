@@ -1,16 +1,14 @@
 
 
-# TopBar — Fundo azul claro
+# Button border-radius → 12px
 
 ## Mudança
 
-Arquivo: `src/components/TopBar.tsx`
+Arquivo: `src/components/ui/button.tsx`
 
-- Trocar `bg-primary/5` por `bg-primary` (French Blue sólido)
-- Texto: `text-primary-foreground` (branco) em vez de `text-muted-foreground`
-- Separadores: `text-primary-foreground/30` em vez de `text-border`
-- Ícones: herdam a cor branca do texto
-- Remover `border-b border-border` (desnecessário com fundo sólido)
+- Base CVA: trocar `rounded-[10px]` por `rounded-[12px]` (linha 7)
+- Size `sm`: trocar `rounded-[10px]` por `rounded-[12px]` (linha 21)
+- Size `lg`: trocar `rounded-[10px]` por `rounded-[12px]` (linha 22)
 
-Resultado: barra superior com fundo azul French Blue (#1B3D89) e texto branco, limpa e institucional.
+Resultado: todos os botões do sistema passam a ter `border-radius: 12px`.
 
