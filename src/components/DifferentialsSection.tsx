@@ -37,7 +37,7 @@ export default function DifferentialsSection() {
               </span>
             </div>
 
-            <h2 className="text-3xl lg:text-4xl font-bold text-white leading-tight mb-6">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white leading-tight mb-6">
               Por que escolher a{" "}
               <span className="text-[hsl(var(--pale-slate))]">Refrigeração Taboado?</span>
             </h2>
@@ -68,7 +68,7 @@ export default function DifferentialsSection() {
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[hsl(var(--spicy-paprika))]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   {/* Watermark */}
-                  <span className="absolute -bottom-6 -right-2 text-[8rem] font-black text-white/[0.03] group-hover:text-white/[0.06] transition-colors duration-500 pointer-events-none select-none leading-none">
+                  <span className="absolute -bottom-6 -right-2 text-[8rem] font-semibold text-white/[0.03] group-hover:text-white/[0.06] transition-colors duration-500 pointer-events-none select-none leading-none">
                     {d.id}
                   </span>
 
@@ -77,7 +77,7 @@ export default function DifferentialsSection() {
                       <div className="w-12 h-12 rounded-[6px] bg-[hsl(var(--french-blue))]/40 border border-white/10 flex items-center justify-center text-[hsl(var(--spicy-paprika))] group-hover:scale-110 group-hover:bg-[hsl(var(--spicy-paprika))]/20 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <span className="text-sm font-bold text-[hsl(var(--pale-slate))]/40 font-mono">
+                      <span className="text-sm font-semibold text-[hsl(var(--pale-slate))]/40 font-mono">
                         {d.id}
                       </span>
                     </div>

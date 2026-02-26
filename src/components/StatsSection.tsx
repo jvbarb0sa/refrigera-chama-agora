@@ -19,7 +19,7 @@ export default function StatsSection() {
         >
           {stats.map((stat) => (
             <div key={stat.label} className="stat-item text-center md:px-6">
-              <p className="text-3xl font-bold text-primary md:text-4xl">
+              <p className="text-3xl font-semibold text-primary md:text-4xl">
                 {stat.value}
               </p>
               <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>

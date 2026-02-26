@@ -46,7 +46,7 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="hero-h1 text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-[52px] md:leading-[1.1]">
+            <h1 className="hero-h1 text-4xl font-semibold leading-[1.15] tracking-tight text-foreground md:text-[52px] md:leading-[1.1]">
               Seu equipamento parou? A gente{" "}
               <span className="text-primary">diagnostica e resolve</span> com
               transparência.
@@ -121,13 +121,13 @@ export default function HeroSection() {
                 <div className="w-11 h-11 rounded-[6px] bg-accent/10 flex items-center justify-center text-accent">
                   <Wrench className="w-5 h-5" />
                 </div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-accent text-accent-foreground text-[10px] font-bold uppercase tracking-wider">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[6px] bg-accent text-accent-foreground text-[10px] font-semibold uppercase tracking-wider">
                   <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                   Plantão
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-foreground mb-1.5">Urgência Técnica</h3>
+              <h3 className="text-xl font-semibold text-foreground mb-1.5">Urgência Técnica</h3>
               <p className="text-muted-foreground text-sm mb-6 leading-relaxed">
                 Sua geladeira expositora ou câmara fria parou? Atendimento prioritário para evitar perdas no seu comércio.
               </p>
@@ -142,7 +142,7 @@ export default function HeroSection() {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[10px] font-semibold text-primary uppercase tracking-wider">Técnico Direto</span>
-                    <span className="text-base font-bold text-foreground group-hover/link:text-primary transition-colors">
+                    <span className="text-base font-semibold text-foreground group-hover/link:text-primary transition-colors">
                       {WHATSAPP_DISPLAY_TECNICO}
                     </span>
                   </div>

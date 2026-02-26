@@ -41,7 +41,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
   return (
     <nav className="fixed top-0 md:top-10 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container flex h-16 items-center justify-between">
-        <a href="#" className="text-lg font-bold tracking-tight text-foreground">
+        <a href="#" className="text-lg font-semibold tracking-tight text-foreground">
           Refrigeração <span className="text-primary">Taboado</span>
         </a>
 

@@ -36,7 +36,7 @@ export default function MissionSection() {
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
               </div>
 
-              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                 Profissionalismo e <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(var(--french-blue))] to-foreground">
                   responsabilidade técnica
@@ -59,7 +59,7 @@ export default function MissionSection() {
                   key={index}
                   className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:bg-primary before:rounded-full"
                 >
-                  <h3 className="text-lg font-bold text-foreground mb-1">
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
                     {feature.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
