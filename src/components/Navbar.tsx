@@ -60,23 +60,9 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
             </a>
           ))}
 
-          <span className="h-5 w-px bg-border" />
-
-          <a href={phoneLink()} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-            <Phone size={14} className="shrink-0" />
-            {PHONE_DISPLAY}
-          </a>
-          <a
-            href={whatsappLink("Olá, vim pelo site.")}
-            target="_blank"
-            rel="noopener"
-            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <WhatsAppIcon size={14} />
-            {WHATSAPP_DISPLAY}
-          </a>
 
           <span className="h-5 w-px bg-border" />
+
 
           <Button asChild variant="strong" size="sm">
             <motion.a
