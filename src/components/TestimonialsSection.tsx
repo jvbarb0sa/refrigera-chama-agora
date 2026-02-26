@@ -77,9 +77,9 @@ const testimonials = [
   },
 ];
 
-const firstColumn = testimonials.slice(0, 4);
-const secondColumn = testimonials.slice(4, 8);
-const thirdColumn = testimonials.slice(8, 12);
+const firstColumn = testimonials.slice(0, 6);
+const secondColumn = testimonials.slice(6, 9);
+const thirdColumn = testimonials.slice(9, 12);
 
 export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
@@ -125,14 +125,14 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Colunas verticais animadas */}
-      <div className="relative mt-12 flex justify-center gap-6 overflow-hidden px-4" style={{ maxHeight: 600 }}>
+      <div className="relative mt-12 flex justify-center gap-6 overflow-hidden px-4 max-h-[450px] md:max-h-[600px]">
         {/* Máscara gradiente top/bottom */}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-muted to-transparent" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-muted to-transparent" />
 
-        <TestimonialsColumn testimonials={firstColumn} duration={15} className="max-w-[340px] flex-1" />
-        <TestimonialsColumn testimonials={secondColumn} duration={20} className="max-w-[340px] flex-1" />
-        <TestimonialsColumn testimonials={thirdColumn} duration={17} className="hidden max-w-[340px] flex-1 md:block" />
+        <TestimonialsColumn testimonials={firstColumn} duration={15} className="max-w-full md:max-w-[340px] flex-1" />
+        <TestimonialsColumn testimonials={secondColumn} duration={20} className="hidden max-w-[340px] flex-1 md:block" />
+        <TestimonialsColumn testimonials={thirdColumn} duration={17} className="hidden max-w-[340px] flex-1 lg:block" />
       </div>
     </section>
   );
