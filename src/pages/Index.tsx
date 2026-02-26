@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -15,6 +16,7 @@ const Index = () => {
 
   return (
     <>
+      <TopBar />
       <Navbar onMenuToggle={setMobileMenuOpen} />
       <main>
         <HeroSection />

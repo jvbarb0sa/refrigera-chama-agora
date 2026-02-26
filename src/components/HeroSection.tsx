@@ -36,7 +36,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative pt-16 bg-background overflow-hidden">
+    <section className="relative pt-16 md:pt-[104px] bg-background overflow-hidden">
       <div ref={heroRef} className="container py-20 md:py-32">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-5 lg:items-center">
           <div className="lg:col-span-3 max-w-[720px]">
