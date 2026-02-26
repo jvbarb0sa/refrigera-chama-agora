@@ -111,13 +111,23 @@ html {
   animation: marquee 35s linear infinite reverse;
 }
 
+.animate-marquee-slow {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-slow-reverse {
+  animation: marquee 45s linear infinite reverse;
+}
+
 .marquee-track:hover {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
-  .animate-marquee-reverse {
+  .animate-marquee-reverse,
+  .animate-marquee-slow,
+  .animate-marquee-slow-reverse {
     animation: none;
   }
 }

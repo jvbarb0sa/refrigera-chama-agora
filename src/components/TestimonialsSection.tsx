@@ -1,4 +1,4 @@
-import { MapPin, Star } from "lucide-react";
+import { MapPin, Star, Quote } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const row1 = [
@@ -80,7 +80,7 @@ const row2 = [
 ];
 
 const FiveStars = () => (
-  <div className="flex gap-1">
+  <div className="flex gap-0.5">
     {Array.from({ length: 5 }).map((_, i) => (
       <Star key={i} size={13} className="fill-amber-400 text-amber-400" />
     ))}
@@ -96,11 +96,14 @@ interface TestimonialCardProps {
 
 function TestimonialCard({ name, context, text, initials }: TestimonialCardProps) {
   return (
-    <div className="min-w-[320px] flex-shrink-0 rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
-      <FiveStars />
-      <p className="mt-4 text-sm leading-relaxed text-foreground">{text}</p>
-      <div className="mt-5 flex items-center gap-3 border-t border-border/50 pt-4">
-        <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xs font-bold text-primary-foreground">
+    <div className="min-w-[340px] flex-shrink-0 rounded-2xl bg-card p-7 shadow-md transition-shadow duration-300 hover:shadow-lg">
+      <div className="flex items-center justify-between">
+        <FiveStars />
+        <Quote size={20} className="text-primary/15" />
+      </div>
+      <p className="mt-4 text-[15px] leading-relaxed text-foreground">{text}</p>
+      <div className="mt-6 flex items-center gap-3 border-t border-border/30 pt-5">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/70 text-xs font-bold text-primary-foreground">
           {initials}
         </div>
         <div>
@@ -115,15 +118,13 @@ function TestimonialCard({ name, context, text, initials }: TestimonialCardProps
 function MarqueeRow({ items, reverse = false }: { items: typeof row1; reverse?: boolean }) {
   return (
     <div className="relative overflow-hidden">
-      {/* Gradient edges */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-muted to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-muted to-transparent" />
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-32 bg-gradient-to-r from-muted to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-32 bg-gradient-to-l from-muted to-transparent" />
 
       <div
-        className={`marquee-track flex gap-4 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        className={`marquee-track flex gap-5 ${reverse ? "animate-marquee-slow-reverse" : "animate-marquee-slow"}`}
         style={{ width: "max-content" }}
       >
-        {/* Duplicate items for seamless loop */}
         {[...items, ...items].map((t, i) => (
           <TestimonialCard key={`${t.initials}-${i}`} {...t} />
         ))}
@@ -136,7 +137,7 @@ export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
 
   return (
-    <section id="provas" className="py-16 md:py-24 bg-muted" aria-label="Depoimentos de clientes">
+    <section id="provas" className="py-20 md:py-28 bg-muted" aria-label="Depoimentos de clientes">
       <div ref={sectionRef} className="container">
         <div className="text-center">
           <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
@@ -145,37 +146,38 @@ export default function TestimonialsSection() {
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
             Quem já confiou no nosso trabalho
           </h2>
+          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">
+            Veja o que nossos clientes dizem sobre a experiência com nosso atendimento.
+          </p>
         </div>
 
-        {/* Bloco de credibilidade */}
-        <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-border bg-card p-6 shadow-sm">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3">
-              <Star size={24} className="fill-amber-400 text-amber-400" />
-              <div>
-                <span className="text-2xl font-bold text-foreground">4.9</span>
-                <p className="text-sm text-muted-foreground">no Google</p>
-              </div>
-            </div>
-            <div className="hidden sm:block h-10 w-px bg-border" />
+        {/* Credibilidade — inline */}
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center justify-center gap-8 sm:flex-row">
+          <div className="flex items-center gap-3">
+            <Star size={28} className="fill-amber-400 text-amber-400" />
             <div>
-              <span className="text-2xl font-bold text-foreground">50+</span>
-              <p className="text-sm text-muted-foreground">avaliações reais</p>
+              <span className="text-3xl font-bold text-foreground">4.9</span>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground">no Google</p>
             </div>
-            <div className="hidden sm:block h-10 w-px bg-border" />
-            <div className="flex items-center gap-3">
-              <MapPin size={20} className="text-primary" />
-              <div>
-                <p className="text-sm font-medium text-foreground">Atendimento local</p>
-                <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
-              </div>
+          </div>
+          <div className="hidden h-8 w-px bg-border sm:block" />
+          <div className="text-center">
+            <span className="text-3xl font-bold text-foreground">50+</span>
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">avaliações reais</p>
+          </div>
+          <div className="hidden h-8 w-px bg-border sm:block" />
+          <div className="flex items-center gap-3">
+            <MapPin size={22} className="text-primary" />
+            <div>
+              <p className="text-sm font-medium text-foreground">Atendimento local</p>
+              <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Marquee rows — full width */}
-      <div className="mt-10 space-y-4">
+      <div className="mt-12 space-y-5">
         <MarqueeRow items={row1} />
         <MarqueeRow items={row2} reverse />
       </div>
