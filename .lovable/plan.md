@@ -1,36 +1,60 @@
 
 
-# Standardize All Section Badges to Hero Pattern
+# Replace all `font-bold` / `font-extrabold` / `font-black` with `font-semibold`
 
-## Reference (Hero badge)
-`inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50` with inner text `text-xs font-semibold text-primary tracking-wide uppercase`. No icon needed for other sections (icon is Hero-specific).
+Save to design system memory: "Bold (font-bold, font-extrabold, font-black) is never used. All weighted text uses font-semibold (600) maximum."
 
-## Changes per file
+## Files to change (13 total)
 
-### 1. `src/components/ServicesSection.tsx`
-Replace plain `<span>` eyebrow with badge div: `rounded-[6px] border border-border bg-muted/50 px-3 py-1.5`, text as `text-xs font-semibold text-primary tracking-wide uppercase`
+### 1. `src/components/HeroSection.tsx`
+- Line 49: `font-bold` → `font-semibold` (h1)
+- Line 124: `font-bold` → `font-semibold` (Plantão badge)
+- Line 130: `font-bold` → `font-semibold` (h3 Urgência Técnica)
+- Line 145: `font-bold` → `font-semibold` (phone number)
 
-### 2. `src/components/ProblemsSection.tsx`
-Replace plain `<span>` eyebrow with same badge pattern, remove hardcoded `text-[#118CD9]`
+### 2. `src/components/Navbar.tsx`
+- Line 44: `font-bold` → `font-semibold` (logo)
 
-### 3. `src/components/DifferentialsSection.tsx`
-Dark variant — keep dark styling but standardize tracking: change `tracking-widest` to `tracking-wide`
+### 3. `src/components/FAQSection.tsx`
+- Line 37: `font-bold` → `font-semibold` (h2)
+- Line 63: `font-bold` → `font-semibold` (accordion triggers)
 
 ### 4. `src/components/MissionSection.tsx`
-Change `border-primary/20 bg-primary/10` to `border-border bg-muted/50`, add `tracking-wide uppercase`, change `py-0.5` to `py-1.5`
+- Line 39: `font-bold` → `font-semibold` (h2)
+- Line 62: `font-bold` → `font-semibold` (feature h3s)
 
-### 5. `src/components/TestimonialsSection.tsx`
-Replace plain `<span>` eyebrow with badge div pattern
+### 5. `src/components/DifferentialsSection.tsx`
+- Line 40: `font-bold` → `font-semibold` (h2)
+- Line 71: `font-black` → `font-semibold` (watermark numbers)
+- Line 80: `font-bold` → `font-semibold` (card number)
+- h3 card titles (line ~83): `font-semibold` already — no change
 
 ### 6. `src/components/ServiceAreaSection.tsx`
-Change `border-primary/20 bg-primary/5` to `border-border bg-muted/50`, change `py-0.5` to `py-1.5`
+- Line 29: `font-bold` → `font-semibold` (h2)
 
-### 7. `src/components/FAQSection.tsx`
-Change `text-sm text-foreground` to `text-xs text-primary tracking-wide uppercase`, change `py-1` to `py-1.5`
+### 7. `src/components/ProblemsSection.tsx`
+- Line 26: `font-bold` → `font-semibold` (h2)
 
-### 8. `src/components/CommerceSection.tsx`
-Replace plain `<span>` eyebrow with badge div pattern (using primary-foreground colors since it's on dark bg)
+### 8. `src/components/TestimonialsSection.tsx`
+- Line 107: `font-bold` → `font-semibold` (4.9 stat)
+- Line 113: `font-bold` → `font-semibold` (50+ stat)
 
-## Files touched (8)
-All section components listed above — single-line badge replacement each.
+### 9. `src/components/StatsSection.tsx`
+- Line 22: `font-bold` → `font-semibold` (stat values)
+
+### 10. `src/components/ProcessSection.tsx`
+- Line 49: `font-bold` → `font-semibold` (step numbers)
+
+### 11. `src/components/FinalCTASection.tsx`
+- Line 22: `font-bold` → `font-semibold` (h2)
+- Line 64: `font-extrabold` → `font-semibold` (footer logo)
+
+### 12. `src/components/ui/testimonials-columns-1.tsx`
+- Line 52: `font-bold` → `font-semibold` (avatar initials)
+
+### 13. `src/pages/NotFound.tsx`
+- Line 14: `font-bold` → `font-semibold` (404 heading)
+
+### Design system memory update
+Save: "Bold weights (font-bold, font-extrabold, font-black) are strictly prohibited. Maximum font weight is font-semibold (600) across all text elements."
 
