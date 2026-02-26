@@ -2,6 +2,7 @@ import { useState } from "react";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import StatsSection from "@/components/StatsSection";
 import ServicesSection from "@/components/ServicesSection";
 import ProblemsSection from "@/components/ProblemsSection";
 import DifferentialsSection from "@/components/DifferentialsSection";
@@ -21,6 +22,7 @@ const Index = () => {
       <Navbar onMenuToggle={setMobileMenuOpen} />
       <main>
         <HeroSection />
+        <StatsSection />
         <ServicesSection />
         <ProblemsSection />
         <DifferentialsSection />
