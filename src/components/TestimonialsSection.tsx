@@ -1,9 +1,7 @@
-import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, MapPin, Star } from "lucide-react";
+import { MapPin, Star } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
-const testimonials = [
+const row1 = [
   {
     name: "Marcos",
     context: "Mercado Central — Câmara fria",
@@ -42,66 +40,115 @@ const testimonials = [
   },
 ];
 
+const row2 = [
+  {
+    name: "Fernanda L.",
+    context: "Restaurante — Ar-condicionado",
+    text: "Ar do salão parou no meio do almoço. Vieram em menos de 2 horas e resolveram na hora.",
+    initials: "FL",
+  },
+  {
+    name: "Sérgio R.",
+    context: "Açougue — Câmara fria",
+    text: "Fazem manutenção preventiva mensal. Zero surpresas desde então. Confiança total.",
+    initials: "SR",
+  },
+  {
+    name: "Luciana T.",
+    context: "Residencial — Ar-condicionado inverter",
+    text: "Instalação limpa, sem bagunça. Funcionou perfeito de primeira. Super atenciosos.",
+    initials: "LT",
+  },
+  {
+    name: "Eduardo K.",
+    context: "Supermercado — Balcão refrigerado",
+    text: "Consertaram o balcão sem precisar desligar os outros equipamentos. Profissionais de verdade.",
+    initials: "EK",
+  },
+  {
+    name: "Patrícia N.",
+    context: "Residencial — Geladeira",
+    text: "Geladeira de 15 anos, achei que ia ter que trocar. Consertaram e ficou nova.",
+    initials: "PN",
+  },
+  {
+    name: "Thiago M.",
+    context: "Farmácia — Refrigerador de medicamentos",
+    text: "Equipamento crítico para vacinas. Atenderam com urgência real. Nota 10.",
+    initials: "TM",
+  },
+];
+
 const FiveStars = () => (
-  <div className="flex gap-0.5">
+  <div className="flex gap-1">
     {Array.from({ length: 5 }).map((_, i) => (
-      <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+      <Star key={i} size={13} className="fill-amber-400 text-amber-400" />
     ))}
   </div>
 );
 
+interface TestimonialCardProps {
+  name: string;
+  context: string;
+  text: string;
+  initials: string;
+}
+
+function TestimonialCard({ name, context, text, initials }: TestimonialCardProps) {
+  return (
+    <div className="min-w-[320px] flex-shrink-0 rounded-2xl border border-border/50 bg-card p-6 shadow-sm">
+      <FiveStars />
+      <p className="mt-4 text-sm leading-relaxed text-foreground">{text}</p>
+      <div className="mt-5 flex items-center gap-3 border-t border-border/50 pt-4">
+        <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xs font-bold text-primary-foreground">
+          {initials}
+        </div>
+        <div>
+          <p className="text-sm font-semibold text-foreground">{name}</p>
+          <p className="text-xs text-muted-foreground">{context}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MarqueeRow({ items, reverse = false }: { items: typeof row1; reverse?: boolean }) {
+  return (
+    <div className="relative overflow-hidden">
+      {/* Gradient edges */}
+      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-20 bg-gradient-to-r from-muted to-transparent" />
+      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-20 bg-gradient-to-l from-muted to-transparent" />
+
+      <div
+        className={`marquee-track flex gap-4 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        style={{ width: "max-content" }}
+      >
+        {/* Duplicate items for seamless loop */}
+        {[...items, ...items].map((t, i) => (
+          <TestimonialCard key={`${t.initials}-${i}`} {...t} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(true);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setCanScrollPrev(emblaApi.canScrollPrev());
-    setCanScrollNext(emblaApi.canScrollNext());
-  }, [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-  }, [emblaApi, onSelect]);
 
   return (
-    <section id="provas" className="py-16 md:py-24 bg-muted">
+    <section id="provas" className="py-16 md:py-24 bg-muted" aria-label="Depoimentos de clientes">
       <div ref={sectionRef} className="container">
-        <div className="flex items-end justify-between">
-          <div>
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-              Prova social
-            </span>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-              Quem já confiou no nosso trabalho
-            </h2>
-          </div>
-          <div className="hidden sm:flex gap-2">
-            <button
-              onClick={() => emblaApi?.scrollPrev()}
-              disabled={!canScrollPrev}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
-              aria-label="Anterior"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={() => emblaApi?.scrollNext()}
-              disabled={!canScrollNext}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-foreground transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-30"
-              aria-label="Próximo"
-            >
-              <ChevronRight size={18} />
-            </button>
-          </div>
+        <div className="text-center">
+          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+            Prova social
+          </span>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+            Quem já confiou no nosso trabalho
+          </h2>
         </div>
 
         {/* Bloco de credibilidade */}
-        <div className="mt-8 rounded-xl border border-border bg-card p-6">
+        <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-border bg-card p-6 shadow-sm">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3">
               <Star size={24} className="fill-amber-400 text-amber-400" />
@@ -125,33 +172,12 @@ export default function TestimonialsSection() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-10 overflow-hidden">
-          <div ref={emblaRef}>
-            <div className="flex gap-4">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  className="min-w-[280px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] rounded-xl border border-border bg-card p-6"
-                >
-                  <FiveStars />
-                  <p className="mt-4 text-sm leading-relaxed text-foreground">
-                    {t.text}
-                  </p>
-                  <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xs font-bold text-primary-foreground">
-                      {t.initials}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-foreground">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.context}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      {/* Marquee rows — full width */}
+      <div className="mt-10 space-y-4">
+        <MarqueeRow items={row1} />
+        <MarqueeRow items={row2} reverse />
       </div>
     </section>
   );
