@@ -1,4 +1,5 @@
 import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
+import heroTechnician from "@/assets/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -109,9 +110,9 @@ A gente diagnostica e resolve com transparência.
 
           <div className="hero-image lg:col-span-2 mt-10 lg:mt-0">
             <img
-              src="/placeholder.svg"
-              alt="Refrigeração profissional em Três Lagoas"
-              className="w-full rounded-2xl shadow-md" />
+              src={heroTechnician}
+              alt="Técnico especializado em refrigeração em Três Lagoas"
+              className="h-[420px] md:h-[500px] w-full object-cover object-right rounded-2xl shadow-md" />
 
           </div>
         </div>
