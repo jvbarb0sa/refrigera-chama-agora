@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
-import { whatsappLink, phoneLink, PHONE_DISPLAY } from "@/lib/constants";
+import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/use-active-section";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -39,13 +39,13 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
   }, [open]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 md:top-10 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container flex h-16 items-center justify-between">
         <a href="#" className="text-lg font-bold tracking-tight text-foreground">
           Refrigeração <span className="text-primary">Taboado</span>
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
@@ -59,16 +59,34 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
               {l.label}
             </a>
           ))}
+
+          <span className="h-5 w-px bg-border" />
+
+          <a href={phoneLink()} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <Phone size={14} className="shrink-0" />
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href={whatsappLink("Olá, vim pelo site.")}
+            target="_blank"
+            rel="noopener"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <WhatsAppIcon size={14} />
+            {WHATSAPP_DISPLAY}
+          </a>
+
+          <span className="h-5 w-px bg-border" />
+
           <Button asChild variant="strong" size="sm">
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href={whatsappLink("Olá, vim pelo site.")}
+              href={whatsappLink("Olá, gostaria de solicitar uma visita técnica.")}
               target="_blank"
               rel="noopener"
             >
-              <WhatsAppIcon size={16} />
-              Solicitar atendimento
+              Solicitar visita técnica
             </motion.a>
           </Button>
         </div>
@@ -90,7 +108,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden"
+            className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden md:top-[104px]"
             style={{ height: "calc(100dvh - 4rem)" }}
           >
             <motion.div
