@@ -1,52 +1,79 @@
 
 
-# Atualizar Design System — Nova paleta de cores
+# Redesign Diferenciais — Industrial Grid
 
-## Cores atuais vs. novas
+## Overview
 
-| Papel | Atual (HSL) | Nova (HSL) | Hex |
-|---|---|---|---|
-| pale-slate | 222 11% 81% | 240 2% 84% | #D7D7D9 |
-| french-blue (dark) | — (novo) | 219 67% 26% | #163573 |
-| french-blue | 221 67% 32% | 220 66% 32% | #1C418C |
-| cerulean (novo) | — | 203 85% 45% | #118CD9 |
-| spicy-paprika | 18 63% 54% | 16 54% 48% | #BF5D39 |
+Complete visual overhaul of the Differentials section. Kill all current soft/SaaS styling. Replace with a dark, industrial grid layout inspired by Siemens/Carrier institutional pages.
 
-## Mapeamento semântico
+## What gets removed
 
-- `--pale-slate`: 240 2% 84%
-- `--french-blue`: 220 66% 32% (primary — headings, nav)
-- `--french-blue-dark`: 219 67% 26% (reserva para hovers ou TopBar)
-- `--cerulean`: 203 85% 45% (nova cor para botões CTA — `--accent`)
-- `--spicy-paprika`: 16 54% 48% (mantém como destaque secundário, não mais o CTA principal)
+- `bg-muted` gray background
+- `rounded-2xl bg-card border-l-4 border-accent shadow-md` card styling
+- Gray pill icon containers (`bg-gradient-to-br from-primary/15`)
+- Ghost watermark numbers (`text-6xl font-black text-primary/[0.04]`)
+- Centered section title block
+- Hover lift effects (`hover:shadow-xl hover:-translate-y-1`)
 
-**Mudança principal**: O botão CTA (`variant="strong"`) passa a usar `--cerulean` (#118CD9) em vez de `--spicy-paprika`.
+## New visual direction
 
-## Arquivo alterado
+Dark background section (`#0b1622` deep navy). Four open columns on desktop, 2x2 on tablet, stacked on mobile. No cards, no borders, no shadows. Only accent: thin 2px ice-blue top rule per column.
 
-### `src/index.css` (variáveis CSS)
+## File changed
 
-Atualizar as variáveis core e remapear `--accent` para a nova cor cerulean:
+### `src/components/DifferentialsSection.tsx` — full rewrite
 
-```css
-/* Core palette (HSL) */
---onyx: 210 5% 8%;
---french-blue: 220 66% 32%;
---french-blue-dark: 219 67% 26%;
---cerulean: 203 85% 45%;
---spicy-paprika: 16 54% 48%;
---pale-slate: 240 2% 84%;
---alabaster-grey: 240 3% 94%;
+**Section wrapper**: `bg-[#0b1622]` dark navy background, same vertical padding.
 
-/* Semantic: Actions */
---accent: var(--cerulean);        /* botões CTA agora em #118CD9 */
---accent-foreground: 0 0% 100%;
---ring: var(--cerulean);          /* ring segue o CTA */
+**Title block**: Left-aligned (not centered). "DIFERENCIAIS" rendered as a vertical rotated label on the far left using `writing-mode: vertical-rl` + `rotate-180`, white text, uppercase, tracking wide. Main heading "Por que escolher a Refrigeração Taboado" in white, left-aligned. Subtitle in `text-gray-400`.
+
+Layout uses a flex row with the rotated label on the left and the content area on the right.
+
+**Grid**: `grid-cols-1 sm:grid-cols-2 lg:grid-cols-4` — 4 columns desktop, 2x2 tablet, stack mobile.
+
+**Each column item**:
+```text
+┌─────────────────────┐
+│ ────────────────── (2px #4A9EE0 top border)
+│
+│ 01                  (font-light, opacity-40, text-white, text-sm)
+│
+│ [Icon]              (white, 24px, no container)
+│
+│ Transparência       (white, font-bold, text-lg)
+│
+│ Diagnóstico claro.. (text-[#9ca3af], text-sm, 2 lines)
+│
+└─────────────────────┘
 ```
 
-Todas as demais variáveis semânticas (`--primary`, `--foreground`, etc.) permanecem iguais, apenas com o valor do `--french-blue` levemente ajustado.
+- Top border: `border-t-2 border-[#4A9EE0]` with `pt-6` padding below
+- Numeral: `text-sm font-light text-white/40`
+- Icon: `size={24} className="text-white"` — raw, no background wrapper
+- Title: `text-lg font-bold text-white`
+- Description: `text-sm text-[#9ca3af] leading-relaxed line-clamp-2`
+- Column padding: `py-8 px-2` — generous, separated by negative space only
 
-### Nenhum outro arquivo precisa ser alterado
+**Animation**: Keep `useGsapFade` with `.diff-card` selector and stagger.
 
-Os botões `variant="strong"` já usam `bg-accent`, então automaticamente herdam a nova cor. O `--ring` também acompanha.
+### Visual structure (desktop)
+
+```text
+  D                                                          
+  I   Por que escolher a                                     
+  F   Refrigeração Taboado                                   
+  E   Atendimento técnico com responsabilidade...            
+  R                                                          
+  E   ──────── │ ──────── │ ──────── │ ────────              
+  N   01       │ 02       │ 03       │ 04                    
+  C   👁 Eye   │ 🛡 Shield│ 🏆 Award │ ⏰ Clock              
+  I   Transp.  │ Segur.   │ Qualid.  │ Comprom.              
+  A   desc...  │ desc...  │ desc...  │ desc...               
+  I                                                          
+  S                                                          
+```
+
+## No other files changed
+
+All styling is self-contained with Tailwind utility classes and inline hex values. No tailwind.config or index.css changes needed.
 
