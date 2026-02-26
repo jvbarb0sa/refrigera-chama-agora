@@ -127,8 +127,8 @@ export default function TestimonialsSection() {
       {/* Colunas verticais animadas */}
       <div className="relative mt-12 flex justify-center gap-6 overflow-hidden px-4 max-h-[450px] md:max-h-[600px] border-primary-foreground bg-primary-foreground">
         {/* Máscara gradiente top/bottom */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-muted to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-muted to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-primary-foreground to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 bg-gradient-to-t from-primary-foreground to-transparent" />
 
         <TestimonialsColumn testimonials={firstColumn} duration={15} className="max-w-full md:max-w-[340px] flex-1" />
         <TestimonialsColumn testimonials={secondColumn} duration={20} className="hidden max-w-[340px] flex-1 md:block" />

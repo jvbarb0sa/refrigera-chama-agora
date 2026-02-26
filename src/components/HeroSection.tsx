@@ -35,8 +35,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-16 md:pt-[104px] bg-background overflow-hidden">
-      <div ref={heroRef} className="container py-20 md:py-32">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+      <div ref={heroRef} className="container py-12 md:py-32">
+        <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-12 lg:items-center">
           {/* Left Column */}
           <div className="lg:col-span-7 max-w-[720px]">
             <div className="hero-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50 mb-6">
@@ -114,7 +114,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Bento Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-5 mt-10 lg:mt-0">
+          <div className="lg:col-span-5 flex flex-col gap-5 mt-6 lg:mt-0">
             {/* Card 1: Urgência Técnica */}
             <div className="hero-card-1 relative overflow-hidden rounded-[6px] bg-muted border border-border p-7 group">
               <div className="flex justify-between items-start mb-5">

@@ -36,7 +36,7 @@ export default function DifferentialsSection() {
             </div>
 
             {/* Industrial grid */}
-            <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10">
+            <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-6 lg:gap-y-10">
               {diffs.map((d, i) => {
                 const Icon = d.icon;
                 const num = String(i + 1).padStart(2, "0");
