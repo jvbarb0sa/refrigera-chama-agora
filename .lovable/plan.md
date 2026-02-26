@@ -1,29 +1,34 @@
 
 
-# Substituir emojis por ícones Lucide no TopBar
-
-## Problema
-O `TopBar.tsx` usa emojis (📍, ✅, 🛡️) que quebram a consistência visual do design system. A biblioteca de ícones do projeto é Lucide React (estilo Apple SF Symbols — traços finos, cantos arredondados).
+# H1 "Dor do cliente" + SEO local
 
 ## Mudança
 
-**Arquivo: `src/components/TopBar.tsx`**
+**Arquivo: `src/components/HeroSection.tsx`**
 
-Substituir os 3 emojis por ícones Lucide equivalentes:
+### H1
+Substituir o H1 atual por:
 
-| Emoji | Ícone Lucide | Significado |
-|---|---|---|
-| 📍 | `MapPin` | Localização |
-| ✅ | `CheckCircle` | Atendimento confirmado |
-| 🛡️ | `ShieldCheck` | Transparência / garantia |
+**"Seu equipamento parou? A gente diagnostica e resolve com transparência."**
 
-Cada `<span>` passa a usar `flex items-center gap-1.5` com o ícone inline (`size={14}`, `strokeWidth={2}`). Cor dos ícones herda `text-muted-foreground` do pai, mantendo coerência com o DS.
+A palavra "Três Lagoas" precisa aparecer para SEO local. Como o H1 escolhido não a contém, ela será inserida na primeira linha do parágrafo de apoio (que já contém o badge "Três Lagoas · MS" acima do H1, mas o parágrafo reforça para crawlers).
 
-Importar `MapPin`, `CheckCircle`, `ShieldCheck` de `lucide-react`.
+### Parágrafo de apoio (sub)
+Trocar para:
+
+**"Refrigeração comercial, industrial e residencial em Três Lagoas e região. Diagnóstico técnico, orçamento claro e garantia de serviço."**
+
+Isso garante "Três Lagoas" no primeiro `<p>` logo abaixo do `<h1>`, cobrindo a regra de SEO local.
+
+### Destaque visual
+Aplicar `text-primary` em "diagnostica e resolve" para manter o padrão de destaque que já existe no H1 atual.
+
+### Correção de bug
+O H1 atual tem um ponto duplicado (`.</span>.`) que será corrigido.
 
 ## Arquivos
 
 | Arquivo | Mudança |
 |---|---|
-| `src/components/TopBar.tsx` | Trocar emojis por ícones Lucide |
+| `src/components/HeroSection.tsx` | Novo H1, novo parágrafo de apoio, correção do ponto duplicado |
 
