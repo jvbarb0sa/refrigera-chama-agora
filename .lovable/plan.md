@@ -1,48 +1,49 @@
 
 
-# Ajustes no menu mobile + WhatsApp Sticky
+# Topbar de Confiança + Header com Contatos
 
-## 1. Esconder botão flutuante do WhatsApp quando menu mobile abrir
+## O que muda
 
-O `Navbar` e o `WhatsAppSticky` são componentes irmãos em `Index.tsx`. Para comunicar o estado `open` do menu, vou criar um estado no `Index.tsx` e passá-lo como prop.
+### 1. Novo componente: `TopBar.tsx`
 
-**Arquivo: `src/pages/Index.tsx`**
-- Adicionar `useState` para `mobileMenuOpen`
-- Passar `onMenuToggle` como prop para `Navbar`
-- Passar `hidden` como prop para `WhatsAppSticky`
+Barra fina acima do header (36-40px), fundo `bg-primary/5` (azul bem claro, seguindo a paleta French Blue). Conteúdo em linha única com separadores visuais:
 
-**Arquivo: `src/components/Navbar.tsx`**
-- Aceitar prop `onMenuToggle?: (open: boolean) => void`
-- Chamar `onMenuToggle` sempre que `open` mudar (via `useEffect`)
+- 📍 Três Lagoas – MS e região
+- ✅ Atendimento comercial, industrial e residencial  
+- 🛡️ Diagnóstico + orçamento com transparência
 
-**Arquivo: `src/components/WhatsAppSticky.tsx`**
-- Aceitar prop `hidden?: boolean`
-- Quando `hidden` for `true`, não renderizar nada (return null)
+Tipografia: `text-[13px]` ou `text-sm`, cor `text-muted-foreground`. Itens em `flex` horizontal no desktop, escondidos no mobile (ou mostra apenas o primeiro item). Emojis como ícones inline.
 
-## 2. Botão "Chamar no WhatsApp" no mobile → cor verde
+### 2. Header (`Navbar.tsx`) — Adicionar telefone, WhatsApp e CTA
 
-**Arquivo: `src/components/Navbar.tsx`**
+O header atual tem apenas links de navegação + 1 botão "Solicitar atendimento". Precisa exibir os 2 números de contato e trocar o CTA.
 
-O botão atual usa `variant="strong"` que aplica `bg-accent` (Spicy Paprika / laranja). Trocar para estilo inline verde do WhatsApp:
+**Desktop (direita do header):**
+- Telefone: ícone Phone + `(67) 99259-7710` (link `tel:`)
+- WhatsApp: ícone WhatsApp + `(67) 98109-7179` (link `wa.me`)
+- Separador vertical `|`
+- Botão CTA: **"Solicitar visita técnica"** (variant `strong`, cor Spicy Paprika)
 
-```
-className="w-full h-14 text-base bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-[10px] font-semibold"
-```
+Os links de navegação continuam no centro.
 
-Remover `variant="strong"` e usar classes diretas para manter o verde do WhatsApp.
+**Mobile:** Sem alteração na topbar (esconde). Menu mobile já tem telefone e WhatsApp.
 
-## 3. Wireframe / layout do footer do menu mobile
+### 3. Ajuste de posicionamento
 
-Melhorias de espaçamento e hierarquia:
-- Remover o número do WhatsApp duplicado (a linha com `WHATSAPP_DISPLAY`) — o botão já leva para o WhatsApp
-- Manter apenas o telefone como informação de contato alternativa
-- Centralizar o telefone acima do botão
+A `TopBar` fica fixa acima do `Navbar`. O `Navbar` muda de `top-0` para `top-[40px]` (altura da topbar). O `HeroSection` muda `pt-16` para `pt-[104px]` (64px header + 40px topbar) para compensar.
 
-## Resumo de arquivos
+No scroll, ambas ficam fixas (topbar + navbar).
+
+### 4. Importações em `constants.ts`
+
+Já existem: `WHATSAPP_DISPLAY`, `PHONE_DISPLAY`, `phoneLink()`, `whatsappLink()`. Nenhuma mudança necessária.
+
+## Arquivos
 
 | Arquivo | Mudança |
 |---|---|
-| `Index.tsx` | Estado `mobileMenuOpen`, props para Navbar e WhatsAppSticky |
-| `Navbar.tsx` | Prop `onMenuToggle`, botão verde, remover WhatsApp display duplicado |
-| `WhatsAppSticky.tsx` | Prop `hidden`, não renderizar quando menu aberto |
+| `src/components/TopBar.tsx` | **Novo** — barra de confiança |
+| `src/components/Navbar.tsx` | Adicionar telefone + WhatsApp + trocar label do CTA para "Solicitar visita técnica", ajustar `top` |
+| `src/components/HeroSection.tsx` | Ajustar `pt-16` → `pt-[104px]` |
+| `src/pages/Index.tsx` | Importar e renderizar `TopBar` acima do `Navbar` |
 
