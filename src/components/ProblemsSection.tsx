@@ -1,6 +1,4 @@
-import { Wrench } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
-import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
@@ -17,39 +15,42 @@ export default function ProblemsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
 
   return (
-    <section className="py-12 md:py-16 bg-background">
+    <section className="border-t border-[#D7D7D9] py-20 bg-white">
       <div className="container">
-        <div ref={ref} className="grid lg:grid-cols-2 items-center gap-12">
+        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
           {/* Left column */}
-          <div className="problem-item">
-            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+          <div className="lg:col-span-2 problem-item">
+            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]">
               Problemas que resolvemos
             </span>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+            <h2 className="mt-3 text-3xl font-bold text-[#163573] tracking-tight">
               Seu equipamento parou?
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-md leading-relaxed">
+            <p className="mt-3 text-[15px] text-[#4B5563] leading-[1.7] max-w-md">
               Atendimento técnico para falhas comuns em refrigeração e elétrica. Diagnóstico rápido e solução eficiente.
             </p>
-            <Button asChild variant="strong" size="lg" className="mt-8 h-14 px-8 text-base">
-              <a href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")} target="_blank" rel="noopener">
-                <WhatsAppIcon size={20} />
-                Agendar avaliação técnica
-              </a>
-            </Button>
+            <a
+              href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all"
+            >
+              <WhatsAppIcon size={20} />
+              Agendar avaliação técnica
+            </a>
           </div>
 
-          {/* Right column — problem list */}
-          <div>
-            {problems.map((p, i) => (
+          {/* Right column — diagnostic grid */}
+          <div className="lg:col-span-3 grid grid-cols-2 gap-x-8 gap-y-0">
+            {problems.map((p) => (
               <div
                 key={p}
-                className={`problem-item flex items-center gap-4 py-4 px-3 -mx-3 rounded-lg hover:bg-muted/50 transition-colors ${
-                  i < problems.length - 1 ? "border-b border-border/50" : ""
-                }`}
+                className="problem-item border-t-2 border-[#D7D7D9] pt-5 pb-5 hover:border-[#118CD9] transition-colors group"
               >
-                <Wrench size={18} className="shrink-0 text-accent" />
-                <span className="text-[15px] font-medium text-foreground">{p}</span>
+                <p className="text-[15px] font-medium text-[#1a1a1a] group-hover:text-[#163573] transition-colors">
+                  <span className="text-[#BF5D39] mr-2">—</span>
+                  {p}
+                </p>
               </div>
             ))}
           </div>
