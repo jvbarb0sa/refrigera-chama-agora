@@ -52,7 +52,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
               href={l.href}
               className={`text-sm font-medium transition-colors ${
                 active === l.id
-                  ? "text-foreground border-b-2 border-primary pb-0.5"
+                  ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
