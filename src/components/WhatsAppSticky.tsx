@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 import { motion } from "framer-motion";
 
@@ -17,7 +17,7 @@ export default function WhatsAppSticky() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1, duration: 0.4 }}
     >
-      <MessageCircle size={28} className="text-white" />
+      <WhatsAppIcon size={28} className="text-white" />
     </motion.a>
   );
 }

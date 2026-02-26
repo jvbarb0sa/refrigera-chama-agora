@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { MessageCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
@@ -70,7 +70,7 @@ export default function FAQSection() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <MessageCircle size={16} />
+                  <WhatsAppIcon size={16} />
                   Falar com especialista
                 </motion.a>
               </Button>
