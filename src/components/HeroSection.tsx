@@ -1,5 +1,4 @@
-import { Check } from "lucide-react";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { MessageCircle, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 import { motion } from "framer-motion";
@@ -9,10 +8,10 @@ import gsap from "gsap";
 const MotionDiv = motion.div;
 
 const proofs = [
-  "Atendimento local",
-  "Técnicos experientes",
-  "Compromisso com qualidade",
-];
+"Atendimento local",
+"Técnicos experientes",
+"Compromisso com qualidade"];
+
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -25,12 +24,12 @@ export default function HeroSection() {
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.from(".hero-badge", { opacity: 0, y: 12, duration: 0.5 })
-        .from(".hero-h1", { opacity: 0, y: 20, duration: 0.6 }, "-=0.3")
-        .from(".hero-sub", { opacity: 0, y: 16, duration: 0.5 }, "-=0.3")
-        .from(".hero-ctas", { opacity: 0, y: 16, duration: 0.5 }, "-=0.2")
-        .from(".hero-proof", { opacity: 0, y: 12, duration: 0.5 }, "-=0.2")
-        .from(".hero-image", { opacity: 0, x: 30, duration: 0.7 }, "-=0.6");
+      tl.from(".hero-badge", { opacity: 0, y: 12, duration: 0.5 }).
+      from(".hero-h1", { opacity: 0, y: 20, duration: 0.6 }, "-=0.3").
+      from(".hero-sub", { opacity: 0, y: 16, duration: 0.5 }, "-=0.3").
+      from(".hero-ctas", { opacity: 0, y: 16, duration: 0.5 }, "-=0.2").
+      from(".hero-proof", { opacity: 0, y: 12, duration: 0.5 }, "-=0.2").
+      from(".hero-image", { opacity: 0, x: 30, duration: 0.7 }, "-=0.6");
     }, el);
 
     return () => ctx.revert();
@@ -46,32 +45,31 @@ export default function HeroSection() {
             </span>
 
             <h1 className="hero-h1 text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-[52px] md:leading-[1.1]">
-              Seu equipamento parou?{" "}
-              <span className="text-primary">A gente resolve.</span>
+              Assistência técnica especializada em{" "}
+              <span className="text-primary">refrigeração comercial</span> e{" "}
+              <span className="text-primary">
+A gente resolve.</span>.
             </h1>
-            <p className="hero-h1 mt-2 text-lg font-medium text-foreground/80">
-              Refrigeração comercial e residencial em Três Lagoas.
-            </p>
 
             <p className="hero-sub mt-6 text-lg leading-relaxed text-muted-foreground max-w-md">
-              Geladeiras, freezers, câmaras frias e ar inverter. Diagnóstico técnico, orçamento claro e garantia de serviço.
+              Instalação e manutenção de geladeiras, freezers, câmaras frias e
+              sistemas inverter com atendimento profissional e diagnóstico preciso.
             </p>
 
             <div className="hero-ctas mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Button
-                asChild
-                variant="strong"
-                size="lg"
-                className="text-base px-8 h-14"
-              >
+              <Button asChild
+              variant="strong"
+              size="lg"
+              className="text-base px-8 h-14">
+
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   href={whatsappLink("Olá, preciso de atendimento técnico.")}
                   target="_blank"
-                  rel="noopener"
-                >
-                  <WhatsAppIcon size={20} />
+                  rel="noopener">
+
+                  <MessageCircle size={20} />
                   Solicitar atendimento técnico
                 </motion.a>
               </Button>
@@ -79,28 +77,28 @@ export default function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="text-base px-8 h-14"
-              >
+                className="text-base px-8 h-14">
+
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   href={whatsappLink()}
                   target="_blank"
-                  rel="noopener"
-                >
-                  <WhatsAppIcon size={20} />
+                  rel="noopener">
+
+                  <MessageCircle size={20} />
                   Falar no WhatsApp
                 </motion.a>
               </Button>
             </div>
 
             <ul className="hero-proof mt-12 flex flex-col gap-2 sm:flex-row sm:gap-6 border-t border-border pt-6">
-              {proofs.map((text) => (
-                <li key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
+              {proofs.map((text) =>
+              <li key={text} className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Check size={14} className="text-primary shrink-0" />
                   {text}
                 </li>
-              ))}
+              )}
             </ul>
           </div>
 
@@ -113,6 +111,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
