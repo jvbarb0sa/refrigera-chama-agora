@@ -11,41 +11,45 @@ export default function FinalCTASection() {
   return (
     <>
       {/* CTA Banner */}
-      <section id="contato" className="py-16 md:py-20 bg-muted">
-        <div ref={ref} className="container">
-          <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-12">
-            <div className="max-w-xl">
-              <h2 className="text-4xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
+      <section id="contato" className="bg-[#163573] border-l-4 border-[#BF5D39]">
+        <div ref={ref} className="container py-16 md:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-0 items-center">
+            {/* Left column */}
+            <div className="lg:col-span-3">
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#BF5D39]">
+                Atendimento emergencial
+              </span>
+              <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl">
                 Equipamento parado?{" "}
-                <span className="block text-accent">Não espere até amanhã.</span>
+                <span className="block text-[#118CD9]">Não espere até amanhã.</span>
               </h2>
-              <p className="mt-4 max-w-md text-base text-muted-foreground leading-relaxed">
+              <p className="mt-4 text-sm text-[#D7D7D9] max-w-md">
                 Cada hora sem refrigeração é perda de produto e cliente. Fale agora com um técnico.
               </p>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 shrink-0">
-              <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base rounded-xl border-border/60 bg-background shadow-sm">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={phoneLink()}
-                >
-                  <Phone size={16} />
-                  Ligar agora
-                </motion.a>
-              </Button>
-              <Button asChild variant="strong" size="lg" className="h-12 px-8 text-base rounded-xl shadow-md">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <WhatsAppIcon size={16} />
-                  Chamar no WhatsApp
-                </motion.a>
-              </Button>
+
+            {/* Right column — buttons */}
+            <div className="lg:col-span-2 flex flex-col sm:flex-row gap-3 lg:justify-end">
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={phoneLink()}
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors"
+              >
+                <Phone size={16} />
+                Ligar agora
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-[#BF5D39] text-white hover:bg-[#a84f30] transition-colors"
+              >
+                <WhatsAppIcon size={16} />
+                Chamar no WhatsApp
+              </motion.a>
             </div>
           </div>
         </div>
