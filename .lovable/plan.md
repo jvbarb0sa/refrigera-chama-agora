@@ -1,56 +1,49 @@
 
 
-# Depoimentos — Redesign com colunas verticais animadas
+# Depoimentos — Fix mobile layout
 
-## Visao geral
+## Problema
+No mobile, duas colunas de depoimentos aparecem lado a lado, resultando em cards estreitos (~160px cada) com texto espremido e difícil de ler. A terceira coluna já está escondida com `hidden md:block`, mas as duas primeiras continuam visíveis em telas pequenas.
 
-Substituir o marquee horizontal atual por **3 colunas verticais** com scroll infinito (estilo do componente fornecido), usando Framer Motion. Manter o header e a barra de credibilidade existentes, apenas trocar a area dos depoimentos.
+## Solução
+Mostrar apenas **1 coluna** no mobile, **2 no tablet (md)** e **3 no desktop (lg)**.
 
-## Dependencia
+## Mudanças
 
-- `motion` (Framer Motion v11+) — ja temos `framer-motion` instalado, mas o componente importa de `motion/react`. Precisamos instalar o pacote `motion` ou ajustar o import para `framer-motion`.
-  - Decisao: usar `framer-motion` que ja esta instalado, ajustando os imports.
+### `src/components/TestimonialsSection.tsx` (linhas 128-136)
 
-## Arquivos
+**Container das colunas** (linha 128):
+- De: `flex justify-center gap-6`
+- Para: `flex justify-center gap-6` (sem mudança no container)
 
-### 1. `src/components/ui/testimonials-columns-1.tsx` (novo)
-Componente `TestimonialsColumn` adaptado:
-- Import de `motion` de `framer-motion` (nao `motion/react`)
-- Recebe `testimonials` como array de `{ text, name, role, initials }`
-- Sem imagens (manter iniciais como avatar, consistente com o design atual)
-- Card com 5 estrelas, quote icon, borda inferior com avatar de iniciais
-- Estilo dos cards: `rounded-2xl bg-card p-7 shadow-md` (reutilizar visual atual)
-- Animacao vertical infinita com `motion.div` e `repeat: Infinity`
+**Coluna 1** (linha 133): visível sempre — sem mudança.
 
-### 2. `src/components/TestimonialsSection.tsx` (reescrita)
-- Manter header (tag, H2, paragrafo) e barra de credibilidade iguais
-- Substituir `MarqueeRow` por 3 `TestimonialsColumn` lado a lado
-- Dividir os 12 depoimentos existentes em 3 grupos de 4
-- Layout: `flex justify-center max-h-[600px] overflow-hidden` com mascara gradiente top/bottom
-- Coluna 1: duracao 15s, Coluna 2: 20s, Coluna 3: 17s (velocidades diferentes)
-- 3a coluna escondida em mobile (`hidden md:block`)
-- Remover imports de marquee CSS nao mais necessarios
+**Coluna 2** (linha 134):
+- Adicionar `hidden md:block` para escondê-la no mobile
+- De: `className="max-w-[340px] flex-1"`
+- Para: `className="hidden max-w-[340px] flex-1 md:block"`
 
-### Dados dos depoimentos
-Mesclar `row1` e `row2` em um unico array de 12 itens, dividido em 3 colunas de 4.
+**Coluna 3** (linha 135):
+- Mudar breakpoint de `md` para `lg`
+- De: `className="hidden max-w-[340px] flex-1 md:block"`
+- Para: `className="hidden max-w-[340px] flex-1 lg:block"`
 
-### Estrutura do card (dentro da coluna)
-```text
-+---------------------------+
-| ★★★★★              ❝     |
-|                           |
-| "Texto do depoimento..." |
-|                           |
-| ─────────────────────     |
-| [MC]  Marcos              |
-|       Mercado — Câmara    |
-+---------------------------+
-```
+**Coluna 1** — aumentar `max-w` no mobile para ocupar mais espaço:
+- De: `className="max-w-[340px] flex-1"`
+- Para: `className="max-w-full md:max-w-[340px] flex-1"`
 
-### Animacao vertical
-- Cada coluna duplica seus cards (2x) e anima `translateY` de `0` a `-50%` infinitamente
-- Framer Motion `animate={{ y: "-50%" }}` com `transition={{ duration, repeat: Infinity, ease: "linear" }}`
-- Pausa no hover via CSS `hover:` (animation-play-state) ou onHoverStart/End
+### Redistribuir depoimentos para coluna única ter mais conteúdo
+No mobile, apenas a coluna 1 será visível (4 depoimentos). Para garantir variedade, redistribuir para 6/3/3 em vez de 4/4/4:
+- `firstColumn = testimonials.slice(0, 6)` — coluna mobile terá 6 depoimentos
+- `secondColumn = testimonials.slice(6, 9)`
+- `thirdColumn = testimonials.slice(9, 12)`
 
-## Nenhuma mudanca em outros arquivos
+### Reduzir `maxHeight` no mobile
+Adicionar responsividade à altura: `style` fixo de 600px funciona no desktop, mas no mobile com 1 coluna é excessivo. Trocar para classe Tailwind:
+- Container: `max-h-[450px] md:max-h-[600px]`
+
+## Resultado
+- **Mobile**: 1 coluna centralizada com 6 depoimentos, altura 450px
+- **Tablet (md+)**: 2 colunas lado a lado
+- **Desktop (lg+)**: 3 colunas lado a lado
 
