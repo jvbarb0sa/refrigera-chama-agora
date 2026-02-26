@@ -4,11 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
-import { motion } from "framer-motion";
 
 const faqs = [
   { q: "Tem garantia?", a: "Sim. Todo serviço sai com garantia emitida por escrito. Se der problema dentro do prazo, voltamos sem custo adicional." },
@@ -18,64 +18,52 @@ const faqs = [
   { q: "Faz orçamento pelo WhatsApp?", a: "Podemos dar uma orientação inicial pelo WhatsApp. Para orçamento preciso, avaliamos o equipamento presencialmente." },
 ];
 
-const sideStats = [
-  { value: "500+", label: "Atendimentos" },
-  { value: "98%", label: "Recomendação" },
-  { value: "<2h", label: "Tempo resposta" },
-  { value: "8+", label: "Anos atuando" },
-];
-
 export default function FAQSection() {
   const ref = useGsapFade<HTMLDivElement>();
 
   return (
     <section id="faq" className="py-16 md:py-24">
       <div ref={ref} className="container">
-        <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-          Dúvidas
-        </span>
-        <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-          Perguntas frequentes
-        </h2>
-
-        <div className="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-10">
-          <div className="lg:col-span-7">
-            <Accordion type="single" collapsible>
-              {faqs.map((faq, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                  <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:no-underline hover:text-primary py-5">
-                    {faq.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          <div className="lg:col-span-3">
-            <div className="rounded-xl border border-border bg-muted p-6 space-y-5">
-              {sideStats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <p className="text-2xl font-bold text-primary">{s.value}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-                </div>
-              ))}
-              <Button asChild variant="strong" size="default" className="w-full mt-4">
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+        <div className="grid gap-10 lg:grid-cols-2">
+          {/* Left column */}
+          <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
+            <div>
+              <Badge variant="outline">Dúvidas</Badge>
+            </div>
+            <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
+              Perguntas frequentes
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Tire suas dúvidas sobre nossos serviços de refrigeração,
+              manutenção e atendimento técnico.
+            </p>
+            <div className="mt-2">
+              <Button asChild variant="strong" size="default" className="gap-2">
+                <a
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
                   rel="noopener"
                 >
                   <WhatsAppIcon size={16} />
-                  Falar com especialista
-                </motion.a>
+                  Alguma dúvida? Fale conosco
+                </a>
               </Button>
             </div>
           </div>
+
+          {/* Right column */}
+          <Accordion type="single" collapsible>
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+                <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:no-underline py-5">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>
