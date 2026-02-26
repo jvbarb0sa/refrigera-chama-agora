@@ -1,63 +1,65 @@
 
 
-# Sobre a Empresa — Redesign com Feature Component
+# FAQ Section — Redesign com layout de 2 colunas
 
 ## Visão geral
 
-Substituir o `MissionSection` atual (layout simples de 2 colunas com placeholder de imagem) pelo layout do componente `Feature` fornecido: texto à esquerda com lista de diferenciais (checkmarks) e imagem à direita.
+Reescrever o `FAQSection.tsx` usando o layout do componente `FAQ` fornecido: coluna esquerda com título, descrição e botão CTA; coluna direita com accordion de perguntas. Manter o conteúdo existente (perguntas da Refrigeração Taboado) e o botão de WhatsApp.
 
 ## Dependências
 
-Todas já instaladas: `lucide-react`, `class-variance-authority`, `Badge` component. Nenhuma instalação necessária.
+Todas já instaladas: `@radix-ui/react-accordion`, `lucide-react`, `Badge`, `Button`, `Accordion`. Nenhuma instalação necessária.
 
-## Arquivos
+## Arquivo alterado
 
-### 1. `src/components/ui/feature.tsx` — NÃO será criado separadamente
+### `src/components/FAQSection.tsx` (reescrita)
 
-O componente `Feature` é genérico demais. Vamos integrar o layout diretamente no `MissionSection` adaptado ao conteúdo da empresa.
+**Layout**: Grid de 2 colunas (`lg:grid-cols-2`), gap generoso.
 
-### 2. `src/components/MissionSection.tsx` (reescrita)
-
-Adaptar o layout do `Feature` component ao conteúdo existente da Refrigeração Taboado:
-
-**Layout**: Grid de 2 colunas (lg), coluna esquerda com texto + lista, coluna direita com imagem.
-
-**Coluna esquerda**:
-- Badge: "Sobre a empresa"
-- H2: "Profissionalismo e responsabilidade técnica"
-- Parágrafo descritivo (texto atual)
-- 3 itens com ícone Check (verde) + título + descrição:
-  1. **Diagnóstico preciso** — "Avaliação técnica detalhada antes de qualquer intervenção."
-  2. **Equipe qualificada** — "Profissionais com experiência em refrigeração comercial e residencial."
-  3. **Compromisso com o cliente** — "Transparência no orçamento e cumprimento de prazos."
+**Coluna esquerda** (sticky no desktop):
+- Badge: "Dúvidas"
+- H2: "Perguntas frequentes"
+- Parágrafo: "Tire suas dúvidas sobre nossos serviços de refrigeração, manutenção e atendimento técnico."
+- Botão WhatsApp: "Alguma dúvida? Fale conosco" com ícone WhatsApp, usando `whatsappLink`
 
 **Coluna direita**:
-- Imagem com `rounded-2xl` ocupando o espaço — usar imagem de Unsplash de técnico HVAC ou ambiente de trabalho: `https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop` (HVAC technician)
+- Accordion com as 5 perguntas existentes (mantém conteúdo atual dos `faqs`)
+- Estilo do trigger: sem underline no hover, texto à esquerda
 
 **Animação**: Manter `useGsapFade` no container.
 
-**Responsivo**: Stack vertical no mobile (imagem abaixo do texto).
+**Responsivo**: Stack vertical no mobile (texto acima, accordion abaixo).
 
 ### Estrutura visual
 
 ```text
-+----------------------------------+------------------+
-| [Sobre a empresa]  (badge)       |                  |
-|                                  |                  |
-| Profissionalismo e               |    [Imagem]      |
-| responsabilidade técnica         |                  |
-|                                  |                  |
-| Texto descritivo...              |                  |
-|                                  |                  |
-| ✓ Diagnóstico preciso            |                  |
-|   Avaliação técnica detalhada... |                  |
-|                                  |                  |
-| ✓ Equipe qualificada             |                  |
-|   Profissionais com experiência..|                  |
-|                                  |                  |
-| ✓ Compromisso com o cliente      |                  |
-|   Transparência no orçamento...  |                  |
-+----------------------------------+------------------+
++----------------------------------+----------------------------------+
+| [Dúvidas] (badge)                | ▸ Tem garantia?                  |
+|                                  |   Sim. Todo serviço sai com...   |
+| Perguntas frequentes             |                                  |
+|                                  | ▸ Cobra visita?                  |
+| Tire suas dúvidas sobre          |   A visita técnica tem um...     |
+| nossos serviços...               |                                  |
+|                                  | ▸ Trabalha com peça original?    |
+| [WhatsApp: Fale conosco]         |   Sempre que disponível...       |
+|                                  |                                  |
+|                                  | ▸ Atende no mesmo dia?           |
+|                                  |                                  |
+|                                  | ▸ Faz orçamento pelo WhatsApp?   |
++----------------------------------+----------------------------------+
+```
+
+### Removido
+- Side stats card (500+, 98%, etc.) — não faz parte do novo layout
+
+## Adição ao Index
+
+O `FAQSection` não está no `Index.tsx` atualmente. Adicionar entre `ServiceAreaSection` e `FinalCTASection`:
+
+```
+<ServiceAreaSection />
+<FAQSection />
+<FinalCTASection />
 ```
 
 ## Nenhum outro arquivo alterado
