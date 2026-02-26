@@ -1,44 +1,49 @@
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
-import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const faqs = [
-  { q: "Tem garantia?", a: "Sim. Todo serviço sai com garantia emitida por escrito. Se der problema dentro do prazo, voltamos sem custo adicional." },
-  { q: "Cobra visita?", a: "A visita técnica tem um valor simbólico que é abatido do serviço se você aprovar o orçamento." },
-  { q: "Trabalha com peça original?", a: "Sempre que disponível, usamos peças originais ou equivalentes de qualidade comprovada." },
-  { q: "Atende no mesmo dia?", a: "Dependendo do horário e da agenda, sim. Urgências comerciais têm prioridade." },
-  { q: "Faz orçamento pelo WhatsApp?", a: "Podemos dar uma orientação inicial pelo WhatsApp. Para orçamento preciso, avaliamos o equipamento presencialmente." },
+  { q: "Tem garantia?", a: "Sim, todos os nossos serviços e peças substituídas contam com garantia formalizada, garantindo a segurança e o funcionamento do seu equipamento." },
+  { q: "Cobra visita?", a: "A taxa de visita técnica é isenta caso o orçamento seja aprovado e o serviço executado com a nossa equipe." },
+  { q: "Trabalha com peça original?", a: "Priorizamos sempre peças originais de fábrica para garantir a maior durabilidade e performance do seu sistema de refrigeração." },
+  { q: "Atende no mesmo dia?", a: "Para casos de urgência comercial (câmaras frias e expositores parados), possuímos plantão de atendimento para solucionar o problema o mais rápido possível." },
+  { q: "Faz orçamento pelo WhatsApp?", a: "Sim, você pode nos enviar fotos e relatar o problema pelo WhatsApp para um pré-orçamento rápido e agendamento da visita técnica." },
 ];
 
 export default function FAQSection() {
-  const ref = useGsapFade<HTMLDivElement>();
-
   return (
     <section id="faq" className="py-16 md:py-24">
-      <div ref={ref} className="container">
-        <div className="grid gap-10 lg:grid-cols-2">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="container"
+      >
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 items-start">
           {/* Left column */}
-          <div className="flex flex-col gap-4 lg:sticky lg:top-24 lg:self-start">
-            <div>
-              <Badge variant="outline">Dúvidas</Badge>
+          <div className="flex flex-col space-y-8 lg:sticky lg:top-24 lg:self-start">
+            <div className="space-y-4">
+              <div className="inline-flex items-center rounded-[6px] border border-border bg-muted/50 px-3 py-1 text-sm font-semibold text-foreground">
+                Dúvidas
+              </div>
+              <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl">
+                Perguntas frequentes
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">
+                Tire suas dúvidas sobre nossos serviços de refrigeração,
+                manutenção e atendimento técnico.
+              </p>
             </div>
-            <h2 className="text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
-              Perguntas frequentes
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Tire suas dúvidas sobre nossos serviços de refrigeração,
-              manutenção e atendimento técnico.
-            </p>
-            <div className="mt-2">
-              <Button asChild variant="strong" size="default" className="gap-2">
+            <div>
+              <Button asChild variant="default" size="lg" className="gap-2">
                 <a
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
@@ -52,10 +57,10 @@ export default function FAQSection() {
           </div>
 
           {/* Right column */}
-          <Accordion type="single" collapsible>
+          <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                <AccordionTrigger className="text-left text-base font-semibold text-foreground hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-lg font-bold text-foreground transition-colors hover:text-primary hover:no-underline py-5">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
@@ -65,7 +70,7 @@ export default function FAQSection() {
             ))}
           </Accordion>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
