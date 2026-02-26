@@ -31,18 +31,22 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
     const targets = children ? el.querySelectorAll(children) : el;
 
     const ctx = gsap.context(() => {
-      gsap.from(targets, {
-        y,
-        opacity: 0,
-        duration,
-        stagger: children ? stagger : 0,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-          once: true,
-        },
-      });
+      gsap.fromTo(
+        targets,
+        { y, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration,
+          stagger: children ? stagger : 0,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
     }, el);
 
     return () => ctx.revert();
