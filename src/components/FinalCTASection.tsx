@@ -11,12 +11,12 @@ export default function FinalCTASection() {
   return (
     <>
       {/* CTA Banner */}
-      <section id="contato" className="bg-[#163573] border-l-4 border-[#BF5D39]">
+      <section id="contato" className="bg-[#163573] border-l-4 border-ring">
         <div ref={ref} className="container py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-0 items-center">
             {/* Left column */}
             <div className="lg:col-span-3">
-              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#BF5D39]">
+              <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-amber-400">
                 Atendimento emergencial
               </span>
               <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-white md:text-4xl">
@@ -34,8 +34,8 @@ export default function FinalCTASection() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 href={phoneLink()}
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors rounded-[6px]"
-              >
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors rounded-[6px]">
+
                 <Phone size={16} />
                 Ligar agora
               </motion.a>
@@ -45,8 +45,8 @@ export default function FinalCTASection() {
                 href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-[#BF5D39] text-white hover:bg-[#a84f30] transition-colors rounded-[6px]"
-              >
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white transition-colors rounded-[6px] bg-accent">
+
                 <WhatsAppIcon size={16} />
                 Chamar no WhatsApp
               </motion.a>
@@ -65,12 +65,12 @@ export default function FinalCTASection() {
                 Refrigeração <span className="text-accent">TABOADO</span>
               </p>
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/40">
-                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas, MS. Técnicos certificados, garantia documentada.
+                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas — MS. Técnicos certificados, garantia documentada.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-primary-foreground/50">
                 <li className="flex items-center gap-2">
                   <MapPin size={15} className="shrink-0 text-accent" />
-                   Três Lagoas, MS e região
+                  Três Lagoas — MS e região
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={15} className="shrink-0 text-accent" />
@@ -97,13 +97,13 @@ export default function FinalCTASection() {
                 Serviços
               </p>
               <ul className="space-y-3 text-sm text-primary-foreground/60">
-                {["Refrigeração Comercial", "Câmaras Frias", "Climatização", "Manutenção Preventiva", "Urgência 24h"].map((item) => (
-                  <li key={item}>
+                {["Refrigeração Comercial", "Câmaras Frias", "Climatização", "Manutenção Preventiva", "Urgência 24h"].map((item) =>
+                <li key={item}>
                     <a href="#servicos" className="hover:text-accent transition-colors">
                       {item}
                     </a>
                   </li>
-                ))}
+                )}
               </ul>
             </div>
 
@@ -127,7 +127,7 @@ export default function FinalCTASection() {
               © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
             </p>
             <p className="text-xs text-primary-foreground/30">
-              Três Lagoas, MS e região
+              Três Lagoas — MS e região
             </p>
           </div>
           <p className="mt-4 text-center text-xs text-primary-foreground/25">
@@ -136,13 +136,13 @@ export default function FinalCTASection() {
               href="https://wa.me/message/FTL5XC4CK32JM1"
               target="_blank"
               rel="noopener"
-              className="text-primary-foreground/30 underline hover:text-primary-foreground/50 transition-colors"
-            >
+              className="text-primary-foreground/30 underline hover:text-primary-foreground/50 transition-colors">
+
               FCS-STUDIO
             </a>
           </p>
         </div>
       </footer>
-    </>
-  );
+    </>);
+
 }

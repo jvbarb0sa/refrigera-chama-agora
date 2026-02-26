@@ -2,25 +2,25 @@ import { Eye, ShieldCheck, Award, Clock } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 import type { LucideIcon } from "lucide-react";
 
-const diffs: { icon: LucideIcon; title: string; desc: string }[] = [
-  { icon: Eye, title: "Transparência", desc: "Diagnóstico claro e explicação técnica antes de qualquer serviço." },
-  { icon: ShieldCheck, title: "Segurança", desc: "Procedimentos adequados e responsabilidade técnica em cada etapa." },
-  { icon: Award, title: "Qualidade", desc: "Peças adequadas e manutenção executada com eficiência." },
-  { icon: Clock, title: "Compromisso", desc: "Pontualidade, respeito ao prazo e acompanhamento pós-serviço." },
-];
+const diffs: {icon: LucideIcon;title: string;desc: string;}[] = [
+{ icon: Eye, title: "Transparência", desc: "Diagnóstico claro e explicação técnica antes de qualquer serviço." },
+{ icon: ShieldCheck, title: "Segurança", desc: "Procedimentos adequados e responsabilidade técnica em cada etapa." },
+{ icon: Award, title: "Qualidade", desc: "Peças adequadas e manutenção executada com eficiência." },
+{ icon: Clock, title: "Compromisso", desc: "Pontualidade, respeito ao prazo e acompanhamento pós-serviço." }];
+
 
 export default function DifferentialsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.12 });
 
   return (
-    <section id="diferenciais" className="py-20 md:py-28 bg-[#0b1622]">
+    <section id="diferenciais" className="py-20 md:py-28 bg-sky-950">
       <div className="container">
         <div className="flex items-start gap-6 md:gap-10">
           {/* Vertical rotated label */}
           <span
             className="hidden md:block text-xs font-medium uppercase tracking-[0.25em] text-white/60 shrink-0"
-            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-          >
+            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+
             Diferenciais
           </span>
 
@@ -46,13 +46,13 @@ export default function DifferentialsSection() {
                     <Icon size={24} className="text-white mt-4" />
                     <h3 className="mt-4 text-lg font-bold text-white">{d.title}</h3>
                     <p className="mt-2 text-sm text-[#9ca3af] leading-relaxed line-clamp-2">{d.desc}</p>
-                  </div>
-                );
+                  </div>);
+
               })}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
