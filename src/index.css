@@ -4,52 +4,65 @@
 
 @layer base {
   :root {
-    /* Core palette (HSL) */
-    --onyx: 210 5% 8%;
-    --french-blue: 220 66% 32%;
-    --french-blue-dark: 219 67% 26%;
-    --cerulean: 203 85% 45%;
-    --spicy-paprika: 16 54% 48%;
-    --pale-slate: 240 2% 84%;
-    --alabaster-grey: 240 3% 94%;
+    /* Core palette (hex) */
+    --pale-slate: #C7CCD7;
+    --spicy-paprika: #D36D3E;
+    --french-blue: #1B3D89;
+    --onyx: #151617;
+    --alabaster-grey: #D6D6DA;
 
-    /* Semantic: Text */
+    /* Surface tokens */
+    --surface-page: #D6D6DA;
+    --surface-section: #C7CCD7;
+    --surface-card: #D6D6DA;
+
+    /* Text tokens */
+    --text-primary: #151617;
+    --text-secondary: #1B3D89;
+    --text-muted: #151617;
+    --text-on-dark: #D6D6DA;
+    --text-on-brand: #D6D6DA;
+
+    /* Action tokens */
+    --action-primary: #1B3D89;
+    --action-primary-hover: #151617;
+    --action-strong: #D36D3E;
+    --action-strong-hover: #151617;
+
+    /* Shadcn semantic remaps (hex) */
     --foreground: var(--onyx);
     --primary: var(--french-blue);
-    --primary-foreground: 0 0% 100%;
-    --muted-foreground: 215 8% 46%;
+    --primary-foreground: #FFFFFF;
+    --muted-foreground: #6B7280;
 
-    /* Semantic: Surfaces */
-    --background: 0 0% 100%;
-    --card: 0 0% 100%;
+    --background: #FFFFFF;
+    --card: var(--surface-card);
     --card-foreground: var(--onyx);
     --muted: var(--alabaster-grey);
-    --popover: 0 0% 100%;
+    --popover: #FFFFFF;
     --popover-foreground: var(--onyx);
 
-    /* Semantic: Actions */
-    --accent: var(--cerulean);
-    --accent-foreground: 0 0% 100%;
+    --accent: var(--spicy-paprika);
+    --accent-foreground: #FFFFFF;
     --secondary: var(--alabaster-grey);
     --secondary-foreground: var(--onyx);
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: #DC2626;
+    --destructive-foreground: #FFFFFF;
 
-    /* Semantic: Borders */
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: var(--cerulean);
+    --border: #E2E5EA;
+    --input: #E2E5EA;
+    --ring: var(--french-blue);
 
     --radius: 0.75rem;
 
-    /* Sidebar (unused but required) */
-    --sidebar-background: 0 0% 100%;
+    /* Sidebar */
+    --sidebar-background: #FFFFFF;
     --sidebar-foreground: var(--onyx);
     --sidebar-primary: var(--french-blue);
-    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-primary-foreground: #FFFFFF;
     --sidebar-accent: var(--alabaster-grey);
     --sidebar-accent-foreground: var(--onyx);
-    --sidebar-border: 220 13% 91%;
+    --sidebar-border: #E2E5EA;
     --sidebar-ring: var(--spicy-paprika);
   }
 }
