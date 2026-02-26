@@ -1,61 +1,89 @@
-import { useGsapFade } from "@/hooks/use-gsap-fade";
+import { motion } from "framer-motion";
+import { MapPin, Factory, Home, ArrowRight } from "lucide-react";
 import { whatsappLink } from "@/lib/constants";
 
-const tags = ["Três Lagoas · MS", "Comércio & Indústria", "Residencial"];
+const serviceAreas = [
+  { icon: MapPin, text: "Três Lagoas · MS e Região" },
+  { icon: Factory, text: "Comércio & Indústria" },
+  { icon: Home, text: "Residencial" },
+];
 
 export default function ServiceAreaSection() {
-  const ref = useGsapFade<HTMLDivElement>();
-
   return (
-    <section className="border-t border-[#D7D7D7] py-20 bg-white">
-      <div ref={ref} className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
-          {/* Left column */}
-          <div className="lg:col-span-2 flex flex-col justify-center pr-0 lg:pr-8 pb-8 lg:pb-0">
-            <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]">
-              Área de atendimento
-            </span>
-            <h2 className="mt-3 text-3xl font-bold text-[#163573] tracking-tight">
-              Atendimento local
-            </h2>
-            <p className="mt-3 text-[15px] text-[#4B5563] leading-[1.7] max-w-md">
-              Atuamos em Três Lagoas e região, com atendimento para comércios,
-              indústrias alimentícias e residências.
-            </p>
+    <section className="w-full bg-background py-16 md:py-24 border-t border-border">
+      <div className="container">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          {/* Left Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="flex flex-col space-y-8"
+          >
+            <div className="space-y-4">
+              <div className="inline-flex items-center rounded-[6px] border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-xs font-semibold text-primary uppercase tracking-wide">
+                Área de Atendimento
+              </div>
 
-            <div className="mt-6 flex flex-col gap-2">
-              {tags.map((tag) => (
-                <p key={tag} className="text-sm text-foreground">
-                  <span className="text-[#BF5D39] mr-2">·</span>
-                  {tag}
-                </p>
-              ))}
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+                Atendimento local
+              </h2>
+
+              <p className="max-w-[500px] text-muted-foreground text-base md:text-lg leading-relaxed font-medium">
+                Atuamos em Três Lagoas e região, com atendimento especializado para
+                comércios, indústrias alimentícias e residências.
+              </p>
             </div>
 
-            <a
-              href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-8 text-[#118CD9] font-medium text-sm hover:underline w-fit h-10 inline-flex items-center"
-            >
-              Fale com a gente →
-            </a>
-          </div>
+            {/* Structured List */}
+            <ul className="flex flex-col space-y-4">
+              {serviceAreas.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <li key={index} className="flex items-center gap-3 text-foreground font-medium">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
+                      <Icon className="h-4 w-4 text-primary" />
+                    </div>
+                    <span>{item.text}</span>
+                  </li>
+                );
+              })}
+            </ul>
 
-          {/* Right column — Map */}
-          <div className="lg:col-span-3 overflow-hidden border border-[#D7D7D9]">
-            <iframe
-              title="Localização Três Lagoas"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118889.7!2d-51.73!3d-20.78!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9486e4f4c4c4c4c1%3A0x1!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1"
-              width="100%"
-              height="100%"
-              style={{ border: 0, minHeight: 300 }}
-              className="lg:!min-h-[400px]"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
-          </div>
+            {/* CTA */}
+            <div className="pt-2">
+              <a
+                href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 items-center justify-center rounded-[6px] bg-primary px-6 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit"
+              >
+                Fale com a gente
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column: Map */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative w-full"
+          >
+            <div className="relative w-full aspect-square md:aspect-video lg:aspect-[4/3] overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119335.53856247345!2d-51.78248888062164!3d-20.78368581895781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949736e4f165a6e9%3A0xc6c4f9bc2a02b115!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                className="absolute inset-0 h-full w-full border-0 grayscale-[20%] contrast-125"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mapa da área de atendimento em Três Lagoas"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
