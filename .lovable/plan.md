@@ -1,129 +1,64 @@
 
 
-# Reestruturar wireframe para espelhar a referência RB Refrigeração
+# Hero Section — Reestruturação Institucional
 
-## Análise comparativa
+## Problema
 
-A referência RB tem uma estrutura editorial com blocos bem definidos e hierarquia forte. O site atual do Taboado tem os conteúdos certos mas a organização e o wireframe são diferentes. Abaixo, as mudanças necessárias para alinhar.
+O hero atual tem fundo escuro (`bg-foreground` / onyx), headline genérica ("Especialistas em refrigeração comercial e linha branca"), subheadline vaga, CTAs repetitivos ("Solicitar orçamento" / "Ligar agora"), e provas sociais fracas (avatar circles vazios). Parece landing page de IA.
 
-```text
-RB REFERÊNCIA                          TABOADO ATUAL
-─────────────────────────────────────────────────────────
-1. Header (logo + nav + CTA)           ✓ Similar
-2. Hero (foto direita + social proof)  ✗ Sem foto, sem proof
-3. Stats animados (4 contadores)       ✗ Não existe
-4. Missão + marquee de serviços        ✗ Não existe
-5. Diferenciais (lista + foto)         ✗ Não existe
-6. Processo (4 steps detalhados)       ~ Existe mas minimal
-7. Serviços (grid 3x2 com badges)     ✗ Bento assimétrico
-8. Testimonials (carousel scroll)      ~ Cards estáticos
-9. FAQ (accordion + stats sidebar)     ~ Accordion simples
-10. CTA Final (forte + stats)          ~ Existe básico
-11. Footer                             ✓ Similar
-```
+## Mudanças
 
-## Plano de implementação
+### 1. Fundo branco (não escuro)
 
-### 1. `HeroSection.tsx` — Hero com imagem e social proof
-- Layout 2 colunas: texto esquerda (60%), imagem placeholder direita (40%)
-- Manter badge "TRÊS LAGOAS · MS", H1, sub, 2 CTAs
-- Headline: destaque em azul para "refrigeração comercial e manutenção preventiva"
-- Adicionar strip de social proof no bottom do hero: estrelas Google + avatar stack + "+X atendimentos"
-- Imagem: div com bg-gray placeholder (aspect ratio 4:3) com rounded corners e overlay sutil
+Trocar `bg-foreground` por `bg-background` (branco). Isso elimina o visual "tech/SaaS" e alinha com o briefing institucional. Toda a tipografia passa para cores escuras (`text-foreground`), com destaques em `text-primary` (azul).
 
-### 2. Novo `StatsSection.tsx` — Contadores animados
-- Faixa logo abaixo do hero, fundo branco, border top/bottom
-- 4 colunas com números grandes em azul: "Atendimentos realizados", "Anos de experiência", "Cobertura local", "Taxa de recomendação"
-- Números estáticos (sem inventar dados falsos — usar placeholders editáveis)
-- Separadores verticais entre colunas no desktop
+### 2. Copy reescrita (técnica e específica)
 
-### 3. Novo `MissionSection.tsx` — Missão + marquee
-- Seção fundo branco
-- Label "NOSSA MISSÃO" uppercase
-- H2: "Equipamentos param. Negócios não podem." (adaptado para Taboado)
-- Parágrafo curto sobre a razão de existir
-- 3 pilares lado a lado: "Diagnóstico preciso", "Atendimento rápido", "Garantia formal" — cada com título bold + 1 linha de descrição
-- Marquee horizontal de serviços (faixa scrollante com tags: "Refrigeração Comercial", "Câmaras Frias", "Geladeiras", etc.)
+**Headline:**
+> Assistência técnica especializada em refrigeração comercial e residencial.
 
-### 4. Novo `DifferentialsSection.tsx` — Diferenciais com imagem
-- Layout 2 colunas: lista de 4 diferenciais à esquerda, imagem placeholder à direita
-- Cada diferencial: título semibold + parágrafo curto
-- Diferenciais: "Diagnóstico Transparente", "Garantia Técnica Real", "Equipe Qualificada", "Resposta Rápida"
-- Imagem: div placeholder com bg muted, rounded
+**Subheadline:**
+> Instalação e manutenção de geladeiras, freezers, câmaras frias e sistemas inverter com atendimento rápido e técnico certificado.
 
-### 5. `ProcessSection.tsx` — Processo detalhado vertical
-- Mudar de stepper horizontal minimalista para layout vertical com mais conteúdo (como a RB)
-- Cada step: número grande azul + label pequeno + título H3 + parágrafo descritivo
-- 4 steps: Diagnóstico → Plano & Orçamento → Execução → Validação & Garantia
-- Linha vertical conectora entre steps no desktop
+Sem "linha branca", sem "excelência", sem "soluções". Direto ao serviço.
 
-### 6. `ServicesSection.tsx` — Grid uniforme 3x2 com badges
-- Trocar bento assimétrico por grid 3 colunas (2 linhas)
-- Cada card: badge no topo (ex: "Comercial", "Residencial", "Preventiva"), título H3, 1 linha descrição, link CTA específico
-- Cards com border, hover border-primary, padding uniforme
-- 6 serviços: Refrigeração Comercial, Refrigeração Residencial, Câmaras Frias, Geladeiras e Freezers, Lavadoras, Ar Condicionado
-- CTAs variados por card: "Solicitar visita técnica", "Agendar reparo", "Pedir diagnóstico", etc.
+### 3. Provas factuais (não social proof genérica)
 
-### 7. `TestimonialsSection.tsx` — Carousel horizontal
-- Trocar cards estáticos por carousel horizontal (usar embla-carousel-react, já instalado)
-- 6 testimonials com auto-scroll
-- Cada card: aspas, texto, iniciais em circle + nome + cargo/contexto
-- Controles prev/next discretos
+Substituir estrelas Google + avatares vazios por 3 bullets factuais em linha:
 
-### 8. `FAQSection.tsx` — Accordion + sidebar de stats
-- Layout 2 colunas no desktop: accordion à esquerda (70%), sidebar de stats à direita (30%)
-- Sidebar: 4 mini-stats empilhados (atendimentos, recomendação, tempo resposta, anos atuando) + CTA "Falar com especialista"
-- Mobile: stats acima do accordion
+- Atendimento em Três Lagoas e região
+- Técnicos com experiência comprovada
+- Peças e componentes de qualidade
 
-### 9. `FinalCTASection.tsx` — CTA mais impactante
-- Headline mais forte: "Equipamento parado custa dinheiro. Nós resolvemos."
-- Parágrafo de autoridade
-- 2 CTAs (WhatsApp + Orçamento)
-- Strip de mini-stats abaixo dos botões
-- Footer mantém igual
+Formato: texto simples com bullet ou check, sem cards, sem ícones elaborados.
 
-### 10. `TriageSection.tsx` — Manter (diferencial)
-- A triagem rápida não existe na RB, mas é um diferencial real. Manter na posição entre Diferenciais e Processo.
+### 4. CTAs com intenção diferenciada
 
-### 11. `CommerceSection.tsx` — Mover para depois dos Serviços
-- Manter conteúdo, posicionar após a grid de serviços como uma faixa de impacto
+- **Primário (strong):** "Solicitar atendimento técnico" → WhatsApp com mensagem "Olá, preciso de atendimento técnico."
+- **Secundário (outline):** "Falar no WhatsApp" → WhatsApp com mensagem genérica
 
-### 12. `Index.tsx` — Nova ordem de seções
+Ambos apontam para WhatsApp, mas com copy e hierarquia visual diferentes. Remover o "Ligar agora" do hero (está na navbar e no sticky).
 
-```text
-1. Navbar
-2. Hero (com foto + social proof)
-3. Stats (contadores)
-4. Mission (missão + marquee)
-5. Differentials (lista + foto)
-6. Triage (diagnóstico rápido)
-7. Process (4 steps detalhados)
-8. Services (grid 3x2)
-9. Commerce (faixa azul)
-10. Testimonials (carousel)
-11. FAQ (accordion + stats)
-12. Final CTA + Footer
-```
+### 5. Layout
 
-## Arquivos a criar/editar
+- Manter 2 colunas no desktop (texto esquerda 60%, imagem direita 40%)
+- Texto com `max-w-[720px]`, alinhado à esquerda
+- Imagem placeholder mantém aspect-ratio mas com fundo `bg-muted` e texto "Foto do técnico em atendimento"
+- Mobile: coluna única, imagem oculta (já é assim)
 
-| Arquivo | Ação |
+### 6. GSAP
+
+Manter a timeline existente, apenas ajustar classes de cor. Sem mudança de lógica de animação.
+
+## Arquivo editado
+
+| Arquivo | O que muda |
 |---|---|
-| `src/components/StatsSection.tsx` | **Novo** |
-| `src/components/MissionSection.tsx` | **Novo** |
-| `src/components/DifferentialsSection.tsx` | **Novo** |
-| `src/components/HeroSection.tsx` | Refatorar (2 cols + social proof) |
-| `src/components/ProcessSection.tsx` | Refatorar (vertical detalhado) |
-| `src/components/ServicesSection.tsx` | Refatorar (grid 3x2 uniforme) |
-| `src/components/TestimonialsSection.tsx` | Refatorar (carousel embla) |
-| `src/components/FAQSection.tsx` | Refatorar (accordion + stats sidebar) |
-| `src/components/FinalCTASection.tsx` | Refatorar (mais impactante) |
-| `src/pages/Index.tsx` | Nova ordem de seções |
+| `src/components/HeroSection.tsx` | Fundo branco, copy reescrita, provas factuais, CTAs diferenciados, cores de texto ajustadas |
 
 ## O que NÃO muda
-- Paleta de cores, tipografia, tokens CSS
-- Navbar (já funciona bem)
-- WhatsApp sticky
-- Constants (telefones, links)
-- Triagem rápida (diferencial, mantém)
+- Estrutura de grid (já 2 colunas)
+- GSAP timeline (já funciona)
+- Framer Motion nos botões (já funciona)
+- Navbar, demais seções, constants
 
