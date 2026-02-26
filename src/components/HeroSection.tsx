@@ -1,16 +1,16 @@
-import { MessageCircle, Star, Users, MapPin } from "lucide-react";
+import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { whatsappLink } from "@/lib/constants";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
+import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const MotionDiv = motion.div;
 
-
-
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const el = heroRef.current;
@@ -52,40 +52,43 @@ export default function HeroSection() {
               garantia — em Três Lagoas e região.
             </p>
 
-            <div className="hero-ctas mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Button asChild
-              variant="strong"
-              size="lg"
-              className="text-base px-8 h-14">
+            <div className="hero-ctas mt-10 flex flex-col gap-1 sm:gap-2">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button
+                  variant="strong"
+                  size="lg"
+                  className="text-base px-8 h-14"
+                  onClick={() => setModalOpen(true)}
+                >
+                  <motion.span
+                    className="inline-flex items-center gap-2"
+                    whileHover={{ y: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <WhatsAppIcon size={20} />
+                    Falar com técnico agora
+                  </motion.span>
+                </Button>
 
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={whatsappLink("Olá, preciso de atendimento técnico.")}
-                  target="_blank"
-                  rel="noopener">
-
-                  <MessageCircle size={20} />
-                  Solicitar atendimento técnico
-                </motion.a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="text-base px-8 h-14">
-
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener">
-
-                  <MessageCircle size={20} />
-                  Falar no WhatsApp
-                </motion.a>
-              </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="text-base px-8 h-14"
+                >
+                  <motion.a
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    href="#contato"
+                  >
+                    <CalendarCheck size={20} />
+                    Solicitar visita técnica
+                  </motion.a>
+                </Button>
+              </div>
+              <span className="text-xs text-muted-foreground pl-1">
+                Resposta mais rápida por WhatsApp.
+              </span>
             </div>
 
             <ul className="hero-proof mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-border pt-6">
@@ -113,6 +116,12 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-    </section>);
 
+      <WhatsAppRouterModal
+        open={modalOpen}
+        onOpenChange={setModalOpen}
+        message="Olá, preciso de atendimento técnico."
+      />
+    </section>
+  );
 }
