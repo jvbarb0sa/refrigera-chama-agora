@@ -33,7 +33,7 @@ export default function ProblemsSection() {
               href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all rounded-[12px]"
+              className="mt-8 bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all rounded-[6px]"
             >
               <WhatsAppIcon size={20} />
               Agendar avaliação técnica
