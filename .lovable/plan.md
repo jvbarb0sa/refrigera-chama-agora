@@ -1,53 +1,59 @@
 
 
-# Testimonials Section — Evolução visual premium
+# Redesign: Problemas que Resolvemos + Diferenciais
 
-## Problemas atuais
-- Cards genéricos, sem hierarquia visual forte
-- Bloco de credibilidade centralizado parece "solto"
-- Gradientes laterais com apenas 80px — pouco impacto
-- Falta respiro entre elementos
-- Avatar apenas com iniciais — impessoal
-- Seção visualmente plana, sem camadas de profundidade
+## Visão geral
 
-## Mudanças propostas
+Ambas as seções estão visualmente genéricas — cards com borda fina, ícones circulares básicos, grid plano. Vamos redesenhar completamente cada uma com identidade visual distinta, mais profundidade e hierarquia.
 
-### 1. Cards — redesign completo
-- Largura maior: `min-w-[340px]` para mais presença
-- Aspas decorativas (`"`) em texto primary/10 grande (text-4xl) no topo do card como elemento visual
-- Remover borda visível → usar apenas `shadow-md` com `hover:shadow-lg transition-shadow`
-- Background branco puro `bg-white` (destaca contra bg-muted)
-- Padding `p-7` mais generoso
-- Texto do depoimento com `text-[15px]` (entre sm e base) para melhor leitura
-- Avatar: gradiente sutil no círculo (`bg-gradient-to-br from-primary to-primary/70`)
-- Estrelas com `gap-0.5` mais juntas, dourado mais rico
+---
 
-### 2. Gradientes laterais — mais largos e suaves
-- De `w-20` (80px) para `w-32` (128px) — fade mais cinematográfico
-- Garantir que `from-muted` corresponde ao fundo da seção
+## 1. Problemas que Resolvemos — novo design
 
-### 3. Bloco de credibilidade — integrar melhor
-- Remover borda e shadow → fundo transparente, dados inline
-- Transformar em uma linha horizontal simples com separadores sutis
-- Ícone do Google (estrela) maior e mais proeminente
-- Tipografia dos números: `text-3xl font-bold` para impacto
-- Subtexto: `text-xs uppercase tracking-wider text-muted-foreground`
+### Conceito
+Abandonar o grid de cards com check verde. Usar layout de **duas colunas**: lado esquerdo com texto + CTA, lado direito com lista estilizada. Inspiração em seções "feature list" de sites premium.
 
-### 4. Espaçamento e ritmo
-- Gap entre as duas faixas de marquee: `space-y-5` (de 4 para 5)
-- Margem entre header e marquee: `mt-12` (de 10)
-- Section padding: `py-20 md:py-28` para mais respiro
+### Estrutura
+- Layout `grid lg:grid-cols-2 items-center gap-12`
+- **Coluna esquerda**: tag, H2, parágrafo descritivo, botão CTA WhatsApp
+- **Coluna direita**: lista vertical dos 6 problemas, cada um como uma linha com:
+  - Ícone de bolt/wrench (`Wrench` do Lucide) em `text-accent` (laranja)
+  - Texto do problema em `text-[15px] font-medium`
+  - Separador `border-b border-border/50` entre itens (exceto último)
+  - Padding vertical `py-4` em cada item
+  - Hover sutil: `hover:bg-muted/50 transition-colors rounded-lg px-3 -mx-3`
 
-### 5. Subtítulo da seção
-- Adicionar parágrafo descritivo abaixo do H2: "Veja o que nossos clientes dizem sobre a experiência com nosso atendimento."
-- `text-muted-foreground max-w-lg mx-auto mt-4`
+### Visual
+- Fundo: `bg-background` (branco — contraste com seção anterior/posterior)
+- Sem cards, sem bordas externas, sem ícones circulares
+- Estilo "lista técnica" — direto, profissional
 
-### 6. Velocidade do marquee
-- Row 1: 40s (um pouco mais lento, elegante)
-- Row 2: 45s (velocidade diferente cria ritmo visual interessante)
-- CSS: criar `animate-marquee-slow` e `animate-marquee-slow-reverse`
+---
+
+## 2. Diferenciais — novo design
+
+### Conceito
+Abandonar o grid de 4 colunas com numeração `01-04`. Usar **cards grandes com ícone** em grid 2x2, com fundo `bg-muted` na seção e cards brancos elevados.
+
+### Dados atualizados (com ícones Lucide)
+- **Transparência** — `Eye` — "Diagnóstico claro e explicação técnica antes de qualquer serviço."
+- **Segurança** — `ShieldCheck` — "Procedimentos adequados e responsabilidade técnica em cada etapa."
+- **Qualidade** — `Award` — "Peças adequadas e manutenção executada com eficiência."
+- **Compromisso** — `Clock` — "Pontualidade, respeito ao prazo e acompanhamento pós-serviço."
+
+### Estrutura de cada card
+- `rounded-2xl bg-card shadow-md hover:shadow-lg transition-shadow p-8`
+- Ícone no topo: `w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center` com ícone `size={24} text-primary`
+- Título: `text-lg font-semibold mt-5`
+- Descrição: `text-sm text-muted-foreground mt-2 leading-relaxed`
+
+### Layout
+- Grid `grid-cols-1 md:grid-cols-2 gap-5`
+- Seção com `bg-muted py-20 md:py-28`
+
+---
 
 ## Arquivos alterados
-1. `src/components/TestimonialsSection.tsx` — redesign dos cards, bloco de credibilidade, layout
-2. `src/index.css` — adicionar variantes de velocidade do marquee, ajustar gradientes
+1. `src/components/ProblemsSection.tsx` — reescrita completa (layout 2 colunas + lista)
+2. `src/components/DifferentialsSection.tsx` — reescrita completa (cards 2x2 com ícones)
 
