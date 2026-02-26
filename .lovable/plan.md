@@ -1,52 +1,51 @@
 
 
-# Redesign "Área de Atendimento" — Two-Column Layout with Map
+# Redesign "Problemas que Resolvemos" — Diagnostic Grid
 
 ## Overview
 
-Rewrite `ServiceAreaSection.tsx` to a two-column layout: text content on the left (40%), Google Maps embed on the right (60%). Dark industrial styling with brand colors, no decorative elements.
+Rewrite `ProblemsSection.tsx` to a two-column layout with a structured 2×3 diagnostic grid on the right. Kill all wrench icons, replace the vertical list with a clean grid of bordered items.
 
 ## File changed
 
-### `src/components/ServiceAreaSection.tsx` — full rewrite
+### `src/components/ProblemsSection.tsx` — full rewrite
 
-**Section wrapper**: White background, `py-20` (80px). Thin `border-t border-[#D7D7D7]` at top as separator. Remove `MapPin` icon import.
+**Section wrapper**: White background (`bg-white`), `py-20`. Thin `border-t border-[#D7D7D9]` at top as separator. Remove `Wrench` import from lucide.
 
-**Layout**: `grid grid-cols-1 lg:grid-cols-5` (2 cols left = 40%, 3 cols right = 60%). `gap-0` — map bleeds to edge.
+**Layout**: `grid grid-cols-1 lg:grid-cols-5 gap-12 items-start`.
 
-**Left column** (`lg:col-span-2`, vertically centered with `flex flex-col justify-center`, padding-right for breathing room):
+**Left column** (`lg:col-span-2`):
 
-- Label: `ÁREA DE ATENDIMENTO` — raw text, `text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]`, no icon
-- Title: `Atendimento local` — `text-3xl font-bold text-[#163573] tracking-tight`
-- Description: existing text — `text-[15px] text-[#4B5563] leading-[1.7]`
-- 3 tag items below description (`mt-6`, `flex flex-col gap-2`):
-  - Each: `<span className="text-[#BF5D39] mr-2">—</span> Três Lagoas · MS`
-  - Same for `Comércio & Indústria` and `Residencial`
-  - Text in `text-sm text-foreground`
-- CTA link at bottom (`mt-8`): `<a>` styled as `text-[#118CD9] font-medium text-sm hover:underline` — "Fale com a gente →" linking to `whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")`
+- Label: `PROBLEMAS QUE RESOLVEMOS` — `text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]`, no icon
+- Title: `Seu equipamento parou?` — `text-3xl font-bold text-[#163573] tracking-tight`
+- Description: same text — `text-[15px] text-[#4B5563] leading-[1.7] max-w-md mt-3`
+- Button: `mt-8`, rendered as `<a>` with `bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2` — sharp corners (no border-radius). WhatsApp icon left. Links to existing whatsapp message.
 
 **Right column** (`lg:col-span-3`):
 
-- Map iframe: `width="100%" height="100%"` with `min-h-[400px]`, `border border-[#D7D7D9]`, zero border-radius
-- Container: `overflow-hidden` (no rounded corners)
+- Grid: `grid grid-cols-2 gap-x-8 gap-y-0`
+- Each of the 6 items:
+  - `border-t-2 border-[#D7D7D9] pt-5 pb-5` top border
+  - `hover:border-[#118CD9] transition-colors` on hover
+  - Content: `<span className="text-[#BF5D39] mr-2">—</span>` followed by problem text in `text-[15px] font-medium text-[#1a1a1a]`
+  - On hover: text color shifts to `hover:text-[#163573]`
+  - No icons whatsoever
 
-**Animation**: Keep `useGsapFade` on container.
+**Animation**: Keep `useGsapFade` with `.problem-item` selector and stagger `0.08`.
+
+### Visual structure (desktop)
 
 ```text
 ┌──────────────────────────────────────────────────────────┐
 │ ─────────────────── separator ───────────────────────── │
 │                                                          │
-│  ÁREA DE ATENDIMENTO        ┌──────────────────────────┐ │
-│                             │                          │ │
-│  Atendimento local          │     Google Maps          │ │
-│                             │     (sharp rectangle)    │ │
-│  Atuamos em Três Lagoas...  │                          │ │
-│                             │                          │ │
-│  — Três Lagoas · MS         │                          │ │
-│  — Comércio & Indústria     │                          │ │
-│  — Residencial              │                          │ │
-│                             │                          │ │
-│  Fale com a gente →         └──────────────────────────┘ │
+│  PROBLEMAS QUE RESOLVEMOS   ─────────── │ ───────────── │
+│                             — Geladeira  │ — Freezer     │
+│  Seu equipamento parou?     ─────────── │ ───────────── │
+│                             — Câmara fr. │ — Ar inverter │
+│  Atendimento técnico...     ─────────── │ ───────────── │
+│                             — Máq. lavar │ — Probl. elét │
+│  [🟫 Agendar avaliação]                                  │
 │                                                          │
 └──────────────────────────────────────────────────────────┘
 ```
