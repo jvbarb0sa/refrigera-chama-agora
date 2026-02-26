@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { Wrench } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
@@ -14,42 +14,45 @@ const problems = [
 ];
 
 export default function ProblemsSection() {
-  const listRef = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.1 });
+  const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
 
   return (
-    <section className="py-16 md:py-24 bg-muted">
+    <section className="py-20 md:py-28 bg-background">
       <div className="container">
-        <div ref={listRef} className="text-center">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-            Problemas que resolvemos
-          </span>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-            Seu equipamento parou?
-          </h2>
-          <p className="mt-2 text-muted-foreground max-w-md mx-auto">
-            Atendimento técnico para falhas comuns em refrigeração e elétrica.
-          </p>
+        <div ref={ref} className="grid lg:grid-cols-2 items-center gap-12">
+          {/* Left column */}
+          <div className="problem-item">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+              Problemas que resolvemos
+            </span>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
+              Seu equipamento parou?
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-md leading-relaxed">
+              Atendimento técnico para falhas comuns em refrigeração e elétrica. Diagnóstico rápido e solução eficiente.
+            </p>
+            <Button asChild variant="strong" size="lg" className="mt-8 h-14 px-8 text-base">
+              <a href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")} target="_blank" rel="noopener">
+                <WhatsAppIcon size={20} />
+                Agendar avaliação técnica
+              </a>
+            </Button>
+          </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {problems.map((p) => (
+          {/* Right column — problem list */}
+          <div>
+            {problems.map((p, i) => (
               <div
                 key={p}
-                className="problem-item flex items-center gap-3 rounded-xl border border-border bg-card p-4"
+                className={`problem-item flex items-center gap-4 py-4 px-3 -mx-3 rounded-lg hover:bg-muted/50 transition-colors ${
+                  i < problems.length - 1 ? "border-b border-border/50" : ""
+                }`}
               >
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                  <Check size={14} className="text-primary" />
-                </div>
-                <span className="text-sm font-medium text-foreground">{p}</span>
+                <Wrench size={18} className="shrink-0 text-accent" />
+                <span className="text-[15px] font-medium text-foreground">{p}</span>
               </div>
             ))}
           </div>
-
-          <Button asChild variant="strong" size="lg" className="problem-item mt-10 h-14 px-8 text-base">
-            <a href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")} target="_blank" rel="noopener">
-              <WhatsAppIcon size={20} />
-              Agendar avaliação técnica
-            </a>
-          </Button>
         </div>
       </div>
     </section>
