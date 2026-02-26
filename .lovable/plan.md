@@ -1,35 +1,29 @@
 
 
-# Redesign ServicesSection + ProblemsSection
+# 1. Improve ProblemsSection + 2. Standardize card borders globally
 
-## ServicesSection — full redesign to match reference
+## Current state
 
-**Layout**: 3-column grid (`md:grid-cols-3`), 2 rows, 6 service cards total.
+- **Diferenciais cards** (reference standard): `rounded-[6px] bg-white/5 border border-white/10 p-8 backdrop-blur-xl` — glassmorphism style on dark background
+- **ServicesSection cards**: `border p-6 md:p-8` — no border-radius at all, plain `border-border`
+- **ProblemsSection**: Simple text list with `border-t` separators — basic, not card-based
 
-**Header area**: Split layout — left side has badge "ESPECIALIDADES" + H2 "Soluções técnicas para quem não pode parar." (with "não pode parar." in muted color). Right side has a short paragraph.
+## Changes
 
-**Each card**:
-- Icon in a circle (`w-12 h-12 rounded-full bg-muted flex items-center justify-center`) using Lucide icons
-- Category badge top-right (outline pill, uppercase, small text)
-- Title (`text-lg font-semibold`)
-- Description (`text-sm text-muted-foreground`)
-- CTA link at bottom (`text-sm font-semibold text-primary` + ArrowRight icon), linking to WhatsApp
-- Border, padding, no border-radius (angular per style guide)
-- Last card (bottom-right) gets dark navy background (`bg-[#0b1622]`) with light text
+### 1. `src/components/ProblemsSection.tsx` — Redesign
 
-**6 services** (adapted to this business):
-1. Refrigeração Comercial · COMERCIAL · Thermometer icon
-2. Refrigeração Residencial · RESIDENCIAL · Home icon
-3. Manutenção Preventiva · PREVENTIVA · Settings icon
-4. Instalação & Regularização · INSTALAÇÃO · Wrench icon
-5. Diagnóstico Técnico · DIAGNÓSTICO · Search icon
-6. Contratos para Empresas · CORPORATIVO · Building icon (dark card)
+Transform the right-side problem items from plain text rows into a proper 2x3 bento grid of mini-cards matching the project's visual language:
+- Each problem gets a card with `rounded-[6px] border border-border p-5 bg-card` 
+- Add a subtle icon or index number watermark per card
+- Add hover state: `hover:border-primary/30` transition
+- Keep left column layout (badge, heading, description, WhatsApp CTA)
+- Maintain the 40/60 grid split
 
-## ProblemsSection — refinement
+### 2. `src/components/ServicesSection.tsx` — Add `rounded-[6px]` to cards
 
-Keep the current 40/60 split layout but improve card styling to match the elevated quality: add slightly more spacing, refine typography, ensure consistency with the new ServicesSection visual language.
+Add `rounded-[6px]` to each service card class to match the Diferenciais standard. The icon container already uses `rounded-full` which is fine — only the outer card needs the border-radius fix.
 
-## Files changed
-1. `src/components/ServicesSection.tsx` — rewrite with new 3x2 card grid
-2. `src/components/ProblemsSection.tsx` — minor visual polish
+### Files changed
+1. `src/components/ServicesSection.tsx` — add `rounded-[6px]` to card class
+2. `src/components/ProblemsSection.tsx` — redesign problem items as styled cards with `rounded-[6px] border border-border`
 
