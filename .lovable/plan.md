@@ -1,54 +1,36 @@
 
 
-# Redesign "Problemas que Resolvemos" — Diagnostic Grid
+# Redesign Navbar — Conversion-Focused Utility Header
 
-## Overview
+## File: `src/components/Navbar.tsx` — full rewrite
 
-Rewrite `ProblemsSection.tsx` to a two-column layout with a structured 2×3 diagnostic grid on the right. Kill all wrench icons, replace the vertical list with a clean grid of bordered items.
+Remove all navigation links, hamburger menu, and mobile full-screen menu. Replace with a simple conversion bar.
 
-## File changed
+### Structure
 
-### `src/components/ProblemsSection.tsx` — full rewrite
+**Wrapper**: `fixed top-0 md:top-10 left-0 right-0 z-50 bg-background border-b border-[hsl(var(--pale-slate))]`
 
-**Section wrapper**: White background (`bg-white`), `py-20`. Thin `border-t border-[#D7D7D9]` at top as separator. Remove `Wrench` import from lucide.
+**Desktop layout** (`container flex h-16 items-center justify-between`):
 
-**Layout**: `grid grid-cols-1 lg:grid-cols-5 gap-12 items-start`.
+- **Left**: `<a>` with text `Refrigeração` + `TABOADO` in `text-2xl font-bold text-[hsl(var(--french-blue))]`
+- **Right** (`hidden md:flex items-center gap-6`):
+  - Phone icon + `Técnico: (67) 98109-7179` — `text-sm text-foreground`
+  - Phone icon + `Loja: (67) 99259-7710` — `text-sm text-foreground`
+  - Separator `h-5 w-px bg-border`
+  - CTA button: `bg-[hsl(var(--spicy-paprika))] text-[hsl(var(--alabaster-grey))] shadow-lg rounded-md h-11 px-6 font-semibold` with WhatsApp icon + "Orçamento via WhatsApp". Links to `whatsappLink("Olá, gostaria de um orçamento.")`.
 
-**Left column** (`lg:col-span-2`):
+**Mobile layout**:
+- Left: Same logo
+- Right: Compact WhatsApp button — just the WhatsApp icon + short text or icon-only, same terracotta bg, `rounded-md`
 
-- Label: `PROBLEMAS QUE RESOLVEMOS` — `text-[11px] font-medium uppercase tracking-[0.2em] text-[#118CD9]`, no icon
-- Title: `Seu equipamento parou?` — `text-3xl font-bold text-[#163573] tracking-tight`
-- Description: same text — `text-[15px] text-[#4B5563] leading-[1.7] max-w-md mt-3`
-- Button: `mt-8`, rendered as `<a>` with `bg-[#BF5D39] text-white h-14 px-8 text-base font-semibold inline-flex items-center gap-2` — sharp corners (no border-radius). WhatsApp icon left. Links to existing whatsapp message.
+### Removed
+- `links` array, `useActiveSection`, hamburger button, `AnimatePresence` mobile menu, `open` state, `onMenuToggle` prop, body scroll lock
 
-**Right column** (`lg:col-span-3`):
+## File: `src/pages/Index.tsx` — minor update
 
-- Grid: `grid grid-cols-2 gap-x-8 gap-y-0`
-- Each of the 6 items:
-  - `border-t-2 border-[#D7D7D9] pt-5 pb-5` top border
-  - `hover:border-[#118CD9] transition-colors` on hover
-  - Content: `<span className="text-[#BF5D39] mr-2">—</span>` followed by problem text in `text-[15px] font-medium text-[#1a1a1a]`
-  - On hover: text color shifts to `hover:text-[#163573]`
-  - No icons whatsoever
+Remove `mobileMenuOpen` state and `onMenuToggle` prop from `<Navbar>`. Update `<WhatsAppSticky hidden={false} />` (no longer toggled by menu).
 
-**Animation**: Keep `useGsapFade` with `.problem-item` selector and stagger `0.08`.
+## File: `src/components/Navbar.tsx` — imports cleanup
 
-### Visual structure (desktop)
-
-```text
-┌──────────────────────────────────────────────────────────┐
-│ ─────────────────── separator ───────────────────────── │
-│                                                          │
-│  PROBLEMAS QUE RESOLVEMOS   ─────────── │ ───────────── │
-│                             — Geladeira  │ — Freezer     │
-│  Seu equipamento parou?     ─────────── │ ───────────── │
-│                             — Câmara fr. │ — Ar inverter │
-│  Atendimento técnico...     ─────────── │ ───────────── │
-│                             — Máq. lavar │ — Probl. elét │
-│  [🟫 Agendar avaliação]                                  │
-│                                                          │
-└──────────────────────────────────────────────────────────┘
-```
-
-## No other files changed
+Remove `Menu`, `X`, `motion`, `AnimatePresence`, `useActiveSection`, `Button`. Keep `Phone` from lucide, `WhatsAppIcon`, constants.
 
