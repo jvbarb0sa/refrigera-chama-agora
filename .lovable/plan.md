@@ -1,42 +1,64 @@
 
 
-# Fix: Cards invisíveis na seção Diferenciais
+# Sobre a Empresa — Redesign com Feature Component
 
-## Problema raiz
-O hook `useGsapFade` usa `gsap.from(targets, { opacity: 0, ... })` que **imediatamente** define `opacity: 0` nos cards. O ScrollTrigger deveria animar de volta para `opacity: 1`, mas há um problema de timing: quando o usuário navega via âncora (#diferenciais), a seção já está no viewport quando o ScrollTrigger inicializa, e a animação `once: true` pode não disparar corretamente — os cards ficam permanentemente invisíveis.
+## Visão geral
 
-## Solução
-Alterar `gsap.from` para `gsap.fromTo` no hook `useGsapFade`, garantindo que o estado final (`opacity: 1, y: 0`) seja explícito. Além disso, adicionar `immediateRender: false` para evitar que os elementos fiquem invisíveis antes do ScrollTrigger estar pronto, e usar `toggleActions: "play none none none"` para garantir que a animação rode mesmo quando a seção já está visível.
+Substituir o `MissionSection` atual (layout simples de 2 colunas com placeholder de imagem) pelo layout do componente `Feature` fornecido: texto à esquerda com lista de diferenciais (checkmarks) e imagem à direita.
 
-## Arquivo alterado
+## Dependências
 
-### `src/hooks/use-gsap-fade.ts`
-Trocar `gsap.from(targets, { y, opacity: 0, ... })` por:
-```ts
-gsap.fromTo(
-  targets,
-  { y, opacity: 0 },
-  {
-    y: 0,
-    opacity: 1,
-    duration,
-    stagger: children ? stagger : 0,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: el,
-      start: "top 85%",
-      toggleActions: "play none none none",
-    },
-  }
-);
+Todas já instaladas: `lucide-react`, `class-variance-authority`, `Badge` component. Nenhuma instalação necessária.
+
+## Arquivos
+
+### 1. `src/components/ui/feature.tsx` — NÃO será criado separadamente
+
+O componente `Feature` é genérico demais. Vamos integrar o layout diretamente no `MissionSection` adaptado ao conteúdo da empresa.
+
+### 2. `src/components/MissionSection.tsx` (reescrita)
+
+Adaptar o layout do `Feature` component ao conteúdo existente da Refrigeração Taboado:
+
+**Layout**: Grid de 2 colunas (lg), coluna esquerda com texto + lista, coluna direita com imagem.
+
+**Coluna esquerda**:
+- Badge: "Sobre a empresa"
+- H2: "Profissionalismo e responsabilidade técnica"
+- Parágrafo descritivo (texto atual)
+- 3 itens com ícone Check (verde) + título + descrição:
+  1. **Diagnóstico preciso** — "Avaliação técnica detalhada antes de qualquer intervenção."
+  2. **Equipe qualificada** — "Profissionais com experiência em refrigeração comercial e residencial."
+  3. **Compromisso com o cliente** — "Transparência no orçamento e cumprimento de prazos."
+
+**Coluna direita**:
+- Imagem com `rounded-2xl` ocupando o espaço — usar imagem de Unsplash de técnico HVAC ou ambiente de trabalho: `https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&h=600&fit=crop` (HVAC technician)
+
+**Animação**: Manter `useGsapFade` no container.
+
+**Responsivo**: Stack vertical no mobile (imagem abaixo do texto).
+
+### Estrutura visual
+
+```text
++----------------------------------+------------------+
+| [Sobre a empresa]  (badge)       |                  |
+|                                  |                  |
+| Profissionalismo e               |    [Imagem]      |
+| responsabilidade técnica         |                  |
+|                                  |                  |
+| Texto descritivo...              |                  |
+|                                  |                  |
+| ✓ Diagnóstico preciso            |                  |
+|   Avaliação técnica detalhada... |                  |
+|                                  |                  |
+| ✓ Equipe qualificada             |                  |
+|   Profissionais com experiência..|                  |
+|                                  |                  |
+| ✓ Compromisso com o cliente      |                  |
+|   Transparência no orçamento...  |                  |
++----------------------------------+------------------+
 ```
 
-Isso garante que:
-1. O estado inicial (`opacity: 0, y: 24`) e final (`opacity: 1, y: 0`) são explícitos
-2. `toggleActions` substitui `once: true` de forma mais confiável
-3. A animação funciona tanto com scroll normal quanto com navegação por âncora
-
-## Impacto
-- Corrige Diferenciais e qualquer outra seção que use `useGsapFade`
-- Nenhum outro arquivo precisa ser alterado
+## Nenhum outro arquivo alterado
 
