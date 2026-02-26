@@ -1,102 +1,48 @@
 
 
-# 5 correções: Navbar, Copy, Problemas, Prova Social, Footer
+# Ajustes no menu mobile + WhatsApp Sticky
 
-## 1. Navbar — Remover telefone do desktop
+## 1. Esconder botão flutuante do WhatsApp quando menu mobile abrir
+
+O `Navbar` e o `WhatsAppSticky` são componentes irmãos em `Index.tsx`. Para comunicar o estado `open` do menu, vou criar um estado no `Index.tsx` e passá-lo como prop.
+
+**Arquivo: `src/pages/Index.tsx`**
+- Adicionar `useState` para `mobileMenuOpen`
+- Passar `onMenuToggle` como prop para `Navbar`
+- Passar `hidden` como prop para `WhatsAppSticky`
+
+**Arquivo: `src/components/Navbar.tsx`**
+- Aceitar prop `onMenuToggle?: (open: boolean) => void`
+- Chamar `onMenuToggle` sempre que `open` mudar (via `useEffect`)
+
+**Arquivo: `src/components/WhatsAppSticky.tsx`**
+- Aceitar prop `hidden?: boolean`
+- Quando `hidden` for `true`, não renderizar nada (return null)
+
+## 2. Botão "Chamar no WhatsApp" no mobile → cor verde
 
 **Arquivo: `src/components/Navbar.tsx`**
 
-Remover linhas 42-45 (link de telefone com ícone Phone no menu desktop). O botão CTA já leva para o WhatsApp — o número é redundante ali.
+O botão atual usa `variant="strong"` que aplica `bg-accent` (Spicy Paprika / laranja). Trocar para estilo inline verde do WhatsApp:
 
-Manter o telefone no menu mobile (footer do menu) pois lá faz sentido como informação de contato.
+```
+className="w-full h-14 text-base bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-[10px] font-semibold"
+```
 
----
+Remover `variant="strong"` e usar classes diretas para manter o verde do WhatsApp.
 
-## 2. Copy do Hero — Mais direta
+## 3. Wireframe / layout do footer do menu mobile
 
-**Arquivo: `src/components/HeroSection.tsx`**
-
-Copy atual do H1:
-> "Assistência técnica especializada em refrigeração comercial e residencial."
-
-Trocar para algo mais direto e humano:
-> "Seu equipamento parou? A gente resolve."
-
-Com o subtexto em destaque:
-> "Refrigeração comercial e residencial em Três Lagoas."
-
-Subtítulo atual:
-> "Instalação e manutenção de geladeiras, freezers, câmaras frias e sistemas inverter com atendimento profissional e diagnóstico preciso."
-
-Trocar para:
-> "Geladeiras, freezers, câmaras frias e ar inverter. Diagnóstico técnico, orçamento claro e garantia de serviço."
-
----
-
-## 3. ProblemsSection — Evolução da UI
-
-**Arquivo: `src/components/ProblemsSection.tsx`**
-
-Problemas atuais da UI:
-- Layout flat demais — lista simples com checks pequenos
-- Sem hierarquia visual entre os itens
-- Sem destaque visual, parece uma lista genérica
-- CTA solto no final
-
-Evolução proposta:
-- Fundo `bg-muted` em vez de `bg-background` para criar contraste com seções adjacentes
-- Cada problema vira um card compacto com borda e padding, em grid 2x3 (desktop) / 1 coluna (mobile)
-- Check em círculo preenchido (`bg-primary/10 text-primary rounded-full p-1`) para dar peso visual
-- Texto do problema em `font-medium` para legibilidade
-- Seção full-width (remover `max-w-2xl`) com header centralizado
-- CTA centralizado abaixo do grid
-
----
-
-## 4. TestimonialsSection — Melhorar prova social
-
-**Arquivo: `src/components/TestimonialsSection.tsx`**
-
-Problemas atuais:
-- Barra de credibilidade (4.9, 50+, Atendimento local) está visualmente fraca — parece texto solto
-- Cards sem destaque visual suficiente
-- Aspas decorativas (`"`) ficam genéricas
-- Falta estrelas nos cards individuais
-
-Evolução proposta:
-
-**Barra de credibilidade:**
-- Envolver em card com borda e background (`bg-card border rounded-xl p-6`)
-- Separadores verticais entre os 3 blocos no desktop
-- Ícone de estrela preenchido (`fill-amber-400 text-amber-400`) para cor mais viva
-- Layout horizontal com `justify-between` no desktop
-
-**Cards de depoimento:**
-- Adicionar 5 estrelas preenchidas no topo de cada card (amarelo) para reforçar avaliação
-- Remover aspas decorativas (genéricas)
-- Aumentar padding e dar mais respiro
-- Avatar com borda sutil para destaque
-
----
-
-## 5. Footer — FCS-STUDIO em branco, sem "& Co."
-
-**Arquivo: `src/components/FinalCTASection.tsx`**
-
-Linha 87-98: Trocar:
-- `text-primary-foreground/30` → `text-primary-foreground` no link FCS-STUDIO (branco puro)
-- Remover `{" & Co."}` da linha 97
-- Manter o restante do texto "Desenvolvido por" em `text-primary-foreground/30`
-
----
+Melhorias de espaçamento e hierarquia:
+- Remover o número do WhatsApp duplicado (a linha com `WHATSAPP_DISPLAY`) — o botão já leva para o WhatsApp
+- Manter apenas o telefone como informação de contato alternativa
+- Centralizar o telefone acima do botão
 
 ## Resumo de arquivos
 
 | Arquivo | Mudança |
 |---|---|
-| `Navbar.tsx` | Remover telefone do menu desktop |
-| `HeroSection.tsx` | Trocar copy do H1 e subtítulo |
-| `ProblemsSection.tsx` | Redesign: cards em grid, checks em círculo, layout full-width |
-| `TestimonialsSection.tsx` | Barra de credibilidade em card, estrelas nos depoimentos |
-| `FinalCTASection.tsx` | FCS-STUDIO branco, remover "& Co." |
+| `Index.tsx` | Estado `mobileMenuOpen`, props para Navbar e WhatsAppSticky |
+| `Navbar.tsx` | Prop `onMenuToggle`, botão verde, remover WhatsApp display duplicado |
+| `WhatsAppSticky.tsx` | Prop `hidden`, não renderizar quando menu aberto |
 
