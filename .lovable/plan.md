@@ -1,55 +1,51 @@
 
 
-# TestimonialsSection — Prova social completa
+# FinalCTASection — Institucional, fundo branco, sem template
 
 ## Diagnóstico
 
-A seção atual tem depoimentos no carousel, mas falta peso de prova social. Problemas:
-- Sem indicador de avaliação (estrelas, nota do Google)
-- Sem selo de confiança ("Atendimento local", região)
-- Sem resumo numérico visível (quantidade de avaliações, nota média)
-- Label "Quem já chamou" e H2 "Trabalho limpo, orçamento claro, garantia." — genéricos
-- Cards funcionais mas sem diferenciação visual de credibilidade
+Seção atual:
+- Fundo `bg-foreground` (azul marinho pesado) — cara de template genérico
+- Headline "Equipamento parado custa dinheiro. Nós resolvemos." — agressiva demais
+- Mini-stats redundantes (já existem na StatsSection)
+- Texto branco sobre fundo escuro com efeito de peso visual excessivo
+- Footer também em fundo escuro — ok, pode manter
 
 ## Mudança
 
-Adicionar bloco de credibilidade acima do carousel e selo de atendimento local. Manter o carousel existente intacto.
+### CTA Section (acima do footer)
+- Fundo: `bg-background` (branco) — limpo, sem gradiente, sem glow
+- Headline: `Precisa de assistência técnica especializada?`
+- Sub: `Atendimento profissional em refrigeração e elétrica.`
+- Cores do texto: `text-foreground` para H2, `text-muted-foreground` para sub
+- Remover mini-stats (redundante)
 
-### Header atualizado
-- Label: `PROVA SOCIAL`
-- H2: `Quem confia, recomenda.`
+### Botões
+1. **Solicitar atendimento** — `variant="strong"`, link WhatsApp com ícone `MessageCircle`
+2. **Falar no WhatsApp** — `variant="outline"`, link WhatsApp (mensagem diferente) com ícone `Phone` trocado por `MessageCircle`
 
-### Bloco de credibilidade (acima do carousel, abaixo do header)
+Ambos apontam para WhatsApp (um mais formal, outro direto). Alternativa: manter o segundo como `phoneLink()` com texto "Ligar agora" — faz mais sentido operacionalmente. Vou manter "Falar no WhatsApp" como outline apontando para WhatsApp com mensagem genérica.
 
-Faixa horizontal com 3 indicadores lado a lado (`flex gap-8`):
-
-1. **Nota Google** — `★ 4.9` em `text-2xl font-bold` + "no Google" em `text-muted-foreground text-sm`
-2. **Avaliações** — `50+` em `text-2xl font-bold` + "avaliações reais" em `text-muted-foreground text-sm`
-3. **Selo** — ícone `MapPin` + "Atendimento local — Três Lagoas e região" em `text-sm font-medium`
-
-Sem card, sem borda — apenas texto alinhado horizontalmente. Em mobile, empilha vertical (`flex-col`).
-
-### Carousel
-Mantido como está — mesmos depoimentos, mesma lógica Embla, mesmo autoplay.
+### Footer
+Mantido como está — fundo escuro faz sentido para separar footer do conteúdo. Sem alteração.
 
 ### Resultado visual
 
 ```text
-PROVA SOCIAL
+─────────────────── bg-background (branco) ───────────────────
 
-Quem confia, recomenda.
+    Precisa de assistência técnica especializada?
 
-★ 4.9          50+                  📍 Atendimento local
-no Google      avaliações reais     Três Lagoas e região
+    Atendimento profissional em refrigeração e elétrica.
 
-┌─────────┐ ┌─────────┐ ┌─────────┐
-│ Card 1  │ │ Card 2  │ │ Card 3  │  ← carousel existente
-└─────────┘ └─────────┘ └─────────┘
+    [ Solicitar atendimento ]   [ Falar no WhatsApp ]
+
+─────────────────── footer (bg-foreground, mantido) ──────────
 ```
 
 ## Arquivo editado
 
 | Arquivo | O que muda |
 |---|---|
-| `src/components/TestimonialsSection.tsx` | Header atualizado + bloco de credibilidade com nota Google, contagem de avaliações e selo de atendimento local |
+| `src/components/FinalCTASection.tsx` | CTA: fundo branco, nova headline/sub, remover mini-stats, botões atualizados. Footer intacto. |
 
