@@ -26,7 +26,7 @@ export default function ServiceAreaSection() {
             <div className="mt-6 flex flex-col gap-2">
               {tags.map((tag) => (
                 <p key={tag} className="text-sm text-foreground">
-                  <span className="text-[#BF5D39] mr-2">—</span>
+                  <span className="text-[#BF5D39] mr-2">·</span>
                   {tag}
                 </p>
               ))}

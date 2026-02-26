@@ -49,7 +49,7 @@ export default function HeroSection() {
             <p className="hero-sub mt-6 text-lg leading-relaxed text-muted-foreground max-w-md">
               Atendemos câmaras frias, freezers, geladeiras, ar-condicionado
               inverter e sistemas especiais (amônia/freon) com execução segura e
-              garantia — em Três Lagoas e região.
+              garantia em Três Lagoas e região.
             </p>
 
             <div className="hero-ctas mt-10 flex flex-col gap-1 sm:gap-2">

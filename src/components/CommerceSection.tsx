@@ -16,7 +16,7 @@ export default function CommerceSection() {
             Comércio não pode parar.
           </h2>
           <p className="mt-4 text-base text-primary-foreground/70 leading-relaxed max-w-md">
-            Equipamento parou? A gente prioriza. Balcões, cervejeiras, expositores e freezers — atendimento com urgência pra manter sua operação rodando.
+            Equipamento parou? A gente prioriza. Balcões, cervejeiras, expositores e freezers: atendimento com urgência pra manter sua operação rodando.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
@@ -28,7 +28,7 @@ export default function CommerceSection() {
           </div>
 
           <Button asChild variant="strong" size="lg" className="mt-8 h-14 px-8 text-base">
-            <a href={whatsappLink("Urgência comercial — equipamento parou. Preciso de atendimento rápido.")} target="_blank" rel="noopener">
+            <a href={whatsappLink("Urgência comercial: equipamento parou. Preciso de atendimento rápido.")} target="_blank" rel="noopener">
               <WhatsAppIcon size={20} />
               Solicitar prioridade comercial
             </a>
