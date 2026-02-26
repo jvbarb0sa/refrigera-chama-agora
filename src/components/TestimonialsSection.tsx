@@ -58,8 +58,6 @@ export default function TestimonialsSection() {
     if (!emblaApi) return;
     onSelect();
     emblaApi.on("select", onSelect);
-    const interval = setInterval(() => emblaApi.scrollNext(), 5000);
-    return () => clearInterval(interval);
   }, [emblaApi, onSelect]);
 
   return (
