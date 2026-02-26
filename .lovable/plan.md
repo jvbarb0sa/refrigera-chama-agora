@@ -1,20 +1,28 @@
 
 
-# MissionSection — Clean Institutional Redesign
+# FAQSection — Refined Redesign
 
 ## What changes
 
-Simplify `src/components/MissionSection.tsx` from the current glassmorphic/aura style to a cleaner, institutional shadcn-inspired design matching the provided reference.
+Update `src/components/FAQSection.tsx` to adopt the improved copy and styling from the inspiration while keeping existing Radix Accordion and design system tokens.
 
 ### Changes
-1. **Remove decorative elements**: Background glows, floating trust card, decorative accent square, animated left-border indicators, glassmorphic card backgrounds
-2. **Badge**: Replace glassmorphic pill with a clean shadcn-style badge — `rounded-[6px] border border-primary/20 bg-primary/10 text-primary`, no icon, just "SOBRE A EMPRESA" text
-3. **Heading**: Keep gradient text but simplify — `text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight`, no `font-extrabold`
-4. **Features list**: Replace interactive hover cards with simple left-border items — `pl-6` with a `before:` pseudo-element 3px french-blue left bar, no icons, no hover effects
-5. **Image**: Replace thick-bordered absolute-positioned image with a clean `aspect-square md:aspect-[4/3]` container, simple `border border-[hsl(var(--pale-slate))]`, `rounded-[6px]`, subtle hover scale `hover:scale-[1.02]`
-6. **Animation**: Keep framer-motion but simplify — just fade-in on left column, no stagger on individual items, simple opacity transition on image
-7. **Layout**: `gap-12 lg:gap-16` instead of `gap-16 lg:gap-24`
+1. **FAQ answers**: Update all 5 answer texts to the longer, more detailed versions from the inspiration
+2. **Badge**: Switch from `Badge variant="outline"` to inline badge matching other sections — `rounded-[6px] border border-border bg-muted/50 px-3 py-1 text-sm font-semibold text-foreground`
+3. **Heading**: Bump to `text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight`
+4. **Left column layout**: Change from `gap-4` to `space-y-8` with `space-y-4` inner header group for better spacing
+5. **Grid**: Change from `lg:grid-cols-2` to `lg:grid-cols-[1fr_1.2fr]` with `gap-12 lg:gap-16`
+6. **Accordion trigger**: Change from `text-base font-semibold` to `text-lg font-bold` with `hover:text-primary hover:no-underline` transition
+7. **CTA button**: Keep existing WhatsAppIcon + Button component but swap to `variant="default"` with `size="lg"` for more presence
+8. **Animation**: Replace GSAP fade hook with framer-motion `whileInView` fade-in on the container
+
+### Constraints
+- Keep Radix `Accordion` component (no custom state management)
+- Keep `whatsappLink` utility and `WhatsAppIcon`
+- Keep `id="faq"` anchor
+- `rounded-[6px]` on badge and buttons
+- No `dangerouslySetInnerHTML`
 
 ### File
-- `src/components/MissionSection.tsx` — rewrite
+- `src/components/FAQSection.tsx` — rewrite
 
