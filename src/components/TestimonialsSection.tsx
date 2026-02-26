@@ -42,6 +42,14 @@ const testimonials = [
   },
 ];
 
+const FiveStars = () => (
+  <div className="flex gap-0.5">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+    ))}
+  </div>
+);
+
 export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "start" });
@@ -93,23 +101,27 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Bloco de credibilidade */}
-        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
-          <div className="flex items-center gap-2">
-            <Star size={20} className="fill-primary text-primary" />
-            <div>
-              <span className="text-2xl font-bold text-foreground">4.9</span>
-              <p className="text-sm text-muted-foreground">no Google</p>
+        <div className="mt-8 rounded-xl border border-border bg-card p-6">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3">
+              <Star size={24} className="fill-amber-400 text-amber-400" />
+              <div>
+                <span className="text-2xl font-bold text-foreground">4.9</span>
+                <p className="text-sm text-muted-foreground">no Google</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <span className="text-2xl font-bold text-foreground">50+</span>
-            <p className="text-sm text-muted-foreground">avaliações reais</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <MapPin size={18} className="text-primary" />
+            <div className="hidden sm:block h-10 w-px bg-border" />
             <div>
-              <p className="text-sm font-medium text-foreground">Atendimento local</p>
-              <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
+              <span className="text-2xl font-bold text-foreground">50+</span>
+              <p className="text-sm text-muted-foreground">avaliações reais</p>
+            </div>
+            <div className="hidden sm:block h-10 w-px bg-border" />
+            <div className="flex items-center gap-3">
+              <MapPin size={20} className="text-primary" />
+              <div>
+                <p className="text-sm font-medium text-foreground">Atendimento local</p>
+                <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
+              </div>
             </div>
           </div>
         </div>
@@ -122,12 +134,12 @@ export default function TestimonialsSection() {
                   key={t.name}
                   className="min-w-[280px] flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_30%] rounded-xl border border-border bg-card p-6"
                 >
-                  <p className="text-2xl leading-none text-primary/20 select-none">"</p>
-                  <p className="mt-2 text-sm leading-relaxed text-foreground">
+                  <FiveStars />
+                  <p className="mt-4 text-sm leading-relaxed text-foreground">
                     {t.text}
                   </p>
                   <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-primary/20 bg-primary text-xs font-bold text-primary-foreground">
                       {t.initials}
                     </div>
                     <div>

@@ -46,14 +46,15 @@ export default function HeroSection() {
             </span>
 
             <h1 className="hero-h1 text-4xl font-bold leading-[1.15] tracking-tight text-foreground md:text-[52px] md:leading-[1.1]">
-              Assistência técnica especializada em{" "}
-              <span className="text-primary">refrigeração comercial</span> e{" "}
-              <span className="text-primary">residencial</span>.
+              Seu equipamento parou?{" "}
+              <span className="text-primary">A gente resolve.</span>
             </h1>
+            <p className="hero-h1 mt-2 text-lg font-medium text-foreground/80">
+              Refrigeração comercial e residencial em Três Lagoas.
+            </p>
 
             <p className="hero-sub mt-6 text-lg leading-relaxed text-muted-foreground max-w-md">
-              Instalação e manutenção de geladeiras, freezers, câmaras frias e
-              sistemas inverter com atendimento profissional e diagnóstico preciso.
+              Geladeiras, freezers, câmaras frias e ar inverter. Diagnóstico técnico, orçamento claro e garantia de serviço.
             </p>
 
             <div className="hero-ctas mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">

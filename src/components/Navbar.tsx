@@ -39,10 +39,6 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href={phoneLink()} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
-            <Phone size={14} className="shrink-0" />
-            {PHONE_DISPLAY}
-          </a>
           <Button asChild variant="strong" size="sm">
             <motion.a
               whileHover={{ scale: 1.03 }}
