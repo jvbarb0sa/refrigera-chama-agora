@@ -1,5 +1,5 @@
 const stats = [
-  { value: "+500", label: "Atendimentos realizados", sublabel: "em Três Lagoas e região" },
+  { value: "+400", label: "Atendimentos realizados", sublabel: "em Três Lagoas e região" },
   { value: "+8", label: "Anos de experiência", sublabel: "em refrigeração comercial" },
   { value: "100%", label: "Cobertura local", sublabel: "em Três Lagoas e região" },
   { value: "98%", label: "Taxa de recomendação", sublabel: "pelos nossos clientes" },
