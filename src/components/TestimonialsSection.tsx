@@ -1,6 +1,6 @@
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Star } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const testimonials = [
@@ -68,10 +68,10 @@ export default function TestimonialsSection() {
         <div className="flex items-end justify-between">
           <div>
             <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
-              Quem já chamou
+              Prova social
             </span>
             <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-foreground md:text-[32px]">
-              Trabalho limpo, orçamento claro, garantia.
+              Quem confia, recomenda.
             </h2>
           </div>
           <div className="hidden sm:flex gap-2">
@@ -91,6 +91,28 @@ export default function TestimonialsSection() {
             >
               <ChevronRight size={18} />
             </button>
+          </div>
+        </div>
+
+        {/* Bloco de credibilidade */}
+        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-8">
+          <div className="flex items-center gap-2">
+            <Star size={20} className="fill-primary text-primary" />
+            <div>
+              <span className="text-2xl font-bold text-foreground">4.9</span>
+              <p className="text-sm text-muted-foreground">no Google</p>
+            </div>
+          </div>
+          <div>
+            <span className="text-2xl font-bold text-foreground">50+</span>
+            <p className="text-sm text-muted-foreground">avaliações reais</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <MapPin size={18} className="text-primary" />
+            <div>
+              <p className="text-sm font-medium text-foreground">Atendimento local</p>
+              <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
+            </div>
           </div>
         </div>
 
