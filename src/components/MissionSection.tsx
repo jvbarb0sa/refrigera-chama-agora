@@ -79,11 +79,13 @@ export default function MissionSection() {
             className="relative flex items-center justify-center lg:h-full"
           >
             <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
-              <img
-                src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=80"
-                alt="Técnico realizando manutenção em painel elétrico"
-                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
-                loading="lazy"
+              <video
+                src="/videos/about.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
           </motion.div>
