@@ -1,26 +1,41 @@
 
 
-# Bloco 3 — Subheadline com escopo técnico
+# Bloco 4 — Proof row no Hero
 
 ## Mudança
 
 **Arquivo: `src/components/HeroSection.tsx`**
 
-### Parágrafo de apoio (`.hero-sub`)
+### Substituir o `proofs` array e a `<ul>` atual (linhas 10-13, 95-102)
 
-Substituir o texto atual:
+A lista atual com checkmarks genéricos ("Atendimento local", "Técnicos experientes", "Compromisso com qualidade") será substituída por uma proof row com dados concretos, usando ícones Lucide consistentes com o DS.
 
-> "Refrigeração comercial, industrial e residencial em Três Lagoas e região. Diagnóstico técnico, orçamento claro e garantia de serviço."
+### Novo conteúdo da proof row
 
-Por:
+3 itens em linha no desktop, empilhados no mobile:
 
-> "Atendemos camaras frias, freezers, geladeiras, ar-condicionado inverter e sistemas especiais (amonia/freon) com execucao segura e garantia — em Tres Lagoas e regiao."
+| Ícone Lucide | Texto | Detalhe |
+|---|---|---|
+| `Star` (fill amber-400) | **4,9 no Google** | Link para o perfil Google (se disponível) |
+| `Users` | **50+ avaliações reais** | Sem link |
+| `MapPin` | **Atendimento local rápido** | Sem promessa de tempo |
 
-O trecho "em Tres Lagoas e regiao" foi movido para o final da frase para manter o SEO local sem repetir o badge. Uma unica frase, sem lista, sem poluicao visual.
+### Estrutura HTML
+
+- Manter a `<ul>` com classe `hero-proof` (já animada pelo GSAP)
+- Manter `border-t border-border pt-6 mt-12`
+- Cada `<li>` usa `flex items-center gap-2 text-sm text-muted-foreground`
+- O ícone `Star` recebe `fill-amber-400 text-amber-400` (mesmo padrão do TestimonialsSection)
+- Importar `Star`, `Users`, `MapPin` de `lucide-react` (remover `Check` se não usado em outro lugar)
+
+### Imports
+
+- Adicionar: `Star`, `Users`, `MapPin`
+- Remover: `Check` (não mais utilizado)
 
 ## Arquivos
 
-| Arquivo | Mudanca |
+| Arquivo | Mudança |
 |---|---|
-| `src/components/HeroSection.tsx` | Novo texto do paragrafo `.hero-sub` |
+| `src/components/HeroSection.tsx` | Trocar proofs genéricos por proof row com dados concretos + ícones Lucide |
 
