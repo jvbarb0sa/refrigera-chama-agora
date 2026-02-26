@@ -1,41 +1,77 @@
 
 
-# Bloco 4 — Proof row no Hero
+# Bloco 5 — CTAs com roteamento Técnico/Loja
 
-## Mudança
+## Contexto
 
-**Arquivo: `src/components/HeroSection.tsx`**
+O briefing tem dois números de WhatsApp distintos: Técnico (`WHATSAPP_NUMBER` — 98109-7179) e Loja (`PHONE_NUMBER` — 99259-7710). Hoje ambos os CTAs do Hero apontam para o mesmo número. Precisamos:
 
-### Substituir o `proofs` array e a `<ul>` atual (linhas 10-13, 95-102)
+1. Trocar os textos e ícones dos CTAs
+2. O CTA primário ("Falar com técnico agora") abre um modal perguntando "Técnico ou Loja?" antes de redirecionar ao WhatsApp correto
+3. O CTA secundário ("Solicitar visita técnica") rola para a seção de contato (ou abre modal de formulário se existir)
+4. Adicionar microcopy abaixo do CTA primário
 
-A lista atual com checkmarks genéricos ("Atendimento local", "Técnicos experientes", "Compromisso com qualidade") será substituída por uma proof row com dados concretos, usando ícones Lucide consistentes com o DS.
+## Arquivos e mudanças
 
-### Novo conteúdo da proof row
+### 1. `src/lib/constants.ts`
+- Adicionar segundo número de WhatsApp para a Loja e uma função `whatsappLinkLoja`
+- Ou renomear para deixar claro qual é qual:
+  - `WHATSAPP_TECNICO` = `5567981097179`
+  - `WHATSAPP_LOJA` = `5567992597710`
+  - `whatsappLink(number, message?)` aceita o número como parâmetro
 
-3 itens em linha no desktop, empilhados no mobile:
+### 2. Novo: `src/components/WhatsAppRouterModal.tsx`
+Modal simples usando o componente `Dialog` existente:
+- Título: "Com quem você quer falar?"
+- Duas opções (radio ou botões lado a lado):
+  - **Técnico** — ícone de ferramenta + "Suporte e manutenção" → abre `wa.me/WHATSAPP_TECNICO`
+  - **Loja** — ícone de loja + "Orçamentos e peças" → abre `wa.me/WHATSAPP_LOJA`
+- Cada opção é um `<a>` que abre o WhatsApp correto em nova aba
+- Estilo consistente com o DS (Dialog + Button)
 
-| Ícone Lucide | Texto | Detalhe |
-|---|---|---|
-| `Star` (fill amber-400) | **4,9 no Google** | Link para o perfil Google (se disponível) |
-| `Users` | **50+ avaliações reais** | Sem link |
-| `MapPin` | **Atendimento local rápido** | Sem promessa de tempo |
+### 3. `src/components/HeroSection.tsx`
 
-### Estrutura HTML
+**CTA Primário** (era "Solicitar atendimento técnico"):
+- Texto: **"Falar com técnico agora"**
+- Ícone: `WhatsAppIcon` (SVG oficial, conforme memory/style/icons)
+- Variante: `strong` (laranja/accent — já mapeado)
+- Altura: `h-14` (56px, já aplicado)
+- Hover: `translateY(-1px)` + shadow via framer-motion `whileHover`
+- onClick: abre o `WhatsAppRouterModal` em vez de navegar direto
+- Microcopy abaixo: `<span>` com "Resposta mais rápida por WhatsApp." em `text-xs text-muted-foreground`
 
-- Manter a `<ul>` com classe `hero-proof` (já animada pelo GSAP)
-- Manter `border-t border-border pt-6 mt-12`
-- Cada `<li>` usa `flex items-center gap-2 text-sm text-muted-foreground`
-- O ícone `Star` recebe `fill-amber-400 text-amber-400` (mesmo padrão do TestimonialsSection)
-- Importar `Star`, `Users`, `MapPin` de `lucide-react` (remover `Check` se não usado em outro lugar)
+**CTA Secundário** (era "Falar no WhatsApp"):
+- Texto: **"Solicitar visita técnica"**
+- Ícone: `MessageCircle` ou `CalendarCheck` (Lucide)
+- Variante: `outline`
+- `href="#contato"` (rola para seção de contato/formulário)
+- Sem modal
 
-### Imports
+**Imports**: adicionar `WhatsAppIcon`, `useState`; remover `MessageCircle` do CTA primário
 
-- Adicionar: `Star`, `Users`, `MapPin`
-- Remover: `Check` (não mais utilizado)
+### 4. `src/components/Navbar.tsx`
+- O botão "Solicitar visita técnica" da navbar também pode usar o mesmo modal para consistência (opcional — pode ser feito depois)
 
-## Arquivos
+## Estrutura do modal
 
-| Arquivo | Mudança |
-|---|---|
-| `src/components/HeroSection.tsx` | Trocar proofs genéricos por proof row com dados concretos + ícones Lucide |
+```text
+┌──────────────────────────────────┐
+│  Com quem você quer falar?       │
+│                                  │
+│  ┌─────────────┐ ┌────────────┐ │
+│  │ 🔧 Técnico  │ │ 🏪 Loja    │ │
+│  │ Suporte e   │ │ Orçamentos │ │
+│  │ manutenção  │ │ e peças    │ │
+│  └─────────────┘ └────────────┘ │
+└──────────────────────────────────┘
+```
+
+Cada card é um `<a target="_blank">` estilizado como botão, que fecha o modal ao clicar.
+
+## Detalhes técnicos
+
+- O `variant="strong"` já mapeia para `bg-accent` (spicy-paprika / laranja) com `text-accent-foreground` (branco) — contraste adequado
+- Hover com `whileHover={{ y: -1, boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}` via framer-motion
+- O modal usa `Dialog` + `DialogContent` do Radix já instalado
+- Nenhuma dependência nova necessária
 
