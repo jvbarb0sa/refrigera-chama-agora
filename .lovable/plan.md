@@ -1,113 +1,58 @@
 
 
-# Auditoria: Performance, Design System, Copy e Erros de UX
+# WhatsApp icon oficial + Biblioteca de ícones
 
-## 7. PERFORMANCE
+## Diagnóstico
 
-### Font loading — Precisa ajuste
-A fonte Inter é carregada via `@import url(...)` no CSS (linha 1 de `index.css`). Isso é render-blocking. O `display=swap` já está presente — bom. Mas o `@import` deve ser movido para `<link>` no `index.html` com `rel="preload"` para eliminar bloqueio de renderização.
+### Ícone WhatsApp
+Todos os botões e links de WhatsApp usam `MessageCircle` do lucide-react — um ícone genérico de balão de chat. O correto é usar o logo oficial do WhatsApp (SVG).
 
-### Lazy loading — Parcialmente OK
-O iframe do Google Maps em `ServiceAreaSection` já tem `loading="lazy"`. As imagens são placeholders (`<div>` com `<span>`), então não há `<img>` para aplicar lazy loading ainda. Quando imagens reais entrarem, precisarão de `loading="lazy"`.
+Arquivos afetados:
+- `WhatsAppSticky.tsx` — botão flutuante verde
+- `Navbar.tsx` — CTA desktop + menu mobile (3 usos)
+- `HeroSection.tsx` — 2 botões CTA
+- `ProblemsSection.tsx` — botão CTA
+- `FinalCTASection.tsx` — 2 botões CTA + footer (1 info)
+- `CommerceSection.tsx` — botão CTA (não está no Index mas arquivo existe)
+- `FAQSection.tsx` — botão CTA (não está no Index mas arquivo existe)
 
-### CLS — Risco nos placeholders
-Os placeholders de imagem no Hero (`aspect-[3/4]`) e MissionSection (`aspect-[4/3]`) usam `aspect-ratio` via Tailwind, o que reserva espaço. Isso é correto e previne CLS.
+Total: ~12 ocorrências de `MessageCircle` representando WhatsApp.
 
-### LCP — Risco na fonte
-O maior elemento visível é o H1 do Hero. O LCP depende da fonte Inter carregar. Mover o `@import` para `<link preload>` melhora o LCP.
+### SF Symbols
+SF Symbols é a biblioteca de ícones da Apple. Ela **não existe como pacote web/npm**. É proprietária do ecossistema Apple (iOS/macOS). Não há equivalente direto para React.
 
-### JS bundle — Pode reduzir
-A landing usa `framer-motion` (pesado ~30kb gzip) E `gsap` (~25kb gzip). Ambos fazem essencialmente a mesma coisa (animações de fade-in). Recomendação: manter apenas GSAP (já usado em todas as seções via `useGsapFade`) e remover framer-motion dos componentes que o usam (Navbar, HeroSection, FinalCTASection, WhatsAppSticky). Isso reduz ~30kb do bundle.
+**Porém**: o lucide-react já segue a mesma linguagem visual do SF Symbols — traços finos (stroke 2px), cantos arredondados, formas minimalistas. É a biblioteca web mais próxima do estilo SF Symbols. Trocar por outra (Heroicons, Phosphor, etc.) não traria benefício e exigiria refatorar todos os componentes UI (shadcn/ui depende de lucide-react internamente).
 
-**Porém**: remover framer-motion é uma refatoração significativa. Alternativa mínima: manter ambos mas adicionar o `<link preload>` da fonte.
-
-### Mudanças propostas
-
-**Arquivo: `index.html`**
-- Adicionar `<link rel="preconnect" href="https://fonts.googleapis.com">` e `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`
-- Adicionar `<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">`
-- Adicionar `<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">`
-
-**Arquivo: `src/index.css`**
-- Remover linha 1: `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');`
+**Recomendação**: Manter lucide-react (já é SF Symbol-like) e criar apenas o ícone customizado do WhatsApp.
 
 ---
 
-## 8. DESIGN SYSTEM (CONSISTÊNCIA)
+## Plano de execução
 
-### Paleta — OK
-Já segue o padrão correto:
-- Primária: French Blue (azul escuro — confiança)
-- Secundária/Accent: Spicy Paprika (laranja — ação)
-- Neutros: Onyx, Pale Slate, Alabaster Grey (cinza 100-900)
+### 1. Criar componente `src/components/icons/WhatsAppIcon.tsx`
+SVG inline do logo oficial do WhatsApp. Props: `size`, `className`. Reutilizável em todo o projeto.
 
-### Gradientes — OK
-Nenhum gradiente exagerado encontrado no código atual.
+### 2. Substituir `MessageCircle` por `WhatsAppIcon` em todos os contextos de WhatsApp
 
-### Fundos — OK
-Alternância limpa entre `bg-background` (branco) e `bg-muted` (cinza claro). Nenhum fundo poluído.
-
-### Cores excessivas — OK
-Apenas 3 cores ativas (azul, laranja, cinza). Sem cores extras.
-
-**Nenhuma mudança necessária.**
-
----
-
-## 9. COPY TÉCNICA E DIRETA
-
-### Avaliação atual
-
-| Seção | Copy atual | Avaliação |
+| Arquivo | Onde | Mudança |
 |---|---|---|
-| Hero H1 | "Assistência técnica especializada em refrigeração comercial e residencial." | Descritivo mas corporativo. Pode ser mais direto. |
-| Problems H2 | "Seu equipamento parou?" | Direto e bom. |
-| Differentials H2 | "Por que escolher a Refrigeração Taboado" | OK — factual. |
-| CTA H2 | "Precisa de assistência técnica especializada?" | OK — pergunta direta. |
+| `WhatsAppSticky.tsx` | Botão flutuante | `MessageCircle` → `WhatsAppIcon` |
+| `Navbar.tsx` | CTA desktop (linha 53) | `MessageCircle` → `WhatsAppIcon` |
+| `Navbar.tsx` | Info mobile (linha 110) | `MessageCircle` → `WhatsAppIcon` |
+| `Navbar.tsx` | Botão mobile (linha 115) | `MessageCircle` → `WhatsAppIcon` |
+| `HeroSection.tsx` | Botão 1 (linha 72) | `MessageCircle` → `WhatsAppIcon` |
+| `HeroSection.tsx` | Botão 2 (linha 89) | `MessageCircle` → `WhatsAppIcon` |
+| `ProblemsSection.tsx` | Botão CTA (linha 43) | `MessageCircle` → `WhatsAppIcon` |
+| `FinalCTASection.tsx` | Botão 1 (linha 30) | `MessageCircle` → `WhatsAppIcon` |
+| `FinalCTASection.tsx` | Botão 2 (linha 42) | `MessageCircle` → `WhatsAppIcon` |
+| `FinalCTASection.tsx` | Footer info (linha 59) | `MessageCircle` → `WhatsAppIcon` |
 
-### Mudança proposta
-O H1 do Hero está corporativo demais. Wireframe pede copy mais direta.
+### 3. Manter lucide-react
+- `Phone`, `Mail`, `Clock`, `MapPin`, `Check`, `Star`, `ChevronLeft`, `ChevronRight`, `Menu`, `X` — todos continuam do lucide-react
+- shadcn/ui components internamente usam lucide-react — não alterar
 
-**Sugestão**: Manter o H1 atual. O wireframe aprovado usa exatamente essa frase. A copy das outras seções já é direta ("Seu equipamento parou?", "Precisa de assistência técnica?"). Está alinhado.
-
-**Nenhuma mudança de copy necessária** — já foi ajustada nas iterações anteriores.
-
----
-
-## 10. ERROS GRAVES — CHECKLIST
-
-| Erro | Status | Detalhe |
-|---|---|---|
-| Carrossel automático no hero | Não existe | Hero é estático, 2 colunas. |
-| Texto centralizado demais | Não existe | Hero é alinhado à esquerda. CTA final é centralizado mas é intencional (bloco curto). |
-| Menu com muitas opções | OK | 5 links + 1 CTA. Dentro do aceitável. |
-| Página institucional longa demais | OK | 9 blocos confinados. Sem seções redundantes. |
-| Sem CTA acima da dobra | OK | Hero tem 2 CTAs visíveis acima da dobra. |
-| Sem número visível | Precisa ajuste | O número de telefone NÃO está visível no desktop. Só aparece no menu mobile e no footer (que está abaixo da dobra). |
-
-### Correção: número visível no Navbar desktop
-Adicionar o telefone como texto discreto ao lado do botão CTA no Navbar desktop.
-
-**Arquivo: `src/components/Navbar.tsx`**
-- Adicionar link de telefone (`<a href={phoneLink()}>`) antes do botão CTA no menu desktop
-- Estilo: `text-sm text-muted-foreground` com ícone `Phone` pequeno
-
-### Carrossel de depoimentos — autoplay
-O `TestimonialsSection` tem `setInterval(() => emblaApi.scrollNext(), 5000)` — um autoplay de 5 segundos. Isso é um **carrossel automático**. O wireframe diz "sem carrossel automático no hero" (e o hero não tem), mas boas práticas de UX recomendam remover autoplay em qualquer carrossel. Recomendação: remover o `setInterval` e deixar a navegação manual.
-
-**Arquivo: `src/components/TestimonialsSection.tsx`**
-- Remover linhas 61-62: `const interval = setInterval(...)` e `return () => clearInterval(interval);`
-
----
-
-## Resumo de mudanças
-
-| Arquivo | Mudança |
-|---|---|
-| `index.html` | Adicionar `<link preconnect>` e `<link preload>` para Google Fonts |
-| `src/index.css` | Remover `@import url(...)` da linha 1 |
-| `src/components/Navbar.tsx` | Adicionar telefone visível no desktop |
-| `src/components/TestimonialsSection.tsx` | Remover autoplay do carrossel |
-
-4 arquivos, mudanças cirúrgicas. Sem refatoração de libraries.
+### O que NÃO muda
+- Nenhuma outra biblioteca de ícones será instalada
+- Nenhum componente shadcn/ui será alterado
+- Lucide-react continua para todos os ícones que não são WhatsApp
 
