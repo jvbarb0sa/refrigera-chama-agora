@@ -1,4 +1,5 @@
-import { MessageCircle, Phone, Mail, Clock, MapPin } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, PHONE_DISPLAY, WHATSAPP_DISPLAY, EMAIL } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
@@ -27,7 +28,7 @@ export default function FinalCTASection() {
                 target="_blank"
                 rel="noopener"
               >
-                <MessageCircle size={20} />
+                <WhatsAppIcon size={20} />
                 Solicitar atendimento
               </motion.a>
             </Button>
@@ -39,7 +40,7 @@ export default function FinalCTASection() {
                 target="_blank"
                 rel="noopener"
               >
-                <MessageCircle size={20} />
+                <WhatsAppIcon size={20} />
                 Falar no WhatsApp
               </motion.a>
             </Button>
@@ -56,7 +57,7 @@ export default function FinalCTASection() {
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <MessageCircle size={14} className="shrink-0" />
+                <WhatsAppIcon size={14} className="shrink-0" />
                 <span>{WHATSAPP_DISPLAY}</span>
               </div>
               <div className="flex items-center gap-2">

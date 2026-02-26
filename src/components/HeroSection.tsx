@@ -1,4 +1,5 @@
-import { MessageCircle, Check } from "lucide-react";
+import { Check } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 import { motion } from "framer-motion";
@@ -69,7 +70,7 @@ export default function HeroSection() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <MessageCircle size={20} />
+                  <WhatsAppIcon size={20} />
                   Solicitar atendimento técnico
                 </motion.a>
               </Button>
@@ -86,7 +87,7 @@ export default function HeroSection() {
                   target="_blank"
                   rel="noopener"
                 >
-                  <MessageCircle size={20} />
+                  <WhatsAppIcon size={20} />
                   Falar no WhatsApp
                 </motion.a>
               </Button>

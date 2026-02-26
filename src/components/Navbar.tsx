@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/use-active-section";
@@ -50,7 +51,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener"
             >
-              <MessageCircle size={16} />
+              <WhatsAppIcon size={16} />
               Solicitar atendimento
             </motion.a>
           </Button>
@@ -107,12 +108,12 @@ export default function Navbar() {
                 <a href={phoneLink()} className="hover:text-foreground">{PHONE_DISPLAY}</a>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <MessageCircle size={14} className="shrink-0" />
+                <WhatsAppIcon size={14} className="shrink-0" />
                 <span>{WHATSAPP_DISPLAY}</span>
               </div>
               <Button asChild variant="strong" size="lg" className="w-full mt-2">
                 <a href={whatsappLink("Olá, vim pelo site.")} target="_blank" rel="noopener">
-                  <MessageCircle size={20} />
+                  <WhatsAppIcon size={20} />
                   Chamar no WhatsApp
                 </a>
               </Button>

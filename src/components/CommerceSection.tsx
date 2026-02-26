@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
 
@@ -29,7 +29,7 @@ export default function CommerceSection() {
 
           <Button asChild variant="strong" size="lg" className="mt-8 h-14 px-8 text-base">
             <a href={whatsappLink("Urgência comercial — equipamento parou. Preciso de atendimento rápido.")} target="_blank" rel="noopener">
-              <MessageCircle size={20} />
+              <WhatsAppIcon size={20} />
               Solicitar prioridade comercial
             </a>
           </Button>
