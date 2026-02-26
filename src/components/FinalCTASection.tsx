@@ -90,11 +90,10 @@ export default function FinalCTASection() {
               href="https://wa.me/message/FTL5XC4CK32JM1"
               target="_blank"
               rel="noopener"
-              className="underline hover:text-primary-foreground/50 transition-colors"
+              className="text-primary-foreground underline hover:text-primary-foreground/80 transition-colors"
             >
               FCS-STUDIO
             </a>
-            {" & Co."}
           </p>
         </div>
       </footer>
