@@ -1,3 +1,4 @@
+import { useState } from "react";
 import TopBar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -12,10 +13,12 @@ import FinalCTASection from "@/components/FinalCTASection";
 import WhatsAppSticky from "@/components/WhatsAppSticky";
 
 const Index = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <TopBar />
-      <Navbar />
+      <Navbar onMenuToggle={setMobileMenuOpen} />
       <main>
         <HeroSection />
         <ServicesSection />
@@ -27,7 +30,7 @@ const Index = () => {
         <FAQSection />
         <FinalCTASection />
       </main>
-      <WhatsAppSticky />
+      <WhatsAppSticky hidden={mobileMenuOpen} />
     </>
   );
 };
