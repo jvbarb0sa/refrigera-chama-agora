@@ -1,58 +1,55 @@
 
 
-# Novo Bloco — Problemas que Resolve
+# MissionSection — Sobre a empresa, institucional e direto
 
-## Posição
+## Diagnóstico
 
-Inserir entre `ServicesSection` e `CommerceSection` no `Index.tsx`. Faz sentido narrativo: depois de mostrar as especialidades, mostrar os problemas concretos que resolve — e converter.
+A seção atual tem:
+- Label "Nossa missão" e H2 "Equipamentos param. Negócios não podem." — tom de campanha, não institucional
+- 3 pilares (Diagnóstico preciso, Atendimento rápido, Garantia formal) — conteúdo que agora já está coberto pela nova DifferentialsSection
+- Marquee de serviços — conteúdo já coberto pela ServicesSection
+- Resultado: seção redundante e sem identidade própria
 
-## Novo componente: `ProblemsSection.tsx`
+## Mudança
+
+Transformar em bloco "Sobre a empresa" — institucional, sóbrio, sem pilares nem marquee.
 
 ### Header
-- Label: `PROBLEMAS QUE RESOLVEMOS`
-- H2: `Seu equipamento parou?`
-- Sem subtítulo longo — o título já é direto e gera identificação
+- Label: `SOBRE A EMPRESA`
+- H2: `Profissionalismo e responsabilidade técnica`
 
-### Lista de problemas
-Lista vertical simples com check ou bullet discreto (ícone `Check` do Lucide, `text-primary`, 14px):
+### Texto
+Parágrafo único, direto:
 
-- Geladeira não gela
-- Freezer com falha
-- Câmara fria com oscilação
-- Ar inverter com erro na placa
-- Máquina de lavar com defeito
+> A Refrigeração Taboado atua com foco em qualidade, transparência e segurança nos serviços prestados. Trabalhamos com diagnóstico preciso, peças adequadas e compromisso com o cliente.
 
-Cada item: `text-foreground`, `text-base`, sem card, sem fundo — apenas lista limpa sobre `bg-background`.
+`text-muted-foreground`, `max-w-lg`, `leading-relaxed`.
 
-### CTA
-Logo abaixo da lista, botão `variant="strong"` com ícone `MessageCircle`:
-- Texto: `Agendar avaliação técnica`
-- Link: WhatsApp com mensagem pré-preenchida
+### Removidos
+- 3 pilares (redundante com DifferentialsSection)
+- Marquee de serviços (redundante com ServicesSection)
+- H2 "Equipamentos param. Negócios não podem."
+- Subtítulo antigo
 
-### Visual
-- `bg-background` (fundo padrão, sem cor especial)
-- Layout single-column, `max-w-xl`
-- GSAP fade com stagger nos itens da lista (`.problem-item`)
-- Sem borda, sem card, sem decoração
+### Mantido
+- GSAP fade (no container, sem stagger — não há mais children)
+- Posição no Index.tsx
+- Padding `py-16 md:py-24`
 
 ```text
-PROBLEMAS QUE RESOLVEMOS
+SOBRE A EMPRESA
 
-Seu equipamento parou?
+Profissionalismo e responsabilidade técnica
 
-✓ Geladeira não gela
-✓ Freezer com falha
-✓ Câmara fria com oscilação
-✓ Ar inverter com erro na placa
-✓ Máquina de lavar com defeito
-
-[ Agendar avaliação técnica ]
+A Refrigeração Taboado atua com foco em qualidade,
+transparência e segurança nos serviços prestados.
+Trabalhamos com diagnóstico preciso, peças adequadas
+e compromisso com o cliente.
 ```
 
-## Arquivos editados
+## Arquivo editado
 
 | Arquivo | O que muda |
 |---|---|
-| `src/components/ProblemsSection.tsx` | Novo componente |
-| `src/pages/Index.tsx` | Import + inserir `<ProblemsSection />` entre `ServicesSection` e `CommerceSection` |
+| `src/components/MissionSection.tsx` | Reescrita: remove pilares e marquee, substitui por texto institucional único |
 
