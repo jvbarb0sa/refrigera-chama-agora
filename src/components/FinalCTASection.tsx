@@ -22,7 +22,7 @@ export default function FinalCTASection() {
               </span>
               <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl">
                 Equipamento parado?{" "}
-                <span className="block text-[#118CD9]">Não espere até amanhã.</span>
+                <span className="block text-accent">Não espere até amanhã.</span>
               </h2>
               <p className="mt-4 text-sm text-[#D7D7D9] max-w-md">
                 Cada hora sem refrigeração é perda de produto e cliente. Fale agora com um técnico.
@@ -41,7 +41,7 @@ export default function FinalCTASection() {
                 href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white rounded-[6px] bg-accent hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white rounded-[6px] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150 bg-[#42ae5d]">
                 <WhatsAppIcon size={16} />
                 Chamar no WhatsApp
               </a>

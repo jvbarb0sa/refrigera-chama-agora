@@ -3,13 +3,13 @@ import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const problems = [
-  { label: "Geladeira não gela", id: "01" },
-  { label: "Freezer com falha", id: "02" },
-  { label: "Câmara fria com oscilação", id: "03" },
-  { label: "Ar inverter com erro na placa", id: "04" },
-  { label: "Máquina de lavar com defeito", id: "05" },
-  { label: "Problemas elétricos em sistemas", id: "06" },
-];
+{ label: "Geladeira não gela", id: "01" },
+{ label: "Freezer com falha", id: "02" },
+{ label: "Câmara fria com oscilação", id: "03" },
+{ label: "Ar inverter com erro na placa", id: "04" },
+{ label: "Máquina de lavar com defeito", id: "05" },
+{ label: "Problemas elétricos em sistemas", id: "06" }];
+
 
 export default function ProblemsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
@@ -33,8 +33,8 @@ export default function ProblemsSection() {
               href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 text-accent-foreground h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all rounded-[6px] bg-accent"
-            >
+              className="mt-8 text-accent-foreground h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all rounded-[6px] bg-emerald-600">
+
               <WhatsAppIcon size={20} />
               Agendar avaliação técnica
             </a>
@@ -42,11 +42,11 @@ export default function ProblemsSection() {
 
           {/* Right column — bento grid */}
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {problems.map((p) => (
-              <div
-                key={p.id}
-                className="problem-item group relative overflow-hidden rounded-[6px] border border-border bg-card p-5 transition-colors hover:border-primary/30"
-              >
+            {problems.map((p) =>
+            <div
+              key={p.id}
+              className="problem-item group relative overflow-hidden rounded-[6px] border border-border bg-card p-5 transition-colors hover:border-primary/30">
+
                 {/* Watermark */}
                 <span className="absolute -bottom-3 -right-1 text-[5rem] font-semibold text-foreground/[0.04] group-hover:text-foreground/[0.08] transition-colors duration-500 pointer-events-none select-none leading-none">
                   {p.id}
@@ -59,10 +59,10 @@ export default function ProblemsSection() {
                   </p>
                 </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }

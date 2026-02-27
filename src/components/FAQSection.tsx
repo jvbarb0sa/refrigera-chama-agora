@@ -2,19 +2,19 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  AccordionTrigger } from
+"@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 
 const faqs = [
-  { q: "Tem garantia?", a: "Sim, todos os nossos serviços e peças substituídas contam com garantia formalizada, garantindo a segurança e o funcionamento do seu equipamento." },
-  { q: "Cobra visita?", a: "A taxa de visita técnica é isenta caso o orçamento seja aprovado e o serviço executado com a nossa equipe." },
-  { q: "Trabalha com peça original?", a: "Priorizamos sempre peças originais de fábrica para garantir a maior durabilidade e performance do seu sistema de refrigeração." },
-  { q: "Atende no mesmo dia?", a: "Para casos de urgência comercial (câmaras frias e expositores parados), possuímos plantão de atendimento para solucionar o problema o mais rápido possível." },
-  { q: "Faz orçamento pelo WhatsApp?", a: "Sim, você pode nos enviar fotos e relatar o problema pelo WhatsApp para um pré-orçamento rápido e agendamento da visita técnica." },
-];
+{ q: "Tem garantia?", a: "Sim, todos os nossos serviços e peças substituídas contam com garantia formalizada, garantindo a segurança e o funcionamento do seu equipamento." },
+{ q: "Cobra visita?", a: "A taxa de visita técnica é isenta caso o orçamento seja aprovado e o serviço executado com a nossa equipe." },
+{ q: "Trabalha com peça original?", a: "Priorizamos sempre peças originais de fábrica para garantir a maior durabilidade e performance do seu sistema de refrigeração." },
+{ q: "Atende no mesmo dia?", a: "Para casos de urgência comercial (câmaras frias e expositores parados), possuímos plantão de atendimento para solucionar o problema o mais rápido possível." },
+{ q: "Faz orçamento pelo WhatsApp?", a: "Sim, você pode nos enviar fotos e relatar o problema pelo WhatsApp para um pré-orçamento rápido e agendamento da visita técnica." }];
+
 
 export default function FAQSection() {
   return (
@@ -40,8 +40,8 @@ export default function FAQSection() {
                 <a
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
-                  rel="noopener"
-                >
+                  rel="noopener" className="bg-[#eb7542]">
+
                   <WhatsAppIcon size={16} />
                   Alguma dúvida? Fale conosco
                 </a>
@@ -51,8 +51,8 @@ export default function FAQSection() {
 
           {/* Right column */}
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+            {faqs.map((faq, i) =>
+            <AccordionItem key={i} value={`faq-${i}`} className="border-border">
                 <AccordionTrigger className="text-left text-lg font-semibold text-foreground transition-colors hover:text-primary hover:no-underline py-5">
                   {faq.q}
                 </AccordionTrigger>
@@ -60,10 +60,10 @@ export default function FAQSection() {
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
-            ))}
+            )}
           </Accordion>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
