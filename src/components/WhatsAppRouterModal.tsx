@@ -1,4 +1,4 @@
-import { Wrench, Store } from "lucide-react";
+import { Wrench, Store, ChevronRight } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 import {
@@ -45,7 +45,7 @@ export default function WhatsAppRouterModal({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid grid-cols-2 gap-4 pt-4">
+        <div className="flex flex-col gap-3 md:flex-row md:gap-4 pt-4">
           {options.map((opt) => (
             <a
               key={opt.target}
@@ -53,10 +53,10 @@ export default function WhatsAppRouterModal({
               target="_blank"
               rel="noopener"
               onClick={() => onOpenChange(false)}
-              className="group w-full flex flex-col items-center p-6 rounded-xl border-2 border-slate-100 bg-white hover:border-green-500 hover:bg-green-50 hover:shadow-md transition-all duration-200 cursor-pointer"
+              className="group w-full flex flex-row md:flex-col items-center md:justify-center text-left md:text-center p-4 md:p-6 rounded-xl border-2 border-slate-100 bg-white hover:border-green-500 hover:bg-green-50 hover:shadow-md transition-all duration-200 cursor-pointer"
             >
-              <opt.icon size={28} className="text-slate-800" />
-              <div className="mt-3 text-center">
+              <opt.icon size={28} className="text-slate-800 mr-4 md:mr-0 md:mb-3 shrink-0" />
+              <div className="flex-1">
                 <p className="text-sm font-semibold text-slate-800">
                   {opt.label}
                 </p>
@@ -64,7 +64,8 @@ export default function WhatsAppRouterModal({
                   {opt.description}
                 </p>
               </div>
-              <span className="flex items-center gap-2 text-sm font-semibold text-green-600 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+              <ChevronRight size={18} className="block md:hidden text-slate-400 shrink-0 ml-auto" />
+              <span className="hidden md:flex items-center gap-2 text-sm font-semibold text-green-600 mt-4 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
                 <WhatsAppIcon size={14} />
                 Iniciar conversa
               </span>
