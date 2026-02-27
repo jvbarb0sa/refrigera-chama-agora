@@ -1,28 +1,32 @@
 
 
-# Prova Social e FAQ — Refinamento visual
+# Refatorar grid de Problemas — Ícones Lucide + subtítulos
 
-## 1. Cards de Depoimento (testimonials-columns-1.tsx)
+## Alterações em `src/components/ProblemsSection.tsx`
 
-Aplicar o mesmo padrão tátil dos cards de serviço: trocar `rounded-2xl shadow-md hover:shadow-lg` por `rounded-[6px] ring-1 ring-slate-200/50 shadow-none hover:ring-slate-300 hover:shadow-sm transition-all duration-200`.
+### 1. Dados — adicionar ícone e subtítulo a cada problema
 
-**Linha 42** — substituir classes do card:
-- De: `rounded-2xl bg-card p-7 shadow-md transition-shadow duration-300 hover:shadow-lg`
-- Para: `rounded-[6px] bg-card p-7 ring-1 ring-slate-200/50 shadow-none hover:ring-slate-300 hover:shadow-sm transition-all duration-200`
+| Problema | Ícone Lucide | Subtítulo |
+|---|---|---|
+| Geladeira não gela | `Snowflake` | Falha no compressor ou gás |
+| Freezer com falha | `ThermometerSnowflake` | Temperatura irregular ou ruído |
+| Câmara fria com oscilação | `Gauge` | Variação térmica constante |
+| Ar inverter com erro na placa | `CircuitBoard` | Erro eletrônico na placa inverter |
+| Máquina de lavar com defeito | `WashingMachine` | Motor, bomba ou painel com falha |
+| Problemas elétricos em sistemas | `Zap` | Curto, sobrecarga ou fiação |
 
-## 2. FAQ Accordion (FAQSection.tsx)
+### 2. Import — adicionar ícones Lucide
 
-O accordion já usa `border-b border-border` via AccordionItem (padrão Radix). Está correto e limpo. Apenas garantir que não haja caixas fechadas — trocar a classe do AccordionItem para usar `border-slate-200` em vez do genérico `border-border` para consistência com o tom visual slate.
+Importar `Snowflake, ThermometerSnowflake, Gauge, CircuitBoard, WashingMachine, Zap` de `lucide-react`.
 
-**Linha 55** — AccordionItem:
-- De: `className="border-border"`
-- Para: `className="border-slate-200"`
+### 3. Card — nova estrutura
 
-## 3. AccordionTrigger — remover hover:underline padrão
+- Remover traço azul (`w-1 h-6 rounded-full bg-primary`)
+- Adicionar div de ícone: `w-12 h-12 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center shrink-0`
+- Texto: `font-medium` no label + nova linha `text-sm text-slate-500` para subtítulo
+- Card hover: `hover:shadow-md hover:border-blue-200 transition-all duration-300`
+- Manter `ring-1 ring-slate-200/50` e `rounded-[6px]`
 
-O componente base (`accordion.tsx`, linha 30) tem `hover:underline` no trigger. O FAQ já faz override com `hover:no-underline`, então está OK — nenhuma mudança necessária no componente base.
-
-## Resumo de arquivos editados
-- `src/components/ui/testimonials-columns-1.tsx` — cards com ring tátil + radius 6px
-- `src/components/FAQSection.tsx` — border-slate-200 no accordion
+### Arquivos editados
+- `src/components/ProblemsSection.tsx`
 
