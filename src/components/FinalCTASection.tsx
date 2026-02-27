@@ -55,12 +55,12 @@ export default function FinalCTASection() {
         <div className="container">
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {/* Coluna 1 — Identidade */}
-            <div className="sm:col-span-2 lg:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2 my-0 py-0">
               <img src={logoWhite} alt="Refrigeração Taboado" className="h-16" />
-              <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/40">
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400 py-[14px] my-[31px]">
                 Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas, MS. Técnicos certificados, garantia documentada.
               </p>
-              <ul className="mt-6 space-y-3 text-sm text-primary-foreground/50">
+              <ul className="mt-6 space-y-3 text-sm text-slate-400">
                 <li className="flex items-center gap-2">
                   <MapPin size={15} className="shrink-0 text-accent" />
                   Três Lagoas, MS e região
@@ -89,7 +89,7 @@ export default function FinalCTASection() {
               <p className="relative text-xs font-semibold uppercase tracking-widest text-accent mb-5 pb-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:rounded-full">
                 Serviços
               </p>
-              <ul className="space-y-3 text-sm text-primary-foreground/60">
+              <ul className="space-y-3 text-sm text-slate-400">
                 {["Refrigeração Comercial", "Câmaras Frias", "Climatização", "Manutenção Preventiva", "Urgência 24h"].map((item) =>
                 <li key={item}>
                     <a href="#servicos" className="hover:text-accent transition-colors">
@@ -105,7 +105,7 @@ export default function FinalCTASection() {
               <p className="relative text-xs font-semibold uppercase tracking-widest text-accent mb-5 pb-2 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:rounded-full">
                 Empresa
               </p>
-              <ul className="space-y-3 text-sm text-primary-foreground/60">
+              <ul className="space-y-3 text-sm text-slate-400">
                 <li><a href="#diferenciais" className="hover:text-accent transition-colors">Diferenciais</a></li>
                 <li><a href="#depoimentos" className="hover:text-accent transition-colors">Depoimentos</a></li>
                 <li><a href="#faq" className="hover:text-accent transition-colors">Perguntas Frequentes</a></li>
@@ -116,10 +116,10 @@ export default function FinalCTASection() {
 
           {/* Sub-footer */}
           <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-primary-foreground/30">
+            <p className="text-xs text-slate-400">
               © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
             </p>
-            <p className="text-xs text-primary-foreground/30">
+            <p className="text-xs text-slate-400">
               Desenvolvido por{" "}
               <a
                 href="https://wa.me/message/FTL5XC4CK32JM1"
@@ -129,7 +129,7 @@ export default function FinalCTASection() {
                 FCS-STUDIO
               </a>
             </p>
-            <p className="text-xs text-primary-foreground/30">
+            <p className="text-xs text-slate-400">
               Três Lagoas, MS e região
             </p>
           </div>
