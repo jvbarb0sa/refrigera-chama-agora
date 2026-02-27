@@ -1,16 +1,18 @@
 
 
-# Hero CTA — Ghost Button secundário
+# Cards de Serviços — Contorno tátil minimalista
 
 ## Alteração
 
-**HeroSection.tsx (linhas 144-148)** — Botão "Solicitar visita técnica": trocar `variant="secondary"` por `variant="ghost"` e aplicar classes de ghost button institucional:
+**ServicesSection.tsx** — Cards de serviço (classe `service-card`): substituir o estilo de borda atual por contorno ultrafino com `ring` e transição suave.
 
-```
-bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none
-```
+Trocar nas classes do card (não-dark):
+- Remover: `border border-border hover:border-primary/30`
+- Adicionar: `border-0 ring-1 ring-slate-200/50 hover:ring-slate-300 hover:shadow-sm transition-all duration-200`
 
-Classes finais: `"text-base px-8 h-14 bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none"`
+Para o card dark ("Contratos para Empresas"):
+- Remover: `border-[hsl(var(--onyx))]`
+- Adicionar: `border-0 ring-1 ring-[hsl(var(--onyx))]`
 
-Isso remove o fundo cinza e cria hierarquia visual clara — o olho vai direto ao botão laranja.
+Mantém o contraste do card B2B escuro intacto enquanto os cards claros ganham o aspecto tátil e limpo.
 
