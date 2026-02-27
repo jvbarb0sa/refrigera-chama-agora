@@ -1,5 +1,5 @@
-import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { CalendarCheck, CheckCircle } from "lucide-react";
+import heroTechnician from "@/assets/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGsapContext } from "@/hooks/useGsapContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -46,65 +45,67 @@ export default function HeroSection() {
           "-=0.2"
         )
         .fromTo(
-          "[data-hero='proof'] > *",
-          { autoAlpha: 0, y: 10 },
-          { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08 },
-          "-=0.15"
+          "[data-hero='image']",
+          { autoAlpha: 0, y: 24, scale: 0.97 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 },
+          "-=0.5"
+        )
+        .fromTo(
+          "[data-hero='float-card']",
+          { autoAlpha: 0, y: 16, scale: 0.95 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 },
+          "-=0.3"
         );
     },
     [reduced]
   );
 
   return (
-    <section className="relative pt-16 md:pt-[104px] overflow-hidden">
-      {/* Background image */}
-      <img
-        src={heroBg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-right"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#151617] via-[#151617]/80 to-transparent z-10" />
-
-      <div ref={heroRef} className="container relative z-20 py-20 md:py-32">
-        <div className="max-w-2xl">
-          <span
+    <section className="bg-[hsl(var(--onyx))] w-full min-h-[85vh] flex items-center pt-24 pb-16">
+      <div
+        ref={heroRef}
+        className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      >
+        {/* Text column */}
+        <div className="col-span-1 lg:col-span-7 flex flex-col items-start gap-6 z-10">
+          <div
             data-hero="kicker"
             style={{ visibility: "hidden" }}
-            className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/80 border border-white/15 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-[6px] mb-6"
+            className="px-4 py-1.5 rounded-[6px] border border-[#C7CCD7]/30 bg-[#C7CCD7]/10 text-[#D6D6DA] text-sm font-medium tracking-wide flex items-center gap-2"
           >
-            Três Lagoas · MS
-          </span>
+            <span className="w-2 h-2 rounded-full bg-[hsl(var(--french-blue))] animate-pulse" />
+            Três Lagoas · MS e Região
+          </div>
 
           <h1
             data-hero="h1"
             style={{ visibility: "hidden" }}
-            className="text-4xl font-semibold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]"
+            className="text-5xl lg:text-7xl font-bold text-[#D6D6DA] leading-[1.1] tracking-tight"
           >
-            Seu equipamento parou? A gente{" "}
-            <span className="text-[hsl(var(--spicy-paprika))]">diagnostica e resolve</span> com
-            transparência.
+            Seu equipamento
+            <br className="hidden lg:block" /> parou? A gente{" "}
+            <span className="text-[hsl(var(--spicy-paprika))]">resolve.</span>
           </h1>
 
           <p
             data-hero="sub"
             style={{ visibility: "hidden" }}
-            className="mt-6 text-lg leading-relaxed text-white/70 max-w-md"
+            className="text-xl text-[#C7CCD7] max-w-2xl leading-relaxed mt-2"
           >
-            Atendimento especializado em refrigeração, climatização e elétrica com segurança e garantia.
+            Diagnóstico preciso e manutenção em refrigeração comercial e
+            industrial. Sem enrolação, direto ao ponto.
           </p>
 
           <div
             data-hero="ctas"
             style={{ visibility: "hidden" }}
-            className="mt-10 flex flex-col gap-1 sm:gap-2"
+            className="flex flex-col gap-2 w-full sm:w-auto mt-4"
           >
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 variant="strong"
                 size="lg"
-                className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg shadow-[hsl(var(--spicy-paprika))]/20 border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                 onClick={() => setModalOpen(true)}
               >
                 <WhatsAppIcon size={20} />
@@ -113,9 +114,9 @@ export default function HeroSection() {
 
               <Button
                 asChild
-                variant="secondary"
+                variant="outline"
                 size="lg"
-                className="text-base px-8 h-14 bg-[#D6D6DA] text-[hsl(var(--onyx))] hover:bg-[#C7CCD7] hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                className="text-base px-8 h-14 bg-transparent border border-[#C7CCD7]/40 hover:bg-[#C7CCD7]/10 text-[#D6D6DA] hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
               >
                 <a href="#contato">
                   <CalendarCheck size={20} />
@@ -123,29 +124,41 @@ export default function HeroSection() {
                 </a>
               </Button>
             </div>
-            <span className="text-xs text-white/60 pl-1">
-              Resposta mais rápida por WhatsApp.
+            <span className="text-sm text-[#C7CCD7]/60 pl-1">
+              Resposta média em menos de 10 minutos pelo WhatsApp.
             </span>
           </div>
+        </div>
 
-          <ul
-            data-hero="proof"
+        {/* Image column */}
+        <div className="col-span-1 lg:col-span-5 relative hidden lg:block">
+          <div
+            data-hero="image"
             style={{ visibility: "hidden" }}
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-white/15 pt-6"
+            className="relative rounded-[6px] overflow-hidden aspect-[4/5] border border-[#C7CCD7]/20 shadow-2xl"
           >
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Star size={14} className="fill-amber-400 text-amber-400 shrink-0" />
-              4,9 no Google
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Users size={14} className="text-primary shrink-0" />
-              50+ avaliações reais
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <MapPin size={14} className="text-primary shrink-0" />
-              Atendimento local rápido
-            </li>
-          </ul>
+            <img
+              src={heroTechnician}
+              alt="Técnico especializado em refrigeração"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div
+            data-hero="float-card"
+            style={{ visibility: "hidden" }}
+            className="absolute -bottom-8 -left-8 bg-[#D6D6DA] text-[hsl(var(--onyx))] p-5 rounded-[6px] shadow-xl border border-white flex items-center gap-4"
+          >
+            <div className="bg-[hsl(var(--french-blue))] rounded-full p-3 text-white">
+              <CheckCircle size={24} />
+            </div>
+            <div>
+              <p className="font-bold text-lg leading-none">+400</p>
+              <p className="text-sm font-medium opacity-80">
+                Atendimentos reais
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
