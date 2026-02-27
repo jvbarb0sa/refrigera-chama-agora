@@ -3,7 +3,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY_TECNICO, EMAIL } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
-import { motion } from "framer-motion";
+
 
 export default function FinalCTASection() {
   const ref = useGsapFade<HTMLDivElement>({ y: 20 });
@@ -30,26 +30,20 @@ export default function FinalCTASection() {
 
             {/* Right column — buttons */}
             <div className="lg:col-span-2 flex flex-col sm:flex-row gap-3 lg:justify-end w-full">
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <a
                 href={phoneLink()}
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] transition-colors rounded-[6px]">
-
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] rounded-[6px] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
                 <Phone size={16} />
                 Ligar agora
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              </a>
+              <a
                 href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
                 target="_blank"
                 rel="noopener"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white transition-colors rounded-[6px] bg-accent">
-
+                className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white rounded-[6px] bg-accent hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
                 <WhatsAppIcon size={16} />
                 Chamar no WhatsApp
-              </motion.a>
+              </a>
             </div>
           </div>
         </div>
