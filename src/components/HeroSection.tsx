@@ -65,9 +65,9 @@ export default function HeroSection() {
         className="absolute inset-0 h-full w-full object-cover object-right"
       />
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0b1622]/95 via-[#0b1622]/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#151617] via-[#151617]/80 to-transparent z-10" />
 
-      <div ref={heroRef} className="container relative z-10 py-20 md:py-32">
+      <div ref={heroRef} className="container relative z-20 py-20 md:py-32">
         <div className="max-w-2xl">
           <span
             data-hero="kicker"
