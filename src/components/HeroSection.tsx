@@ -1,5 +1,5 @@
-import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { Star, Users, CheckCircle, Shield, Zap } from "lucide-react";
+import heroTechnician from "@/assets/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGsapContext } from "@/hooks/useGsapContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -23,7 +22,7 @@ export default function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
-        "[data-hero='kicker']",
+        "[data-hero='badge']",
         { autoAlpha: 0, y: 10, filter: "blur(6px)" },
         { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6 }
       )
@@ -46,106 +45,172 @@ export default function HeroSection() {
           "-=0.2"
         )
         .fromTo(
-          "[data-hero='proof'] > *",
+          "[data-hero='trust'] > *",
           { autoAlpha: 0, y: 10 },
           { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08 },
           "-=0.15"
+        )
+        .fromTo(
+          "[data-hero='image']",
+          { autoAlpha: 0, x: 40, scale: 0.97 },
+          { autoAlpha: 1, x: 0, scale: 1, duration: 1 },
+          "-=0.8"
+        )
+        .fromTo(
+          "[data-hero='float-card']",
+          { autoAlpha: 0, y: 20, scale: 0.95 },
+          { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 },
+          "-=0.4"
         );
     },
     [reduced]
   );
 
   return (
-    <section className="relative pt-16 md:pt-[104px] overflow-hidden">
-      {/* Background image */}
-      <img
-        src={heroBg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-right"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#151617] via-[#151617]/80 to-transparent z-10" />
+    <section className="relative w-full min-h-[90vh] flex items-center overflow-hidden pt-20 pb-16 lg:pt-0 bg-muted">
+      {/* Subtle radial glow */}
+      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[radial-gradient(circle,_hsl(var(--pale-slate))_0%,_transparent_70%)] opacity-50 blur-3xl pointer-events-none" />
 
-      <div ref={heroRef} className="container relative z-20 py-20 md:py-32">
-        <div className="max-w-2xl">
-          <span
-            data-hero="kicker"
+      <div
+        ref={heroRef}
+        className="container relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center"
+      >
+        {/* ── Left Column: Content ── */}
+        <div className="col-span-1 lg:col-span-6 flex flex-col items-start space-y-8">
+          {/* Social proof badge */}
+          <div
+            data-hero="badge"
             style={{ visibility: "hidden" }}
-            className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/80 border border-white/15 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-[6px] mb-6"
+            className="inline-flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-background/40 px-4 py-2 rounded-[6px] shadow-sm"
           >
-            Três Lagoas · MS
-          </span>
+            <div className="flex -space-x-2">
+              <img className="w-7 h-7 rounded-full border-2 border-muted object-cover" src="https://i.pravatar.cc/100?img=11" alt="Cliente" />
+              <img className="w-7 h-7 rounded-full border-2 border-muted object-cover" src="https://i.pravatar.cc/100?img=12" alt="Cliente" />
+              <img className="w-7 h-7 rounded-full border-2 border-muted object-cover" src="https://i.pravatar.cc/100?img=13" alt="Cliente" />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex items-center gap-1 text-[hsl(var(--spicy-paprika))]">
+                <Star size={14} className="fill-current" />
+                <Star size={14} className="fill-current" />
+                <Star size={14} className="fill-current" />
+                <Star size={14} className="fill-current" />
+                <Star size={14} className="fill-current" />
+                <span className="text-foreground text-xs font-semibold ml-1">4.9/5</span>
+              </div>
+              <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">+400 Atendimentos</span>
+            </div>
+          </div>
 
-          <h1
-            data-hero="h1"
-            style={{ visibility: "hidden" }}
-            className="text-4xl font-semibold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]"
-          >
-            Seu equipamento parou? A gente{" "}
-            <span className="text-[hsl(var(--spicy-paprika))]">diagnostica e resolve</span> com
-            transparência.
-          </h1>
+          {/* Headline */}
+          <div className="space-y-4">
+            <h1
+              data-hero="h1"
+              style={{ visibility: "hidden" }}
+              className="text-[3.25rem] md:text-6xl lg:text-[4.5rem] font-semibold text-foreground leading-[1.05] tracking-tight"
+            >
+              Seu equipamento parou?{" "}
+              <br className="hidden sm:block" />
+              <span className="text-primary relative inline-block">
+                Nós resolvemos.
+                <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" />
+                </svg>
+              </span>
+            </h1>
 
-          <p
-            data-hero="sub"
-            style={{ visibility: "hidden" }}
-            className="mt-6 text-lg leading-relaxed text-white/70 max-w-md"
-          >
-            Atendimento especializado em refrigeração, climatização e elétrica com segurança e garantia.
-          </p>
+            <p
+              data-hero="sub"
+              style={{ visibility: "hidden" }}
+              className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed"
+            >
+              Engenharia térmica de precisão para comércios e indústrias. Transparência total do diagnóstico à execução.
+            </p>
+          </div>
 
+          {/* CTAs */}
           <div
             data-hero="ctas"
             style={{ visibility: "hidden" }}
-            className="mt-10 flex flex-col gap-1 sm:gap-2"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full pt-2"
           >
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Button
-                variant="strong"
-                size="lg"
-                className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
-                onClick={() => setModalOpen(true)}
-              >
-                <WhatsAppIcon size={20} />
-                Falar com técnico agora
-              </Button>
+            <Button
+              variant="strong"
+              size="lg"
+              className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-[0_8px_30px_rgb(211,109,62,0.3)] border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-150"
+              onClick={() => setModalOpen(true)}
+            >
+              <WhatsAppIcon size={20} />
+              Falar com Técnico
+            </Button>
 
-              <Button
-                asChild
-                variant="secondary"
-                size="lg"
-                className="text-base px-8 h-14 bg-[#D6D6DA] text-[hsl(var(--onyx))] hover:bg-[#C7CCD7] hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
-              >
-                <a href="#contato">
-                  <CalendarCheck size={20} />
-                  Solicitar visita técnica
-                </a>
-              </Button>
-            </div>
-            <span className="text-xs text-white/60 pl-1">
-              Resposta mais rápida por WhatsApp.
-            </span>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="text-base px-8 h-14 border-2 border-primary/20 hover:border-primary text-foreground bg-transparent hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-150"
+            >
+              <a href="#servicos">
+                Ver Serviços
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </Button>
           </div>
 
-          <ul
-            data-hero="proof"
+          {/* Trust indicators */}
+          <div
+            data-hero="trust"
             style={{ visibility: "hidden" }}
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-white/15 pt-6"
+            className="flex items-center gap-6 md:gap-10 pt-6 border-t border-foreground/10 w-full"
           >
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Star size={14} className="fill-amber-400 text-amber-400 shrink-0" />
-              4,9 no Google
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Users size={14} className="text-primary shrink-0" />
-              50+ avaliações reais
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <MapPin size={14} className="text-primary shrink-0" />
-              Atendimento local rápido
-            </li>
-          </ul>
+            <div className="flex items-center gap-2 text-foreground">
+              <CheckCircle size={18} className="text-primary" />
+              <span className="text-sm font-semibold">Urgência Comercial</span>
+            </div>
+            <div className="flex items-center gap-2 text-foreground">
+              <Shield size={18} className="text-primary" />
+              <span className="text-sm font-semibold">Garantia em Contrato</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Right Column: Image ── */}
+        <div className="col-span-1 lg:col-span-6 relative w-full mt-12 lg:mt-0 flex justify-end items-center h-[500px] lg:h-[650px]">
+          {/* Decorative rotated background */}
+          <div className="absolute top-10 right-0 w-[85%] h-[90%] bg-[hsl(var(--pale-slate))] rounded-[6px] rotate-3 opacity-60 transition-transform hover:rotate-6 duration-700" />
+
+          {/* Main image card */}
+          <div
+            data-hero="image"
+            style={{ visibility: "hidden" }}
+            className="relative w-[90%] h-full rounded-[6px] overflow-hidden shadow-2xl border-4 border-background z-10"
+          >
+            <img
+              src={heroTechnician}
+              alt="Especialista em Refrigeração"
+              className="w-full h-full object-cover object-center scale-105 hover:scale-100 transition-transform duration-700"
+            />
+
+            {/* Floating status card */}
+            <div
+              data-hero="float-card"
+              style={{ visibility: "hidden" }}
+              className="absolute bottom-6 left-[-2rem] md:left-[-3rem] lg:left-[-4rem] bg-background/80 backdrop-blur-md border border-background p-4 rounded-[6px] shadow-2xl flex items-center gap-4 z-20 w-[240px]"
+            >
+              <div className="relative flex h-12 w-12 items-center justify-center">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(var(--spicy-paprika))] opacity-20" />
+                <div className="relative flex items-center justify-center h-10 w-10 rounded-full bg-[hsl(var(--spicy-paprika))] text-white">
+                  <Zap size={20} />
+                </div>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-0.5">Status</p>
+                <p className="text-[15px] font-semibold text-foreground leading-tight">Plantão Ativo</p>
+                <p className="text-xs font-semibold text-primary">Disponível Agora</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
