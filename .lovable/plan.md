@@ -1,13 +1,10 @@
 
 
-# Ajustes: Hero spacing, navbar opacidade e padding
+# Reduzir gap mobile na Hero
 
-## 1. Navbar — remover opacidade (`src/components/Navbar.tsx`)
-- Linha 43: `bg-background/95 backdrop-blur-sm` → `bg-background` (fundo sólido, sem transparência)
+## Mudança em `src/components/HeroSection.tsx`
 
-## 2. Hero — reduzir gap entre texto e imagem (`src/components/HeroSection.tsx`)
-- Linha 72: `gap-10 lg:gap-16` → `gap-9 lg:gap-10` (≈36-40px)
+- Linha 70: `gap-9 lg:gap-10` → `gap-[30px] lg:gap-10`
 
-## 3. Hero — padding top e bottom de 40px (`src/components/HeroSection.tsx`)
-- Linha 71: `py-16 md:py-24 lg:py-28` → `py-10 md:py-10 lg:py-10` (40px uniforme em todos os breakpoints)
+Isso aplica 30px de gap no mobile e mantém o gap atual no desktop.
 
