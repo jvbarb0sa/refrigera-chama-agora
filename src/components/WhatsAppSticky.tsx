@@ -38,12 +38,12 @@ export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.25 }}
             className="relative rounded-2xl px-5 py-4 pr-10 shadow-xl max-w-[220px]"
-            style={{ backgroundColor: "#00732B" }}
+            style={{ backgroundColor: "#003F18" }}
           >
             {/* Speech bubble tail */}
             <div
               className="absolute -bottom-2 right-6 h-4 w-4 rotate-45"
-              style={{ backgroundColor: "#00732B" }}
+              style={{ backgroundColor: "#003F18" }}
             />
             <button
               onClick={() => { setShowTooltip(false); setDismissed(true); }}
