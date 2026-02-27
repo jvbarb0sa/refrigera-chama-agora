@@ -68,8 +68,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-16 md:pt-[104px] bg-[hsl(var(--alabaster-grey))]">
-      <div ref={heroRef} className="container py-16 md:py-24 lg:py-28">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+      <div ref={heroRef} className="container py-10">
+        <div className="grid gap-9 lg:grid-cols-2 lg:gap-10 items-center">
           {/* Left column — Content */}
           <div className="max-w-xl">
             {/* Social proof stars */}
