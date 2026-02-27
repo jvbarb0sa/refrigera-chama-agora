@@ -115,22 +115,22 @@ export default function FinalCTASection() {
           </div>
 
           {/* Sub-footer */}
-          <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs text-slate-400">
-              © {new Date().getFullYear()} Refrigeração Taboado. Todos os direitos reservados.
+          <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col items-center gap-3 text-center">
+            <p className="text-sm text-slate-400">
+              © {new Date().getFullYear()} Refrigeração Taboado.
             </p>
-            <p className="text-xs text-slate-400">
+            <p className="text-sm text-slate-400">
+              CNPJ: 64.699.140/0001-82
+            </p>
+            <p className="text-sm text-slate-400 mt-4">
               Desenvolvido por{" "}
               <a
                 href="https://wa.me/message/FTL5XC4CK32JM1"
                 target="_blank"
                 rel="noopener"
-                className="text-primary-foreground underline hover:text-primary-foreground/80 transition-colors">
-                FCS-STUDIO
+                className="text-primary-foreground font-semibold hover:text-primary-foreground/80 transition-colors">
+                FCS-STUDIO &amp; Co.
               </a>
-            </p>
-            <p className="text-xs text-slate-400">
-              Três Lagoas, MS e região
             </p>
           </div>
         </div>
