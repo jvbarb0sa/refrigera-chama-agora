@@ -24,7 +24,7 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
 
     const targets = children ? el.querySelectorAll(children) : el;
 
-    const fromVars: gsap.TweenVars = { y, opacity: 0 };
+    const fromVars: gsap.TweenVars = { y, opacity: 0, willChange: "transform, opacity" };
     if (blur > 0) fromVars.filter = `blur(${blur}px)`;
 
     const toVars: gsap.TweenVars = {
@@ -33,10 +33,13 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
       duration,
       stagger: children ? stagger : 0,
       ease: "power3.out",
+      onComplete() {
+        gsap.set(targets, { willChange: "auto" });
+      },
       scrollTrigger: {
         trigger: el,
         start: "top 85%",
-        toggleActions: "play none none none",
+        once: true,
       },
     };
     if (blur > 0) toVars.filter = "blur(0px)";

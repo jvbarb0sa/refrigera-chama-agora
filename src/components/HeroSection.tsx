@@ -3,13 +3,12 @@ import heroBg from "@/assets/hero-bg.jpg";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
-import { motion } from "framer-motion";
+
 import { useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGsapContext } from "@/hooks/useGsapContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
-const MotionDiv = motion.div;
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -105,33 +104,23 @@ export default function HeroSection() {
               <Button
                 variant="strong"
                 size="lg"
-                className="text-base px-8 h-14"
+                className="text-base px-8 h-14 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                 onClick={() => setModalOpen(true)}
               >
-                <motion.span
-                  className="inline-flex items-center gap-2"
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <WhatsAppIcon size={20} />
-                  Falar com técnico agora
-                </motion.span>
+                <WhatsAppIcon size={20} />
+                Falar com técnico agora
               </Button>
 
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="text-base px-8 h-14 border-white/30 text-white hover:bg-white/10"
+                className="text-base px-8 h-14 border-white/30 text-white hover:bg-white/10 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
               >
-                <motion.a
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  href="#contato"
-                >
+                <a href="#contato">
                   <CalendarCheck size={20} />
                   Solicitar visita técnica
-                </motion.a>
+                </a>
               </Button>
             </div>
             <span className="text-xs text-white/60 pl-1">

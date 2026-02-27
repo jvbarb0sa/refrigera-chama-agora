@@ -13,6 +13,7 @@ export default function RevealsWrapper({ children }: { children: React.ReactNode
       if (reduced) return;
 
       gsap.utils.toArray<HTMLElement>("[data-reveal]").forEach((el) => {
+        gsap.set(el, { willChange: "transform, opacity" });
         gsap.fromTo(
           el,
           { autoAlpha: 0, y: 18 },
@@ -21,10 +22,13 @@ export default function RevealsWrapper({ children }: { children: React.ReactNode
             y: 0,
             duration: 0.8,
             ease: "power3.out",
+            onComplete() {
+              gsap.set(el, { willChange: "auto" });
+            },
             scrollTrigger: {
               trigger: el,
               start: "top 85%",
-              toggleActions: "play none none reverse",
+              once: true,
             },
           }
         );
