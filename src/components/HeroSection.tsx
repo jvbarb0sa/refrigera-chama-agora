@@ -69,7 +69,7 @@ export default function HeroSection() {
   return (
     <section className="relative pt-20 md:pt-[120px] bg-white">
       <div ref={heroRef} className="container py-16 md:py-20">
-        <div className="grid gap-[30px] lg:grid-cols-2 lg:gap-10 items-center">
+        <div className="grid gap-[50px] lg:grid-cols-2 lg:gap-10 items-center">
           {/* Left column — Content */}
           <div className="max-w-xl">
             {/* Social proof stars */}
@@ -162,7 +162,7 @@ export default function HeroSection() {
             <div
               data-hero="stats"
               style={{ visibility: "hidden" }}
-              className="mt-6 flex flex-col sm:flex-row gap-4 sm:gap-8 border-t border-border pt-5"
+              className="mt-6 hidden sm:flex sm:flex-row gap-4 sm:gap-8 border-t border-border pt-5"
             >
               <div className="flex items-start gap-3">
                 <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-primary/10 shrink-0">
