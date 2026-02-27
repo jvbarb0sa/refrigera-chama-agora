@@ -134,7 +134,7 @@ export default function HeroSection() {
                 <Button
                   variant="strong"
                   size="lg"
-                  className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                  className="text-base px-8 h-14 bg-[#EB7443] hover:bg-[#EB7443]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                   onClick={() => setModalOpen(true)}
                 >
                   <WhatsAppIcon size={20} />
