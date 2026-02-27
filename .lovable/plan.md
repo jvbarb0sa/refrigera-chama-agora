@@ -1,12 +1,34 @@
 
 
-# Badge "Problemas que resolvemos" — estilo sólido
+# Refatorar StatsSection — responsividade minimalista
 
-## Alteração em `src/components/ProblemsSection.tsx`
+## Alterações em `src/components/StatsSection.tsx`
 
-**Linha 28** — substituir classes do badge container:
-- De: `inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50`
-- Para: `inline-flex items-center gap-2 bg-blue-100 text-blue-800 uppercase tracking-wider text-xs font-bold px-3 py-1 rounded-full border-none`
+### 1. Dados — simplificar labels
 
-Remover também o `<span>` interno redundante (linha 29) que aplica `text-xs font-semibold text-primary tracking-wide uppercase` — essas classes agora estão na div pai. O texto fica direto dentro da div.
+| value | label (curto) | sublabel (desktop only) |
+|---|---|---|
+| +400 | Atendimentos | em Três Lagoas e região |
+| +8 | Experiência | em refrigeração comercial |
+| 100% | Cobertura | em Três Lagoas e região |
+| 98% | Recomendação | pelos nossos clientes |
+
+### 2. Números
+- Mobile: `text-4xl` → Desktop: `md:text-6xl`
+- Adicionar `tracking-tight`
+- Manter `font-semibold text-primary`
+
+### 3. Labels
+- `font-medium text-slate-800` (substituir `text-sm font-semibold text-foreground`)
+
+### 4. Sublabels
+- Adicionar `hidden md:block` para ocultar no mobile
+
+### 5. Grid
+- `grid-cols-2 gap-8 md:grid-cols-4 md:gap-0`
+- Manter `md:divide-x md:divide-border`
+- Remover border-t condicional no mobile (simplificar)
+
+### Arquivo editado
+- `src/components/StatsSection.tsx`
 
