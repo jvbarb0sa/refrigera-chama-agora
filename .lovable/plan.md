@@ -1,14 +1,20 @@
 
 
-# Aplicar degradê laranja nos botões
+# Refinamento tipográfico — tracking e leading
 
-Degradê: `#FF8B52` (0%) → `#EB7543` (100%), da esquerda para a direita.
+O projeto já usa Inter e aplica `tracking-tight` na maioria dos títulos. Faltam pequenos ajustes de consistência.
 
-## Botões afetados
+## Alterações
 
-1. **HeroSection.tsx (linha 137)** — botão "Falar com técnico agora": trocar `bg-[#EB7443]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`, ajustar hover para `hover:brightness-90` (remover `hover:bg-[#EB7443]/90`).
+1. **DifferentialsSection.tsx** (linha 32) — h2: adicionar `tracking-tight` (atualmente só tem `leading-tight`).
 
-2. **HeroSection.tsx (linha 231)** — botão circular com seta no card do técnico: trocar `bg-[hsl(var(--spicy-paprika))]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`.
+2. **FinalCTASection.tsx** (linha 27) — parágrafo de apoio: adicionar `leading-relaxed` (atualmente sem line-height explícito).
 
-3. **FAQSection.tsx (linha 43)** — botão "Fale conosco!": trocar `bg-[#eb7542]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`.
+3. **MissionSection.tsx** (linha 31) — h2: adicionar `leading-tight` (atualmente só tem `tracking-tight`).
+
+4. **ServiceAreaSection.tsx** (linha 26) — h2: adicionar `leading-tight` (atualmente só tem `tracking-tight`).
+
+5. **tailwind.config.ts** — Ajustar a fonte para **Plus Jakarta Sans** como opção principal (mais geométrica e moderna que Inter) em `fontFamily.heading` e `fontFamily.body`, adicionando o Google Font no `index.html`.
+
+> **Nota:** Todos os demais títulos e parágrafos já estão corretos.
 
