@@ -11,6 +11,18 @@ interface WhatsAppStickyProps {
 export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,10 +38,18 @@ export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
     return () => clearTimeout(timer);
   }, [showTooltip]);
 
-  if (hidden) return null;
+  const isHidden = hidden || footerVisible;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <AnimatePresence>
+      {!isHidden && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
+          className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
+        >
       <AnimatePresence>
         {showTooltip && !dismissed && (
           <motion.div
@@ -77,6 +97,8 @@ export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
       >
         <WhatsAppIcon size={28} className="text-white" />
       </motion.a>
-    </div>
+      </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
