@@ -3,6 +3,7 @@ import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink, phoneLink, PHONE_DISPLAY, WHATSAPP_DISPLAY_TECNICO, EMAIL } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
+import logoWhite from "@/assets/logo-vagner-branca.svg";
 
 
 export default function FinalCTASection() {
@@ -55,9 +56,7 @@ export default function FinalCTASection() {
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {/* Coluna 1 — Identidade */}
             <div className="sm:col-span-2 lg:col-span-2">
-              <p className="text-xl font-semibold tracking-tight text-primary-foreground">
-                Refrigeração <span className="text-accent">TABOADO</span>
-              </p>
+              <img src={logoWhite} alt="Refrigeração Taboado" className="h-12" />
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-primary-foreground/40">
                 Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas, MS. Técnicos certificados, garantia documentada.
               </p>
