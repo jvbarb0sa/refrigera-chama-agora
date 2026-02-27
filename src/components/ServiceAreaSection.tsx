@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
 import { MapPin, Factory, Home, ArrowRight } from "lucide-react";
 import { whatsappLink } from "@/lib/constants";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const serviceAreas = [
   { icon: MapPin, text: "Três Lagoas · MS e Região" },
@@ -9,18 +9,15 @@ const serviceAreas = [
 ];
 
 export default function ServiceAreaSection() {
+  const leftRef = useGsapFade<HTMLDivElement>({ y: 16, duration: 0.8 });
+  const rightRef = useGsapFade<HTMLDivElement>({ y: 0, duration: 0.6 });
+
   return (
     <section className="w-full bg-background py-16 md:py-24 border-t border-border">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col space-y-8"
-          >
+          <div ref={leftRef} className="flex flex-col space-y-8">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Área de Atendimento</span>
@@ -63,16 +60,10 @@ export default function ServiceAreaSection() {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Map */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative w-full"
-          >
+          <div ref={rightRef} className="relative w-full">
             <div className="relative w-full aspect-square md:aspect-video lg:aspect-[4/3] overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119335.53856247345!2d-51.78248888062164!3d-20.78368581895781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949736e4f165a6e9%3A0xc6c4f9bc2a02b115!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
@@ -83,7 +74,7 @@ export default function ServiceAreaSection() {
                 title="Mapa da área de atendimento em Três Lagoas"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

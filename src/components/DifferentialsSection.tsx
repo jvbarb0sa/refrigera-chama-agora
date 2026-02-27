@@ -1,6 +1,6 @@
 import { Eye, ShieldCheck, Wrench, Handshake } from "lucide-react";
-import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const diffs: { id: string; icon: LucideIcon; title: string; desc: string }[] = [
   { id: "01", icon: Eye, title: "Transparência", desc: "Diagnóstico claro e explicação técnica detalhada antes da execução de qualquer serviço." },
@@ -9,17 +9,9 @@ const diffs: { id: string; icon: LucideIcon; title: string; desc: string }[] = [
   { id: "04", icon: Handshake, title: "Honestidade", desc: "Pontualidade, respeito ao prazo estabelecido e preço justo, sem surpresas no final." },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.2 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 80, damping: 20 } },
-};
-
 export default function DifferentialsSection() {
+  const cardsRef = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.1, y: 16, duration: 0.8 });
+
   return (
     <section id="diferenciais" className="relative py-20 md:py-28 bg-[hsl(var(--onyx))] overflow-hidden">
       {/* Gradient glows */}
@@ -48,21 +40,16 @@ export default function DifferentialsSection() {
           </div>
 
           {/* Right — Card grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+          <div
+            ref={cardsRef}
             className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 lg:pl-12"
           >
             {diffs.map((d) => {
               const Icon = d.icon;
               return (
-                <motion.div
+                <div
                   key={d.id}
-                  variants={cardVariants}
-                  whileHover={{ y: -5, scale: 1.01 }}
-                  className="group relative overflow-hidden rounded-[6px] bg-white/5 border border-white/10 p-8 backdrop-blur-xl transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:shadow-[0_8px_30px_hsl(var(--spicy-paprika)/0.1)]"
+                  className="diff-card group relative overflow-hidden rounded-[6px] bg-white/5 border border-white/10 p-8 backdrop-blur-xl transition-all duration-200 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_hsl(var(--spicy-paprika)/0.1)]"
                 >
                   {/* Hover glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[hsl(var(--spicy-paprika))]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -74,7 +61,7 @@ export default function DifferentialsSection() {
 
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-12 h-12 rounded-[6px] bg-[hsl(var(--french-blue))]/40 border border-white/10 flex items-center justify-center text-[hsl(var(--spicy-paprika))] group-hover:scale-110 group-hover:bg-[hsl(var(--spicy-paprika))]/20 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
+                      <div className="w-12 h-12 rounded-[6px] bg-[hsl(var(--french-blue))]/40 border border-white/10 flex items-center justify-center text-[hsl(var(--spicy-paprika))] group-hover:scale-110 group-hover:bg-[hsl(var(--spicy-paprika))]/20 transition-all duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
                         <Icon className="w-6 h-6" />
                       </div>
                       <span className="text-sm font-semibold text-[hsl(var(--pale-slate))]/40 font-mono">
@@ -83,14 +70,14 @@ export default function DifferentialsSection() {
                     </div>
 
                     <h3 className="text-xl font-semibold text-white mb-3 tracking-tight">{d.title}</h3>
-                    <p className="text-[hsl(var(--pale-slate))]/70 text-sm leading-relaxed group-hover:text-[hsl(var(--pale-slate))]/90 transition-colors duration-300">
+                    <p className="text-[hsl(var(--pale-slate))]/70 text-sm leading-relaxed group-hover:text-[hsl(var(--pale-slate))]/90 transition-colors duration-200">
                       {d.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

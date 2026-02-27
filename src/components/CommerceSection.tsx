@@ -1,14 +1,17 @@
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
 import { whatsappLink } from "@/lib/constants";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const tags = ["Mercados", "Conveniências", "Sorveterias", "Indústrias alimentícias"];
 
 export default function CommerceSection() {
+  const ref = useGsapFade<HTMLDivElement>({ y: 20, duration: 0.8 });
+
   return (
     <section id="comercial" className="py-20 md:py-32 bg-primary">
       <div className="container">
-        <div className="max-w-2xl">
+        <div ref={ref} className="max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-primary-foreground/20 bg-primary-foreground/10">
             <span className="text-xs font-semibold text-primary-foreground tracking-wide uppercase">Atendimento comercial</span>
           </div>

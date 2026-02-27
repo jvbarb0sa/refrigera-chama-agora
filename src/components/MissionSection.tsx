@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const features = [
   {
@@ -19,18 +19,15 @@ const features = [
 ];
 
 export default function MissionSection() {
+  const leftRef = useGsapFade<HTMLDivElement>({ y: 20, duration: 0.8 });
+  const rightRef = useGsapFade<HTMLDivElement>({ y: 0, duration: 0.6 });
+
   return (
     <section id="sobre" className="w-full py-16 md:py-24 lg:py-32 bg-background">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
           {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="flex flex-col justify-center space-y-8"
-          >
+          <div ref={leftRef} className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
@@ -68,16 +65,10 @@ export default function MissionSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column: Image */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative flex items-center justify-center lg:h-full"
-          >
+          <div ref={rightRef} className="relative flex items-center justify-center lg:h-full">
             <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
               <video
                 src="/videos/about.mp4"
@@ -88,7 +79,7 @@ export default function MissionSection() {
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

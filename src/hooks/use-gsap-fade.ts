@@ -8,6 +8,7 @@ interface UseGsapFadeOptions {
   y?: number;
   duration?: number;
   stagger?: number;
+  blur?: number;
   /** CSS selector for children to stagger (if omitted, animates the container itself) */
   children?: string;
 }
@@ -16,13 +17,12 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
   opts: UseGsapFadeOptions = {}
 ) {
   const ref = useRef<T>(null);
-  const { y = 24, duration = 0.7, stagger = 0.1, children } = opts;
+  const { y = 24, duration = 0.8, stagger = 0.08, blur = 0, children } = opts;
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    // Respect reduced motion
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -30,27 +30,29 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
 
     const targets = children ? el.querySelectorAll(children) : el;
 
+    const fromVars: gsap.TweenVars = { y, opacity: 0 };
+    if (blur > 0) fromVars.filter = `blur(${blur}px)`;
+
+    const toVars: gsap.TweenVars = {
+      y: 0,
+      opacity: 1,
+      duration,
+      stagger: children ? stagger : 0,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 85%",
+        toggleActions: "play none none none",
+      },
+    };
+    if (blur > 0) toVars.filter = "blur(0px)";
+
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        targets,
-        { y, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration,
-          stagger: children ? stagger : 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
+      gsap.fromTo(targets, fromVars, toVars);
     }, el);
 
     return () => ctx.revert();
-  }, [y, duration, stagger, children]);
+  }, [y, duration, stagger, blur, children]);
 
   return ref;
 }
