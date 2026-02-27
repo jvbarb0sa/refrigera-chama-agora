@@ -41,7 +41,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
 
   return (
     <nav className="fixed top-0 md:top-10 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <a href="#" className="shrink-0">
           <img src={logo} alt="Refrigeração Taboado" className="h-14" />
         </a>
@@ -51,7 +51,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
             <a
               key={l.href}
               href={l.href}
-              className={`text-sm font-medium transition-colors ${
+              className={`text-base font-medium transition-colors ${
                 active === l.id
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -62,10 +62,10 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
           ))}
 
 
-          <span className="h-5 w-px bg-border" />
+          <span className="h-6 w-px bg-border" />
 
 
-          <Button asChild variant="strong" size="sm">
+          <Button asChild variant="strong" size="default">
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
@@ -83,7 +83,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
           onClick={() => setOpen(!open)}
           aria-label="Menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
@@ -95,8 +95,8 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 flex flex-col bg-background md:hidden md:top-[104px]"
-            style={{ height: "calc(100dvh - 4rem)" }}
+            className="fixed inset-0 top-20 z-40 flex flex-col bg-background md:hidden md:top-[104px]"
+            style={{ height: "calc(100dvh - 5rem)" }}
           >
             <motion.div
               initial={{ opacity: 0, y: 24 }}
