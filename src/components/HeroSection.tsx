@@ -134,7 +134,7 @@ export default function HeroSection() {
                 <Button
                   variant="strong"
                   size="lg"
-                  className="text-base px-8 h-14 bg-gradient-to-r from-[#FF8B52] to-[#EB7543] hover:brightness-90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                  className="text-base px-8 h-14 bg-[#42ae5d] hover:bg-[#3a9b52] text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                   onClick={() => setModalOpen(true)}
                 >
                   <WhatsAppIcon size={20} />
@@ -228,7 +228,7 @@ export default function HeroSection() {
               </div>
               <button
                 onClick={() => setModalOpen(true)}
-                className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-[#FF8B52] to-[#EB7543] text-white shadow-lg hover:brightness-110 active:scale-95 transition-all duration-150 shrink-0"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-[#42ae5d] hover:bg-[#3a9b52] text-white shadow-lg active:scale-95 transition-all duration-150 shrink-0"
                 aria-label="Falar com técnico"
               >
                 <ArrowRight size={20} />
