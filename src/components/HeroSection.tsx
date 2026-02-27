@@ -67,11 +67,11 @@ export default function HeroSection() {
   );
 
   return (
-    <section className="relative pt-20 md:pt-[120px] bg-white">
-      <div ref={heroRef} className="container py-16 md:py-20">
-        <div className="grid gap-[30px] lg:grid-cols-2 lg:gap-10 items-center">
+    <section className="relative pt-20 md:pt-[120px] h-auto min-h-fit md:min-h-[85vh] bg-white">
+      <div ref={heroRef} className="container py-8 md:py-20">
+        <div className="flex flex-col gap-8 lg:grid lg:grid-cols-2 lg:gap-10 items-start lg:items-center justify-start">
           {/* Left column — Content */}
-          <div className="max-w-xl">
+          <div className="max-w-xl flex-none">
             {/* Social proof stars */}
             <div
               data-hero="stars"
