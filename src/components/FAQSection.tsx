@@ -43,7 +43,7 @@ export default function FAQSection() {
                   rel="noopener" className="bg-[#eb7542]">
 
                   <WhatsAppIcon size={16} />
-                  Alguma dúvida? Fale conosco
+                  Fale conosco!
                 </a>
               </Button>
             </div>
