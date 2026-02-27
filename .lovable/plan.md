@@ -1,17 +1,22 @@
 
 
-# Refatorar sub-footer — layout centralizado minimalista
+# Respiro externo do modal no mobile
 
-## Arquivo: `src/components/FinalCTASection.tsx`
+## Arquivo: `src/components/ui/dialog.tsx`
 
-### Sub-footer (linhas 117-135)
-Substituir o layout atual (flex row com 3 colunas) por um layout centralizado e empilhado, conforme a imagem de referência:
+### 1. DialogOverlay (linha 22)
+- Adicionar `p-4` ao overlay para criar margem de segurança no mobile
 
-- Container: `mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col items-center gap-3 text-center`
-- Linha 1: `© 2026 Refrigeração Taboado.` (text-sm text-slate-400)
-- Linha 2: `CNPJ: XX.XXX.XXX/XXXX-XX` (text-sm text-slate-400) — preciso que informe o CNPJ correto da empresa
-- Linha 3 (com espaçamento extra `mt-4`): `Desenvolvido por **FCS-STUDIO & Co.**` com link para WhatsApp, texto do studio em `text-primary-foreground font-semibold` (sem underline)
+### 2. DialogContent (linhas 36-41)
+- Trocar posicionamento `fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]` por um layout flex centralizado dentro do overlay
+- Abordagem alternativa mais limpa: manter `fixed` mas adicionar margem interna via o overlay como wrapper
 
-### Nota
-Preciso do CNPJ da empresa para inserir. Se preferir, posso deixar um placeholder editável.
+**Abordagem escolhida**: Como o Radix Dialog renderiza Overlay e Content como siblings, a melhor solução é adicionar padding diretamente no Content via `max-w-sm md:max-w-md mx-4 md:mx-auto` e trocar `rounded-2xl` por `rounded-3xl`.
+
+### Alterações concretas:
+
+**Linha 39** — classes do DialogContent:
+- Trocar `max-w-md` por `max-w-sm md:max-w-md`
+- Adicionar `mx-4 md:mx-auto` (respiro lateral no mobile)
+- Trocar `rounded-2xl` por `rounded-3xl`
 
