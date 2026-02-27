@@ -52,7 +52,7 @@ export default function ServicesSection() {
   const gridRef = useGsapFade<HTMLDivElement>({ children: ".service-card", stagger: 0.08 });
 
   return (
-    <section id="servicos" className="py-16 md:py-20">
+    <section id="servicos" data-reveal style={{ visibility: "hidden" }} className="py-16 md:py-20">
       <div className="container">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">

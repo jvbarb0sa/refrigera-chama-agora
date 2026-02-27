@@ -12,6 +12,7 @@ import ServiceAreaSection from "@/components/ServiceAreaSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import WhatsAppSticky from "@/components/WhatsAppSticky";
+import RevealsWrapper from "@/components/RevealsWrapper";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,16 +22,18 @@ const Index = () => {
       <TopBar />
       <Navbar onMenuToggle={setMobileMenuOpen} />
       <main>
-        <HeroSection />
-        <StatsSection />
-        <ServicesSection />
-        <ProblemsSection />
-        <DifferentialsSection />
-        <MissionSection />
-        <TestimonialsSection />
-        <ServiceAreaSection />
-        <FAQSection />
-        <FinalCTASection />
+        <RevealsWrapper>
+          <HeroSection />
+          <StatsSection />
+          <ServicesSection />
+          <ProblemsSection />
+          <DifferentialsSection />
+          <MissionSection />
+          <TestimonialsSection />
+          <ServiceAreaSection />
+          <FAQSection />
+          <FinalCTASection />
+        </RevealsWrapper>
       </main>
       <WhatsAppSticky hidden={mobileMenuOpen} />
     </>

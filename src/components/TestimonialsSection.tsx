@@ -85,7 +85,7 @@ export default function TestimonialsSection() {
   const sectionRef = useGsapFade<HTMLDivElement>();
 
   return (
-    <section id="provas" className="py-20 md:py-28 border-accent-foreground bg-primary-foreground" aria-label="Depoimentos de clientes">
+    <section id="provas" data-reveal style={{ visibility: "hidden" }} className="py-20 md:py-28 border-accent-foreground bg-primary-foreground" aria-label="Depoimentos de clientes">
       <div ref={sectionRef} className="container">
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50 mx-auto">

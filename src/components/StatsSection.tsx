@@ -11,7 +11,7 @@ export default function StatsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".stat-item", stagger: 0.08, y: 16 });
 
   return (
-    <section className="bg-muted/30 py-14 md:py-16 border-t border-b border-border">
+    <section data-reveal style={{ visibility: "hidden" }} className="bg-muted/30 py-14 md:py-16 border-t border-b border-border">
       <div className="container">
         <div ref={ref} className="grid grid-cols-2 gap-y-8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-border">
           {stats.map((stat, i) => (
