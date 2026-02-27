@@ -1,5 +1,5 @@
-import { Star, Users, MapPin, CalendarCheck } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import { Star, Users, MapPin, CalendarCheck, ArrowRight, Headphones } from "lucide-react";
+import heroTechnician from "@/assets/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGsapContext } from "@/hooks/useGsapContext";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
-
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -23,10 +22,16 @@ export default function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
-        "[data-hero='kicker']",
-        { autoAlpha: 0, y: 10, filter: "blur(6px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6 }
+        "[data-hero='stars']",
+        { autoAlpha: 0, y: 10 },
+        { autoAlpha: 1, y: 0, duration: 0.5 }
       )
+        .fromTo(
+          "[data-hero='kicker']",
+          { autoAlpha: 0, y: 10, filter: "blur(6px)" },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6 },
+          "-=0.2"
+        )
         .fromTo(
           "[data-hero='h1']",
           { autoAlpha: 0, y: 18, filter: "blur(10px)" },
@@ -46,106 +51,190 @@ export default function HeroSection() {
           "-=0.2"
         )
         .fromTo(
-          "[data-hero='proof'] > *",
+          "[data-hero='stats'] > *",
           { autoAlpha: 0, y: 10 },
           { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08 },
           "-=0.15"
+        )
+        .fromTo(
+          "[data-hero='card']",
+          { autoAlpha: 0, x: 40, scale: 0.97 },
+          { autoAlpha: 1, x: 0, scale: 1, duration: 0.9, ease: "power3.out" },
+          "-=0.6"
         );
     },
     [reduced]
   );
 
   return (
-    <section className="relative pt-16 md:pt-[104px] overflow-hidden">
-      {/* Background image */}
-      <img
-        src={heroBg}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-right"
-      />
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#151617] via-[#151617]/80 to-transparent z-10" />
-
-      <div ref={heroRef} className="container relative z-20 py-20 md:py-32">
-        <div className="max-w-2xl">
-          <span
-            data-hero="kicker"
-            style={{ visibility: "hidden" }}
-            className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/80 border border-white/15 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-[6px] mb-6"
-          >
-            Três Lagoas · MS
-          </span>
-
-          <h1
-            data-hero="h1"
-            style={{ visibility: "hidden" }}
-            className="text-4xl font-semibold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]"
-          >
-            Seu equipamento parou? A gente{" "}
-            <span className="text-[hsl(var(--spicy-paprika))]">diagnostica e resolve</span> com
-            transparência.
-          </h1>
-
-          <p
-            data-hero="sub"
-            style={{ visibility: "hidden" }}
-            className="mt-6 text-lg leading-relaxed text-white/70 max-w-md"
-          >
-            Atendimento especializado em refrigeração, climatização e elétrica com segurança e garantia.
-          </p>
-
-          <div
-            data-hero="ctas"
-            style={{ visibility: "hidden" }}
-            className="mt-10 flex flex-col gap-1 sm:gap-2"
-          >
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
-              <Button
-                variant="strong"
-                size="lg"
-                className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
-                onClick={() => setModalOpen(true)}
-              >
-                <WhatsAppIcon size={20} />
-                Falar com técnico agora
-              </Button>
-
-              <Button
-                asChild
-                variant="secondary"
-                size="lg"
-                className="text-base px-8 h-14 bg-[#D6D6DA] text-[hsl(var(--onyx))] hover:bg-[#C7CCD7] hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
-              >
-                <a href="#contato">
-                  <CalendarCheck size={20} />
-                  Solicitar visita técnica
-                </a>
-              </Button>
+    <section className="relative pt-16 md:pt-[104px] bg-[hsl(var(--alabaster-grey))]">
+      <div ref={heroRef} className="container py-16 md:py-24 lg:py-28">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+          {/* Left column — Content */}
+          <div className="max-w-xl">
+            {/* Social proof stars */}
+            <div
+              data-hero="stars"
+              style={{ visibility: "hidden" }}
+              className="flex items-center gap-2 mb-5"
+            >
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    className="fill-amber-400 text-amber-400"
+                  />
+                ))}
+              </div>
+              <span className="text-sm text-muted-foreground">
+                4,9 · Baseado em 50+ avaliações
+              </span>
             </div>
-            <span className="text-xs text-white/60 pl-1">
-              Resposta mais rápida por WhatsApp.
+
+            {/* Kicker badge */}
+            <span
+              data-hero="kicker"
+              style={{ visibility: "hidden" }}
+              className="inline-block text-xs font-semibold uppercase tracking-wide text-primary border border-border bg-muted/50 px-3 py-1 rounded-[6px] mb-5"
+            >
+              Três Lagoas · MS
             </span>
+
+            {/* H1 */}
+            <h1
+              data-hero="h1"
+              style={{ visibility: "hidden" }}
+              className="text-4xl font-semibold leading-[1.15] tracking-tight text-foreground md:text-[48px] md:leading-[1.1]"
+            >
+              Seu equipamento parou? A gente{" "}
+              <span className="text-[hsl(var(--spicy-paprika))]">
+                diagnostica e resolve
+              </span>{" "}
+              com transparência.
+            </h1>
+
+            {/* Subtitle */}
+            <p
+              data-hero="sub"
+              style={{ visibility: "hidden" }}
+              className="mt-5 text-lg leading-relaxed text-muted-foreground max-w-md"
+            >
+              Atendimento especializado em refrigeração, climatização e elétrica
+              com segurança e garantia.
+            </p>
+
+            {/* CTAs */}
+            <div
+              data-hero="ctas"
+              style={{ visibility: "hidden" }}
+              className="mt-8 flex flex-col gap-1 sm:gap-2"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <Button
+                  variant="strong"
+                  size="lg"
+                  className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                  onClick={() => setModalOpen(true)}
+                >
+                  <WhatsAppIcon size={20} />
+                  Falar com técnico agora
+                </Button>
+
+                <Button
+                  asChild
+                  variant="secondary"
+                  size="lg"
+                  className="text-base px-8 h-14"
+                >
+                  <a href="#contato">
+                    <CalendarCheck size={20} />
+                    Solicitar visita técnica
+                  </a>
+                </Button>
+              </div>
+              <span className="text-xs text-muted-foreground pl-1">
+                Resposta mais rápida por WhatsApp.
+              </span>
+            </div>
+
+            {/* Stats row */}
+            <div
+              data-hero="stats"
+              style={{ visibility: "hidden" }}
+              className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-8 border-t border-border pt-8"
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-primary/10 shrink-0">
+                  <Headphones size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    Suporte Local
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Atendimento rápido em Três Lagoas
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-[hsl(var(--spicy-paprika))]/10 shrink-0">
+                  <Star size={20} className="text-[hsl(var(--spicy-paprika))]" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">
+                    4,9 Estrelas
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    Avaliação no Google
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <ul
-            data-hero="proof"
+          {/* Right column — Technician card */}
+          <div
+            data-hero="card"
             style={{ visibility: "hidden" }}
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-6 border-t border-white/15 pt-6"
+            className="relative rounded-[6px] overflow-hidden aspect-[4/5] lg:aspect-[3/4] max-h-[560px] mx-auto lg:mx-0 w-full max-w-md lg:max-w-none"
           >
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Star size={14} className="fill-amber-400 text-amber-400 shrink-0" />
-              4,9 no Google
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <Users size={14} className="text-primary shrink-0" />
-              50+ avaliações reais
-            </li>
-            <li className="flex items-center gap-2 text-sm text-white/60">
-              <MapPin size={14} className="text-primary shrink-0" />
-              Atendimento local rápido
-            </li>
-          </ul>
+            <img
+              src={heroTechnician}
+              alt="Técnico especializado em refrigeração e climatização"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+
+            {/* Bottom gradient overlay */}
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[hsl(var(--onyx))]/90 to-transparent" />
+
+            {/* Badge */}
+            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-[6px]">
+              <span className="text-xs font-semibold text-foreground uppercase tracking-wide">
+                Técnico Especializado
+              </span>
+            </div>
+
+            {/* Bottom info */}
+            <div className="absolute bottom-0 inset-x-0 p-5 flex items-end justify-between">
+              <div>
+                <p className="text-white font-semibold text-base">
+                  Refrigeração · Climatização · Elétrica
+                </p>
+                <p className="text-white/70 text-sm mt-1">
+                  Três Lagoas e região
+                </p>
+              </div>
+              <button
+                onClick={() => setModalOpen(true)}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-[hsl(var(--spicy-paprika))] text-white shadow-lg hover:brightness-110 active:scale-95 transition-all duration-150 shrink-0"
+                aria-label="Falar com técnico"
+              >
+                <ArrowRight size={20} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
