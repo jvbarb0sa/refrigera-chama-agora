@@ -72,7 +72,7 @@ export default function HeroSection() {
           <span
             data-hero="kicker"
             style={{ visibility: "hidden" }}
-            className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/80 border border-white/20 bg-white/10 px-3 py-1 rounded-full mb-6"
+            className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-white/80 border border-white/15 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-[6px] mb-6"
           >
             Três Lagoas · MS
           </span>
@@ -80,10 +80,10 @@ export default function HeroSection() {
           <h1
             data-hero="h1"
             style={{ visibility: "hidden" }}
-            className="text-4xl font-bold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]"
+            className="text-4xl font-semibold leading-[1.15] tracking-tight text-white md:text-[52px] md:leading-[1.1]"
           >
             Seu equipamento parou? A gente{" "}
-            <span className="text-primary">diagnostica e resolve</span> com
+            <span className="text-[hsl(var(--spicy-paprika))]">diagnostica e resolve</span> com
             transparência.
           </h1>
 
@@ -104,7 +104,7 @@ export default function HeroSection() {
               <Button
                 variant="strong"
                 size="lg"
-                className="text-base px-8 h-14 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                className="text-base px-8 h-14 bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                 onClick={() => setModalOpen(true)}
               >
                 <WhatsAppIcon size={20} />
@@ -113,9 +113,9 @@ export default function HeroSection() {
 
               <Button
                 asChild
-                variant="outline"
+                variant="secondary"
                 size="lg"
-                className="text-base px-8 h-14 border-white/30 text-white hover:bg-white/10 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                className="text-base px-8 h-14 bg-[#D6D6DA] text-[hsl(var(--onyx))] hover:bg-[#C7CCD7] hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
               >
                 <a href="#contato">
                   <CalendarCheck size={20} />
