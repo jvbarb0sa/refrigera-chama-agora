@@ -2,18 +2,18 @@ import { Eye, ShieldCheck, Wrench, Handshake } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
-const diffs: { id: string; icon: LucideIcon; title: string; desc: string }[] = [
-  { id: "01", icon: Eye, title: "Transparência", desc: "Diagnóstico claro e explicação técnica detalhada antes da execução de qualquer serviço." },
-  { id: "02", icon: ShieldCheck, title: "Segurança", desc: "Procedimentos adequados e responsabilidade técnica em cada detalhe do seu equipamento." },
-  { id: "03", icon: Wrench, title: "Competência", desc: "Peças de alta qualidade e manutenção executada com máxima eficiência e precisão." },
-  { id: "04", icon: Handshake, title: "Honestidade", desc: "Pontualidade, respeito ao prazo estabelecido e preço justo, sem surpresas no final." },
-];
+const diffs: {id: string;icon: LucideIcon;title: string;desc: string;}[] = [
+{ id: "01", icon: Eye, title: "Transparência", desc: "Diagnóstico claro e explicação técnica detalhada antes da execução de qualquer serviço." },
+{ id: "02", icon: ShieldCheck, title: "Segurança", desc: "Procedimentos adequados e responsabilidade técnica em cada detalhe do seu equipamento." },
+{ id: "03", icon: Wrench, title: "Competência", desc: "Peças de alta qualidade e manutenção executada com máxima eficiência e precisão." },
+{ id: "04", icon: Handshake, title: "Honestidade", desc: "Pontualidade, respeito ao prazo estabelecido e preço justo, sem surpresas no final." }];
+
 
 export default function DifferentialsSection() {
   const cardsRef = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.1, y: 16, duration: 0.8 });
 
   return (
-    <section id="diferenciais" data-reveal style={{ visibility: "hidden" }} className="relative py-20 md:py-28 bg-[hsl(var(--onyx))] overflow-hidden">
+    <section id="diferenciais" data-reveal style={{ visibility: "hidden" }} className="relative py-20 md:py-28 bg-[hsl(var(--onyx))] overflow-hidden bg-primary">
       {/* Gradient glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 pointer-events-none bg-[hsl(var(--french-blue))]" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[200px] opacity-10 pointer-events-none bg-[hsl(var(--spicy-paprika))]" />
@@ -42,15 +42,15 @@ export default function DifferentialsSection() {
           {/* Right — Card grid */}
           <div
             ref={cardsRef}
-            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 lg:pl-12"
-          >
+            className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 lg:pl-12">
+
             {diffs.map((d) => {
               const Icon = d.icon;
               return (
                 <div
                   key={d.id}
-                  className="diff-card group relative overflow-hidden rounded-[6px] bg-white/5 border border-white/10 p-8 backdrop-blur-xl transition-all duration-200 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_hsl(var(--spicy-paprika)/0.1)]"
-                >
+                  className="diff-card group relative overflow-hidden rounded-[6px] bg-white/5 border border-white/10 p-8 backdrop-blur-xl transition-all duration-200 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_hsl(var(--spicy-paprika)/0.1)]">
+
                   {/* Hover glow */}
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[hsl(var(--spicy-paprika))]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -74,12 +74,12 @@ export default function DifferentialsSection() {
                       {d.desc}
                     </p>
                   </div>
-                </div>
-              );
+                </div>);
+
             })}
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }

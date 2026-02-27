@@ -3,17 +3,17 @@ import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const serviceAreas = [
-  { icon: MapPin, text: "Três Lagoas · MS e Região" },
-  { icon: Factory, text: "Comércio & Indústria" },
-  { icon: Home, text: "Residencial" },
-];
+{ icon: MapPin, text: "Três Lagoas · MS e Região" },
+{ icon: Factory, text: "Comércio & Indústria" },
+{ icon: Home, text: "Residencial" }];
+
 
 export default function ServiceAreaSection() {
   const leftRef = useGsapFade<HTMLDivElement>({ y: 16, duration: 0.8 });
   const rightRef = useGsapFade<HTMLDivElement>({ y: 0, duration: 0.6 });
 
   return (
-    <section data-reveal style={{ visibility: "hidden" }} className="w-full bg-background py-16 md:py-24 border-t border-border">
+    <section data-reveal style={{ visibility: "hidden" }} className="w-full bg-background py-16 md:py-24 border-t border-primary-foreground">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column */}
@@ -43,8 +43,8 @@ export default function ServiceAreaSection() {
                       <Icon className="h-4 w-4 text-primary" />
                     </div>
                     <span>{item.text}</span>
-                  </li>
-                );
+                  </li>);
+
               })}
             </ul>
 
@@ -54,8 +54,8 @@ export default function ServiceAreaSection() {
                 href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center justify-center rounded-[6px] bg-primary px-6 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit"
-              >
+                className="inline-flex h-11 items-center justify-center rounded-[6px] bg-primary px-6 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit">
+
                 Fale com a gente
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
@@ -71,12 +71,12 @@ export default function ServiceAreaSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa da área de atendimento em Três Lagoas"
-              />
+                title="Mapa da área de atendimento em Três Lagoas" />
+
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
