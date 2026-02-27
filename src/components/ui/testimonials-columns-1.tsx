@@ -39,7 +39,7 @@ export const TestimonialsColumn = (props: {
             {props.testimonials.map(({ text, name, context, initials }, i) => (
               <div
                 key={`${index}-${i}`}
-                className="rounded-2xl bg-card p-7 shadow-md transition-shadow duration-300 hover:shadow-lg"
+                className="rounded-[6px] bg-card p-7 ring-1 ring-slate-200/50 shadow-none hover:ring-slate-300 hover:shadow-sm transition-all duration-200"
               >
                 <div className="flex items-center justify-between">
                   <FiveStars />
