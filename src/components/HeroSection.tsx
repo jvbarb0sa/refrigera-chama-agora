@@ -143,9 +143,9 @@ export default function HeroSection() {
 
                 <Button
                   asChild
-                  variant="secondary"
+                  variant="ghost"
                   size="lg"
-                  className="text-base px-8 h-14"
+                  className="text-base px-8 h-14 bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none"
                 >
                   <a href="#contato">
                     <CalendarCheck size={20} />
