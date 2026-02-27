@@ -54,7 +54,7 @@ export default function ServiceAreaSection() {
                 href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-11 items-center justify-center rounded-[6px] px-6 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit bg-[#eb7542] text-primary-foreground">
+                className="inline-flex h-11 items-center justify-center rounded-[6px] px-6 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit bg-[#42ae5d] hover:bg-[#3a9b52] text-primary-foreground">
 
                 Fale com a gente
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

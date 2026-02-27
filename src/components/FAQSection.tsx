@@ -40,7 +40,7 @@ export default function FAQSection() {
                 <a
                   href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
                   target="_blank"
-                  rel="noopener" className="bg-gradient-to-r from-[#FF8B52] to-[#EB7543]">
+                  rel="noopener" className="bg-[#42ae5d] hover:bg-[#3a9b52]">
 
                   <WhatsAppIcon size={16} />
                   Fale conosco!
