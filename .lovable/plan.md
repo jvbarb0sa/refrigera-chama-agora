@@ -1,9 +1,15 @@
 
 
-# Fix modal horizontal breathing room
+# Redesign do sub-footer em linha horizontal (desktop)
 
-## Arquivo: `src/components/ui/dialog.tsx`
+## Arquivo: `src/components/FinalCTASection.tsx`
 
-### DialogContent (linha 39)
-The `mx-4` class has no effect because the element uses `fixed` + `left-[50%] translate-x-[-50%]` positioning. Fix by replacing `w-full max-w-sm md:max-w-md mx-4 md:mx-auto` with `w-[calc(100%-2rem)] max-w-sm md:max-w-md` — this ensures 1rem (16px) of breathing room on each side on mobile.
+### Sub-footer (linhas ~119-137)
+Trocar o layout atual `flex-col items-center` por `flex-col sm:flex-row justify-between items-center`:
+
+- **Esquerda**: Copyright e CNPJ na mesma linha, separados por espaço (usar `gap-6` ou similar)
+- **Direita**: "Desenvolvido por FCS-STUDIO & Co."
+- **Mobile**: Empilha verticalmente com `text-center`
+- Remover `mt-4` extra do crédito do desenvolvedor
+- Manter dados corretos: "© 2026 Refrigeração Taboado.", "CNPJ: 64.699.140/0001-82"
 
