@@ -8,7 +8,8 @@ export function useGsapContext(
 ) {
   useLayoutEffect(() => {
     if (!scopeRef.current) return;
-    const ctx = gsap.context(() => fn(ctx), scopeRef.current);
+    let ctx: gsap.Context;
+    ctx = gsap.context(() => fn(ctx), scopeRef.current);
     return () => ctx.revert();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
