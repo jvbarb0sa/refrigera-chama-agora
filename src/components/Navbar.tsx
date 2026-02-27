@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logo from "@/assets/logo-vagner.svg";
 import { Menu, X, Phone } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { Button } from "@/components/ui/button";
@@ -41,8 +42,8 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
   return (
     <nav className="fixed top-0 md:top-10 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container flex h-16 items-center justify-between">
-        <a href="#" className="text-lg font-semibold tracking-tight text-foreground">
-          Refrigeração <span className="text-primary">Taboado</span>
+        <a href="#" className="shrink-0">
+          <img src={logo} alt="Refrigeração Taboado" className="h-10" />
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
