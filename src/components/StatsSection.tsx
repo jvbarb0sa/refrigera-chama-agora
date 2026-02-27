@@ -1,3 +1,5 @@
+import { useGsapFade } from "@/hooks/use-gsap-fade";
+
 const stats = [
   { value: "+400", label: "Atendimentos realizados", sublabel: "em Três Lagoas e região" },
   { value: "+8", label: "Anos de experiência", sublabel: "em refrigeração comercial" },
@@ -6,14 +8,16 @@ const stats = [
 ];
 
 export default function StatsSection() {
+  const ref = useGsapFade<HTMLDivElement>({ children: ".stat-item", stagger: 0.08, y: 16 });
+
   return (
     <section className="bg-muted/30 py-14 md:py-16 border-t border-b border-border">
       <div className="container">
-        <div className="grid grid-cols-2 gap-y-8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-border">
+        <div ref={ref} className="grid grid-cols-2 gap-y-8 md:grid-cols-4 md:gap-0 md:divide-x md:divide-border">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`text-center px-4 md:px-6 ${
+              className={`stat-item text-center px-4 md:px-6 ${
                 i >= 2 ? "border-t border-border pt-8 md:border-t-0 md:pt-0" : ""
               }`}
             >

@@ -28,7 +28,7 @@ const steps = [
 ];
 
 export default function ProcessSection() {
-  const ref = useGsapFade<HTMLDivElement>({ children: ".step-item", stagger: 0.15, y: 20 });
+  const ref = useGsapFade<HTMLDivElement>({ children: ".step-item", stagger: 0.1, y: 20 });
 
   return (
     <section id="processo" className="py-14 md:py-20">

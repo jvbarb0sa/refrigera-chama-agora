@@ -20,12 +20,12 @@ export default function HeroSection() {
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-      tl.from(".hero-badge", { opacity: 0, y: 12, duration: 0.5 })
-        .from(".hero-h1", { opacity: 0, y: 20, duration: 0.6 }, "-=0.3")
-        .from(".hero-sub", { opacity: 0, y: 16, duration: 0.5 }, "-=0.3")
-        .from(".hero-ctas", { opacity: 0, y: 16, duration: 0.5 }, "-=0.2")
-        .from(".hero-proof", { opacity: 0, y: 12, duration: 0.5 }, "-=0.2");
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      tl.fromTo(".hero-badge", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 })
+        .fromTo(".hero-h1", { opacity: 0, y: 20, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7 }, "-=0.3")
+        .fromTo(".hero-sub", { opacity: 0, y: 14, filter: "blur(6px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.6 }, "-=0.3")
+        .fromTo(".hero-ctas", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.2")
+        .fromTo(".hero-proof", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, "-=0.2");
     }, el);
 
     return () => ctx.revert();
