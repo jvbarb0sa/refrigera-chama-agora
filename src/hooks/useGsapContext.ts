@@ -1,0 +1,15 @@
+import { useLayoutEffect } from "react";
+import { gsap } from "@/lib/gsap";
+
+export function useGsapContext(
+  scopeRef: React.RefObject<HTMLElement>,
+  fn: (ctx: gsap.Context) => void,
+  deps: any[] = []
+) {
+  useLayoutEffect(() => {
+    if (!scopeRef.current) return;
+    const ctx = gsap.context(() => fn(ctx), scopeRef.current);
+    return () => ctx.revert();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+}
