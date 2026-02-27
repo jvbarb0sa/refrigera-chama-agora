@@ -41,7 +41,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
 
   return (
     <nav className="fixed top-0 md:top-10 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container flex items-center justify-between py-3">
+      <div className="container flex items-center justify-between py-5">
         <a href="#" className="shrink-0">
           <img src={logo} alt="Refrigeração Taboado" className="h-14" />
         </a>
