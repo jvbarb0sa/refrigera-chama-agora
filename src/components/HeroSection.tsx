@@ -128,7 +128,7 @@ export default function HeroSection() {
             <div
               data-hero="ctas"
               style={{ visibility: "hidden" }}
-              className="mt-8 flex flex-col gap-1 sm:gap-2"
+              className="mt-6 flex flex-col gap-1 sm:gap-2"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <Button
@@ -162,7 +162,7 @@ export default function HeroSection() {
             <div
               data-hero="stats"
               style={{ visibility: "hidden" }}
-              className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-8 border-t border-border pt-8"
+              className="mt-6 flex flex-col sm:flex-row gap-4 sm:gap-8 border-t border-border pt-5"
             >
               <div className="flex items-start gap-3">
                 <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-primary/10 shrink-0">
