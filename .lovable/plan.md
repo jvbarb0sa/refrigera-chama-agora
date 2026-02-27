@@ -1,10 +1,14 @@
 
 
-# Instalar styled-components
+# Aplicar degradê laranja nos botões
 
-## Mudança
+Degradê: `#FF8B52` (0%) → `#EB7543` (100%), da esquerda para a direita.
 
-1. Adicionar `styled-components` versão `^6.1.8` ao `package.json` como dependência.
+## Botões afetados
 
-Nenhuma migração de código — o pacote ficará disponível para uso futuro ao lado do Tailwind.
+1. **HeroSection.tsx (linha 137)** — botão "Falar com técnico agora": trocar `bg-[#EB7443]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`, ajustar hover para `hover:brightness-90` (remover `hover:bg-[#EB7443]/90`).
+
+2. **HeroSection.tsx (linha 231)** — botão circular com seta no card do técnico: trocar `bg-[hsl(var(--spicy-paprika))]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`.
+
+3. **FAQSection.tsx (linha 43)** — botão "Fale conosco!": trocar `bg-[#eb7542]` por `bg-gradient-to-r from-[#FF8B52] to-[#EB7543]`.
 
