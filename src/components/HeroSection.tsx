@@ -68,8 +68,8 @@ export default function HeroSection() {
 
   return (
     <section className="relative pt-20 md:pt-[120px] bg-white">
-      <div ref={heroRef} className="container py-8 md:py-20">
-        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+      <div ref={heroRef} className="container py-16 md:py-20">
+        <div className="grid gap-[30px] lg:grid-cols-2 lg:gap-10 items-center">
           {/* Left column — Content */}
           <div className="max-w-xl">
             {/* Social proof stars */}
@@ -128,13 +128,13 @@ export default function HeroSection() {
             <div
               data-hero="ctas"
               style={{ visibility: "hidden" }}
-              className="mt-8 flex flex-col gap-2"
+              className="mt-6 flex flex-col gap-1 sm:gap-2"
             >
-              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 w-full">
+              <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <Button
                   variant="strong"
                   size="lg"
-                  className="w-full sm:w-auto text-base px-8 h-14 bg-gradient-to-r from-[#FF8B52] to-[#EB7543] hover:brightness-90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
+                  className="text-base px-8 h-14 bg-gradient-to-r from-[#FF8B52] to-[#EB7543] hover:brightness-90 text-white shadow-lg border-0 hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150"
                   onClick={() => setModalOpen(true)}
                 >
                   <WhatsAppIcon size={20} />
@@ -145,7 +145,7 @@ export default function HeroSection() {
                   asChild
                   variant="ghost"
                   size="lg"
-                  className="w-full sm:w-auto text-base px-8 h-14 bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none"
+                  className="text-base px-8 h-14 bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none"
                 >
                   <a href="#contato">
                     <CalendarCheck size={20} />
@@ -198,7 +198,7 @@ export default function HeroSection() {
           <div
             data-hero="card"
             style={{ visibility: "hidden" }}
-            className="relative rounded-2xl lg:rounded-[6px] overflow-hidden aspect-video lg:aspect-[3/4] max-h-[560px] mx-auto lg:mx-0 w-full max-w-md lg:max-w-none mt-2 lg:mt-0"
+            className="relative rounded-[6px] overflow-hidden aspect-[4/5] lg:aspect-[3/4] max-h-[560px] mx-auto lg:mx-0 w-full max-w-md lg:max-w-none"
           >
             <img
               src={heroTechnician}
