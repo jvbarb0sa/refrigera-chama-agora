@@ -22,8 +22,8 @@ export default function ProblemsSection() {
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Left column */}
           <div className="lg:col-span-2 problem-item">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
-              <span className="text-xs font-semibold text-primary tracking-wide uppercase">Problemas que resolvemos</span>
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-800 uppercase tracking-wider text-xs font-bold px-3 py-1 rounded-full border-none">
+              Problemas que resolvemos
             </div>
             <h2 className="mt-3 text-3xl font-semibold text-primary tracking-tight">
               Seu equipamento parou?
