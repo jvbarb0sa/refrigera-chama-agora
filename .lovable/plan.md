@@ -1,15 +1,11 @@
 
 
-# Redesign do sub-footer em linha horizontal (desktop)
+# Ajustar espaçamento no sub-footer
 
 ## Arquivo: `src/components/FinalCTASection.tsx`
 
-### Sub-footer (linhas ~119-137)
-Trocar o layout atual `flex-col items-center` por `flex-col sm:flex-row justify-between items-center`:
+### Sub-footer (~linha 121-137)
+Adicionar `gap-[30px]` no container flex do sub-footer para criar 30px de espaçamento vertical entre o bloco copyright/CNPJ e o crédito "Desenvolvido por FCS-STUDIO & Co." no mobile. No desktop (sm:flex-row), manter o `justify-between` que já separa horizontalmente.
 
-- **Esquerda**: Copyright e CNPJ na mesma linha, separados por espaço (usar `gap-6` ou similar)
-- **Direita**: "Desenvolvido por FCS-STUDIO & Co."
-- **Mobile**: Empilha verticalmente com `text-center`
-- Remover `mt-4` extra do crédito do desenvolvedor
-- Manter dados corretos: "© 2026 Refrigeração Taboado.", "CNPJ: 64.699.140/0001-82"
+Trocar `gap-3` por `gap-[30px]` no wrapper principal do sub-footer.
 
