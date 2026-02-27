@@ -1,33 +1,27 @@
 
 
-# Refatorar WhatsAppRouterModal — visual premium Apple/Stripe
+# Responsividade iOS-style do WhatsAppRouterModal
 
-## Alterações em `src/components/ui/dialog.tsx`
+## Arquivo: `src/components/WhatsAppRouterModal.tsx`
 
-### DialogOverlay (linha 23)
-- Substituir `bg-black/80` por `bg-slate-900/40 backdrop-blur-sm`
+### 1. Import
+- Adicionar `ChevronRight` de `lucide-react`
 
-### DialogContent (linhas 36-40)
-- Substituir classes do container por `bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full` (mantendo posicionamento fixed/z-50/translate)
-- Remover `gap-4 border` e `sm:rounded-lg`
+### 2. Container dos cards (linha ~48)
+- Trocar `grid grid-cols-2 gap-4 pt-4` por `flex flex-col gap-3 md:flex-row md:gap-4 pt-4`
 
-### Botão de fechar (linhas 44-47)
-- Remover `rounded-sm opacity-70 ring-offset-background` etc.
-- Usar `absolute top-4 right-4 text-slate-400 hover:text-slate-700 transition-colors`
+### 3. Layout interno do card (linha ~56)
+- Trocar classes atuais por `group w-full flex flex-row md:flex-col items-center md:justify-center text-left md:text-center p-4 md:p-6 rounded-xl border-2 border-slate-100 bg-white hover:border-green-500 hover:bg-green-50 hover:shadow-md transition-all duration-200 cursor-pointer`
 
-## Alterações em `src/components/WhatsAppRouterModal.tsx`
+### 4. Ícone Lucide
+- Adicionar `mr-4 md:mr-0 md:mb-3 shrink-0` ao ícone
 
-### Container do modal (linha 40)
-- Remover `className="max-w-sm"` do DialogContent (o dialog.tsx já terá max-w-md)
+### 5. Container de título/subtítulo
+- Envolver label + description em `<div className="flex-1">`
 
-### Cards (linhas 48-72)
-- Trocar `<a>` por `<a>` mantido (precisa abrir link), mas estilizado como button
-- Remover botão verde interno (linhas 67-70)
-- Novas classes do card: `w-full flex flex-col items-center p-6 rounded-xl border-2 border-slate-100 bg-white hover:border-green-500 hover:bg-green-50 hover:shadow-md transition-all duration-200 group cursor-pointer`
-- Ícone e título: `text-slate-800`
-- Subtítulo: `text-sm text-slate-500`
-- Novo elemento "Iniciar conversa" com WhatsApp icon: `flex items-center gap-2 text-sm font-semibold text-green-600 mt-4 opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0`
+### 6. ChevronRight mobile
+- Após o container de texto, adicionar `<ChevronRight size={18} className="block md:hidden text-slate-400 shrink-0 ml-auto" />`
 
-### Grid (linha 48)
-- Mudar para `grid grid-cols-2 gap-4 pt-4`
+### 7. "Iniciar conversa" hover text
+- Manter `hidden md:flex` (só desktop), pois no mobile o chevron substitui
 
