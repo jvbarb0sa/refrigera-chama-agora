@@ -46,7 +46,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
           <img src={logo} alt="Refrigeração Taboado" className="h-14" />
         </a>
 
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
             <a
               key={l.href}
