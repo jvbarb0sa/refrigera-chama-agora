@@ -1,34 +1,28 @@
 
 
-# Microinterações premium em botões + checklist de performance
+# Fix Hero: Contraste, Hierarquia de CTAs e Badge
 
 ## Mudanças
 
-### 1. `src/components/HeroSection.tsx` — Remover Framer Motion dos botões, usar CSS puro
-- Remover `motion.span` e `motion.a` dos CTAs
-- Substituir `whileHover`/`whileTap` por classes Tailwind: `hover:-translate-y-0.5 active:scale-[0.98] transition-transform duration-150`
-- Remover import de `framer-motion` e `MotionDiv`
+### 1. `src/components/HeroSection.tsx`
 
-### 2. `src/components/FinalCTASection.tsx` — Remover Framer Motion dos links CTA
-- Trocar `motion.a` por `<a>` com classes Tailwind: `hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150`
-- Remover import de `framer-motion`
+**Headline — contraste do destaque:**
+- Trocar `text-primary` do span "diagnostica e resolve" por cor Spicy Paprika: `text-[hsl(var(--spicy-paprika))]`
+- Trocar `font-bold` do h1 por `font-semibold` (regra de tipografia do projeto)
 
-### 3. `src/components/ui/button.tsx` — Adicionar `will-change-transform`
-- Adicionar `will-change-transform` na base do `buttonVariants` para otimizar compositing em mobile
+**Botão primário (WhatsApp):**
+- Já usa `variant="strong"` (cerulean). Precisa mudar para Spicy Paprika.
+- Adicionar classes override: `bg-[hsl(var(--spicy-paprika))] hover:bg-[hsl(var(--spicy-paprika))]/90 text-white shadow-lg border-0`
 
-### 4. `src/hooks/use-gsap-fade.ts` — Performance: adicionar `will-change` e `once: true`
-- Setar `will-change: "transform, opacity"` no `fromVars`
-- Adicionar `once: true` no scrollTrigger (elementos não precisam re-animar ao voltar)
-- Limpar `will-change` no `onComplete`
+**Botão secundário (Solicitar visita):**
+- Trocar `variant="outline"` + classes de override por `variant="secondary"` 
+- Classes: `bg-[#D6D6DA] text-[hsl(var(--onyx))] hover:bg-[#C7CCD7]` — fundo Alabaster Grey, texto Onyx
+- Remover `border-white/30 text-white hover:bg-white/10`
 
-### 5. `src/components/RevealsWrapper.tsx` — Performance: `once: true` + `will-change`
-- Adicionar `once: true` no scrollTrigger
-- Setar `will-change: "transform, opacity"` antes da animação, limpar no `onComplete`
+**Badge (kicker):**
+- Trocar `rounded-full` por `rounded-[6px]` (padrão UI do projeto)
+- Trocar `border border-white/20 bg-white/10` por `border border-white/15 bg-white/10 backdrop-blur-sm`
 
 ### Arquivos
-1. `src/components/HeroSection.tsx`
-2. `src/components/FinalCTASection.tsx`
-3. `src/components/ui/button.tsx`
-4. `src/hooks/use-gsap-fade.ts`
-5. `src/components/RevealsWrapper.tsx`
+1. `src/components/HeroSection.tsx` — 3 ajustes (headline span, botões, badge)
 
