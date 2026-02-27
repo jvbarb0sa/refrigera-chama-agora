@@ -81,10 +81,10 @@ export default function ServicesSection() {
                 href={whatsappLink(s.msg)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`service-card group relative flex flex-col justify-between rounded-[6px] border p-6 md:p-8 transition-colors ${
+                className={`service-card group relative flex flex-col justify-between rounded-[6px] p-6 md:p-8 ${
                   isDark
-                    ? "bg-[hsl(var(--onyx))] border-[hsl(var(--onyx))] text-[hsl(var(--primary-foreground))]"
-                    : "bg-card border-border hover:border-primary/30"
+                    ? "bg-[hsl(var(--onyx))] border-0 ring-1 ring-[hsl(var(--onyx))] text-[hsl(var(--primary-foreground))]"
+                    : "bg-card border-0 ring-1 ring-slate-200/50 hover:ring-slate-300 hover:shadow-sm transition-all duration-200"
                 }`}
               >
                 {/* Top row: icon + badge */}
