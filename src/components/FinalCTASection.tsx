@@ -24,7 +24,7 @@ export default function FinalCTASection() {
                 Equipamento parado?{" "}
                 <span className="block text-accent">Não espere até amanhã.</span>
               </h2>
-              <p className="mt-4 text-sm text-[#D7D7D9] max-w-md">
+              <p className="mt-4 text-sm leading-relaxed text-[#D7D7D9] max-w-md">
                 Cada hora sem refrigeração é perda de produto e cliente. Fale agora com um técnico.
               </p>
             </div>

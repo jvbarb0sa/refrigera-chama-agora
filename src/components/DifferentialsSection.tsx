@@ -29,7 +29,7 @@ export default function DifferentialsSection() {
               </span>
             </div>
 
-            <h2 className="text-3xl lg:text-4xl font-semibold text-white leading-tight mb-6">
+            <h2 className="text-3xl lg:text-4xl font-semibold text-white leading-tight tracking-tight mb-6">
               Por que escolher a{" "}
               <span className="text-[hsl(var(--pale-slate))]">Refrigeração Taboado?</span>
             </h2>

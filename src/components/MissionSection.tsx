@@ -28,7 +28,7 @@ export default function MissionSection() {
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
               </div>
 
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tight leading-tight text-foreground sm:text-4xl md:text-5xl">
                 Profissionalismo e <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(var(--french-blue))] to-foreground">
                   responsabilidade técnica
