@@ -1,17 +1,28 @@
 
 
-# Seção de Problemas — Limpeza visual com traço vertical
+# Prova Social e FAQ — Refinamento visual
 
-## Alteração
+## 1. Cards de Depoimento (testimonials-columns-1.tsx)
 
-**ProblemsSection.tsx (linhas 45-61)** — Cada card de problema:
+Aplicar o mesmo padrão tátil dos cards de serviço: trocar `rounded-2xl shadow-md hover:shadow-lg` por `rounded-[6px] ring-1 ring-slate-200/50 shadow-none hover:ring-slate-300 hover:shadow-sm transition-all duration-200`.
 
-1. **Remover** o bloco de watermark (linhas 50-53) — os números grandes de fundo `01`, `02`, etc.
-2. **Remover** o `<span>` com o número mono pequeno (linha 56)
-3. **Adicionar** um traço vertical decorativo à esquerda do texto: `div` com classes `w-1 h-6 rounded-full bg-primary`
-4. **Reestruturar** o conteúdo interno para layout flex horizontal com o traço + label
-5. **Aplicar** o mesmo padrão `ring-1 ring-slate-200/50` dos cards de serviço para consistência, substituindo `border border-border hover:border-primary/30`
+**Linha 42** — substituir classes do card:
+- De: `rounded-2xl bg-card p-7 shadow-md transition-shadow duration-300 hover:shadow-lg`
+- Para: `rounded-[6px] bg-card p-7 ring-1 ring-slate-200/50 shadow-none hover:ring-slate-300 hover:shadow-sm transition-all duration-200`
 
-### Resultado visual
-Cada card fica com um traço azul vertical à esquerda e apenas o texto do problema, sem números — alinhamento vertical limpo (continuidade Gestalt).
+## 2. FAQ Accordion (FAQSection.tsx)
+
+O accordion já usa `border-b border-border` via AccordionItem (padrão Radix). Está correto e limpo. Apenas garantir que não haja caixas fechadas — trocar a classe do AccordionItem para usar `border-slate-200` em vez do genérico `border-border` para consistência com o tom visual slate.
+
+**Linha 55** — AccordionItem:
+- De: `className="border-border"`
+- Para: `className="border-slate-200"`
+
+## 3. AccordionTrigger — remover hover:underline padrão
+
+O componente base (`accordion.tsx`, linha 30) tem `hover:underline` no trigger. O FAQ já faz override com `hover:no-underline`, então está OK — nenhuma mudança necessária no componente base.
+
+## Resumo de arquivos editados
+- `src/components/ui/testimonials-columns-1.tsx` — cards com ring tátil + radius 6px
+- `src/components/FAQSection.tsx` — border-slate-200 no accordion
 
