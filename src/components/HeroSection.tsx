@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
 import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useLayoutEffect, useRef, useState } from "react";
+import { gsap } from "@/lib/gsap";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const MotionDiv = motion.div;
 
@@ -13,11 +14,11 @@ export default function HeroSection() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  useEffect(() => {
+  const reduced = usePrefersReducedMotion();
+
+  useLayoutEffect(() => {
     const el = heroRef.current;
-    if (!el) return;
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
+    if (!el || reduced) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
@@ -29,7 +30,7 @@ export default function HeroSection() {
     }, el);
 
     return () => ctx.revert();
-  }, []);
+  }, [reduced]);
 
   return (
     <section className="relative pt-16 md:pt-[104px] overflow-hidden">

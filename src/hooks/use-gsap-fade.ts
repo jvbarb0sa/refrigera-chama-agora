@@ -1,8 +1,6 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useLayoutEffect, useRef } from "react";
+import { gsap } from "@/lib/gsap";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface UseGsapFadeOptions {
   y?: number;
@@ -18,15 +16,11 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
 ) {
   const ref = useRef<T>(null);
   const { y = 24, duration = 0.8, stagger = 0.08, blur = 0, children } = opts;
+  const reduced = usePrefersReducedMotion();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = ref.current;
-    if (!el) return;
-
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReduced) return;
+    if (!el || reduced) return;
 
     const targets = children ? el.querySelectorAll(children) : el;
 
@@ -52,7 +46,7 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
     }, el);
 
     return () => ctx.revert();
-  }, [y, duration, stagger, blur, children]);
+  }, [y, duration, stagger, blur, children, reduced]);
 
   return ref;
 }
