@@ -45,19 +45,12 @@ export default function ProblemsSection() {
             {problems.map((p) =>
             <div
               key={p.id}
-              className="problem-item group relative overflow-hidden rounded-[6px] border border-border bg-card p-5 transition-colors hover:border-primary/30">
+              className="problem-item group flex items-center gap-4 rounded-[6px] border-0 ring-1 ring-slate-200/50 bg-card p-5 hover:ring-slate-300 hover:shadow-sm transition-all duration-200">
 
-                {/* Watermark */}
-                <span className="absolute -bottom-3 -right-1 text-[5rem] font-semibold text-foreground/[0.04] group-hover:text-foreground/[0.08] transition-colors duration-500 pointer-events-none select-none leading-none">
-                  {p.id}
-                </span>
-
-                <div className="relative z-10">
-                  <span className="text-xs font-semibold text-muted-foreground/60 font-mono">{p.id}</span>
-                  <p className="mt-2 text-[15px] font-medium text-foreground group-hover:text-primary transition-colors">
-                    {p.label}
-                  </p>
-                </div>
+                <div className="w-1 h-6 rounded-full bg-primary shrink-0" />
+                <p className="text-[15px] font-medium text-foreground group-hover:text-primary transition-colors">
+                  {p.label}
+                </p>
               </div>
             )}
           </div>
