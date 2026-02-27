@@ -115,7 +115,7 @@ export default function FinalCTASection() {
           </div>
 
           {/* Sub-footer */}
-          <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:justify-between items-center gap-3 text-center sm:text-left">
+          <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:justify-between items-center gap-[30px] text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:gap-6 gap-1">
               <p className="text-sm text-slate-400">
                 © {new Date().getFullYear()} Refrigeração Taboado.
