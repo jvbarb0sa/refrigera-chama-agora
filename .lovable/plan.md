@@ -1,18 +1,17 @@
 
 
-# Cards de Serviços — Contorno tátil minimalista
+# Seção de Problemas — Limpeza visual com traço vertical
 
 ## Alteração
 
-**ServicesSection.tsx** — Cards de serviço (classe `service-card`): substituir o estilo de borda atual por contorno ultrafino com `ring` e transição suave.
+**ProblemsSection.tsx (linhas 45-61)** — Cada card de problema:
 
-Trocar nas classes do card (não-dark):
-- Remover: `border border-border hover:border-primary/30`
-- Adicionar: `border-0 ring-1 ring-slate-200/50 hover:ring-slate-300 hover:shadow-sm transition-all duration-200`
+1. **Remover** o bloco de watermark (linhas 50-53) — os números grandes de fundo `01`, `02`, etc.
+2. **Remover** o `<span>` com o número mono pequeno (linha 56)
+3. **Adicionar** um traço vertical decorativo à esquerda do texto: `div` com classes `w-1 h-6 rounded-full bg-primary`
+4. **Reestruturar** o conteúdo interno para layout flex horizontal com o traço + label
+5. **Aplicar** o mesmo padrão `ring-1 ring-slate-200/50` dos cards de serviço para consistência, substituindo `border border-border hover:border-primary/30`
 
-Para o card dark ("Contratos para Empresas"):
-- Remover: `border-[hsl(var(--onyx))]`
-- Adicionar: `border-0 ring-1 ring-[hsl(var(--onyx))]`
-
-Mantém o contraste do card B2B escuro intacto enquanto os cards claros ganham o aspecto tátil e limpo.
+### Resultado visual
+Cada card fica com um traço azul vertical à esquerda e apenas o texto do problema, sem números — alinhamento vertical limpo (continuidade Gestalt).
 
