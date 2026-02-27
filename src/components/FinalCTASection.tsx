@@ -11,7 +11,7 @@ export default function FinalCTASection() {
   return (
     <>
       {/* CTA Banner */}
-      <section id="contato" className="bg-[#163573] border-l-4 border-ring">
+      <section id="contato" data-reveal style={{ visibility: "hidden" }} className="bg-[#163573] border-l-4 border-ring">
         <div ref={ref} className="container py-16 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-0 items-center">
             {/* Left column */}

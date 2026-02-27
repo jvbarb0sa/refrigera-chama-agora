@@ -31,7 +31,7 @@ export default function ProcessSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".step-item", stagger: 0.1, y: 20 });
 
   return (
-    <section id="processo" className="py-14 md:py-20">
+    <section id="processo" data-reveal style={{ visibility: "hidden" }} className="py-14 md:py-20">
       <div className="container">
         <span className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
           Como funciona

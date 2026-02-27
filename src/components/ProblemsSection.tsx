@@ -15,7 +15,7 @@ export default function ProblemsSection() {
   const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
 
   return (
-    <section className="border-t border-border py-20 bg-background">
+    <section data-reveal style={{ visibility: "hidden" }} className="border-t border-border py-20 bg-background">
       <div className="container">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
           {/* Left column */}

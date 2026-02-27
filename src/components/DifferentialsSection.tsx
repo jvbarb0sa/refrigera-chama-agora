@@ -13,7 +13,7 @@ export default function DifferentialsSection() {
   const cardsRef = useGsapFade<HTMLDivElement>({ children: ".diff-card", stagger: 0.1, y: 16, duration: 0.8 });
 
   return (
-    <section id="diferenciais" className="relative py-20 md:py-28 bg-[hsl(var(--onyx))] overflow-hidden">
+    <section id="diferenciais" data-reveal style={{ visibility: "hidden" }} className="relative py-20 md:py-28 bg-[hsl(var(--onyx))] overflow-hidden">
       {/* Gradient glows */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 pointer-events-none bg-[hsl(var(--french-blue))]" />
       <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[200px] opacity-10 pointer-events-none bg-[hsl(var(--spicy-paprika))]" />

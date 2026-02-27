@@ -7,7 +7,6 @@ import {
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
-import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const faqs = [
   { q: "Tem garantia?", a: "Sim, todos os nossos serviços e peças substituídas contam com garantia formalizada, garantindo a segurança e o funcionamento do seu equipamento." },
@@ -18,11 +17,9 @@ const faqs = [
 ];
 
 export default function FAQSection() {
-  const ref = useGsapFade<HTMLDivElement>({ y: 16, duration: 0.8 });
-
   return (
-    <section id="faq" className="py-16 md:py-24">
-      <div ref={ref} className="container">
+    <section id="faq" data-reveal style={{ visibility: "hidden" }} className="py-16 md:py-24">
+      <div className="container">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16 items-start">
           {/* Left column */}
           <div className="flex flex-col space-y-8 lg:sticky lg:top-24 lg:self-start">

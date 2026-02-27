@@ -1,5 +1,3 @@
-import { useGsapFade } from "@/hooks/use-gsap-fade";
-
 const features = [
   {
     title: "Diagnóstico preciso",
@@ -19,15 +17,12 @@ const features = [
 ];
 
 export default function MissionSection() {
-  const leftRef = useGsapFade<HTMLDivElement>({ y: 20, duration: 0.8 });
-  const rightRef = useGsapFade<HTMLDivElement>({ y: 0, duration: 0.6 });
-
   return (
-    <section id="sobre" className="w-full py-16 md:py-24 lg:py-32 bg-background">
+    <section id="sobre" data-reveal style={{ visibility: "hidden" }} className="w-full py-16 md:py-24 lg:py-32 bg-background">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-start">
           {/* Left Column */}
-          <div ref={leftRef} className="flex flex-col justify-center space-y-8">
+          <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
                 <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
@@ -68,7 +63,7 @@ export default function MissionSection() {
           </div>
 
           {/* Right Column: Image */}
-          <div ref={rightRef} className="relative flex items-center justify-center lg:h-full">
+          <div className="relative flex items-center justify-center lg:h-full">
             <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
               <video
                 src="/videos/about.mp4"

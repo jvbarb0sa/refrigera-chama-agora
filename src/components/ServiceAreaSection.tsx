@@ -13,7 +13,7 @@ export default function ServiceAreaSection() {
   const rightRef = useGsapFade<HTMLDivElement>({ y: 0, duration: 0.6 });
 
   return (
-    <section className="w-full bg-background py-16 md:py-24 border-t border-border">
+    <section data-reveal style={{ visibility: "hidden" }} className="w-full bg-background py-16 md:py-24 border-t border-border">
       <div className="container">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column */}
