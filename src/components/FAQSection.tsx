@@ -52,7 +52,7 @@ export default function FAQSection() {
           {/* Right column */}
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) =>
-            <AccordionItem key={i} value={`faq-${i}`} className="border-border">
+            <AccordionItem key={i} value={`faq-${i}`} className="border-slate-200">
                 <AccordionTrigger className="text-left text-lg font-semibold text-foreground transition-colors hover:text-primary hover:no-underline py-5">
                   {faq.q}
                 </AccordionTrigger>
