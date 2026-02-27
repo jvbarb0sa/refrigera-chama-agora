@@ -203,7 +203,7 @@ export default function HeroSection() {
             <img
               src={heroTechnician}
               alt="Técnico especializado em refrigeração e climatização"
-              className="absolute inset-0 w-full h-full object-cover object-top"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
 
             {/* Bottom gradient overlay */}
