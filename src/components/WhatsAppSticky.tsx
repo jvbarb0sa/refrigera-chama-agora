@@ -37,23 +37,25 @@ export default function WhatsAppSticky({ hidden }: WhatsAppStickyProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="relative rounded-2xl bg-foreground px-5 py-4 pr-10 shadow-xl max-w-[220px]"
+            className="relative rounded-2xl px-5 py-4 pr-10 shadow-xl max-w-[220px]"
+            style={{ backgroundColor: "#00732B" }}
           >
             {/* Speech bubble tail */}
             <div
-              className="absolute -bottom-2 right-6 h-4 w-4 rotate-45 bg-foreground"
+              className="absolute -bottom-2 right-6 h-4 w-4 rotate-45"
+              style={{ backgroundColor: "#00732B" }}
             />
             <button
               onClick={() => { setShowTooltip(false); setDismissed(true); }}
-              className="absolute top-3 right-3 text-muted-foreground/60 hover:text-muted-foreground transition-colors"
+              className="absolute top-3 right-3 text-white/60 hover:text-white transition-colors"
               aria-label="Fechar"
             >
               <X size={14} />
             </button>
-            <p className="text-sm font-semibold text-background leading-snug">
+            <p className="text-sm font-semibold text-white leading-snug">
               Precisa de atendimento?
             </p>
-            <p className="mt-0.5 text-xs text-muted-foreground leading-snug">
+            <p className="mt-0.5 text-xs text-white/70 leading-snug">
               Resposta imediata no WhatsApp.
             </p>
           </motion.div>
