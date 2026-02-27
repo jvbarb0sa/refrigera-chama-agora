@@ -128,7 +128,7 @@ export default function HeroSection() {
             <div
               data-hero="ctas"
               style={{ visibility: "hidden" }}
-              className="mt-[30px] flex flex-col gap-1 sm:gap-2"
+              className="mt-[70px] flex flex-col gap-1 sm:gap-2"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <Button
