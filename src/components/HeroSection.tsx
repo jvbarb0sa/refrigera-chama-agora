@@ -19,49 +19,38 @@ export default function HeroSection() {
     () => {
       if (reduced) return;
 
+      // Stars & kicker — light intro
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       tl.fromTo(
         "[data-hero='stars']",
         { autoAlpha: 0, y: 10 },
         { autoAlpha: 1, y: 0, duration: 0.5 }
-      )
-        .fromTo(
-          "[data-hero='kicker']",
-          { autoAlpha: 0, y: 10, filter: "blur(6px)" },
-          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6 },
-          "-=0.2"
-        )
-        .fromTo(
-          "[data-hero='h1']",
-          { autoAlpha: 0, y: 18, filter: "blur(10px)" },
-          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 },
-          "-=0.25"
-        )
-        .fromTo(
-          "[data-hero='sub']",
-          { autoAlpha: 0, y: 14 },
-          { autoAlpha: 1, y: 0, duration: 0.6 },
-          "-=0.35"
-        )
-        .fromTo(
-          "[data-hero='ctas']",
-          { autoAlpha: 0, y: 14, scale: 0.98 },
-          { autoAlpha: 1, y: 0, scale: 1, duration: 0.6 },
-          "-=0.2"
-        )
-        .fromTo(
-          "[data-hero='stats'] > *",
-          { autoAlpha: 0, y: 10 },
-          { autoAlpha: 1, y: 0, duration: 0.45, stagger: 0.08 },
-          "-=0.15"
-        )
-        .fromTo(
-          "[data-hero='card']",
-          { autoAlpha: 0, x: 40, scale: 0.97 },
-          { autoAlpha: 1, x: 0, scale: 1, duration: 0.9, ease: "power3.out" },
-          "-=0.6"
-        );
+      ).fromTo(
+        "[data-hero='kicker']",
+        { autoAlpha: 0, y: 10, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.6 },
+        "-=0.2"
+      );
+
+      // H1, subtitle, CTAs, stats — staggered entrance
+      gsap.from("[data-hero='h1'], [data-hero='sub'], [data-hero='ctas'], [data-hero='stats']", {
+        autoAlpha: 0,
+        y: 40,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        delay: 0.4,
+      });
+
+      // Hero image card — scale reveal
+      gsap.from("[data-hero='card']", {
+        autoAlpha: 0,
+        scale: 1.05,
+        duration: 1.5,
+        ease: "power2.out",
+        delay: 0.3,
+      });
     },
     [reduced]
   );

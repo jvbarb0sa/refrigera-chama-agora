@@ -14,7 +14,7 @@ const problems: { label: string; subtitle: string; id: string; icon: LucideIcon 
 
 
 export default function ProblemsSection() {
-  const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.08 });
+  const ref = useGsapFade<HTMLDivElement>({ children: ".problem-item", stagger: 0.1, y: 50, duration: 0.8, ease: "back.out(1.7)", start: "top 80%" });
 
   return (
     <section data-reveal style={{ visibility: "hidden" }} className="border-t border-border py-20 bg-background">

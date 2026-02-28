@@ -49,7 +49,7 @@ const services = [
 ];
 
 export default function ServicesSection() {
-  const gridRef = useGsapFade<HTMLDivElement>({ children: ".service-card", stagger: 0.08 });
+  const gridRef = useGsapFade<HTMLDivElement>({ children: ".service-card", stagger: 0.1, y: 50, duration: 0.8, ease: "back.out(1.7)", start: "top 80%" });
 
   return (
     <section id="servicos" data-reveal style={{ visibility: "hidden" }} className="py-16 md:py-20">
