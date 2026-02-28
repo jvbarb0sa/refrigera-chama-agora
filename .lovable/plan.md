@@ -1,9 +1,8 @@
 
 
-## Corrigir texto da seção de Serviços
+## Alterar link do botão "Agendar avaliação técnica"
 
-**Arquivo:** `src/components/ServicesSection.tsx` (linha 69)
+**Arquivo:** `src/components/ProblemsSection.tsx` (linha ~43)
 
-- Substituir: `Atendimento completo em refrigeração e elétrica para comércios e residências na região de Dourados · MS.`
-- Por: `Atendimento completo em refrigeração e Climatização para comércios, resistências e industrias na região de Aparecida do Taboado - MS`
+- Substituir o `href={whatsappLink(...)}` do botão por `href="https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao"`
 
