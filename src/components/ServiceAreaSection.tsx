@@ -51,7 +51,7 @@ export default function ServiceAreaSection() {
             {/* CTA */}
             <div className="pt-2">
               <a
-                href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.")}
+                href={whatsappLink("Olá, gostaria de informações sobre atendimento na minha região.", "loja")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-11 items-center justify-center rounded-[6px] px-6 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent group w-fit bg-[#eb7542] text-primary-foreground">
