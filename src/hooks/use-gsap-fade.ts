@@ -7,6 +7,8 @@ interface UseGsapFadeOptions {
   duration?: number;
   stagger?: number;
   blur?: number;
+  ease?: string;
+  start?: string;
   /** CSS selector for children to stagger (if omitted, animates the container itself) */
   children?: string;
 }
@@ -15,7 +17,7 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
   opts: UseGsapFadeOptions = {}
 ) {
   const ref = useRef<T>(null);
-  const { y = 24, duration = 0.8, stagger = 0.08, blur = 0, children } = opts;
+  const { y = 24, duration = 0.8, stagger = 0.08, blur = 0, children, ease = "power3.out", start = "top 85%" } = opts;
   const reduced = usePrefersReducedMotion();
 
   useLayoutEffect(() => {
@@ -32,13 +34,13 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
       opacity: 1,
       duration,
       stagger: children ? stagger : 0,
-      ease: "power3.out",
+      ease,
       onComplete() {
         gsap.set(targets, { willChange: "auto" });
       },
       scrollTrigger: {
         trigger: el,
-        start: "top 85%",
+        start,
         once: true,
       },
     };
@@ -49,7 +51,7 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
     }, el);
 
     return () => ctx.revert();
-  }, [y, duration, stagger, blur, children, reduced]);
+  }, [y, duration, stagger, blur, children, reduced, ease, start]);
 
   return ref;
 }
