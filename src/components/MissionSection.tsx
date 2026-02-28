@@ -78,14 +78,10 @@ export default function MissionSection() {
           {/* Right Column: Image */}
           <div className="relative flex items-center justify-center lg:h-full">
             <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
-              <video
-                src="/videos/about.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="none"
-                
+              <img
+                src="/images/about.png"
+                alt="Equipe Refrigeração Taboado"
+                loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
