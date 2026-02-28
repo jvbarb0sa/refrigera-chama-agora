@@ -1,8 +1,9 @@
 
 
-## Adicionar espaço de 30px entre descrição e lista de diferenciais
+## Corrigir texto da seção de Serviços
 
-**Arquivo:** `src/components/MissionSection.tsx`
+**Arquivo:** `src/components/ServicesSection.tsx` (linha 69)
 
-- Adicionar `mt-[30px]` ao container `<div className="flex flex-col">` que envolve os features (linha ~55), criando o espaçamento solicitado entre o parágrafo descritivo e o primeiro item "Diagnóstico preciso".
+- Substituir: `Atendimento completo em refrigeração e elétrica para comércios e residências na região de Dourados · MS.`
+- Por: `Atendimento completo em refrigeração e Climatização para comércios, resistências e industrias na região de Aparecida do Taboado - MS`
 
