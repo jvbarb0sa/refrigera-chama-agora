@@ -1,8 +1,14 @@
 
 
-# Nenhuma mudança necessária
+# Corrigir mapa para endereço correto
 
-O arquivo `TopBar.tsx` já está atualizado com "Aparecida do Taboado – MS" (linha 7) e "Atendimento residencial, comercial e industrial" (linha 9).
+O iframe do Google Maps em `ServiceAreaSection.tsx` está apontando para Três Lagoas. Precisa ser atualizado para o endereço correto:
 
-A screenshot parece mostrar uma versão em cache do site. Recomendo limpar o cache do navegador ou fazer um hard refresh (Ctrl+Shift+R) para ver as mudanças já aplicadas.
+**Avenida Orlando Mascarenhas Pereira, 1841 – Jardim Jerusa, Aparecida do Taboado – MS, 79570-000**
+
+## Alterações
+
+1. **`src/components/ServiceAreaSection.tsx`**: Trocar a URL do iframe do Google Maps embed para o endereço correto em Aparecida do Taboado, usando uma URL de embed baseada no endereço completo.
+
+2. **`index.html`**: Verificar e corrigir o Schema.org `LocalBusiness` se ainda houver referência a Três Lagoas (o endereço já parece correto, mas confirmar CEP 79570-000).
 
