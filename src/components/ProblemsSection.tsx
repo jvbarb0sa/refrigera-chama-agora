@@ -32,7 +32,7 @@ export default function ProblemsSection() {
               Atendimento técnico para falhas comuns em refrigeração e elétrica. Diagnóstico rápido e solução eficiente.
             </p>
             <a
-              href={whatsappLink("Preciso de uma avaliação técnica no meu equipamento.")}
+              href="https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 text-accent-foreground h-14 px-8 text-base font-semibold inline-flex items-center gap-2 hover:brightness-90 transition-all rounded-[6px] bg-emerald-600">
