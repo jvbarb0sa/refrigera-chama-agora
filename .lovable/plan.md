@@ -1,11 +1,8 @@
 
 
-## Aumentar imagem no mobile na seção Sobre
+## Adicionar "Ltda" ao nome da empresa no footer
 
-**Arquivo:** `src/components/MissionSection.tsx` (linha 80)
+**Arquivo:** `src/components/FinalCTASection.tsx` (linha ~120)
 
-- Alterar `aspect-square` para `aspect-[3/4]` no mobile, mantendo `md:aspect-[4/3]` no desktop. Isso deixará a imagem mais alta/maior em telas pequenas.
-
-Classe atual: `w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full`
-Nova classe: `w-full aspect-[3/4] md:aspect-[4/3] lg:aspect-auto lg:h-full`
+- Alterar `© {new Date().getFullYear()} Refrigeração Taboado.` para `© {new Date().getFullYear()} Refrigeração Taboado Ltda.`
 
