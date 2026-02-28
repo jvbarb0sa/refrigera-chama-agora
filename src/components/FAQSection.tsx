@@ -38,7 +38,7 @@ export default function FAQSection() {
             <div>
               <Button asChild variant="default" size="lg" className="gap-2">
                 <a
-                  href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.")}
+                  href={whatsappLink("Olá, tenho uma dúvida sobre o serviço.", "loja")}
                   target="_blank"
                   rel="noopener" className="bg-gradient-to-r from-[#FF8B52] to-[#EB7543]">
 
