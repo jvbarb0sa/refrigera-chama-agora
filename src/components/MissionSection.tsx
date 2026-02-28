@@ -43,9 +43,9 @@ export default function MissionSection() {
               <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed font-medium mb-8">
                 A Refrigeração Taboado atua com foco em confiança, competência e
                 segurança nos serviços prestados. Trabalhamos com manutenção e
-                instalação em sistemas de refrigeração comercial, residencial e
-                elétrica, sempre priorizando diagnóstico preciso e qualidade na
-                execução.
+                instalação em sistemas de refrigeração e climatização comercial,
+                industrial e residencial, sempre priorizando diagnóstico preciso
+                e qualidade na execução.
               </p>
             </div>
 
