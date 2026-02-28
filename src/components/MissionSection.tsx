@@ -1,18 +1,23 @@
+import { Target, Award, ShieldCheck } from "lucide-react";
+
 const features = [
   {
     title: "Diagnóstico preciso",
     description:
       "Avaliação técnica detalhada antes de qualquer intervenção, garantindo precisão.",
+    icon: Target,
   },
   {
     title: "Equipe qualificada",
     description:
       "Profissionais com vasta experiência em refrigeração comercial e residencial.",
+    icon: Award,
   },
   {
     title: "Compromisso com o cliente",
     description:
       "Transparência no orçamento e cumprimento rigoroso de prazos estabelecidos.",
+    icon: ShieldCheck,
   },
 ];
 
@@ -24,8 +29,8 @@ export default function MissionSection() {
           {/* Left Column */}
           <div className="flex flex-col justify-center space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[6px] border border-border bg-muted/50">
-                <span className="text-xs font-semibold text-primary tracking-wide uppercase">Sobre a empresa</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border-none">
+                <span className="text-xs font-bold text-blue-700 tracking-wider uppercase">Sobre a empresa</span>
               </div>
 
               <h2 className="text-3xl font-semibold tracking-tight leading-tight text-foreground sm:text-4xl md:text-5xl">
@@ -35,7 +40,7 @@ export default function MissionSection() {
                 </span>
               </h2>
 
-              <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed font-medium">
+              <p className="max-w-[600px] text-muted-foreground md:text-lg/relaxed lg:text-base/relaxed xl:text-lg/relaxed font-medium mb-8">
                 A Refrigeração Taboado atua com foco em confiança, competência e
                 segurança nos serviços prestados. Trabalhamos com manutenção e
                 instalação em sistemas de refrigeração comercial, residencial e
@@ -45,20 +50,28 @@ export default function MissionSection() {
             </div>
 
             {/* Features */}
-            <div className="flex flex-col space-y-6 pt-4">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="relative pl-6 before:absolute before:left-0 before:top-0 before:h-full before:w-[3px] before:bg-primary before:rounded-full"
-                >
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-                    {feature.description}
-                  </p>
-                </div>
-              ))}
+            <div className="flex flex-col">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 mb-6"
+                  >
+                    <div className="w-12 h-12 flex-shrink-0 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                      <Icon size={22} strokeWidth={1.8} />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-800">
+                        {feature.title}
+                      </h3>
+                      <p className="text-slate-500 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
