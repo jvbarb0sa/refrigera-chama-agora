@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 import { gsap } from "@/lib/gsap";
 
 export function useGsapContext(
@@ -6,7 +6,7 @@ export function useGsapContext(
   fn: (ctx: gsap.Context) => void,
   deps: any[] = []
 ) {
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!scopeRef.current) return;
     let ctx: gsap.Context;
     ctx = gsap.context(() => fn(ctx), scopeRef.current);
