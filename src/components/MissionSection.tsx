@@ -84,6 +84,8 @@ export default function MissionSection() {
                 muted
                 loop
                 playsInline
+                preload="none"
+                
                 className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
