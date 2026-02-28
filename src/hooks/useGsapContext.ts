@@ -9,8 +9,13 @@ export function useGsapContext(
   useEffect(() => {
     if (!scopeRef.current) return;
     let ctx: gsap.Context;
-    ctx = gsap.context(() => fn(ctx), scopeRef.current);
-    return () => ctx.revert();
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => fn(ctx), scopeRef.current!);
+    });
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

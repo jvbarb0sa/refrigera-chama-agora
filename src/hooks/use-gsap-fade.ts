@@ -46,11 +46,17 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
     };
     if (blur > 0) toVars.filter = "blur(0px)";
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(targets, fromVars, toVars);
-    }, el);
+    let ctx: gsap.Context;
+    const rafId = requestAnimationFrame(() => {
+      ctx = gsap.context(() => {
+        gsap.fromTo(targets, fromVars, toVars);
+      }, el);
+    });
 
-    return () => ctx.revert();
+    return () => {
+      cancelAnimationFrame(rafId);
+      if (ctx) ctx.revert();
+    };
   }, [y, duration, stagger, blur, children, reduced, ease, start]);
 
   return ref;
