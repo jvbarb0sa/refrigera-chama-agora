@@ -66,7 +66,7 @@ export default function ServiceAreaSection() {
           <div ref={rightRef} className="relative w-full">
             <div className="relative w-full aspect-square md:aspect-video lg:aspect-[4/3] overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119335.53856247345!2d-51.78248888062164!3d-20.78368581895781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x949736e4f165a6e9%3A0xc6c4f9bc2a02b115!2sTr%C3%AAs%20Lagoas%2C%20MS!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3740.5!2d-51.0908!3d-20.0868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s!2sAv.+Orlando+Mascarenhas+Pereira%2C+1841+-+Jardim+Jerusa%2C+Aparecida+do+Taboado+-+MS%2C+79570-000!5e0!3m2!1spt-BR!2sbr"
                 className="absolute inset-0 h-full w-full border-0 grayscale-[20%] contrast-125"
                 allowFullScreen
                 loading="lazy"
