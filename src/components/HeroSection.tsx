@@ -1,5 +1,5 @@
 import { Star, Users, MapPin, CalendarCheck, ArrowRight, Headphones } from "lucide-react";
-import heroTechnician from "@/assets/hero-technician.png";
+import heroTechnician from "@/assets/hero-technician.jpeg";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
