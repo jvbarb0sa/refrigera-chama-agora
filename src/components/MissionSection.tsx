@@ -50,7 +50,7 @@ export default function MissionSection() {
             </div>
 
             {/* Features */}
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-[30px]">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
