@@ -77,7 +77,7 @@ export default function MissionSection() {
 
           {/* Right Column: Image */}
           <div className="relative flex items-center justify-center lg:h-full">
-            <div className="relative w-full aspect-square md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
+            <div className="relative w-full aspect-[3/4] md:aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden rounded-[6px] border border-[hsl(var(--pale-slate))] bg-muted shadow-sm">
               <img
                 src="/images/about.png"
                 alt="Equipe Refrigeração Taboado"
