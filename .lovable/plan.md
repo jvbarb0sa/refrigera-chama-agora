@@ -1,7 +1,10 @@
 
 
-## Atualizar foto da Hero Section
+## Centralizar imagem da hero verticalmente
 
-1. Copiar `user-uploads://Group_8.png` para `public/images/hero-technician.png` (sobrescrever a imagem atual)
-2. Nenhuma alteração de código necessária — o componente já referencia `/images/hero-technician.png`
+**Arquivo:** `src/components/HeroSection.tsx` (linha 159)
+
+- Alterar `object-center` para `object-top` na classe da `<img>` para mostrar o topo da imagem (rosto) sem cortar.
+
+Se `object-top` ainda cortar, pode-se ajustar para `object-[center_20%]` para um posicionamento intermediário.
 
