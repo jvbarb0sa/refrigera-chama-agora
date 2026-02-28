@@ -87,7 +87,7 @@ export default function HeroSection() {
               style={{ visibility: "hidden" }}
               className="inline-block text-xs font-semibold uppercase tracking-wide text-primary border border-border bg-muted/50 px-3 py-1 rounded-[6px] mb-5"
             >
-              Três Lagoas · MS
+              Aparecida do Taboado · MS
             </span>
 
             {/* H1 */}
@@ -136,7 +136,7 @@ export default function HeroSection() {
                   size="lg"
                   className="text-base px-8 h-14 bg-transparent border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-none"
                 >
-                  <a href="#contato">
+                  <a href="https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao" target="_blank" rel="noopener">
                     <CalendarCheck size={20} />
                     Solicitar visita técnica
                   </a>
@@ -174,7 +174,7 @@ export default function HeroSection() {
                   Refrigeração · Climatização · Elétrica
                 </p>
                 <p className="text-white/70 text-sm mt-1">
-                  Três Lagoas e região
+                  Aparecida do Taboado e região
                 </p>
               </div>
               <button

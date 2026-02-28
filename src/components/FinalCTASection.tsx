@@ -58,12 +58,12 @@ export default function FinalCTASection() {
             <div className="sm:col-span-2 lg:col-span-2 my-0 py-0">
               <img src={logoWhite} alt="Refrigeração Taboado" className="h-16" />
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400 py-[14px] my-[31px]">
-                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Três Lagoas, MS. Técnicos certificados, garantia documentada.
+                Especialistas em refrigeração comercial, câmaras frias e climatização há mais de 12 anos em Aparecida do Taboado, MS. Técnicos certificados, garantia documentada.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-400">
                 <li className="flex items-center gap-2">
                   <MapPin size={15} className="shrink-0 text-accent" />
-                  Três Lagoas, MS e região
+                  Av. Orlando Mascarenhas Pereira, 1841 – Jd. Jerusa, Aparecida do Taboado – MS
                 </li>
                 <li className="flex items-center gap-2">
                   <Phone size={15} className="shrink-0 text-accent" />

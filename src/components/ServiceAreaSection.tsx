@@ -3,7 +3,7 @@ import { whatsappLink } from "@/lib/constants";
 import { useGsapFade } from "@/hooks/use-gsap-fade";
 
 const serviceAreas = [
-{ icon: MapPin, text: "Três Lagoas · MS e Região" },
+{ icon: MapPin, text: "Aparecida do Taboado · MS e Região" },
 { icon: Factory, text: "Comércio & Indústria" },
 { icon: Home, text: "Residencial" }];
 
@@ -28,7 +28,7 @@ export default function ServiceAreaSection() {
               </h2>
 
               <p className="max-w-[500px] text-muted-foreground text-base md:text-lg leading-relaxed font-medium">
-                Atuamos em Três Lagoas e região, com atendimento especializado para
+                Atuamos em Aparecida do Taboado e região, com atendimento especializado para
                 comércios, indústrias alimentícias e residências.
               </p>
             </div>
@@ -71,7 +71,7 @@ export default function ServiceAreaSection() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Mapa da área de atendimento em Três Lagoas" />
+                title="Mapa da área de atendimento em Aparecida do Taboado" />
 
             </div>
           </div>
