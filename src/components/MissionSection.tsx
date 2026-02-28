@@ -10,7 +10,7 @@ const features = [
   {
     title: "Equipe qualificada",
     description:
-      "Profissionais com vasta experiência em refrigeração comercial e residencial.",
+      "Profissionais com vasta experiência em refrigeração comercial, industrial e residencial.",
     icon: Award,
   },
   {
