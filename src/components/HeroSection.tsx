@@ -158,7 +158,7 @@ export default function HeroSection() {
               height={1340}
               fetchPriority="high"
               decoding="async"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              className="absolute inset-0 w-full h-full object-cover object-top"
             />
 
             {/* Bottom gradient overlay */}
