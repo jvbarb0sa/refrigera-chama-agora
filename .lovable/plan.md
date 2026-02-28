@@ -1,22 +1,42 @@
 
 
-# Refatoração premium da MissionSection
+# Atualização de informações do site
 
-## Arquivo: `src/components/MissionSection.tsx`
+## 1. Endereço — múltiplos arquivos
 
-### Mudanças:
+### `src/components/TopBar.tsx`
+- Trocar "Três Lagoas – MS e região" por "Aparecida do Taboado – MS"
 
-1. **Import**: Adicionar `import { Target, Award, ShieldCheck } from "lucide-react";`
+### `src/components/HeroSection.tsx`
+- Badge kicker: trocar "Três Lagoas · MS" por "Aparecida do Taboado · MS"
+- Bottom info card: trocar "Três Lagoas e região" por "Aparecida do Taboado e região"
 
-2. **Array `features`**: Adicionar campo `icon` a cada item — `Target`, `Award`, `ShieldCheck`
+### `src/components/FinalCTASection.tsx`
+- Footer: trocar "Três Lagoas, MS e região" por "Av. Orlando Mascarenhas Pereira, 1841 – Jd. Jerusa, Aparecida do Taboado – MS"
 
-3. **Badge** (linha 27-28): Trocar de `rounded-[6px] border border-border bg-muted/50` + `font-semibold text-primary tracking-wide` para `bg-blue-50 text-blue-700 font-bold tracking-wider rounded-full border-none` + `px-3 py-1`
+### `src/components/MissionSection.tsx`
+- Atualizar referências de localidade se existirem
 
-4. **Parágrafo** (linha 38): Adicionar `mb-8` à classe do `<p>`
+### `src/components/ServiceAreaSection.tsx`
+- Trocar "Três Lagoas · MS e Região" por "Aparecida do Taboado · MS e Região"
+- Trocar texto descritivo "Atuamos em Três Lagoas e região" por "Atuamos em Aparecida do Taboado e região"
 
-5. **Lista de features** (linhas 48-61): Remover borda esquerda. Cada item passa a ser:
-   - Container: `flex items-start gap-4 mb-6` (sem `relative pl-6 before:...`)
-   - Ícone em container: `w-12 h-12 flex-shrink-0 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center`
-   - Título: `text-lg font-bold text-slate-800`
-   - Descrição: `text-slate-500 leading-relaxed`
+### `src/components/StatsSection.tsx`
+- Trocar "em Três Lagoas e região" por "em Aparecida do Taboado e região"
+
+### `index.html`
+- Atualizar todas as referências de "Três Lagoas" para "Aparecida do Taboado" no title, meta descriptions, structured data (addressLocality, areaServed), e og/twitter tags
+- Atualizar endereço completo no structured data
+
+## 2. Descrição de atendimento — `src/components/TopBar.tsx`
+- Trocar "Atendimento comercial, industrial e residencial" por "Atendimento residencial, comercial e industrial"
+
+## 3. Link do botão "Solicitar visita técnica"
+
+### `src/components/HeroSection.tsx`
+- Trocar `<a href="#contato">` por `<a href="https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao" target="_blank" rel="noopener">`
+
+### `src/components/Navbar.tsx`
+- Trocar o `href` do botão "Solicitar visita técnica" de `whatsappLink(...)` para `"https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao"`
+- Manter `target="_blank"` e `rel="noopener"`
 
