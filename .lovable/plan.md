@@ -1,13 +1,15 @@
 
 
-## Adicionar botão "Catálogo de Produtos" no WhatsAppRouterModal
+## Igualar espaçamento entre os 3 botões no modal
 
 **Arquivo:** `src/components/WhatsAppRouterModal.tsx`
 
-- Importar ícone `ShoppingBag` do lucide-react
-- Após o `.map()` dos options de WhatsApp (Técnico e Loja), adicionar um link separado para o catálogo com o mesmo estilo visual dos cards existentes
-- O link abre `https://refrigeracaotaboado.smartpos.app` em nova aba
-- Label: **Catálogo de Produtos**, descrição: "Peças e acessórios"
-- Usar ícone `ShoppingBag` e manter o mesmo layout de card (horizontal no mobile com ChevronRight, vertical no desktop)
-- No hover do desktop, em vez de "Iniciar conversa" com ícone WhatsApp, mostrar "Acessar catálogo" sem ícone WhatsApp (já que não é WhatsApp)
+- Mover o card "Catálogo de Produtos" para dentro do mesmo container `flex flex-col` dos outros dois botões, removendo-o de fora do `div` wrapper.
+- Alterar o container de `flex flex-col gap-3 md:flex-row md:gap-4` para `flex flex-col gap-3 md:flex-col md:gap-3` (manter coluna no desktop também, já que agora são 3 itens e ficariam apertados em row).
+- Ou alternativamente: manter o layout atual mas envolver os 3 cards num único container `flex flex-col gap-3`.
+
+**Abordagem concreta:**
+1. Remover o `div` wrapper que contém apenas Técnico e Loja
+2. Colocar os 3 cards (Técnico, Loja, Catálogo) dentro de um único `div` com `flex flex-col gap-3`
+3. Todos terão o mesmo `gap-3` entre si, garantindo espaçamento uniforme
 
