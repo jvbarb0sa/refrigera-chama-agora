@@ -118,7 +118,7 @@ export default function TestimonialsSection() {
             <MapPin size={22} className="text-primary" />
             <div>
               <p className="text-sm font-medium text-foreground">Atendimento local</p>
-              <p className="text-xs text-muted-foreground">Três Lagoas e região</p>
+              <p className="text-xs text-muted-foreground">Aparecida do Taboado e região</p>
             </div>
           </div>
         </div>
