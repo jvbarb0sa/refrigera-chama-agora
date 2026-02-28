@@ -1,10 +1,8 @@
 
 
-## Substituir vídeo por imagem na seção Sobre
+## Ajustar posição horizontal da imagem na seção Sobre
 
-**Arquivo:** `src/components/MissionSection.tsx`
+**Arquivo:** `src/components/MissionSection.tsx` (linha ~85)
 
-1. Substituir o elemento `<video>` pelo elemento `<img>` usando a imagem `Group_10.png`
-2. Copiar `user-uploads://Group_10.png` para `public/images/about.png`
-3. Remover atributos de vídeo e usar `object-cover object-center` na imagem
+- Alterar `object-center` para `object-left` ou `object-[30%_center]` na classe da `<img>` para deslocar o foco da imagem para a esquerda, mostrando mais do objeto que o técnico está mexendo.
 
