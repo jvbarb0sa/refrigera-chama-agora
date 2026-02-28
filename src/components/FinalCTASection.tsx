@@ -32,7 +32,7 @@ export default function FinalCTASection() {
             {/* Right column — buttons */}
             <div className="lg:col-span-2 flex flex-col sm:flex-row gap-3 lg:justify-end w-full">
               <a
-                href={phoneLink()}
+                href="tel:+5567992599771"
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] rounded-[6px] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
                 <Phone size={16} />
                 Ligar agora
