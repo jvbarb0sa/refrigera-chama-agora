@@ -1,4 +1,4 @@
-import { Star, Users, MapPin, CalendarCheck, ArrowRight, Headphones } from "lucide-react";
+import { Star, CalendarCheck, ArrowRight } from "lucide-react";
 import heroTechnician from "@/assets/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
@@ -34,7 +34,7 @@ export default function HeroSection() {
       );
 
       // H1, subtitle, CTAs, stats — staggered entrance
-      gsap.from("[data-hero='h1'], [data-hero='sub'], [data-hero='ctas'], [data-hero='stats']", {
+      gsap.from("[data-hero='h1'], [data-hero='sub'], [data-hero='ctas']", {
         autoAlpha: 0,
         y: 40,
         duration: 1,
@@ -117,7 +117,7 @@ export default function HeroSection() {
             <div
               data-hero="ctas"
               style={{ visibility: "hidden" }}
-              className="mt-[70px] flex flex-col gap-1 sm:gap-2"
+              className="mt-8 flex flex-col gap-3 sm:gap-4"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
                 <Button
@@ -141,44 +141,6 @@ export default function HeroSection() {
                     Solicitar visita técnica
                   </a>
                 </Button>
-              </div>
-              <span className="text-xs text-muted-foreground pl-1">
-                Resposta mais rápida por WhatsApp.
-              </span>
-            </div>
-
-            {/* Stats row */}
-            <div
-              data-hero="stats"
-              style={{ visibility: "hidden" }}
-              className="mt-6 hidden sm:flex sm:flex-row gap-4 sm:gap-8 border-t border-border pt-5"
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-primary/10 shrink-0">
-                  <Headphones size={20} className="text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    Suporte Local
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    Atendimento rápido em Três Lagoas
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-[6px] bg-[hsl(var(--spicy-paprika))]/10 shrink-0">
-                  <Star size={20} className="text-[hsl(var(--spicy-paprika))]" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">
-                    4,9 Estrelas
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    Avaliação no Google
-                  </p>
-                </div>
               </div>
             </div>
           </div>
