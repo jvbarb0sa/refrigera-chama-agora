@@ -1,10 +1,10 @@
 
 
-## Centralizar imagem da hero verticalmente
+## Substituir vídeo por imagem na seção Sobre
 
-**Arquivo:** `src/components/HeroSection.tsx` (linha 159)
+**Arquivo:** `src/components/MissionSection.tsx`
 
-- Alterar `object-center` para `object-top` na classe da `<img>` para mostrar o topo da imagem (rosto) sem cortar.
-
-Se `object-top` ainda cortar, pode-se ajustar para `object-[center_20%]` para um posicionamento intermediário.
+1. Substituir o elemento `<video>` pelo elemento `<img>` usando a imagem `Group_10.png`
+2. Copiar `user-uploads://Group_10.png` para `public/images/about.png`
+3. Remover atributos de vídeo e usar `object-cover object-center` na imagem
 
