@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -20,7 +20,7 @@ export function useGsapFade<T extends HTMLElement = HTMLDivElement>(
   const { y = 24, duration = 0.8, stagger = 0.08, blur = 0, children, ease = "power3.out", start = "top 85%" } = opts;
   const reduced = usePrefersReducedMotion();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const el = ref.current;
     if (!el || reduced) return;
 
