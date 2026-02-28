@@ -66,7 +66,7 @@ export default function ServicesSection() {
             </h2>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm md:text-right leading-relaxed">
-            Atendimento completo em refrigeração e elétrica para comércios e residências na região de Dourados · MS.
+            Atendimento completo em refrigeração e Climatização para comércios, resistências e industrias na região de Aparecida do Taboado - MS
           </p>
         </div>
 
