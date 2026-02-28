@@ -118,7 +118,7 @@ export default function FinalCTASection() {
           <div className="mt-16 pt-8 border-t border-primary-foreground/10 flex flex-col sm:flex-row sm:justify-between items-center gap-[30px] text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:gap-6 gap-1">
               <p className="text-sm text-slate-400">
-                © {new Date().getFullYear()} Refrigeração Taboado.
+                © {new Date().getFullYear()} Refrigeração Taboado Ltda.
               </p>
               <p className="text-sm text-slate-400">
                 CNPJ: 37.164.188/0001-13
