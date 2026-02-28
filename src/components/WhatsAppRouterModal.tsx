@@ -1,4 +1,4 @@
-import { Wrench, Store, ChevronRight } from "lucide-react";
+import { Wrench, Store, ShoppingBag, ChevronRight } from "lucide-react";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import { whatsappLink } from "@/lib/constants";
 import {
@@ -72,6 +72,29 @@ export default function WhatsAppRouterModal({
             </a>
           ))}
         </div>
+
+        {/* Catálogo de Produtos */}
+        <a
+          href="https://refrigeracaotaboado.smartpos.app"
+          target="_blank"
+          rel="noopener"
+          onClick={() => onOpenChange(false)}
+          className="group w-full flex flex-row md:flex-col items-center md:justify-center text-left md:text-center p-4 md:p-6 rounded-xl border-2 border-slate-100 bg-white hover:border-primary hover:bg-primary/5 hover:shadow-md transition-all duration-200 cursor-pointer"
+        >
+          <ShoppingBag size={28} className="text-slate-800 mr-4 md:mr-0 md:mb-3 shrink-0" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-slate-800">
+              Catálogo de Produtos
+            </p>
+            <p className="mt-0.5 text-sm text-slate-500">
+              Peças e acessórios
+            </p>
+          </div>
+          <ChevronRight size={18} className="block md:hidden text-slate-400 shrink-0 ml-auto" />
+          <span className="hidden md:flex items-center gap-2 text-sm font-semibold text-primary mt-4 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+            Acessar catálogo
+          </span>
+        </a>
       </DialogContent>
     </Dialog>
   );
