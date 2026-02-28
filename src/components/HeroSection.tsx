@@ -1,5 +1,5 @@
 import { Star, CalendarCheck, ArrowRight } from "lucide-react";
-import heroTechnician from "@/assets/hero-technician.png";
+const heroTechnician = "/images/hero-technician.png";
 import { Button } from "@/components/ui/button";
 import WhatsAppIcon from "@/components/icons/WhatsAppIcon";
 import WhatsAppRouterModal from "@/components/WhatsAppRouterModal";
