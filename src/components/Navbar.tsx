@@ -69,7 +69,7 @@ export default function Navbar({ onMenuToggle }: NavbarProps) {
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              href={whatsappLink("Olá, gostaria de solicitar uma visita técnica.")}
+              href="https://loja.infinitepay.io/booking/refrigeracaotaboado/tju9998-visita-tecnica-de-avaliacao"
               target="_blank"
               rel="noopener"
             >

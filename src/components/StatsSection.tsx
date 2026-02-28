@@ -4,9 +4,9 @@ import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const stats = [
-  { prefix: "+", end: 400, suffix: "", label: "Atendimentos", sublabel: "em Três Lagoas e região" },
+  { prefix: "+", end: 400, suffix: "", label: "Atendimentos", sublabel: "em Aparecida do Taboado e região" },
   { prefix: "+", end: 8, suffix: "", label: "Experiência", sublabel: "em refrigeração comercial" },
-  { prefix: "", end: 100, suffix: "%", label: "Cobertura", sublabel: "em Três Lagoas e região" },
+  { prefix: "", end: 100, suffix: "%", label: "Cobertura", sublabel: "em Aparecida do Taboado e região" },
   { prefix: "", end: 98, suffix: "%", label: "Recomendação", sublabel: "pelos nossos clientes" },
 ];
 
