@@ -32,13 +32,13 @@ export default function FinalCTASection() {
             {/* Right column — buttons */}
             <div className="lg:col-span-2 flex flex-col sm:flex-row gap-3 lg:justify-end w-full">
               <a
-                href="tel:+5567992599771"
+                href="tel:+5567999259771"
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium bg-white text-[#163573] hover:bg-[#D7D7D9] rounded-[6px] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
                 <Phone size={16} />
                 Ligar agora
               </a>
               <a
-                href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}
+                href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.", "loja")}
                 target="_blank"
                 rel="noopener"
                 className="inline-flex items-center justify-center gap-2 h-12 px-8 text-sm font-medium text-white rounded-[6px] hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150 bg-[#42ae5d]">
