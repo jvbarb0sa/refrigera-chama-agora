@@ -79,7 +79,7 @@ export default function FinalCTASection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <Clock size={15} className="shrink-0 mt-0.5 text-accent" />
-                  <span>Seg–Sex 8h–18h · Sáb 8h–12h</span>
+                  <span>Seg–Sex 8h–18h · Sáb, Dom e Feriados: urgências (mercados, indústrias, conveniências e clientes com contrato)</span>
                 </li>
               </ul>
             </div>
