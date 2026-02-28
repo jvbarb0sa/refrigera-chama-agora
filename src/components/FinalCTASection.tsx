@@ -56,7 +56,7 @@ export default function FinalCTASection() {
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
             {/* Coluna 1 — Identidade */}
             <div className="sm:col-span-2 lg:col-span-2 my-0 py-0">
-              <img src={logoWhite} alt="Refrigeração Taboado" className="h-16" />
+              <img src={logoWhite} alt="Refrigeração Taboado" className="h-16" width={113} height={64} />
               <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400 py-[14px] my-[31px]">
                 Especialistas em refrigeração comercial, industrial e residencial há 12 anos em Aparecida do Taboado, MS e região. Técnicos certificados, garantia documentada.
               </p>
