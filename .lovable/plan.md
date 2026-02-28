@@ -1,9 +1,8 @@
 
 
-## Alterar botões do CTA final para usar número da loja
+## Corrigir CNPJ no sub-footer
 
-**Arquivo:** `src/components/FinalCTASection.tsx`
+**Arquivo:** `src/components/FinalCTASection.tsx` (linha ~131)
 
-1. **Linha 35** — Alterar `href="tel:+5567992599771"` para `href="tel:+5567999259771"` (número da loja correto)
-2. **Linha 41** — Alterar `href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.")}` para `href={whatsappLink("Olá, vim pelo site. Preciso de atendimento urgente.", "loja")}`
+- Substituir `CNPJ: 64.699.140/0001-82` por `CNPJ: 37.164.188/0001-13`
 
