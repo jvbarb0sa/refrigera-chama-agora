@@ -1,10 +1,8 @@
 
 
-# Corrigir número da loja: adicionar dígito 9
+## Adicionar espaço de 30px entre descrição e lista de diferenciais
 
-## Alterações em `src/lib/constants.ts`
+**Arquivo:** `src/components/MissionSection.tsx`
 
-1. `WHATSAPP_LOJA`: `"5567992599771"` → `"55679992599771"` — hmm, preciso verificar o valor atual primeiro.
-
-Preciso ler o arquivo atual.
+- Adicionar `mt-[30px]` ao container `<div className="flex flex-col">` que envolve os features (linha ~55), criando o espaçamento solicitado entre o parágrafo descritivo e o primeiro item "Diagnóstico preciso".
 
