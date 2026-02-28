@@ -121,7 +121,7 @@ export default function FinalCTASection() {
                 © {new Date().getFullYear()} Refrigeração Taboado.
               </p>
               <p className="text-sm text-slate-400">
-                CNPJ: 64.699.140/0001-82
+                CNPJ: 37.164.188/0001-13
               </p>
             </div>
             <p className="text-sm text-slate-400">
