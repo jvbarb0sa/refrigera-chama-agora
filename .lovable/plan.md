@@ -1,8 +1,7 @@
 
 
-## Corrigir CNPJ no sub-footer
+## Atualizar foto da Hero Section
 
-**Arquivo:** `src/components/FinalCTASection.tsx` (linha ~131)
-
-- Substituir `CNPJ: 64.699.140/0001-82` por `CNPJ: 37.164.188/0001-13`
+1. Copiar `user-uploads://Group_8.png` para `public/images/hero-technician.png` (sobrescrever a imagem atual)
+2. Nenhuma alteração de código necessária — o componente já referencia `/images/hero-technician.png`
 
