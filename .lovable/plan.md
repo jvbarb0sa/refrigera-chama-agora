@@ -1,13 +1,12 @@
 
 
-## Centralizar personagem na imagem da seção Sobre
+## Centralizar personagem horizontalmente na seção Sobre
 
 **Arquivo:** `src/components/MissionSection.tsx` (linha 85)
 
-O `object-center` centraliza geometricamente, mas como a foto tem espaço extra acima da cabeça, o personagem acaba deslocado para baixo no recorte. Ajustar o `object-position` para focar mais no topo, trazendo o personagem ao centro visual do frame.
+**Problema:** O personagem está deslocado horizontalmente no recorte. A classe atual `object-[center_30%]` centraliza horizontalmente no centro geométrico da imagem, mas o personagem não está no centro geométrico da foto original.
 
 **Alteração:**
-- Trocar `object-center` por `object-[center_30%]` — posiciona o ponto focal mais acima, centralizando o corpo do técnico no recorte visível.
-
-Se necessário, ajustar o valor (25%, 35%) após visualização.
+- Trocar `object-[center_30%]` por `object-[40%_30%]` — empurra o foco horizontal ligeiramente para a esquerda (onde o personagem está na foto), mantendo o ajuste vertical de 30%.
+- Se necessário, ajustar o valor horizontal (35%, 45%) após visualização.
 
