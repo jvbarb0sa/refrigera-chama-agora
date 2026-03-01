@@ -82,7 +82,7 @@ export default function MissionSection() {
                 src="/images/about.png"
                 alt="Equipe Refrigeração Taboado"
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover object-[60%_30%]"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
           </div>
