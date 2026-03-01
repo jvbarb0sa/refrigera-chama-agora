@@ -1,7 +1,13 @@
 
 
-## Trocar imagem da seção Sobre
+## Centralizar personagem na imagem da seção Sobre
 
-1. **Copiar imagem** `user-uploads://Group_15.png` para `public/images/about.png` (substituindo a atual)
-2. **Ajustar posicionamento** em `src/components/MissionSection.tsx`: alterar `object-[center_top]` para `object-center` para centralizar o personagem verticalmente
+**Arquivo:** `src/components/MissionSection.tsx` (linha 85)
+
+O `object-center` centraliza geometricamente, mas como a foto tem espaço extra acima da cabeça, o personagem acaba deslocado para baixo no recorte. Ajustar o `object-position` para focar mais no topo, trazendo o personagem ao centro visual do frame.
+
+**Alteração:**
+- Trocar `object-center` por `object-[center_30%]` — posiciona o ponto focal mais acima, centralizando o corpo do técnico no recorte visível.
+
+Se necessário, ajustar o valor (25%, 35%) após visualização.
 
