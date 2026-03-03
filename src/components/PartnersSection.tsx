@@ -9,9 +9,9 @@ export default function PartnersSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Coluna Esquerda */}
         <div>
-          <div className="flex items-center gap-2 text-sky-600 font-mono text-sm tracking-widest uppercase mb-4">
-            <ShieldCheck className="h-5 w-5" strokeWidth={1.8} />
-            Aliança Estratégica
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border-none mb-4">
+            <ShieldCheck className="h-4 w-4 text-blue-700" strokeWidth={1.8} />
+            <span className="text-xs font-semibold text-blue-700 tracking-wider uppercase">Aliança Estratégica</span>
           </div>
 
           <h2 className="text-4xl lg:text-5xl font-semibold text-slate-900 tracking-tight mb-6">
