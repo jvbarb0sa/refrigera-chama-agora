@@ -6,7 +6,7 @@ export default function PartnersSection() {
       {/* Grid técnico sutil */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-[30px] lg:gap-16 items-center">
         {/* Coluna Esquerda */}
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border-none mb-4">
