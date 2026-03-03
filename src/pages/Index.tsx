@@ -9,6 +9,7 @@ import DifferentialsSection from "@/components/DifferentialsSection";
 import MissionSection from "@/components/MissionSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ServiceAreaSection from "@/components/ServiceAreaSection";
+import PartnersSection from "@/components/PartnersSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTASection from "@/components/FinalCTASection";
 import WhatsAppSticky from "@/components/WhatsAppSticky";
@@ -31,6 +32,7 @@ const Index = () => {
           <MissionSection />
           <TestimonialsSection />
           <ServiceAreaSection />
+          <PartnersSection />
           <FAQSection />
           <FinalCTASection />
         </RevealsWrapper>
