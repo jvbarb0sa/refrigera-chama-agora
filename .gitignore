@@ -12,6 +12,22 @@ dist
 dist-ssr
 *.local
 
+# Local credentials and environment files
+.env
+.env.*
+!.env.example
+!.env.template
+.npmrc
+.netrc
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Generated validation output
+coverage
+*.tsbuildinfo
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

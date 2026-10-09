@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, type DependencyList } from "react";
 import { gsap } from "@/lib/gsap";
 
 export function useGsapContext(
   scopeRef: React.RefObject<HTMLElement>,
   fn: (ctx: gsap.Context) => void,
-  deps: any[] = []
+  deps: DependencyList = []
 ) {
   useEffect(() => {
     if (!scopeRef.current) return;
